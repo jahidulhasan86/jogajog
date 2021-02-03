@@ -1,0 +1,125 @@
+#header {
+  color: #ffffff;
+  height: 40px;
+  background-color: #33363B;
+  padding: 0 14px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* z-index: 999999; */
+  min-width: 400px !important;
+  z-index: 2;
+}
+
+.header70 {}
+
+.header70 #session-title {
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header70 #ptvNotification {
+  font-size: small;
+  color: #b9b9b9;
+  text-align: right;
+}
+
+.header70 .ptvAllowButton {
+  border: 1px solid #f49a22;
+  border-radius: 13px;
+  padding: 2px 7px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.header70 .ptvDeclineButton {
+  border: 1px solid #b9b9b9;
+  border-radius: 13px;
+  padding: 2px 7px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.buttonsContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.headerLight {
+  color: #706969 !important;
+  background-color: #eeeeee !important;
+}
+
+#navSessionInfo {
+  height: 100%;
+  display: inline-flex;
+}
+
+
+#navChatButton .mat-badge-medium.mat-badge-overlap.mat-badge-before .mat-badge-content {
+  left: -17px;
+}
+
+#navChatButton .mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: -6px;
+}
+
+.mat-icon-button[disabled] {
+  color: #fff;
+}
+
+.titleContent {
+  font-family: 'Ubuntu', sans-serif;
+  /* max-width: 100px; */
+  margin: 5px 0px;
+  padding: 0px 15px;
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.titleContentDark {
+  /* background-color: #494949; */
+  color: #ffffff;
+}
+
+.titleContentLight {
+  background-color: #dfdfdf !important;
+  color: #000000;
+}
+
+#header_img {
+  max-width: 120px;
+  margin-right: 10px;
+  margin-top: 2px;
+  margin-left: 10px;
+}
+
+#point {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 12px;
+  right: 33px;
+  border-radius: 50%;
+  background-color: #ffa600;
+  border: 1px solid #000;
+  z-index: 99999;
+}
+
+.pointLight {
+  border: 1px solid #ffffff !important;
+}
+
+.tooltipList {
+  white-space: pre;
+}
+
+@media (max-width: 600px) {
+  #navSessionInfo {
+    display: none;
+  }
+}

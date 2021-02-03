@@ -1,0 +1,137 @@
+<div class="container">
+	<div class="page-title mt-40">
+		<h2>{{'SupportServices.support_service' | translate}}</h2>
+	</div>
+	<div class="page-banner mt-40">
+		<img src="../../assets/img/banner/banner_support_center.png" alt="">
+	</div>
+	<div id="support_scrollHere"></div>
+	<div id="accordion">
+		<div class="btn-header">
+			<a class="btn btn-link" id="supportCenterTab" data-toggle="collapse" href="#SupportCenter"
+				aria-expanded="true" aria-controls="collapseOne">
+				{{'SupportServices.support_center' | translate}}
+			</a>
+			<a class="btn btn-link collapsed" id="communityFeedbackTab" data-toggle="collapse" href="#CommunityFeedback"
+				aria-expanded="false" aria-controls="collapseTwo">
+				{{'SupportServices.community_feedback' | translate}}
+			</a>
+			<a class="btn btn-link collapsed" id="PrivacySecurityTab" data-toggle="collapse" href="#PrivacySecurity"
+				aria-expanded="false" aria-controls="collapseTwo">
+				{{'SupportServices.privacy_security' | translate}}
+			</a>
+		</div>
+		<div id="SupportCenter" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="page-content">
+				<h3>{{'SupportServices.24hour_support' | translate}}</h3>
+				<p>{{'SupportServices.24hour_support_text' | translate}}</p>
+
+				<div class="bg-feedback-form">
+					<div class="form-body">
+						<!-- <form> -->
+							<div class="form-group" id="pageId">
+								<label for="email">{{'ABOUT_US.email' | translate}}</label>
+								<input type="text" class="form-control" id="email" aria-describedby="emailHelp"
+									placeholder="{{'ABOUT_US.email_placeholder' | translate}}" [(ngModel)]="contactModel.email">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">{{'ABOUT_US.subject_optional' | translate}}</label>
+								<input type="text" class="form-control" id="subject" placeholder="{{'ABOUT_US.subject_placeholder' | translate}}" [(ngModel)]="contactModel.subject">
+							</div>
+							<div class="form-group">
+								<label for="msg">{{'ABOUT_US.message' | translate}}</label>
+								<textarea name="msg" id="msg" class="form-control" rows="7" [(ngModel)]="contactModel.message"></textarea>
+							</div>
+							<!-- <div class="form-group">
+								<input type="file" class="form-control-file" id="uploadFile">
+							</div> -->
+							<button type="submit" class="btn btn-primary w-100" (click)="sendMessage('customer_support')">{{'ABOUT_US.submit' | translate}}</button>
+						<!-- </form> -->
+					</div>
+				</div>
+				<!-- <h3>{{'SupportServices.live_chat' | translate}}</h3> -->
+				<!-- <p *ngIf="globalValue.currentBuild === 'en'">
+					{{'SupportServices.live_chat_text_en' | translate}}
+				</p>
+				<p *ngIf="globalValue.currentBuild === 'bn'">
+					{{'SupportServices.live_chat_text_bn' | translate}}
+				</p> -->
+				<h3>{{'SupportServices.live_training' | translate}}</h3>
+				<p>{{'SupportServices.live_training_text' | translate}}</p>
+			</div>
+		</div>
+		<div id="CommunityFeedback" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="page-content">
+				<h3>{{'SupportServices.community_feedback' | translate}}</h3>
+				<p>{{'CommuntyFeedback.community_feedback_text' | translate}}
+					<!-- {{'CommuntyFeedback.community_feedback_text1' | translate}}
+					<a (click)="contactUs()" [routerLink]="['/contactus']">
+						{{'CommuntyFeedback.community_feedback_text2' | translate}}	
+					</a> 
+					{{'CommuntyFeedback.community_feedback_text3' | translate}}
+					Alternately, please join our community support forum to discuss
+					features and provide feedback by going to <a href="#">jagajag.com/community</a> -->
+				
+					<!-- Alternately, please join our community support forum to discuss
+					features and provide feedback by going to <a href="#">jagajag.com/community</a> -->
+				</p>
+				<div class="bg-feedback-form">
+					<div class="form-body">
+						<!-- <form> -->
+							<div class="form-group" id="pageId">
+								<label for="email">{{'ABOUT_US.email' | translate}}</label>
+								<input type="text" class="form-control" id="email" aria-describedby="emailHelp"
+									placeholder="{{'ABOUT_US.email_placeholder' | translate}}" [(ngModel)]="contactModel.email">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">{{'ABOUT_US.subject_optional' | translate}}</label>
+								<input type="text" class="form-control" id="subject" placeholder="{{'ABOUT_US.subject_placeholder' | translate}}" [(ngModel)]="contactModel.subject">
+							</div>
+							<div class="form-group">
+								<label for="msg">{{'ABOUT_US.message' | translate}}</label>
+								<textarea name="msg" id="msg" class="form-control" rows="7" [(ngModel)]="contactModel.message"></textarea>
+							</div>
+							<!-- <div class="form-group">
+								<input type="file" class="form-control-file" id="uploadFile">
+							</div> -->
+							<button type="submit" class="btn btn-primary w-100" (click)="sendMessage('community_feedback')">{{'ABOUT_US.submit' | translate}}</button>
+						<!-- </form> -->
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div id="PrivacySecurity" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="page-content">
+				<h3>{{'SupportServices.privacy_security' | translate}}</h3>
+				<p>{{'PrivacySecurity.privacy_security_text' | translate}}
+				</p>
+				<h3>{{'PrivacySecurity.personal_info' | translate}}</h3>
+				<ul>
+					<li>{{'PrivacySecurity.personal_info_text1' | translate}}</li>
+					<li>{{'PrivacySecurity.personal_info_text2' | translate}} 
+						<!-- <a href="#">{{'PrivacySecurity.personal_info_text3' | translate}}</a></li> -->
+				</ul>
+				<h3>{{'PrivacySecurity.notice_add' | translate}}</h3>
+				<ul>
+					<li>{{'PrivacySecurity.notice_add_text1' | translate}}</li>
+					<li>{{'PrivacySecurity.notice_add_text2' | translate}}
+						 <!-- <a href="#">{{'PrivacySecurity.personal_info_text3' | translate}}</a></li> -->
+				</ul>
+				<h3>{{'PrivacySecurity.mode_place' | translate}}</h3>
+				<ul>
+					<li><p style="font-weight:600;">{{'PrivacySecurity.place' | translate}}</p>
+						{{'PrivacySecurity.place_text' | translate}}</li>
+					<li><p style="font-weight:600;">{{'PrivacySecurity.rentation_time' | translate}}</p>
+						{{'PrivacySecurity.rentation_time_text' | translate}}</li>
+				</ul>
+				<h3>{{'PrivacySecurity.enforcement' | translate}}</h3>
+				<ul>
+					<li>{{'PrivacySecurity.enforcement_text' | translate}}
+						<span style="font-weight: 500;">{{'PrivacySecurity.enforcement_text2' | translate}}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

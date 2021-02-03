@@ -1,0 +1,34 @@
+<div class="modal-header no-flex">
+	<div class="d-flex">
+		<div class="sub-header-l offset-left-80">
+			<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+			<h1>{{'HostMeeting.onestop_comm' | translate}}</h1>
+		</div>
+		<button type="button" class="close" aria-label="Close" (click)="closeDialog()" matTooltip="{{'HostMeeting.cancel' | translate}}"
+			matTooltipPosition="below">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+</div>
+
+<div style="padding: 2% 2% 0% 2%;">
+	<mat-checkbox (change)="updateCheck()" class="example-margin" [(ngModel)]="selectAll">
+		{{'MEETING_REMINDER.select_all' | translate}}
+	</mat-checkbox>
+</div>
+
+<div style="padding: 2% 2% 2% 2%;">
+	<div *ngFor="let user of emails let i = index">
+		<mat-checkbox [(ngModel)]="user.checked" (change)="OnChange($event.checked, user)">
+			{{user.email}}</mat-checkbox>
+	</div>
+</div>
+
+<div class="modal-footer" style="justify-content: center;">
+	<button type="button" class="btn btn-outline-secondary" (click)="closeDialog()"
+		matTooltip="{{'HostMeeting.cancel' | translate}}"
+		matTooltipPosition="below">{{'HostMeeting.cancel' | translate}}</button>
+	<button type="button" style="padding: .375rem 1rem;" class="btn btn-info" (click)="submittedData.length > 0 ? notify() : message()"
+		matTooltip="{{'MEETING_REMINDER.send_reminder' | translate}}"
+		matTooltipPosition="below">{{'MEETING_REMINDER.send_reminder' | translate}}</button>
+</div>

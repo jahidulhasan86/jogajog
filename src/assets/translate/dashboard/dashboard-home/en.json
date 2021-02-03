@@ -1,0 +1,23 @@
+{
+	"DASHBOARD_HOME": {
+		"my_meetings": "MY MEETINGS",
+		"no_meeting_scheduled": "No meeting scheduled",
+		"upcoming_meeting": "Upcoming Meeting",
+		"meeting_info": "Meeting Info",
+		"join": "Join",
+		"join_a_meeting_1": "Join",
+		"join_a_meeting_2": "Meeting",
+		"host_meeting_1": "Host",
+		"host_meeting_2": "Meeting",
+		"permanent_rooms_1": "Shared",
+		"permanent_rooms_2": "Rooms",
+		"company_accounts_1": "Company",
+		"company_accounts_2": "Meeting",
+		"premium_feature": "Premium Feature",
+		"meeting_invitaion" : "Invite people to join the meeting",
+		"permanent_rooms_3": "Meeting Rooms allow permanent meeting hubs for your team or group. Please contact us to enable this feature.",
+		"company_accounts_3": "Company meetings functionality allows you secure and private meeting services for company employees. Please contact us to enable this feature.",
+		"refresh" : "Refresh my meetings",
+		"subscription": "Subscription"
+	}
+}

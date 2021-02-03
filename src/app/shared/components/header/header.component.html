@@ -1,0 +1,186 @@
+<!-- header-start -->
+<header>
+    <div class="header-area">
+        <div id="sticky-header" class="main-header-area nav-bg-home">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark-home">
+                    <a class="navbar-brand logo-img mr-20" [routerLink]="['/']" (click)="languageTabSelector()">
+                        <!-- <img src="{{globalValue.app_logo}}" alt=""> -->
+                        <img src="{{urlEnd == '/learnTogether' ? '../../../../assets/images/learntogether/Login/Learn Together.png' : urlEnd == '/teamTogether' ? '../../../../assets/images/learntogether/Login/teamTogether/Team Together Logo.png' : globalValue.app_logo}}"
+                            alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{'MENU.features' | translate }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" (click)='test()'>Test</a>
+                                    <a class="dropdown-item" href="#">Lorem ipsum</a>
+                                </div>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="goToSolutions()">{{'MENU.solutions' | translate }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a *ngIf="globalValue.currentBuild === 'en'" class="nav-link" [routerLink]="['/why-jagajag']"> Why Jagajag? </a>
+                                <a *ngIf="globalValue.currentBuild === 'bn'" class="nav-link" [routerLink]="['/why-jagajag']"> {{'MENU.why_jogajog' | translate }} </a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" (click)="goToSolutions()">{{'MENU.solutions' | translate }}</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="['/plan-pricing']">{{'MENU.plans_pricing' | translate }}</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{'MENU.resources' | translate }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a [routerLink]="['/FAQ']" class="dropdown-item">{{'MENU.faq' | translate }}</a>
+                                    <!-- <a [routerLink]="['/user-guide']" class="dropdown-item">{{'MENU.user_manual' | translate }}</a> -->
+                                    <!-- <a *ngIf="globalValue.currentBuild === 'bn'" href="https://docs.google.com/document/d/1qHemI9Jr2ADfMQRwrAaoSUkbmpxGfyTiVMu7_Uf1PMk/edit#heading=h.5bhtim22o89q" class="dropdown-item" target="_blank">{{'MENU.user_manual' | translate }}</a>
+                                    <a *ngIf="globalValue.currentBuild === 'en'" href="https://docs.google.com/document/d/1euZBk4EAuc9mjKfiucJmJYk6b9cRb_ll8za1h1Br7yE/edit#heading=h.8xacg436znxkhttps://docs.google.com/document/d/1euZBk4EAuc9mjKfiucJmJYk6b9cRb_ll8za1h1Br7yE/edit#heading=h.8xacg436znxk" class="dropdown-item" target="_blank">{{'MENU.user_manual' | translate }}</a> -->
+                                     <a *ngIf="globalValue.currentBuild === 'bn'" (click)="downloadPdf('../../../../assets/pdf/Jogajog_UserGuide.pdf', 'JogajogUserGuide')" class="dropdown-item">{{'MENU.user_manual' | translate }}</a>
+                                    <a *ngIf="globalValue.currentBuild === 'en'" (click)="downloadPdf('../../../../assets/pdf/Jagajag-UserGuide.pdf','JagajagUserGuide')" class="dropdown-item">{{'MENU.user_manual' | translate }}</a> 
+                                    <!-- <a 
+                                    href="javascript:void(0)" 
+                                    style="cursor:pointer"
+                                    (click)="downloadPdf()">
+                                    Download PDF
+                                  </a> -->
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" (click)="contactUs()">{{'MENU.contact' | translate }}</a>
+                            </li>
+                            <!-- <li  class="nav-item" *ngIf="isUserLoggedIn"> 
+                                <span class="material-icons notification-icon"
+                                    [matMenuTriggerFor]="companyInvitationList"
+                                    [matBadge]="notifications?.length + notificationRooms?.length" matBadgeColor="warn"
+                                    [matBadgeHidden]="isMatBadgeHidden" (menuOpened)="menuOpened()">
+                                    notifications
+                               </span>
+                            </li> -->
+                        </ul>
+                        <div class="m-hr"></div>
+                        <div *ngIf="globalValue.currentBuild === 'bn'" class="btn-group btn-group-toggle mr-20 " data-toggle="buttons">
+                            <label class="btn bg_white active" matTooltip="English"
+                            matTooltipPosition="below">
+                                <input type="radio" id="enID" name="options" autocomplete="off" (click)="languageChanger('en')"> EN
+                            </label>
+                            <label class="btn bg_white" style="box-shadow: none;" matTooltip="Bangla"
+                            matTooltipPosition="below">
+                                <input type="radio" id="bnID" name="options" autocomplete="off" (click)="languageChanger('bn')"> BN
+                            </label>
+                        </div>
+                        <!-- <div id="btn-search" class="btn-group" matTooltip="Search"
+                        matTooltipPosition="below">
+                            <a href="#" class="mr-20"><i class="is i-search size-lg"></i></a>
+                        </div> -->
+                        <button class="btn btn-primary mr-20" type="submit" *ngIf="!isUserLoggedIn"
+                            (click)="registerDialog()" matTooltip="{{'MENU.register_btn' | translate }}"
+                            matTooltipPosition="below">{{'MENU.register_btn' | translate }}</button>
+                        <a class="mr-20" *ngIf="!isUserLoggedIn"
+                            (click)="loginDialog()" matTooltip="{{'MENU.login_btn' | translate }}"
+                            matTooltipPosition="below"><strong>{{'MENU.login_btn' | translate }}</strong></a>
+                        <ul *ngIf="isUserLoggedIn" style="display:inline-block">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" *ngIf="authUser.user_name"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" matTooltip="{{authUser.user_name}}"
+                                    matTooltipPosition="below">
+                                    {{authUser.user_name}}
+                                </a>
+                                <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" *ngIf="!authUser.user_name"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" matTooltip="{{authUser.firstName}} {{authUser.lastName}}"
+                                    matTooltipPosition="below">
+                                    {{authUser.firstName}} {{authUser.lastName}}
+                                </a> -->
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="cursor: pointer;">
+                                    <a class="dropdown-item" style="text-align: center;
+                                    font-size: small;
+                                    font-weight: 600;" *ngIf="isUserLoggedIn" [routerLink]="['/dashboard/home']" routerLinkActive="router-link-active">{{'MENU.dashboard' | translate }}</a>
+                                    <a class="dropdown-item" style="text-align: center;
+                                    font-size: small;
+                                    font-weight: 600;" *ngIf="isUserLoggedIn" (click)="signOut()">{{'MENU.logout' | translate }}</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul *ngIf="isUserLoggedIn" style="display:inline-block">
+                                <span class="material-icons notification-icon"
+                                    [matMenuTriggerFor]="companyInvitationList"
+                                    [matBadge]="unseenNotifications?.length" matBadgeColor="warn"
+                                    [matBadgeHidden]="isMatBadgeHidden" (menuOpened)="menuOpened()">
+                                    notifications
+                               </span>
+                        
+                        </ul>
+
+                        <!-- <a class="mr-20" *ngIf="isUserLoggedIn" (click)="signOut()"><strong>Logout</strong></a> -->
+                    </div>
+                </nav>
+            </div>
+        
+            <mat-menu #companyInvitationList class="invitation-menu" yPosition="below" [overlapTrigger]="false">
+                <div (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                    <app-company-invitation-list [notificationsList]="notifications" (cInvAcceptedEEmitter)="cInvAcceptedEEmitter($event)"></app-company-invitation-list>
+                    <room-join-request-list [notificationsList]="notificationRooms"></room-join-request-list>
+                </div>
+            </mat-menu>
+        
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+<!-- Search Start -->
+<div id="search_area">
+    <div class="container">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control search_input" placeholder="{{'MENU.search_placeholder' | translate}}" aria-label="Search..."
+                aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-info" type="button" id="button-addon2">{{'MENU.search_btn' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search-end -->
+
+
+
+<style>
+    .notification-icon {
+        color: #515c6f; 
+        font-size: 30px; 
+        cursor: pointer; 
+        /* top: 10%; 
+        right: 20%; */
+    }
+
+    ::ng-deep .mat-menu-panel.invitation-menu{
+	max-width:none;
+	width: 350px;
+	padding: 5px;
+	max-height: 350px;
+	font-size: "10px";
+	border-radius: 5px;
+	padding: 0;
+	box-shadow: 0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.4)
+  }
+  .header-area .sticky .notification-icon {
+      color: #ffffff;
+  }
+  @media only screen and (max-width: 991px) {
+    .header-area .notification-icon {
+      color: #ffffff;
+  }
+}
+</style>

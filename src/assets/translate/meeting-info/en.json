@@ -1,0 +1,20 @@
+{
+	"MEETING_INFO": {
+		"meeting_heading": "Meeting Info",
+		"host": "Host:",
+		"start_time": "Start Time:",
+		"end_time": "End Time:",
+		"duration": "Duration:",
+		"meeting_name": "Meeting Name:",
+		"meeting_code": "Meeting Code:",
+		"meeting_password": "Meeting Password:",
+		"meeting_url": "Meeting URL:",
+		"cancel": "Close",
+		"copy": "Copy to clipboard",
+		"click_to_join": "Click to join",
+		"meeting_count": "Total Meeting Count",
+		"creator":"[Creator: ",
+		"room": "Room: ",
+		"host_scheduled": "Host: "
+	}
+}

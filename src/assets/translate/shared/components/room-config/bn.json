@@ -1,0 +1,20 @@
+{
+	"RoomConfig":{
+		"onestop_comm": "সংযোগ - সদা, সর্বত্র, নিরাপদে",
+		"join_meeting": "মিটিং এ যোগদান করুন",
+		"meeting_id": "মিটিং আইডি/লিন্ক টাইপ করুন",
+		"meeting_id_req": "মিটিং আইডি আবশ্যক",
+		"meeting_pass": "মিটিং পাসওয়ার্ড(ঐচ্ছিক)",
+		"meeting_paswd": "মিটিং পাসওয়ার্ড",
+		"name": "আপনার নাম",
+		"guest_display_name": "অতিথির নাম",
+		"name_req": "নাম আবশ্যক",
+		"join_now": "এখনি যোগ দিন ",
+		"cancel" : "বাতিল করুন",
+		"meeting_id_not_valid" : "মিটিং আইডি বৈধ নয়",
+		"video_device_not_found": "ক্যামেরা ডিভাইস পাওয়া যাই নাই ",
+		"video_off": "ভিডিও বন্ধ",
+		"speaker_off":"স্পিকার বন্ধ",
+		"screen_share_off": "স্ক্রিন শেয়ার বন্ধ"
+	}
+}

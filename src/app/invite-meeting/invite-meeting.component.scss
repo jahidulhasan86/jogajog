@@ -1,0 +1,33 @@
+
+  :host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+
+	padding-bottom: 1.25em;
+	border: 1px solid #F49A22;
+	border-top-left-radius: .25rem;
+	border-bottom-left-radius: .25rem;
+  }
+
+  :host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0px;
+}
+
+:host ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-ripple {
+   
+    height: 0px;
+   
+}
+
+:host ::ng-deep .mat-chip-list-wrapper{
+  margin-left: 5px;
+}
+
+.btn-my-class{
+//   height: 40px;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(140%, -50%);
+}
+:host ::ng-deep .mat-input-element{
+  caret-color: black;
+}

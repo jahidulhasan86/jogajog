@@ -1,0 +1,278 @@
+body {
+	font-family: $font-primary;
+	font-weight: normal;
+    font-style: normal;    
+}
+
+.img {
+	max-width: 100%;
+	@include transition(.3s);
+}
+a,
+.button {
+	@include transition(.3s);
+}
+a:focus,
+.button:focus,button:focus {
+	text-decoration: none;
+	color: $font_3;
+	outline: none;
+}
+a:focus{
+	text-decoration: none;
+	color: $font_3;
+}
+a:focus,
+a:hover,
+.portfolio-cat a:hover,
+.footer -menu li a:hover {
+	text-decoration: none;
+	color: $font_3;
+}
+a,
+button {
+	color: $font_2;
+	outline: medium none;
+}
+h1,h2,h3,h4,h5{
+	font-family: $font-primary;
+	color: $font_1;
+	margin: 0 0 16px;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+	color: inherit;
+}
+.text-center{
+	text-align: center;
+}
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+li {
+	list-style: none
+}
+p {
+	font-size: $fs-16;
+	font-weight:300;
+	line-height: normal;
+	color: $font_1;
+	margin-bottom: 13px;
+	font-family: $font-primary;
+}
+.w-100{
+	width:100% !important;
+}
+.nopadd{
+	padding: 0 !important;
+}
+.padding-lr-0{
+	margin-right: 0;
+	margin-left: 0;
+}
+.div-center{
+	margin:0 auto;
+}
+label {
+	color: $font-1;
+	cursor: pointer;
+	font-size: $fs-14;
+	font-weight: 400;
+}
+
+*::placeholder {
+	color: $font-2;
+	font-size: $fs-14;
+	opacity: 1;
+}
+
+// default-bg-color
+.bg_black{
+	background: $bg_black !important;
+}
+
+.bg_white{
+	background: $bg_white;
+}
+.bg_gray{
+	background: $bg_gray;
+}
+.color_yellow{
+	color: $font_3;
+}
+.color_orange{
+	color: $font_2;
+}
+.color_white{
+	color: $font_7;
+}
+
+//size
+.size-lg{
+	background-size: 100%;
+}
+.size-md{
+	background-size: 80%;
+}
+.size-sm{
+	background-size:50%;
+}
+
+//margin
+.mt-10{
+	margin-top: 10px !important;
+}
+.mt-20{
+	margin-top: 20px !important;
+}
+.mt-30{
+	margin-top: 30px !important;
+}
+.mt-40{
+	margin-top: 40px !important;
+}
+.mt-60{
+	margin-top: 60px !important;
+}
+.mt-80{
+	margin-top: 80px !important;
+}
+.mb-10{
+	margin-bottom: 10px !important;
+}
+.mb-20{
+	margin-bottom: 20px !important;
+}
+.mb-40{
+	margin-bottom: 40px !important;
+}
+.mb-55{
+	margin-bottom: 55px !important;
+}
+.mb-60{
+	margin-bottom: 50px !important;
+}
+.mb-65{
+	margin-bottom: 67px !important;
+}
+.ml-10{
+	margin-left: 10px !important;
+}
+.ml-20{
+	margin-left: 20px !important;
+}
+.ml-30{
+	margin-left: 30px !important;
+}
+.mr-10{
+	margin-right: 10px !important;
+}
+.mr-20{
+	margin-right: 20px !important;
+}
+
+//padding
+.pl-10{
+	padding-left:10px;
+}
+.pl-20{
+	padding-left:20px;
+}
+.pl-30{
+	padding-left:30px;
+}
+.pl-40{
+	padding-left:40px;
+}
+.pt-0{
+	padding-top: 0;
+}
+.pt-10{
+	padding-top: 10px;
+}
+.pt-120{
+	padding-top: 120px;
+}
+.pt-150{
+	padding-top: 150px;
+}
+
+.flex-center-start{
+    display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.btn-primary{
+	font-family: $font-secondary;
+	font-size: $fs-14;
+	font-weight: 500;
+	color:$font_7;
+	@include transition(.3s);
+	@include linearGradient-tb($btn_hover1, $btn_hover);
+	border:1px solid $border_color;
+    &:hover {
+        color: $font_5;
+		@include linearGradient-tb($btn_hover, $btn_hover1);
+		border:1px solid $border_color;
+    }
+}
+.btn-info{
+	font-family: $font-secondary;
+	font-size: $fs-14;
+	font-weight: 500;
+	color:$btn_hover2;
+	@include transition(.3s);
+	@include linearGradient-lr($btn_hover1, $btn_hover);
+	border:1px solid $border_color;
+    &:hover {
+        color: $btn_hover3;
+		@include linearGradient-lr($btn_hover, $btn_hover1);
+		border:1px solid $border_color;
+    }
+}
+.btn-outline-info{
+	font-family: $font-secondary;
+	font-size: $fs-14;
+	font-weight: 500;
+	color:$btn_hover2;
+	@include transition(.3s);
+	border:1px solid $border_color3;
+    &:hover {
+        color: $font_4;
+		background: transparent;
+		border:1px solid $border_color2;
+    }
+}
+.btn-outline-secondary {
+	font-family: $font-secondary;
+	font-size: $fs-14;
+	font-weight: 500;
+	color:$btn_hover;
+	@include transition(.3s);
+	border:1px solid $border_color;
+    &:hover {
+		@include linearGradient-lr($btn_hover, $btn_hover1);
+		border:1px solid $border_color1;
+    }
+}
+@media #{$mobile_device} {
+	.dnone{
+		display: none;
+	}
+	.text-right{
+		text-align: left!important;
+	}
+}
+@media #{$tablet_device} {
+	.dnone{
+		display: none;
+	}
+}

@@ -1,0 +1,195 @@
+<div class="example-container tool_tip" [class.example-is-mobile]="mobileQuery.matches">
+	<mat-toolbar id="admin-header" color="primary" style="width:100%; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.21);
+	background-image: linear-gradient(to bottom, #f5cf1f, #f49823); color: #908b8b;padding: 0;" class="example-toolbar">
+		<div class="row theamColor topLeft-appName">
+			<button mat-icon-button (click)="snav.toggle()" style="width: 20%;position: relative;top: -6px;">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<span class="example-app-name" style="width: 65%;cursor: pointer;text-align: center;" [routerLink]="['']">
+				<img src="{{globalValue.app_logo}}" alt="logo">
+			</span>
+			<button mat-icon-button [matMenuTriggerFor]="usermenu" style="width: 15%;position: relative;top: -6px;">
+				<mat-icon>more_horiz</mat-icon>
+			</button>
+
+			<span flex>
+				<mat-menu #usermenu="matMenu">
+					<button [routerLink]="['/dashboard/home']" mat-menu-item
+						class="usr_action">{{'DASHBOARD.home' | translate }}</button>
+						<!-- <button mat-menu-item class="usr_action" (click)="openSettingsDialouge()">{{'DASHBOARD.settings' | translate }}</button> -->
+					<button  mat-menu-item
+						class="usr_action" (click)="openProfile()">{{'Profile.profile' | translate}}</button>
+					<button *ngIf="(acServices.currentUser.role.role_name | lowercase)==='admin'"
+						[routerLink]="['/dashboard/report']" [matMenuTriggerFor]="submenu" mat-menu-item
+						class="usr_action">Reports</button>
+					<button mat-menu-item class="usr_action"
+						(click)="aboutUs()">{{'DASHBOARD.about_us' | translate }}</button>
+				</mat-menu>
+				<mat-menu #submenu="matMenu">
+					<button [routerLink]="['/dashboard/report']" mat-menu-item class="usr_action">Meeting Activity
+						Report</button>
+					<button [routerLink]="['/dashboard/report/media-server']" mat-menu-item class="usr_action">Media
+						Server Report</button>
+				</mat-menu>
+			</span>
+		</div>
+		<div class="row topRight-header">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-7" style="text-align: center;">
+				<span *ngIf="company_information.company_name != 'Jagajag'"><img style="height: 2vw;"
+						src="{{company_information.logo}}"></span> &nbsp;
+				<span style="color: white; font-size: 20px;">{{company_information.company_name}}</span>
+			</div>
+			<div class="col-sm-3" style="text-align: right;color: ivory; right: 3%;">
+				<span class="material-icons"
+					style="color: white; font-size: 30px; cursor: pointer; top: 18%; right: 20%;"
+					[matMenuTriggerFor]="companyInvitationList"
+					[matBadge]="unseenNotifications?.length" matBadgeColor="warn"
+					[matBadgeHidden]="isMatBadgeHidden" (menuOpened)="menuOpened()">
+					notifications
+				</span>
+
+
+				<span style="cursor: pointer; " *ngIf="globalValue.currentBuild == 'bn'"
+					(click)="languageChanger()">{{'DASHBOARD.language_selector' | translate }}
+				</span>
+			</div>
+
+			<mat-menu #companyInvitationList class="invitation-menu" yPosition="below" [overlapTrigger]="false">
+				<div (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+					<app-company-invitation-list [notificationsList]="notifications" (cInvAcceptedEEmitter)="cInvAcceptedEEmitter($event)"></app-company-invitation-list>
+					<room-join-request-list [notificationsList]="notificationRooms"></room-join-request-list>
+				</div>
+			</mat-menu>
+
+			<!-- <mat-menu #roomjoin class="invitation-menu" yPosition="below" [overlapTrigger]="false">
+				<div (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+					<room-join-request-list [notificationsList]="notifications"></room-join-request-list>
+				</div>
+			</mat-menu> -->
+
+		</div>
+	</mat-toolbar>
+
+	<mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+		<mat-sidenav id="dashboardSideBar" class="theamColor" mode="side" opened style="width: 15%;visibility: visible;"
+			#snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+			fixedTopGap="56">
+			<div class="userPanelPart" style="padding-bottom: 5%;">
+				<img src='../../assets/images/Default Profile.png' />
+				<div class="userName">
+					<!--  -->
+					<div style="font-size: 14px; padding-top: 3%; color: #f49a22;">{{'DASHBOARD.welcome' | translate }},
+						{{currentUser.first_name | titlecase}}
+						{{currentUser.last_name}} </div>
+					<div style="padding-top: 3%;"><span
+							style="border: 1px solid; border-radius: 10px; padding: 1px 5px 1px 5px; font-size: 12px;  color: #f49a22;">{{currentUser.user_name}}</span>
+					</div>
+				</div>
+			</div>
+
+			<mat-nav-list class="menuList">
+				<span matTooltip="{{'DASHBOARD.home' | translate }}">
+					<a mat-list-item [routerLink]="['/dashboard/home']" routerLinkActive="activeAdminMenu"
+						#dashboard="routerLinkActive">
+						<img *ngIf="!dashboard.isActive" src="../../assets/images/dashboard/HomeIcon.png" alt="Icon"
+							class="menuIcon">
+						<img *ngIf="dashboard.isActive" src="../../assets/images/dashboard/HomeIcon Selected.png"
+							alt="Icon" class="menuIcon">
+						<span>{{'DASHBOARD.home' | translate }}</span>
+					</a>
+				</span>
+				<span matTooltip="{{'DASHBOARD.meeting_schedules' | translate }}">
+					<a mat-list-item [routerLink]="['/dashboard/schedule']" routerLinkActive="activeAdminMenu"
+						#meetingSchedule="routerLinkActive">
+						<img *ngIf="!meetingSchedule.isActive" src="../../assets/images/dashboard/Schedule.png"
+							alt="Icon" class="menuIcon">
+						<img *ngIf="meetingSchedule.isActive" src="../../assets/images/dashboard/ScheduleSelected.png"
+							alt="Icon" class="menuIcon">
+						<span>{{'DASHBOARD.meeting_schedules' | translate }}</span>
+
+					</a>
+				</span>
+
+				<span matTooltip="{{'DASHBOARD.contacts' | translate }}" matTooltipPosition="below">
+					<a mat-list-item [routerLink]="['/dashboard/contacts']" routerLinkActive="activeAdminMenu"
+						#contacts="routerLinkActive">
+						<img *ngIf="!contacts.isActive" src="../../assets/images/dashboard/ContactsIcon.png" alt="Icon"
+							class="menuIcon">
+						<img *ngIf="contacts.isActive" src="../../assets/images/dashboard/ContactsIconSelected.png"
+							alt="Icon" class="menuIcon">
+						<span>{{'DASHBOARD.contacts' | translate }}</span>
+					</a>
+				</span>
+
+				<span *ngIf="isCompanyMembersTabShow" matTooltip="{{'DASHBOARD.company_members' | translate }}"
+					matTooltipPosition="below">
+					<a mat-list-item [routerLink]="['/dashboard/company-members']" routerLinkActive="activeAdminMenu"
+						#companyMembers="routerLinkActive">
+						<img *ngIf="!companyMembers.isActive" src="../../assets/images/dashboard/company_members_default_icon.png"
+							alt="Icon" class="menuIcon">
+						<img *ngIf="companyMembers.isActive" src="../../assets/images/dashboard/company_members_selected_icon.png"
+							alt="Icon" class="menuIcon">
+						<span>{{'DASHBOARD.company_members' | translate }}</span>
+					</a>
+				</span>
+
+				<span
+					matTooltip="{{'DASHBOARD_HOME.permanent_rooms_1' | translate }} {{'DASHBOARD_HOME.permanent_rooms_2' | translate }}"
+					matTooltipPosition="below">
+					<a mat-list-item [routerLink]="['/dashboard/room-box']" routerLinkActive="activeAdminMenu"
+						#room="routerLinkActive">
+						<img *ngIf="!room.isActive" src="../../assets/images/dashboard/rooms_default_icon.png"
+							alt="Icon" class="menuIcon">
+						<img *ngIf="room.isActive" src="../../assets/images/dashboard/rooms_selected_icon.png"
+							alt="Icon" class="menuIcon">
+						<span>{{'DASHBOARD_HOME.permanent_rooms_2' | translate }}</span>
+					</a>
+				</span>
+
+			<span matTooltip="{{'DASHBOARD.RecordingList' | translate }}"
+					matTooltipPosition="below">
+					<a mat-list-item [routerLink]="['/dashboard/recording']" routerLinkActive="activeAdminMenu">
+						<img  src="../../assets/images/dashboard/ContactsIcon.png"
+							alt="Icon" class="menuIcon">
+						<span>{{'DASHBOARD.RecordingList' | translate }}</span>
+					</a>
+			</span>
+			<!-- <span matTooltip="{{'DASHBOARD_HOME.subscription' | translate }}" matTooltipPosition="below">
+					<a mat-list-item [routerLink]="['/dashboard/subscription']" routerLinkActive="activeAdminMenu"
+						#subscription="routerLinkActive">
+						<img *ngIf="!subscription.isActive" src="../../assets/images/dashboard/rooms_default_icon.png"
+							alt="Icon" class="menuIcon">
+						<img *ngIf="subscription.isActive" src="../../assets/images/dashboard/rooms_selected_icon.png"
+							alt="Icon" class="menuIcon">
+						<span>{{'DASHBOARD_HOME.subscription' | translate }}</span>
+						
+					</a>
+			</span> -->
+			</mat-nav-list>
+
+			<div *ngIf="globalValue.currentBuild == 'en'" id="sideNavFooter">
+				<img (click)="signOut()" src="../../assets/images/dashboard/Logout Btn@2x.png" alt="logout btn"
+					class="logoutBtn">
+			</div>
+			<div *ngIf="globalValue.currentBuild == 'bn'" id="sideNavFooter">
+				<img *ngIf="bnEnLanguageCheck == 'en'" (click)="signOut()"
+					src="../../assets/images/dashboard/Logout Btn@2x.png" alt="logout btn" class="logoutBtn">
+				<span *ngIf="bnEnLanguageCheck == 'bn'" class="logoutBtnBN" (click)="signOut()">
+					লগআঊট
+				</span>
+			</div>
+
+		</mat-sidenav>
+
+		<mat-sidenav-content id="admin-sidenav-full-page" style="overflow: hidden;">
+			<div style="overflow-y: auto" id="setSideBarHeight">
+				<router-outlet> </router-outlet>
+			</div>
+			<div class="copyWriteFooter" id="copyWriteFooterId">
+				&copy; {{fullyear}} {{globalValue.footer_text_display}} All copyrights are reserved™
+			</div>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+</div>

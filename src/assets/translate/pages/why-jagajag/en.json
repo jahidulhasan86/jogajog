@@ -1,0 +1,26 @@
+{
+	
+	"WhyJagajag": {
+		
+		"why_jagajag" : "WHY JOGAJAG?",
+		"one_stop_solution_header": "ONE STOP SOLUTION",
+		"one_stop_solution_text":"Jogajog-is-your-one-stop-online-communications-solution-for-distributed-work--place-teams-and-field-personnel-for-educational-institutions-or-for-families-and-friends.",
+		"scalability_header": "Scalability",
+		"scalability_text": "The solution is designed to easily scale up from 1-on-1 communications to 100s of participants.",
+		"efficiency_header": "Efficiency",
+		"efficiency_text": "It is built from the ground-up to optimize bandwidth and server-processing for cost-sensitive customers.",
+		"one_premise_header": "On-premise",
+		"one_premise_text": "This is especially important for customers who would like to host the software on their own infrastructure due to security or other compliance reasons.",
+		"tech_header": "Technology",
+		"tech_text": "The platform is built on proven and reliable technology leveraging industry open standards, such as WebRTC, XMPP, HTTP, etc, and leverages many years of communications industry experience to ensure a high quality reliable and secure implementation.",
+		"integration_header": "Integration",
+		"integration_text" : "You can even get advanced elearning capabilities like proctored exams, with the single- sign on Learn Together solution and advanced push-to-talk and dispatch technology from the Public Safety and Military world in the integrated Team Together always-on solution.",
+		"custom_header": "Customization",
+		"custom_text": "For Enterprises, we offer System Integration and Customization or co-branding options.",
+
+		"one_stop_solution_header2": "One-stop solution",
+		"one_stop_solution_text2":"You can get solution functionality from different types of products in one integrated solution without having to purchase multiple subscriptions: you can get zoom or webex-like online meetings, you can get Microsoft Teams-like Team collaboration or you could get Slack- like channel-based communications in this one-stop cost-effective solution."
+			 
+		
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"UpdateRoomBox":{
+		"update": "Update",
+		"close": "Close",
+		"select_participants": "Select Participants:",
+		"room_name": "Room Name: ",
+		"please_wait": "Please Wait.."
+	}
+}

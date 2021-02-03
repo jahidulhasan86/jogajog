@@ -1,0 +1,38 @@
+<!-- For English content -->
+<div style="padding: 5% 9% 0 9%; text-align: justify;" *ngIf="globalValue.currentBuild === 'en'">
+	<h2 class="heading">
+		{{'UserGuide.UserGuide' | translate}}
+	</h2>
+	<p style="font-weight: 600; padding-bottom: 1%;">{{'UserGuide.UserGuide_des' | translate}}</p>
+	<div class="item-section">
+
+		<p class="text_bold" *ngFor="let UserGuide_ques of 'UserGuide.UserGuide_question' | translate">
+			<span>{{UserGuide_ques}}</span>
+		</p>
+	</div>
+	<div>
+		<p style="font-weight: 600;">
+			{{'UserGuide.updated_content_en' | translate}}
+		</p>
+	</div>
+</div>
+
+<!-- For Bangla content -->
+<div style="padding: 5% 9% 0 9%; text-align: justify;" *ngIf="globalValue.currentBuild === 'bn'">
+	<h2 class="heading">
+		{{'UserGuide.UserGuide' | translate}}
+	</h2>
+	<p style="font-weight: 600; padding-bottom: 1%;">{{'UserGuide.UserGuide_des' | translate}}</p>
+	<div class="item-section">
+
+      <p class="text_bold" *ngFor ="let UserGuide_ques of 'UserGuide.UserGuide_question' | translate">
+		  <span>{{UserGuide_ques}}</span>
+	  </p>
+	</div>
+	<div>
+		<p style="font-weight: 600;">
+			{{'UserGuide.updated_content' | translate}}
+		</p>
+	</div>
+</div>
+

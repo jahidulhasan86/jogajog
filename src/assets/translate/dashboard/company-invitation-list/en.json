@@ -1,0 +1,11 @@
+{
+	"CompanyInvitationList": {
+		"company_notifications": "Company Notifications",
+		"invited_by" : "Invited by",
+		"no_invitation_received": "No notification received",
+		"room_notification": "ROOM NOTIFICATIONS",
+		 "no_request_received": "No notification received",
+		 "accept" : "Accept",
+		 "reject": "Reject"
+	}
+}

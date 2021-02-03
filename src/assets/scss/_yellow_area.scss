@@ -1,0 +1,63 @@
+.yellow_area{
+    margin: 0 0 60px 0;
+    padding: 80px 0;
+    @include linearGradient-tb($btn_hover1, $btn_hover);
+    .section_title{
+        display: block;
+        margin-bottom: 40px;
+        h1{
+            font-size: $fs-24;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 600;
+            line-height: 0em;
+        }
+        h2{
+            font-size: $fs-26;
+            text-align: center;
+            color:$font-7;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+    }
+    .card_items{
+        margin-bottom: 30px;        
+        padding:0 20px;
+        color:$font_7;
+
+        .items_icon{
+            margin:0 auto;
+            height: 100px;
+            width: 100px;
+            padding: 5px;
+            background: $bg_white;
+            @include border-radius(50%);
+            img {
+                display: block;
+                margin: auto;
+                width: 55px;
+                padding-top: 15px;
+            }
+        }
+        .card_info{
+                margin: 20px 0;
+                font-family: $font-primary !important;
+
+            h3{
+                font-size: $fs-18;
+                font-weight: 500;
+                color:$font_7 !important;
+            }
+
+            p{
+                font-size: $fs-14;
+                font-weight: 300;
+                color: $font_7;
+                line-height: normal;
+            }
+
+        }
+    }
+    
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../app/core/components/meeting-link/meeting-link.component.scss"
+    ],
+    "names": [],
+    "file": "meeting-link.component.css"
+}

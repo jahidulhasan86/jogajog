@@ -1,0 +1,97 @@
+html {
+    min-height: 100%;
+}
+
+
+body {
+    height: 100%;
+    margin: 0px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+:host ::ng-deep .mat-card-image{
+   width: auto;
+}
+
+:host ::ng-deep .mat-card-header-text {
+  //margin: 0 16px;
+  width: 100%;
+}
+:host ::ng-deep .mat-card {
+ // background: #f2f6fc;
+  margin: 15px;
+  width: 500px;
+  height: 82px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+} 
+ .matcard:nth-of-type(odd) {
+ background: #3f4042;
+}
+ .matcard:nth-of-type(even) {
+  background: red;
+ }
+:host ::ng-deep .mat-card:nth-child(even){
+  background:#f9f9f9
+
+
+  }
+:host ::ng-deep .mat-card:nth-child(odd){
+  background:#f2f6fc;
+}
+
+/* :host ::ng-deep .mat-card:nth-of-type(odd){
+  background-color: green;
+} */
+//.pvt-messages-box-item:nth-of-type(even){
+  //b
+/* div.container > div:nth-of-type(odd) {
+  background: #e0e0e0;
+} */
+
+
+.filler {
+  flex: 1 1 auto;
+}
+.gap {
+  margin-right: 10px;
+}
+.toolbar-button {
+  padding: 0;
+}
+.home-card {
+    border-radius: 4px;
+    max-width: 600px;
+    max-height: 1000px;
+   // margin-top: 100px;
+    padding: 0;
+    //width: 862px;
+    //height: 82px;
+
+    .mat-card-image {
+      margin: 0;
+      height: 100%;
+    }
+
+    .home-card-content {
+       display: flex;
+      justify-content: space-between;
+
+      & > * {
+       // display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: auto;
+        
+
+        &:first-child {
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+        }
+
+        &:last-child {
+          flex-direction: column;
+          align-items: start;
+          padding: 8px;
+        }
+      }
+    }
+}

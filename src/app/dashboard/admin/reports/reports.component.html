@@ -1,0 +1,126 @@
+<ngx-spinner color = "#f49823" type = "ball-clip-rotate-pulse" size="medium" [fullScreen] = "false"   ><p style="color: white;">Please Wait..</p></ngx-spinner>
+<div class="main-content">
+    <div class="container-fluid">
+        <h3 style="text-align: center;">Meeting Activity Report</h3>
+        <div class="row" style="">
+            <div class="col-lg-6 col-md-12">
+                <div class="card-body" style="padding: 0px;
+                margin-left: 15px;">
+                    <h6 style="text-transform: none;">Select Day(s)</h6>
+                    <button id="initCall" (click)="fetchActivityReport($event.target,'2')" class="btn btn-default mat-raised-button mat-button-base">2 Days
+                    </button>
+                    <button (click)="fetchActivityReport($event.target,'3')" class="btn btn-primary mat-raised-button mat-button-base">3 Days
+                    </button>
+                    <button (click)="fetchActivityReport($event.target,'7')" class="btn btn-primary mat-raised-button mat-button-base">7 Days
+                    </button>
+                    </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card-body" style="padding: 0px;float: right;margin-right: 13px;">
+                    <h6 style="text-transform: none;">Export report</h6>
+                    <button (click)="exportAs('xlsx')" title="Export report as Excel" class="btn btn-info mat-raised-button mat-button-base">EXCEL
+                    </button>&nbsp;&nbsp;
+                    <button (click)="exportAs('csv')" title="Export report as Csv" class="btn btn-info mat-raised-button mat-button-base">CSV
+                    </button>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12">
+                                <h4 class="card-title">Meeting Activity</h4>
+                                <p class="card-category">Showing Data For Last {{daySelected}} days</p>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <input [(ngModel)]="meetingFilter.meeting_name" style="width: 321px;float: right;outline: white;color: white;padding: 10px;border-color:white; border: none !important;box-shadow: none !important;
+                                background-image: linear-gradient(to top, #fafafa 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);" placeholder="Search by name / owner / initiator.." class="form-control">
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table id="rptTable" class="table table-hover">
+                            <thead class="text-warning">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Initiatior</th>
+                                    <th>Owner</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Duration</th>
+                                    <th>Participants</th>
+                                  </tr>
+                        
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let alog of activityLogs | filterBy: meetingFilter">
+                                    <td>{{alog.meeting_name}}</td>
+                                    <td>{{alog.initiate_by_name}}</td>
+                                    <td>{{alog.owner.host_name}}</td>
+                                    <td>{{alog.start_time | date: 'MMM d, y, h:mm:ss a'}}</td>
+                                    <td>{{alog.end_time | date: 'MMMM d, y, h:mm:ss a'}}</td>
+                                    <td>{{alog.duration}}</td>
+                                    <td style="cursor: pointer;" (click)="showParticipantDetails(alog.participants)" title="Click to view details."
+                                        class="participants_details">{{alog.participants.length}}</td>
+                                </tr>
+                                <!-- <tr>
+                                    <td>r.meeting</td>
+                                    <td>ruhul_comm</td>
+                                    <td>ruhul_comm</td>
+                                    <td>1 July 12.00pm</td>
+                                    <td>1 July 12.30pm</td>
+                                    <td>30 minutes</td>
+                                    <td (click)="showParticipantDetails('sd')" title="Click to view details."
+                                        class="participants_details">10</td>
+                                </tr>
+                                <tr>
+                                    <td>r.meeting</td>
+                                    <td>ruhul_comm</td>
+                                    <td>ruhul_comm</td>
+                                    <td>1 July 12.00pm</td>
+                                    <td>1 July 12.30pm</td>
+                                    <td>30 minutes</td>
+                                    <td (click)="showParticipantDetails('sd')" title="Click to view details."
+                                        class="participants_details">10</td>
+                                </tr>
+                                <tr>
+                                    <td>r.meeting</td>
+                                    <td>ruhul_comm</td>
+                                    <td>ruhul_comm</td>
+                                    <td>1 July 12.00pm</td>
+                                    <td>1 July 12.30pm</td>
+                                    <td>30 minutes</td>
+                                    <td (click)="showParticipantDetails('sd')" title="Click to view details."
+                                        class="participants_details">10</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .participants_details {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+        text-align: center;
+    }
+    ::placeholder {
+  color: white !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: white !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: white !important;
+}
+</style>

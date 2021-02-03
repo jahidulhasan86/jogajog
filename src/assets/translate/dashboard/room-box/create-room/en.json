@@ -1,0 +1,19 @@
+{
+	"CreateRoom":{
+		"create_new_room": "Create New Room",
+		"room_details": "Enter details information to create new room",
+		"room_name": "Room Name",
+		"host_name": "Host Name",
+		"invite_people": "Invite People",
+		"add_people": "Add People",
+		"select_multiple_participants": "Select Multiple Participants",
+		"reset": "RESET",
+		"confirm_now": "Submit",
+		"back_list": "Back to List",
+		"hidden": "Hidden",
+		"public": "Public",
+		"participants_hidden": "Participants Hidden",
+		"private" : "",
+		"record_meeting": "Record Meeting"
+	}
+}

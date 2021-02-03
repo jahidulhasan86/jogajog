@@ -1,0 +1,46 @@
+{
+	"FAQ": {
+		   "faq": "FAQ:",
+		   "faq_des": "The following questions will be included in the FAQ section. If you would like more questions to be answered, please let us know of your question.",
+		   "faq_question":[
+			   "1. Why should I use Jogajog for online meetings instead of other products?",
+			   "2. How secure is Jogajog?",
+			   "3. Why do you use Push-to-Talk in large meetings?",
+			   "4. How do I schedule a Jogajog meeting?",
+			   "5. How do I join a Jogajog meeting?",
+			   "6. How much bandwidth does Jogajog consume?",
+			   "7. What technology is used with Jogajog?",
+			   "8. How do I host Jogajog on my own servers?",
+			   "9. Can I record and share a Jogajog meeting?",
+			   "10. Do you have an unlimited usage option?",
+			   "11. How large a meeting can I hold with Jogajog?",
+			   "12. How are LearnTogether, TeamTogether and Jogajog related to each other?",
+			   "13. Do you provide live support?",
+			   "14. What is Jogajog?",
+			   "15. What is the relationship between jagajog.com and jogajog.com.bd"
+		   ]
+	},
+
+	"FAQ_en": {
+	
+		"faq": "FAQ:",
+		"faq_des": "The following questions will be included in the FAQ section. If you would like more questions to be answered, please let us know of your question.",
+		"faq_question":[
+			"1. Why should I use Jagajag for online meetings instead of other products?",
+			"2. How secure is Jagajag?",
+			"3. Why do you use Push-to-Talk in large meetings?",
+			"4. How do I schedule a Jagajag meeting?",
+			"5. How do I join a Jagajag meeting?",
+			"6. How much bandwidth does Jagajag consume?",
+			"7. What technology is used with Jagajag?",
+			"8. How do I host Jagajag on my own servers?",
+			"9. Can I record and share a Jagajag meeting?",
+			"10. Do you have an unlimited usage option?",
+			"11. How large a meeting can I hold with Jagajag?",
+			"12. How are LearnTogether, TeamTogether and Jagajag related to each other?",
+			"13. Do you provide live support?",
+			"14. What is Jagajag?",
+			"15. What is the relationship between jagajog.com and jogajog.com.bd"
+		]
+ }
+}

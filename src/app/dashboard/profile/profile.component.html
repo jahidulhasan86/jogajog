@@ -1,0 +1,152 @@
+<div class="modal-header no-flex">
+	<div class="d-flex">
+		<div class="sub-header-l offset-left-80">
+			<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+			<h1
+				[ngStyle]="globalValue.app_logo == '../../../../assets/images/jagajag_logo_with_bangla_text.png' ? {'margin-left': '5%'} : {'margin-left': '0'}">
+				{{'HostMeeting.onestop_comm' | translate}}</h1>
+		</div>
+		<button type="button" class="close" aria-label="Close" (click)="close()"
+			matTooltip="{{'HostMeeting.cancel' | translate}}" matTooltipPosition="below">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+</div>
+<div class="modal-body profile">
+
+	<br />
+
+
+	<div class="container-fluid">
+		<div class="row padding-lr-0">
+
+			<div class="col-xl-12 col-md-12 col-sm-12" style="height:500px;overflow: auto;">
+				<div class="row">
+
+					<!--ID/ Name-->
+					<div class="mb-20 w-100">
+						<!-- <div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+							</div> -->
+						<label> {{ 'Profile.name' | translate}}</label>
+						<input type="text" class="form-control" placeholder="{{ user_info.user_name}}" disabled>
+
+					</div>
+
+					<!--first name-->
+					<div class="mb-20 w-100">
+						<!-- <div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+							</div> -->
+						<label> {{ 'Profile.first_name' | translate}} </label>
+						<input class="form-control" [(ngModel)]="first_name"
+							placeholder="{{ 'Profile.enter_your_first_name' | translate}}">
+
+					</div>
+
+					<!-- last name-->
+					<div class="mb-20 w-100">
+						<!-- <div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+							</div> -->
+						<label> {{ 'Profile.last_name' | translate}}</label>
+						<input type="text" class="form-control" [(ngModel)]="last_name"
+							placeholder="{{ 'Profile.enter_your_last_name' | translate}}">
+
+					</div>
+
+
+
+
+
+					<!-- Email -->
+					<div class="mb-20 w-100">
+						<!-- <div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+							</div> -->
+						<label> {{ 'Profile.email' | translate}}</label>
+						<input type="text" class="form-control" placeholder="{{ user_info.email}}" disabled>
+					</div>
+
+					<!-- password -->
+					<label> {{ 'Profile.password' | translate}}</label>
+					<div class="input-group mb-20 w-100">
+
+						<input type="password" class="form-control" [(ngModel)]="password" disabled>
+						<div class="input-group-append">
+							<span class="input-group-text" style="cursor:pointer" id="basic-addon1"
+								(click)="openPasswordEditor()"><i class="fas fa-edit"
+									matTooltip="{{ 'Profile.update_password' |translate}}"></i></span>
+						</div>
+
+					</div>
+
+
+					<!-- mobile -->
+					<div class="mb-20 w-100">
+						<!-- <div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1"><i class="fas fa-mobile"></i></span>
+							</div> -->
+						<label> {{ 'Profile.contact' | translate}}</label>
+						<input type="text" class="form-control" [(ngModel)]="contact"
+							placeholder="{{ 'Profile.enter_your_phone_number' | translate}}">
+					</div>
+					<!-- Address -->
+					<div class="mb-20 w-100">
+						<!-- <div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1"><i
+										class="fa fa-address-card"></i></span>
+							</div> -->
+						<label> {{ 'Profile.address' | translate}}</label>
+						<textarea type="text" style="height:60px" class="form-control" [(ngModel)]="address"
+							placeholder="{{ 'Profile.enter_your_address' | translate}}"> </textarea>
+					</div>
+
+					<!-- Gender -->
+					<div class="mb-20 w-100">
+						<label> {{ 'Profile.gender' | translate}}</label>
+						<mat-form-field appearance="fill" style="width:100%">
+
+							<mat-select [(value)]="selected">
+
+								<mat-option style="color:black;font-size: 16px;" value="male">
+									{{ 'Profile.male' | translate}}</mat-option>
+								<mat-option style="color:black;font-size: 16px;" value="female">
+									{{ 'Profile.female' | translate}}</mat-option>
+								<mat-option style="color:black;font-size: 16px;" value="others">
+									{{ 'Profile.others' | translate}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+					</div>
+					<!-- Date-->
+					<div class="mb-20 w-100">
+						<label> {{ 'Profile.birth_date' | translate}}</label>
+						<div class="input-group-prepend">
+							<mat-datepicker-toggle class="mat-btn-toggle" matSuffix [for]="picker">
+							</mat-datepicker-toggle>
+							<input style="height:38px;padding-left:4px" class="form-control" matInput
+								[matDatepicker]="picker" value="{{show_date}}"
+								(dateChange)="datePickerEvent($event.target.value);"
+								matTooltip="{{  'Profile.enter_your_birth_date' | translate}}"
+								matTooltipPosition="below">
+						</div>
+						<mat-datepicker #picker></mat-datepicker>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<ngx-spinner></ngx-spinner>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-info" matTooltipPosition="below"
+		(click)="updateProfile()">{{ 'Profile.update' | translate}}</button>
+	<a href="javascript:void(0)" matTooltip="{{ 'Contacts.cancel' | translate}}" matTooltipPosition="below"
+		(click)="close()"> {{ 'Profile.close' | translate}} </a>
+</div>

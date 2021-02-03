@@ -1,0 +1,72 @@
+<ngx-spinner bdColor="{{spinnerBGColor}}" size="medium" color="#f49823" type="{{spinnerType}}" [fullScreen]="true">
+  <p style="color: white"> {{spinnerText}} {{counter}}</p>
+</ngx-spinner>
+
+<div *ngIf="!!ovSettings" id="videoRoomNavBar" [class.boundsLight]="lightTheme">
+  <app-room-config *ngIf="showConfigRoomCard" [ovSettings]="ovSettings" [externalConfig]="externalConfig"
+    [isProgress]="isProgress" (join)="joinMeetingRestApi()" (leaveSession)="leaveSessionFromRoomConfig()"
+    (publisherCreated)="emitPublisher($event)"></app-room-config>
+
+  <div *ngIf="localUsers && localUsers.length > 0">
+    <div *ngIf="isConnectionLost" class="reconnecting-container"></div>
+    <app-toolbar [lightTheme]="lightTheme" [compact]="compact" [mySessionId]="mySessionId" [ovSettings]="ovSettings"
+      [hasVideoDevices]="hasVideoDevices" [hasAudioDevices]="hasAudioDevices"
+      [isWebcamVideoEnabled]="oVSessionService.hasWebcamVideoActive()" [isWebcamAudioEnabled]="toolbarMicIconEnabled()"
+      [isScreenEnabled]="oVSessionService.isScreenShareEnabled()" [isAutoLayout]="isAutoLayout"
+      [isConnectionLost]="isConnectionLost" [isUpdateConferenceTypeRequest]='isUpdateConferenceTypeRequest'
+      (camButtonClicked)="toggleCam()" (micButtonClicked)="toggleMic()" (screenShareClicked)="toggleScreenShare()"
+      (layoutButtonClicked)="toggleSpeakerLayout()" (leaveSessionButtonClicked)="leaveSession()"
+      (xamppChat)="xamppChat()" (changeConferenceTypeClick)="changeConferenceType($event)" (countDownTimer)="countDownTimerForHost($event)" [localuser]="localUsers"
+      [participants]="remoteUsers"></app-toolbar>
+
+    <mat-sidenav-container class="sidenav-container" id="room-container" [class.boundsLight]="lightTheme" fullscreen
+      style="position: absolute;">
+      <mat-sidenav #sidenav mode="{{sidenavMode}}" position="end" class="sidenav-chat" [class.boundsLight]="lightTheme"
+        fixedInViewport="true" fixedTopGap="40" fixedBottomGap="0" *ngIf="ovSettings | hasChat">
+
+        <!-- <chat-component
+          #chatComponent
+          [lightTheme]="lightTheme"
+        ></chat-component> -->
+        <app-chatting [hidden]="callScreenSideNavShowData !== 'chat'"></app-chatting>
+        <app-participant-list [hidden]="callScreenSideNavShowData !== 'participants'" [localuser]="localUsers"
+          [participants]="remoteUsers" (muteUnmuteClick)="muteUnmute($event)"></app-participant-list>
+      </mat-sidenav>
+      <!-- [style.display]="!localUser.streamManager?.stream?.videoActive ? 'none' : 'block'" -->
+      <mat-sidenav-content class="sidenav-main">
+        <div id="layout" class="bounds" [class.boundsLight]="lightTheme">
+          <div class="OT_root OT_publisher custom-class" id="localUser" *ngFor="let localUser of localUsers">
+            <!-- Only webcam video will be shown if webcamera is available -->
+            <stream-component [user]="localUser" [videoSizeBig]="localUser.videoSizeBig"
+              (nicknameClicked)="onNicknameUpdate($event)" (replaceScreenTrackClicked)="onReplaceScreenTrack($event)"
+              (toggleVideoSizeClicked)="onToggleVideoSize($event)"></stream-component>
+
+          </div>
+          <!-- [style.display]="!user.streamManager?.stream?.videoActive ? 'block' : 'block'" -->
+          <div *ngFor="let user of remoteUsers" class="OT_root OT_publisher custom-class" id="remoteUsers">
+            <stream-component [user]="user" [videoSizeBig]="user.videoSizeBig"
+              (toggleVideoSizeClicked)="onToggleVideoSize($event)"></stream-component>
+            <!-- <div [style.display]="!user.streamManager?.stream?.videoActive ? 'block' : 'none'" ><img src="../../assets/images/default_profile icon.png" alt=""></div> -->
+
+          </div>
+        </div>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <!-- <app-footer
+      [lightTheme]="lightTheme"
+      [participants]="remoteUsers"
+    ></app-footer> -->
+    <!-- controller -->
+    <app-room-controller [lightTheme]="lightTheme" [compact]="compact" [mySessionId]="mySessionId"
+      [ovSettings]="ovSettings" [hasVideoDevices]="hasVideoDevices" [hasAudioDevices]="hasAudioDevices"
+      [isWebcamVideoEnabled]="oVSessionService.hasWebcamVideoActive()" [isWebcamAudioEnabled]="toolbarMicIconEnabled()"
+      [isScreenEnabled]="oVSessionService.isScreenShareEnabled()" [isAutoLayout]="isAutoLayout"
+      [isConnectionLost]="isConnectionLost" [participants]="remoteUsers" [isTimerShow]="isTimerShow"
+      (camButtonClicked)="toggleCam()" (micButtonClicked)="toggleMic()" (screenShareClicked)="toggleScreenShare()"
+      (layoutButtonClicked)="toggleSpeakerLayout()" (leaveSessionButtonClicked)="leaveSession()"
+      (xamppChat)="xamppChat()" [currentFloorStatus]='currentFloorStatus' [floorState_Custom]='floorState_Custom'
+      (toggleAudioVideoForPtvClicked)="toggleAudioVideoForPtv()" (increaseTimer)="increaseTimer()" (record)="record($event)"></app-room-controller>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{
+	"Footer": {
+		"one_stop_comm": "One Stop Communications",
+		 "text4": "For Bangladesh and Beyond",
+		"text": "+880 1701 64 48 79",
+		"text1": "info@jogajog.com.bd",
+		"text2": "53, Purana Paltan (2nd Floor)",
+		"text3": "Dhaka 1000, BD",
+		"solutions": "Our Solutions",
+
+	
+		"our_solution1_en": "Online Meetings - Jagajag",
+		"our_solution1_bn": "Online Meetings - Jogajog",
+		"our_solution2": "E-Learning - Learn Together",
+		"our_solution3": "Team Communications - Team Together",
+		"our_solution4": "Family Connectivity - Alert Family",
+		"our_solution5": "Online Healthcare - Medi Connect",
+	
+		"support_service": "Support & Services",
+		"list_item": [
+			"Support Center",
+			"Community Feedback",
+			"Privacy & Security"
+		],
+		"about_us": "About us",
+		"who_wr": "Who We Are",
+		"development_service": "Development Services",
+		"contact_us": "Contact Us",
+		"connect_with": "Connect With Us",
+		"payment_method": "Payment Methods",
+		"download_app": "Download Apps From",
+		"copy_right": "Copyright © 2020 Bengal Mobile QA Solution Limited, All rights reserved.",
+		"terms_conditions": "Terms & Conditions",
+		"site_map": "Site Map",
+		"privacy_policy": "Privacy Policy",
+		"cookie_policy": "Cookie Policy"
+	}
+}

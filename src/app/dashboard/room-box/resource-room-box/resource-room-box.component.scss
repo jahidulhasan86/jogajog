@@ -1,0 +1,107 @@
+.titles {
+    background:aliceblue;
+    padding:4px 5px 5px 5px;
+    height:29px;
+    width:100%;
+  }
+  #male {
+    display: none;
+  }
+.body{
+    margin: 5px;
+}
+::ng-deep .mat-list-item-content{
+  height: 6%;
+ 
+}
+
+.shared_res_item{
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0,0,0,0.25);
+  /* box-shadow: 0px 2px 3px rgba(0, 0, 0, .5) !important; */
+  box-shadow:1px 2px 3px 1px rgba(0,0,0,0.25);
+  border-top: none;
+  border-left: 1px solid #8080808a;
+  border-right: 1px soild #8080808a;
+  border-bottom: none;
+  padding: 5px;
+  height:auto;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: #555;
+  cursor: default;
+  border: none !important;
+  background-color: #fff;
+  border-bottom: 2px solid #b1a9a9  !important;;
+}
+.add-file{
+  height: 38px;
+  width : 38px;
+  cursor: pointer;
+}
+.searchBar .icon {
+    color: #012501;
+    font-weight: bold;
+    font-size: 25px;
+    position: relative;
+    top: 7px;
+  }
+  
+.title-header {
+
+    background: #093542;
+    color: white;
+    margin-left: 5px;
+    font-size: 14px;
+  
+  }
+
+
+.shadow-xl{box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 10px 10px -5px rgba(0,0,0,.04)}
+
+::-webkit-scrollbar {
+  width: 0px !important;;
+  background: transparent !important; /* make scrollbar transparent */
+}
+
+.cursor{
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.share-res-nav{
+    margin-left: 10px;
+}
+
+/* files*/
+.all-name-null{
+  position: absolute;
+  margin: 24px 0 0 4px;
+  color:   #b2beb5;
+}
+
+.all-name-not-null{
+  position: absolute;
+  margin: 24px 0 0 165px;
+  color:   #b2beb5;
+
+}
+
+.only-image-name-null{
+  position: absolute;
+  margin: 24px 0 0 16px;
+  color:   #b2beb5;
+}
+.only-image-name-not-null{
+  position: absolute;margin: 24px 0 0 170px;
+  color:   #b2beb5;
+}
+
+
+
+.resources_menu:hover {
+  background-color: rgb(244, 163, 34) !important;
+  color: white !important
+}
+.resources_menu {
+  color: #000000 
+}

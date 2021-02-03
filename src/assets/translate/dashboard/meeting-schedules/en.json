@@ -1,0 +1,18 @@
+{
+	"Meeting_schedules": {
+		"previous": "Previous",
+		"today": "Today",
+		"next": "Next",
+		"month": "Month",
+		"week" : "Week",
+		"day" : "Day",
+		"time_span": "Time Span:",
+		"duration": "Duration:",
+		"hour": "hour",
+		"join_meeting": "Join Meeting",
+		"ok": "OK",
+		"close":"Close",
+		"search_here": "Search here"
+
+	}
+}

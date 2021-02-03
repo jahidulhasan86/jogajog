@@ -1,0 +1,66 @@
+
+<div class="modal-body">
+	<h4 class="modal-title mb-20">{{'LOGIN.login_text' | translate}}</h4>
+	<div class="container-fluid">
+		<div class="row padding-lr-0">
+			<div class="col-xl-5 col-md-5 col-sm-12">
+				<div class="row">
+					<div class="input-group mb-20">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="{{'LOGIN.userid_placeholder' | translate}}"
+							[(ngModel)]="loginModel.user_name" (keyup)="eventKeyPress($event)">
+					</div>
+					<div class="input-group mb-10">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="{{'LOGIN.password_placeholder' | translate}}"
+							[(ngModel)]="loginModel.password" (keyup)="eventKeyPress($event)">
+					</div>
+				</div>
+				<div class="row mb-10">
+					<div class="col-xl-6 col-md-6 col-sm-12 nopadd">
+						<div class="form-check">
+							<label class="check">{{'LOGIN.checkbox_text' | translate}}
+								<input type="checkbox" name="Keep_me_logged" [checked]="isRememberChecked"
+									(change)="onChange($event.target.checked)" (keyup)="eventKeyPress($event)">
+								<span class="checkmark"></span>
+							</label>
+						</div>
+					</div>
+					<div class="col-xl-6 col-md-6 col-sm-12 nopadd text-right">
+						<a href="javascript:void(0)" (click)="forgetPassword()">{{'LOGIN.forget_password' | translate}}</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-1 col-md-1 col-sm-12 vr-border">
+			<img src="../../../../assets/img/login-v-border.png" alt="">
+		  </div>
+			<div class="hr-border mb-20">
+			<div class="or-wrap">
+			  <div class="or">OR</div>
+			</div>
+		  </div>
+			<div class="col-xl-5 col-md-5 col-sm-12">
+			<img src="../../../../assets/img/icon/Signin with Gmail Icon.png" style="cursor:pointer" class="mb-20 pl-20" alt="" matTooltip="{{'LOGIN.google_signin' | translate}}"
+				matTooltipPosition="below" (click)="signInWithGoogle()">
+			<img src="../../../../assets/img/icon/Signin_with_Facebook.png" style="cursor:pointer" class="pl-20 mb-20" alt="" matTooltip="{{'LOGIN.fb_signin' | translate}}"
+				matTooltipPosition="below" (click)="signInWithFB()">
+		  </div>
+		</div>
+	</div>
+</div>
+<ngx-spinner></ngx-spinner>
+<!-- <recaptcha
+          [(ngModel)]="hasCompleteRecaptcha"
+		  (scriptLoad)="onRecaptchaLoad()"
+          (scriptError)="onRecaptchaError()"></recaptcha> -->
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-info" (click)="signIn0Auth()" matTooltip="{{'LOGIN.login_btn' | translate}}"
+		matTooltipPosition="below">{{'LOGIN.login_btn' | translate}}</button>
+	<a href="javascript:void(0)" (click)="registerDialog()" matTooltip="{{'LOGIN.register_btn' | translate}}"
+		matTooltipPosition="below">{{'LOGIN.register_btn' | translate}}</a>
+</div>

@@ -1,0 +1,88 @@
+
+
+ <mat-card  style = "height: auto;
+ width: 400px;
+ background: #d8d1d11a;
+ border-radius: 12px;
+ padding: 5px;
+ margin-right: 35px;
+ margin-top: 5px;
+ border: 1px solid lightgray;
+ box-shadow: none;"> 
+	<mat-card-header style="padding: 5px;">
+		<img mat-card-avatar src="../../../../assets/images/Default Profile.png"> 
+	<mat-card-title ><p style="font-weight: 400;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.56;
+		letter-spacing: normal;
+		text-align: left;
+		color: black;
+		font-size: 14px;
+		font-family: Poppins;"> <b>{{_data.creator}}</b>   <span style="float: right; color:#8ea1b4">{{_data.created | date: 'MMM d, y, h:mm:ss a'}}</span> </p></mat-card-title>
+	<mat-card-subtitle> <p style=" 
+	
+		font-family: Poppins;
+		font-size: 13px;
+		font-weight: 400;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.56;
+		letter-spacing: normal;
+		text-align: left;
+		">   {{_data.message_body}}  	
+	</mat-card-subtitle>
+	<img *ngIf="currentUser.user_name == _data.creator" style="cursor: pointer;" (click)="commentDelete()" height="18" width="18" src="../../../../assets/images/edit_delete/Delete Icon.png"> 
+	</mat-card-header>
+	 <mat-card-content *ngIf = "filePresent && !imagePresent" style="text-align: left;">
+		 <p style="text-align: left; padding-right:20px; font-weight: 400;
+		 padding-left: 20px; color: blue; font-size: 13px;"> 
+			<b style="font-weight: 400;" matTooltip="{{file.originalname}}">{{file.partialName}}</b> 
+			<i style="float: right;cursor: pointer;"> <img (click)="download()" matTooltip="{{'ResourceRoomBox.click_download' | translate }}"
+				src="{{downloadFile}}" /></i>
+		</p>
+		
+		
+	</mat-card-content>
+
+	<mat-card-content *ngIf = "filePresent && imagePresent && !videoPresent" style="text-align: left;">
+		<p style="text-align: left; padding-right:20px; font-weight: 400; padding-left: 20px;"> {{'Comment.one_attach' | translate}}   <a matTooltip="{{file.originalname}}"   style="color: blue; float:right;"  (click)="goToLink()">{{file.partialName}}</a> </p>
+	   
+	   <p style="padding-left: 20px;">
+		    <img src={{file.url}} width="100" height="100" (click)="goToLink()" style="cursor: pointer;"> 
+		   <!-- <img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png' width="200" height="200" > -->
+	   </p>
+   </mat-card-content>
+	 
+   <mat-card-content *ngIf = "filePresent && !imagePresent && videoPresent" style="text-align: left;">
+	<p style="text-align: left; padding-right:20px; font-weight: 400; padding-left: 20px;"> {{'Comment.one_attach' | translate}}   <a matTooltip="{{file.originalname}}"   style="color: blue; float:right;"  (click)="goToLink()">{{file.partialName}}</a> </p>
+   
+   <p>
+	<video width="150" height="150" controls>
+		<source src="{{file.url}}" type="{{file.mimetype}}">
+			{{'Comment.browser_support' | translate}}
+		<!-- Your browser does not support the video tag. -->
+	 </video>
+	   <!-- <img src='https://homepages.cae.wisc.edu/~ece533/images/airplane.png' width="200" height="200" > -->
+   </p>
+</mat-card-content>
+		
+	<template #dynamicLoadComponent></template> 
+	 
+
+	 <!-- <mat-card-actions>
+		<button mat-button>LIKE</button>
+		<button mat-button (click)="add()">Reply</button>
+		
+		<div class="row" *ngIf ="reply">
+			<form (ngSubmit)="addReply()"> 	
+				<input type="text" class="form-control ng-valid ng-dirty ng-touched" placeholder="comment "
+				style="width:250px; margin:20px;" >
+			</form>	
+		</div>
+		
+			
+	 </mat-card-actions> -->
+	</mat-card> 
+
+	

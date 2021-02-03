@@ -1,0 +1,17 @@
+{
+	"UserGuide": {
+
+		   "UserGuide": "User Guide:",
+		   "UserGuide_des": "Table of Contents:",
+		   "UserGuide_question":[
+			   "1. Hosting a Meeting",
+			   "2. Joining a Meeting",
+			   "3. Registration and Login",
+			   "4. Profile Management",
+			   "5. Meeting Invitations"
+		   ],
+		   "updated_content":"The User Guide content is being updated and will be available on Jogajog official launch.",
+		   "updated_content_en":"The User Guide content is being updated and will be available on Jagajag official launch."
+		   
+	}
+}

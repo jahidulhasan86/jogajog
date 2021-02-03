@@ -1,0 +1,198 @@
+<mat-progress-bar color="accent" mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>
+<div class=" dynHeightc" style="height: inherit;">
+  <div class="content-wrapper shadow-xlv">
+    <div class="row gutters">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="card m-0" style="    border-radius: 20px;  margin: 7px !important;">
+          <div class="row no-gutters">
+            <div class="main-container-chat" style="width:100%">
+              <!-- <div class="chat-header-name" style="margin: 0px 10px 0px 10px;"> -->
+    
+                <!-- <div class="selected-user"
+                  [matTooltip]="selectedGroup?.isgroup ? selectedGroup.group_name : selectedGroup.user_name">
+                  <img *ngIf="selectedGroup?.isgroup" height="50" width="50" style="border-radius: 50%;"
+                    src="../../assets/images/Group Icons/Group-Icon.png">&nbsp;&nbsp;
+                  <img *ngIf="!selectedGroup.isgroup && selectedGroup.profile_pic" height="50" width="50"
+                    style="border-radius: 50%;"
+                    src="{{globalValue.profilePhotoUrl}}{{selectedGroup.profile_pic}}">&nbsp;&nbsp;
+                  <img *ngIf="!selectedGroup.isgroup && !selectedGroup.profile_pic" height="50" width="50"
+                    style="border-radius: 50%;" src="../../assets/images/default_profile icon.png">&nbsp;&nbsp;
+                  <span class="name" *ngIf="selectedGroup.isgroup">{{selectedGroup.group_name}}</span>
+                  <span class="name" *ngIf="!selectedGroup.isgroup">{{selectedGroup.user_name}}</span>
+                </div> -->
+              <!-- </div> -->
+
+              <div class="chat-container">
+                <ul id="scrollHeight" class="chat-box chatContainerScrollX" #scrollMe [scrollTop]="scrollMe.scrollHeight"
+                  style="overflow-y: auto;height: 370px;overflow-x: hidden;">
+                  <span *ngIf="chatlist.length==0" style="width:100%;margin: 0 auto;">{{'ChatRoomBox.nothing_discuss_yet' | translate}}</span>
+                  <span *ngFor="let chat of chatlist">
+                    <span *ngIf="!chat.isCallSession" id="{{chat.id}}">
+                      <li class="chat-{{chat.align}}">
+                        <div *ngIf="chat.align == 'left'" class="chat-avatar" matTooltip="{{chat.from}}">
+                          <!-- For Group chat -->
+                          <span *ngIf="selectedGroup.isgroup">
+                            <img *ngIf="chat.profile_pic" src="{{globalValue.profilePhotoUrl}}{{chat.profile_pic}}">
+                            <img *ngIf="chat.profile_pic == null || chat.profile_pic == ''"
+                              src="../../assets/images/default_profile icon.png">
+                            <!-- <div class="chat-name">{{chat.from}}</div> -->
+                          </span>
+                          <!-- For Single chat, show profile photo from selectedGroup -->
+                          <span *ngIf="!selectedGroup.isgroup">
+                            <img *ngIf="selectedGroup.profile_pic" height="50" width="50" style="border-radius: 50%;"
+                              src="{{globalValue.profilePhotoUrl}}{{selectedGroup.profile_pic}}">&nbsp;&nbsp;
+                            <img *ngIf="!selectedGroup.profile_pic" height="50" width="50" style="border-radius: 50%;"
+                              src="../../assets/images/default_profile icon.png">&nbsp;&nbsp;
+                            <!-- <div class="chat-name">{{chat.from}}</div> -->
+                          </span>
+                        </div>
+
+                        <!-- When it is just text sms -->
+                        <span
+                          *ngIf="chat.fileType != 'file' &&  chat.fileType != 'image' &&  chat.fileType != 'audio' &&  chat.fileType != 'video'">
+                          <div class="chat-name">{{chat.from}}</div>
+                          <div class="chat-text">
+                            <div style="text-align: justify;" *ngIf="!chat.msgWithLink" [innerHTML]="chat.msg"></div>
+                            <div *ngIf="chat.msgWithLink" [innerHTML]="chat.msgWithLink" class="chat-content"
+                              style="word-break: break-all;"></div>
+                            <div class="chat-hour"> {{chat.stamp}} </div>
+                          </div>
+                        </span>
+
+                        <!-- When it is File Start-->
+                        <!-- Image -->
+                        <span class="chat-content" *ngIf="chat.fileType == 'image'">
+                          <div class="chat-name">{{chat.from}}</div>
+                          <div class="chat-text">
+                            <mat-progress-bar mode="indeterminate" *ngIf="chat.isLoader"></mat-progress-bar>
+                            <img matTooltip="{{'ChatRoomBox.click_toshow_better_resulation' | translate}}" (click)="imageViewer(chat.msg)"
+                              style="width: 200px;cursor: pointer;height: auto;border-radius: 8px;"
+                              class="img-responsive" src="{{chat.thumbnail}}" />
+                            <!-- <img *ngIf="chat.isLoader" src="{{loaderImageUrl}}"
+                              style="position: relative;
+                              top: 0;
+                              left: 37%;" /> -->
+
+                            <div class="chat-hour"> {{chat.stamp}} </div>
+                          </div>
+                        </span>
+                        <!-- Audio -->
+                        <span *ngIf=" chat.fileType == 'audio'" style="width: 75%;">
+                          <div class="chat-name">{{chat.from}}</div>
+                          <div class="chat-text">
+                            <mat-progress-bar mode="indeterminate" *ngIf="chat.isLoader"></mat-progress-bar>
+                            <audio controls style="    width: 100%;">
+                              <source src="{{chat.msg}}" type="audio/ogg">
+                            </audio>
+                            <!-- <img *ngIf="chat.isLoader" src="{{loaderImageUrl}}"
+                              style="position: relative;
+                              top: 0;
+                              left: 37%;" /> -->
+                            <div class="chat-hour"> {{chat.stamp}} </div>
+                          </div>
+                        </span>
+                        <!-- Video -->
+                        <span *ngIf=" chat.fileType == 'video'">
+                          <div class="chat-name">{{chat.from}}</div>
+                          <div class="chat-text">
+                            <mat-progress-bar mode="indeterminate" *ngIf="chat.isLoader"></mat-progress-bar>
+                            <video width="220" height="140" controls style=" width: 100%;">
+                              <source src="{{chat.msg}}" type="video/mp4">
+                            </video>
+                            <!-- <img *ngIf="chat.isLoader" src="{{loaderImageUrl}}"
+                              style="position: relative;
+                              top: 0;
+                              left: 37%;" /> -->
+                            <div class="chat-hour"> {{chat.stamp}} </div>
+                          </div>
+                        </span>
+                        <!-- File -->
+                        <span class="chat-content" *ngIf=" chat.fileType == 'file'">
+                          <div class="chat-name">{{chat.from}}</div>
+                          <div class="chat-text">
+                            <mat-progress-bar mode="indeterminate" *ngIf="chat.isLoader"></mat-progress-bar>
+                            <mat-icon style="    position: relative;top: 4px;">description</mat-icon>
+                            <span style="word-break: break-all;">{{chat.fileShortName}}</span>
+                            <!-- Document -->
+                            <a href="{{chat.msg}}" target="_blank" download matTooltip="{{'ChatRoomBox.download' | translate}}">
+                              <mat-icon style="    position: relative;top: 4px;">archive</mat-icon>
+                            </a>
+                            <!-- <img *ngIf="chat.isLoader" src="{{loaderImageUrl}}" style="position: relative;
+                            top: 0;
+                            left: 37%;" /> -->
+                            <div class="chat-hour"> {{chat.stamp}} </div>
+                          </div>
+                        </span>
+                        <!-- Chat sent failed -->
+                        <!-- <span *ngIf="!chat.sendingFailedText" class="sendingFailed showSendFailed"
+                          style="position: absolute;bottom: -12px;font-size: 11px;right: -10px;color: red;">
+                          <span class="">
+                            <mat-icon style="font-size: 13px;position: absolute;left: -14px;">error_outline</mat-icon>
+                            Sending failed
+                          </span>
+                        </span> -->
+                        <!-- When it is File End -->
+                      </li>
+                    </span>
+
+                    <span *ngIf="chat.isCallSession" class="centerside" id="{{chat.id}}">
+                      <div class="">
+                        <!-- <mat-icon *ngIf="chat.msg != 'Call ended' && chat.msg != 'Call started'"
+                          style="position: relative;top: 6px; color: red; font-size: 20px;">phone_missed</mat-icon>
+                        <mat-icon *ngIf="chat.msg == 'Call ended'" style="position: relative;top: 6px; color: #0359f7; font-size: 20px;">
+                          call_end
+                        </mat-icon>
+                        <mat-icon *ngIf="chat.msg == 'Call started'"
+                          style="position: relative;top: 6px;  color: green; font-size: 20px;">phone_forwarded
+                        </mat-icon> -->
+                        {{chat.msg}}
+                        <div class="chat-time-center"> {{chat.stamp}} </div>
+                      </div>
+                    </span>
+
+                    <!-- <span ngIf="!chat.isCallSession && !chat.isLoader">
+
+                    </span>
+
+                    <span ngIf="chat.isCallSession && !chat.isLoader">
+
+                    </span> -->
+
+                  </span>
+                </ul>
+                <!--  -->
+                <div class="form-group mt-3 mb-0 textAreaPart" style="position: relative;bottom: 0;">
+                  <label *ngIf="chatStatus.isVisible"
+                    style=" color: #298af1;font-size: 11px; position: absolute; z-index: 999; left: 40px; top: -27px;">
+                    <b>{{chatStatus.statusText}} </b> {{'ChatRoomBox.is_typeing' | translate}}
+                    <img style="width: 34px;height: 30px;" src="../../assets/images/is_typing-preloader2.gif" />
+                  </label>
+                  <textarea id="msgInput" style="resize: none;" [(ngModel)]="msg" [ngModelOptions]="{standalone: true}"
+                    (keyup)="enter($event)" (keypress)="composing($event)" (focusout)="composingOut($event)"
+                    (drop)='drop($event)' (dragover)="dragOver($event)" (dragleave)="dragLeave($event)"
+                    aria-multiline="true" class="form-control"  placeholder="{{'ChatRoomBox.type_message' | translate}}"></textarea>
+                  <span>
+                    <label for="file_picker" style="display: inline;">
+                      <i id="attachment" style="position: relative;cursor: pointer;top: -47px;left: -39%;">
+                        <img height="30" width="30" src="../../assets/images/add_icon_selected.png" alt="Files Icon">
+                      </i>
+                    </label>
+                    <input id="file_picker" type="file" multiple ngModel (change)="getFiles($event);"
+                      style="display: none;" />
+                  </span>
+                  <i (click)="send();" class="sendIcon" matTooltip="{{'ChatRoomBox.send' | translate}}" style="position: relative;cursor: pointer;
+                       top: -47px;left: 39%;"><img height="30" width="30" src="../../assets/images/send icon.png"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="sound"></div>
+<div id="imageViewModal" class="popUpImageModal">
+  <div class="closeBtn" (click)="closeImage()">&times;</div>
+  <img class="img-responsive modal-content " src="{{imageLink}}">
+</div>

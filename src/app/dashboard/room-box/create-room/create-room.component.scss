@@ -1,0 +1,128 @@
+
+.room{
+	 box-shadow: rgba(0, 0, 0, 0.1);
+	  background-color: #F2F6FC; 
+	  padding: 20px 50px 0px 50px ;
+}
+
+.backIcon{
+  padding-top: 6px;
+}
+
+.row-pad {
+	// border-bottom: 1px solid #b9b9b9;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+.room-info{
+	padding-bottom: 4px;
+}
+
+.create-room{
+	font-size: 23px;
+	line-height: 24px;
+	color: #4d4d4d;
+	font-family: 'PoplinsBold';
+}
+.room-details{
+	font-size: 21px;
+	line-height: 28px;
+	color: #4d4d4d;
+	font-family: 'PoplinsRegular'
+}
+.input-text {
+	width: 100%;
+	border: 1px solid #D6D9DE;
+	padding: 7px 10px;
+	border-radius: 3px;
+	background: white;
+	height: 50px;
+}
+	
+input:focus {
+	outline: none !important;
+	border-color: #F4B520;
+	}
+
+.confirm-now {
+	border: none;
+	background-image: linear-gradient(to right, #F5CD1F , #F49D23);
+	border-radius: 3px;
+	color: white;
+	font-size: 18px;
+	font-weight: 500;
+	height: 50px;
+	width: 183px;
+	}
+
+	.room-name{
+		font-size: 20px;
+		line-height: 24px;
+		color: #4d4d4d;
+		font-family: 'PoplinsMedium';
+	}
+	.email-icon{
+		margin-top: 12px;
+		margin-left: 8px;
+	}
+	.email-input{
+		padding: 7px 44px !important;
+	}
+
+	.add-icon{
+		position: absolute; 
+		right: 4%;
+		top: 10px;
+		cursor: pointer;
+	}
+
+	.reset-btn{
+		border: 2px solid #FAD6B5;
+		color:orange; 
+		height: 50px;
+		width: 183px;
+		font-size: 18px;
+	}
+
+
+
+	  #toggle_participants_list{
+		width: 100%;
+		min-height:200px;
+		background:#fff;
+		position: absolute;
+		display: none;
+	}
+
+
+	.select-participants{
+		border-bottom: 1px solid orange;
+        width: 96%;
+		margin-left: 18px;
+		font-size: 18px;
+		line-height: 24px;
+		color: #4d4d4d;
+		font-family: 'PoplinsRegular';
+		height: 34px;
+		margin-top: 7px;
+	}
+	
+	.grid-container {
+		// display: grid;
+		grid-template-columns: auto auto auto;
+		padding-top: 8px;;
+		margin-left: 15%;
+		height: 160px;
+    	overflow-y: scroll;
+	   
+	  }
+
+	  ::ng-deep .grid-container .mat-checkbox-frame {
+		border-color: orange;
+	  }
+	  ::ng-deep .room .mat-form-field-underline {
+		display: none;
+	}
+
+
+	

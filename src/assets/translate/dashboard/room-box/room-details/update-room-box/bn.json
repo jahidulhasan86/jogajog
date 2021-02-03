@@ -1,0 +1,9 @@
+{
+	"UpdateRoomBox":{
+		"update": "আপডেট",
+		"close": "বন্ধ করুন",
+		"select_participants": "অংশগ্রহণকারী সিলেক্ট করুন:",
+		"room_name": "রুমের নাম: ",
+		"please_wait": "অনুগ্রহপূর্বক অপেক্ষা করুন.."
+	}
+}

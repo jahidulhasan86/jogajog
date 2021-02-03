@@ -1,0 +1,168 @@
+<ngx-spinner color = "#f49823" type = "ball-clip-rotate-pulse" size="medium" [fullScreen] = "true"   ><p style="color: white;">{{'ResourceRoomBox.please_wait' | translate }}</p></ngx-spinner>
+<mat-card style="height:auto; background: #ffffff; padding:0px; width: 585px;overflow: hidden;
+border-radius: 12px;
+  border: solid 1px rgba(71, 98, 240, 0.12);">
+	<mat-toolbar style="
+	border-bottom: solid 1px rgba(71, 98, 240, 0.12);
+	background-color: #ffffff;height: 42px;">
+		<button style="display: none;" mat-icon-button class="example-icon"
+			aria-label="Example icon-button with menu icon">
+			<!-- <mat-icon>reply_all</mat-icon> -->
+			<img width="21" height="18" src="../../../../../assets/images/rom-box/reply_all.png">
+		</button>
+		<button (click)="_backtoDiscussionList()" matTooltip="{{'DiscussionDetails.back' | translate}}" mat-icon-button class="example-icon"
+			aria-label="Example icon-button with menu icon">
+			<!-- <mat-icon>reply</mat-icon> -->
+			<img width="21" height="18" src="../../../../../assets/images/rom-box/reply.png">
+		</button>
+		<button style="display: none;" mat-icon-button class="example-icon"
+			aria-label="Example icon-button with menu icon">
+			<!-- <mat-icon>delete</mat-icon> -->
+			<img width="15" height="18" src="../../../../../assets/images/rom-box/delete.png">
+		</button>
+		<!-- <span>My App</span> -->
+		<span class="example-spacer"></span>
+		<button mat-icon-button matTooltip="{{'DiscussionDetails.previous' | translate}}" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+			(click)="goToPrev()">
+			<!-- <mat-icon>navigate_before</mat-icon> -->
+			<img width="16" height="10" src="../../../../../assets/images/rom-box/previous.png">
+		</button>
+		<button mat-icon-button matTooltip="{{'DiscussionDetails.next' | translate}}" class="example-icon" aria-label="Example icon-button with share icon"
+			(click)="goToNext()">
+			<!-- <mat-icon>navigate_next</mat-icon> -->
+			<img width="16" height="10" src="../../../../../assets/images/rom-box/next.png">
+		</button>
+		<button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+			style="width: 84px;
+		height: 43px;
+		background-image: linear-gradient(120deg, #f5cf1f 2%, #f49823 98%);border-radius: 0%;margin-right: -16px;border-top-right-radius:9px;">
+			<mat-icon style="color: white;">chat_bubble_outline</mat-icon>
+		</button>
+	</mat-toolbar>
+
+	<mat-card-header>
+		<img mat-card-avatar src="../../../../assets/images/Default Profile.png">
+		<mat-card-title>{{selectedDiscussion.creator}}</mat-card-title>
+		<mat-card-subtitle>
+			<p style=" width: 433px;
+		height: 23px;
+		font-family: Poppins;
+		font-size: 16px;
+		font-weight: 600;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.56;
+		letter-spacing: normal;
+		text-align: left;
+		color: #3a82ff;"> {{selectedDiscussion.subject}} </p>
+			<p style=" font-family: Sen;
+			font-size: 12px;
+			font-weight: bold;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: 0.33;
+			letter-spacing: normal;
+			text-align: left;
+			color: #333333;
+			">{{selectedDiscussion.created | date: 'MMM d, y, h:mm:ss a'}}</p>
+		</mat-card-subtitle>
+
+	</mat-card-header>
+
+
+	<mat-card-content #scrollMe [scrollTop]="scrollMe.scrollHeight" class="listContainer"
+		style="max-height: 340px;;overflow-y: auto;">
+		<p [innerHTML]="selectedDiscussion.message_body" style="font-family: Sen-Regular;
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.5;
+	width: 536px;
+	letter-spacing: normal;
+	text-align: left;
+	color: rgba(51, 51, 51, 0.7); padding-left:25px;">
+
+		</p>
+
+
+
+
+		<app-comment *ngFor="let child of selectedDiscussion.reply" [data]="child" style="float:right" (sendCommnetHist)=refreshComment($event) > -
+		</app-comment>
+
+
+	</mat-card-content>
+
+	<mat-expansion-panel *ngIf="attachment" style="padding-right: 10px;
+ text-align: left;
+ width: 86%;
+ margin-left: 26px;
+ background-color: aliceblue;">
+		<mat-expansion-panel-header style="height: 48px;">
+			<mat-panel-title>
+				<b>{{totalFiles}} &nbsp; {{'DiscussionDetails.attachments' | translate}}</b>
+			</mat-panel-title>
+
+		</mat-expansion-panel-header>
+
+		<p style="text-align: left; padding-right:20px; font-weight: 400;
+	  color: blue; font-size: 13px;" *ngFor="let file of selectedDiscussion.files">
+			<b style="font-weight: 400; cursor: pointer;" (click)="goToLink(file)" matTooltip="{{file.originalname}}">
+				{{file.partialName}} </b>
+
+			<i style="float: right;cursor: pointer;"> <img (click)="download(file)"
+					matTooltip="{{'ResourceRoomBox.click_download' | translate }}" src="{{downloadFile}}" /></i>
+		</p>
+
+	</mat-expansion-panel>
+	<mat-card-actions>
+
+
+
+		<form style="padding-left: 16px; padding-right:10px;padding-bottom: 24px;">
+			<!-- div class="row">
+			<input type="text" class="form-control ng-valid ng-dirty ng-touched" placeholder="comment "
+			style="width:450px; margin:20px;" >
+		</div> -->
+
+			<div class="input-group" style="padding-left: 17px;">
+				<textarea (keyup)="sendComment($event)" aria-multiline="true" [ngModelOptions]="{standalone: true}"
+					id="commentBox" style="min-height: 60;overflow-y: hidden;max-height: 60px;resize: none;"
+					[(ngModel)]="reply_model.message_body" name="reply_text" class="form-control"
+					placeholder="{{'DiscussionDetails.replay_thread' | translate}}"></textarea>
+				<!-- <input type="textarea" [(ngModel)]="reply_model.message_body" name="reply_text" class="form-control" placeholder="Reply to this Thread " > -->
+
+				<label for="file_picker" style="display: inline;">
+					<i style="position: relative;left: -72px;top: 14px;z-index: 1000;cursor: pointer;">
+						<img src="../../../../../assets/images/rom-box/attachment.png" width="11.3" height="22.4"
+							alt="Files Icon">
+					</i>
+				</label>
+				<input id="file_picker" type="file" ngModel (change)="getFiles($event);" [ngModelOptions]="{standalone: true}"  style="display: none;" />
+
+				<i (click)="addComment()" style="position: relative;cursor: pointer;
+			left: -54px;
+			top: 11px;
+			z-index: 1000;
+		" matTooltip="{{'DiscussionDetails.send' | translate}}"><img src="../../../../../assets/images/rom-box/send.png" width="26.4" height="25.3"></i>
+
+
+			</div>
+			<div class="row">
+				<p style="padding-left: 40px;
+			font-size: 13px;
+			color: #0e64f8;
+			width: 93%;
+			text-align: left;
+			padding-top: 2%;">{{file_names}}</p>
+			</div>
+		</form>
+	</mat-card-actions>
+	<mat-card-footer>
+
+
+	</mat-card-footer>
+
+
+</mat-card>

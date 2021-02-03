@@ -1,0 +1,319 @@
+<!-- banner_area_start -->
+<div class="banner_area">
+  <div class="container">
+    <div class="row banner_bg">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-xl-6 col-sm-12">
+         <div style="border-bottom:1px solid orange;padding-bottom: 24px;">
+          <div class="banner_text" style="margin-bottom: 14px;">
+            <h1 style="font-size: 30px; line-height: .8;">{{'Banner.text' | translate}}</h1>
+            <!-- <h2 style="font-size: 30px;line-height: .8;">{{'Banner.text1' | translate}}</h2> -->
+            <h4 style="text-align: justify;">{{'Banner.text_new' | translate}}
+              <!-- <span *ngIf="globalValue.currentBuild == 'en'" style="font-weight: normal;">
+                Scale from small 1-on-1 meetings to very large meetings powered by our Push-to-Talk technology. Meetings
+                are hosted in Amazon based Datacenters.
+              </span> -->
+              <!-- <span style="font-weight: normal;" *ngIf="globalValue.currentBuild == 'bn'">{{'Banner.text3' |
+                translate}}</span> -->
+            </h4>
+          </div>
+  
+            <div style="padding:2%" class="btn btn-info join-meeting-btn" (click)="goToVideoCall()"
+              matTooltip="{{'Banner.meeting_join' | translate}}" matTooltipPosition="below">
+              {{'Banner.meeting_join' | translate}}</div>&nbsp;
+            <div style="padding:2%" class="btn btn-outline-secondary host-meeting-btn" (click)="hostMeeting()"
+              matTooltip="{{'Banner.meeting_host' | translate}}" matTooltipPosition="below">
+              {{'Banner.meeting_host' | translate}}</div>
+      
+          <!-- <div class="row">
+            <div class="col-xl-6 col-md-6">
+              <div class="card_items text-center">
+                <img style="width: 43px;" src="assets/img/icon/Server_Security_Icon.png" class="img-fluid" alt="">
+              </div>
+            </div>
+            <div class="col-xl-6 col-md-6">
+              <div class="card_items text-center" style="margin-top: 5px;">
+                <img style="width: 37px;" src="assets/img/icon/Subscription_Icon.png" class="img-fluid" alt="">
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-xl-6 col-md-6 vr">
+              <div class="card_items text-center">
+                <h3>{{'Banner.server_security' | translate}}</h3>
+              </div>
+            </div>
+            <div class="col-xl-6 col-md-6">
+              <div class="card_items text-center">
+                <h3>{{'Banner.subscription' | translate}}</h3>
+              </div>
+            </div>
+          </div>
+   -->
+  
+<!--     
+          <div *ngIf="isUserLoggedIn" class="row">
+            <div class="col-xl-6 col-md-6">
+              <img height="39" width="40" src="../../../../assets/images/popular-room/Popular Link Icon.png"
+                class="img-fluid" alt="">
+              &nbsp;
+              <span style="font-family: Poppins;
+                  font-weight: normal;
+                  font-stretch: normal;
+                  font-style: normal;
+                  line-height: 1.73;
+                  letter-spacing: 0.22px;
+                  color: #3a82ff;">
+                <span *ngIf="globalValue.currentBuild == 'en'"><a style="text-decoration: underline;"> Popular Public
+                    Jag-Rooms</a></span>
+                <span *ngIf="globalValue.currentBuild == 'bn'"><a style="text-decoration: underline;">
+                    {{'Banner.public_jog_room' | translate}}</a></span>
+              </span>
+            </div>
+  
+  
+            <div class="col-xl-6 col-md-6">
+              <img height="39" width="40" src="../../../../assets/images/popular-room/Popular Link Icon.png"
+                class="img-fluid" alt="">
+              &nbsp;
+              <span style="font-family: Poppins;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.73;
+                letter-spacing: 0.22px;
+                color: #3a82ff;">
+                <a style="text-decoration: underline;">{{'Banner.trending_discussion' | translate}}</a></span>
+            </div>
+          </div>
+  
+  
+          <div *ngIf="isUserLoggedIn" class="row mb-40">
+            <div class="col-xl-6 col-md-6 vr">
+              <mat-list class="matFullList"
+                style="overflow: auto; height: 120px;width: 100%;padding-left: 28px;padding-top: 0">
+                <mat-list-item style="height: 35px;cursor: pointer; margin-top: 8px;" *ngFor="let room of roomData"
+                  (click)="navigate(room)" matTooltip="{{room.conference_name}}">
+  
+                  <mat-icon matListIcon><img src="../../../../assets/images/popular-room/ROOM LIST ICON.png"></mat-icon>
+                  <h3 matLine
+                    style="font-family: Poppins-SemiBold; font-size: 14px; text-align: left; line-height: 17px; letter-spacing: 0.14px;">
+                    {{room.conference_name}} </h3>
+                  <p matLine>
+                    <span style="font-family: Poppins-Regular; font-size: 9px; letter-spacing: 0.09px;"> by
+                      &nbsp;{{room.creator}} </span>
+                  </p>
+                </mat-list-item>
+              </mat-list>
+            </div>
+  
+  
+            <div class="col-xl-6 col-md-6">
+  
+              <mat-list class="matFullList"
+                style="overflow: auto; height: 120px;width: 100%;padding-left:31px; padding-top: 0">
+                <mat-list-item style="height: 35px;cursor: pointer; margin-top: 8px;"
+                  *ngFor="let discussion of discussionData" (click)="navigate(discussion)"
+                  matTooltip="{{discussion.subject}}-{{discussion.conference_name}}">
+  
+                  <mat-icon matListIcon><img src="../../../../assets/images/popular-room/ROOM LIST ICON.png"></mat-icon>
+                  <h3 matLine
+                    style="font-family: Poppins-SemiBold; font-size: 14px; text-align: left; line-height: 17px; letter-spacing: 0.14px;">
+                    {{discussion.subject}} -{{discussion.conference_name}}</h3>
+                  <p matLine>
+                    <span style="font-family: Poppins-Regular; font-size: 9px; letter-spacing: 0.09px;">
+                      {{discussion.message_body}} </span>
+                  </p>
+                </mat-list-item>
+              </mat-list>
+            </div>
+  
+          </div> -->
+         </div>
+  
+          </div>
+          <div class="col-xl-6 communication_area" style="margin-bottom: 0; border: none!important;">
+            <!-- Communicate Start -->
+            
+                <div class="communication_main" style="padding:0;">
+                  
+                        <owl-carousel style="width: 100%;" [options]="SlideOptions" [items]=""
+                          [carouselClasses]="['owl-carousel', 'owl-theme', 'sliding']">
+                          <div class="item">
+                            <img style="height:110px !important"  src="assets/img/01.png" class="img-fluid" alt="">
+                            <img style="height:110px !important"  src="assets/img/02.png" class="img-fluid" alt="">
+                          </div>
+                          <div class="item">
+                            <img style="height:110px !important"  src="assets/img/03.png" class="img-fluid" alt="">
+                            <img style="height:110px !important"  src="assets/img/04.png" class="img-fluid" alt="">
+                          </div>
+                          <div class="item">
+                            <img style="height:110px !important"  src="assets/img/02.png" class="img-fluid" alt="">
+                            <img style="height:110px !important"  src="assets/img/04.png" class="img-fluid" alt="">
+                          </div>
+                          <div class="item">
+                            <img style="height:110px !important"  src="assets/img/01.png" class="img-fluid" alt="">
+                            <img style="height:110px !important"  src="assets/img/03.png" class="img-fluid" alt="">
+                          </div>
+                          <div class="item">
+                            <img style="height:110px !important"  src="assets/img/02.png" class="img-fluid" alt="">
+                            <img style="height:110px !important" src="assets/img/03.png" class="img-fluid" alt="">
+                          </div>
+                          <div class="item">
+                            <img style="height:110px !important"  src="assets/img/04.png" class="img-fluid" alt="">
+                            <img style="height:110px !important"  src="assets/img/01.png" class="img-fluid" alt="">
+                          </div>
+                        </owl-carousel>
+                        <div class="btn-control" style="bottom: 45px;text-align: center;">
+                          <div class="bg-icon">
+                            <a href="#"><i class="is i-desktop icon-position icon-size-16"></i></a>
+                          </div>
+                          <div class="bg-w-icon">
+                            <a href="#"><i class="is i-mic icon-position icon-size-16"></i></a>
+                          </div>
+                          <div class="bg-w-icon">
+                            <a href="#"><i class="is i-speaker icon-position icon-size-16"></i></a>
+                          </div>
+                          <div class="bg-w-icon">
+                            <a href="#"><i class="is i-hand icon-position icon-size-16"></i></a>
+                          </div>
+                          <div class="bg-r-icon">
+                            <a href="#"><i class="is i-video-camera icon-position icon-size-16"></i></a>
+                          </div>
+                          <div class="bg-w-icon">
+                            <a href="#"><i class="is i-chat icon-position icon-size-16"></i></a>
+                          </div>
+                        </div>
+                
+                 
+                  <!-- <div class="text_card">
+                    <h4 [ngStyle]="bnEnLanguageCheck =='bn' ? {'font-size': '17px'} : {'font-size': '18px'}">
+                      {{'Banner.card_text' | translate}}</h4>
+                  </div>
+                  <div class="hr"></div>
+                  <div class="jag_apps_icon" style="margin-bottom: 0px;">
+                    <h4 class="text-center" *ngIf="globalValue.currentBuild == 'en'">
+                      Try Other Jagajag-based apps
+                    </h4>
+                    <h4 class="text-center" *ngIf="globalValue.currentBuild == 'bn'">
+                      <span [ngStyle]="bnEnLanguageCheck == 'bn'? {'font-size': '17px'} : {'font-size': '20px'}">
+                        {{'Banner.try_other_jagajag' | translate}}
+                      </span>
+                    </h4>
+                    <div class="row mt-20">
+                      <div class="col-xl-3 col-md-3 col-sm-6 nopadd" style="padding-left: 15px !important;">
+                        <div class="items_icon">
+                          <img style="cursor: pointer;" src="assets/img/icon/Learn_Together_w.png" class="img-fluid"
+                            (click)="learnTogetherDialog('learnTogether')" alt="">
+                        </div>
+                        <h2><a style="cursor: pointer;"
+                            (click)="learnTogetherDialog('learnTogether')">{{'Banner.learn_together' | translate}}</a></h2>
+                      </div>
+                      <div class="col-xl-3 col-md-3 col-sm-6 nopadd">
+                        <div class="items_icon">
+                          <img src="assets/img/icon/Push_Talk_w.png" class="img-fluid" alt="" style="cursor: pointer;"
+                            (click)="learnTogetherDialog('protectTogether')">
+                        </div>
+                        <h2><a style="cursor: pointer;"
+                            (click)="learnTogetherDialog('protectTogether')">{{'Banner.team_together' | translate}}</a></h2>
+                      </div>
+                      <div class="col-xl-3 col-md-3 col-sm-6 nopadd">
+                        <div class="items_icon">
+                          <img src="assets/img/icon/MediSheba_w.png" class="img-fluid" alt="" style="cursor: pointer;"
+                            (click)="learnTogetherDialog('mediSheba')">
+                        </div>
+                        <h2><a style="cursor: pointer;" (click)="learnTogetherDialog('mediSheba')">{{'Banner.medi_connect' |
+                            translate}}</a></h2>
+                      </div>
+                      <div class="col-xl-3 col-md-3 col-sm-6 nopadd">
+                        <div class="items_icon">
+                          <img src="assets/img/icon/Alert_Family_w.png" class="img-fluid" alt="" style="cursor: pointer;"
+                            (click)="learnTogetherDialog('alertFamily')">
+                        </div>
+                        <h2><a style="cursor: pointer;" (click)="learnTogetherDialog('alertFamily')">{{'Banner.alert_family'
+                            | translate}}</a></h2>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+         
+            <!-- Communicate end -->
+          </div>
+        </div>
+        <div class="row mb-20 mt-40">
+          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6" style="border-right: 1px solid orange;">
+            <div class="row">
+           <div class="col-sm-12" style="display: flex;">
+            <div>
+              <img width="50" height="50" src="../../../../assets/img/lt-logo-v2.png" alt="">
+            </div> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style="padding-top: 6px;">
+             <div style="color: #000000;font-size: 26px; font-weight: bold;"> {{'Banner.jogajog_school' | translate}}</div>
+              <div style="font-size: 18px; margin-top: 10px;">{{'Banner.one_stop_learning' | translate}}</div>
+            </div>
+           </div>
+              <div class="col-sm-12" style="margin-top:5px">
+               <h4 style="text-align:justify"> {{'Banner.jog_school_des' | translate}}</h4>
+              </div>
+              <div class="col-sm-12" style="margin-bottom:6px">
+                <div *ngIf="globalValue.currentBuild == 'bn'" style="padding:2%"
+                class="btn btn-outline-secondary" (click)="goToVirtualClassRoom()" matTooltip=" {{'Banner.go_to_virtual_class_room' | translate}}">
+                {{'Banner.go_to_virtual_class_room' | translate}}</div>
+                <!-- <div style="padding:2%" class="btn btn-outline-secondary " (click)="hostMeeting()"
+              matTooltip="{{'Banner.meeting_host' | translate}}" matTooltipPosition="below">
+              {{'Banner.meeting_host' | translate}}</div> -->
+                
+              </div>
+            </div>
+          
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="row" style="padding-left: 18px;">
+             <div class="col-sm-12" style="display: flex;">
+              <div><img width="50" height="50" src="../../../../assets/images/ProtectTogether.png" alt=""></div>
+              &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              <div style="padding-top: 6px;">
+                <div style="color: #000000;font-size: 26px; font-weight: bold;">{{'Banner.jogajog_teams' | translate}}</div>
+                <div style="font-size: 18px; margin-top: 10px;">{{'Banner.jogajog_text' | translate}}</div>
+              </div>
+             </div>
+              <div class="col-sm-12" style="margin-top:5px">
+               <h4 style="text-align:justify"> {{'Banner.jogajog_teams_des' | translate}}</h4>
+              </div>
+              <div class="col-sm-12">
+               
+                <div style="padding:2%" class="btn btn-outline-secondary " (click)="goToRoom()"
+                matTooltip="{{'Banner.meeting_room' | translate}}" matTooltipPosition="below">
+                {{'Banner.meeting_room' | translate}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+
+      <div class="col-xl-4">
+        <a href="{{globalValue.android_app_play_store_link}}" class="mr-10" target="_blank">
+          <img src="assets/images/PlaystoreBtn.png" class="img-fluid mb-10" alt="">
+        </a>
+        <a href="#"><img src="assets/images/GoogleChromeBtn.png" class="img-fluid mb-10" alt=""></a>
+      </div>
+      <div class="col-xl-8 scroll_for_solution">
+        <h2 [ngStyle]="bnEnLanguageCheck =='bn' ? {'font-size': '17px'} : {'font-size': '18px'}">
+          {{'HomeContent.google_playstore' | translate}}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- banner_area_end -->
+
+<style>
+@media only screen and (max-width:374px) {
+  .join-meeting-btn, .host-meeting-btn {
+    font-size: 12px !important;
+  }
+  
+}
+</style>

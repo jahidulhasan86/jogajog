@@ -1,0 +1,33 @@
+<div class="modal fade show" aria-modal="true" style="display: block;">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons fa fa-check">
+					</i>
+				</div>
+			</div>
+			<div class="modal-body">
+				<p class="text-center">Your Payment was Successfull.</p>
+			</div>
+			<div class="modal-footer">
+				<button (click)="closeDialog()" class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<style>
+		.icon-box {
+			border-radius: 55%;
+			background-color: #28a745;
+			padding: 20px;
+			/* margin: 0 auto; */
+			display: flex;
+			margin-left: 50%;
+		}
+
+		.fa {
+			color: white;
+		}
+	</style>

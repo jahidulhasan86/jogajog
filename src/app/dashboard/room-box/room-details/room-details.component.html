@@ -1,0 +1,180 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<ngx-spinner *ngIf="!scheduleSelected" color = "#f49823" type = "ball-clip-rotate-pulse" size="medium" [fullScreen] = "true"   ><p style="color: white;">{{'RoomDetails.please_wait' | translate}}</p></ngx-spinner>
+<div class="container-fluid">
+    <div class="row" style="height: 65px;margin-top: 12px;margin-left: -24px;">
+        <div class="col-sm-12 col-md-6">
+            <img [routerLink]="['/dashboard/room-box']" style="cursor: pointer;" matTooltip="{{'RoomDetails.back_room' | translate}}" width="16.3"
+                height="30.2" src="../../../assets/images/rom-box/back.png">
+            &nbsp;&nbsp;
+            <img width="50.7" height="50.3" src="../../../assets/images/rom-box/p_meeting.png">
+            &nbsp;&nbsp;
+            <div style="display: inherit;
+            margin-left: 97px;
+            margin-top: -46px;">
+                <span class="room-name" id="roomname" #roomName style="font-size: 28px;text-align: left;"> {{selectedRoomDetails?selectedRoomDetails.conference_name:''}}</span><span (click)="openDialog('name')" matTooltip="{{'RoomDetails.update_room' | translate}}" style="cursor: pointer;;margin-left: 17px;vertical-align: super;"><img height="20" width="20" src="../../../assets/images/edit_delete/Edit Icon.png" #edit_delete></span>  <mat-icon style=" cursor: pointer; padding-left: 10px; vertical-align: sub;color: #F5CD20" matTooltip="Reload"
+                (click)="reload()">refresh</mat-icon>
+<br>
+                <span class="host-name" style="font-size: 15px;"> {{'RoomDetails.hosted_by' | translate}} {{selectedRoomDetails?selectedRoomDetails.owner:''}}</span>
+                           
+            </div>
+            <hr class="hrule">
+        </div>
+        <div class="col-sm-12 col-md-6" style="text-align: end;">
+            <nav class="navbar navbar-expand-md" style="margin-left: -14%;">
+                <button  type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <mat-icon  class="mat-icon notranslate material-icons" style="color: white;" aria-hidden="true">menu</mat-icon>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse" style="margin-top: -23px;">
+                    <div class="navbar-nav" style="margin-left: 1%;">
+                        <span class="btn " *ngIf="globalValue.currentBuild === 'en'">
+                            <img (click)="initiateMeetingSchedule(selectedRoomDetails)" class="img-responsive" src="../../../../assets/images/rom-box/btn_mschedule.png" height="48" width="180">
+                        </span>
+                        <span class="btn " *ngIf="globalValue.currentBuild === 'bn'">
+                            <span  *ngIf ="bnEnLanguageCheck == 'en'">
+                                <img (click)="initiateMeetingSchedule(selectedRoomDetails)" class="img-responsive" src="../../../../assets/images/rom-box/btn_mschedule.png" height="48" width="180">
+                            </span>
+                            <span  *ngIf ="bnEnLanguageCheck == 'bn'">
+                                <div class="d-flex align-items-center justify-content-center" style="background: #FF4848; width: 184px; height: 48px; color: white; border-radius: 10px;" (click)="initiateMeetingSchedule(selectedRoomDetails)">মিটিং এর সময়সূচি</div>
+                            </span>
+                        </span>
+                        <span class="btn" *ngIf="globalValue.currentBuild === 'en'" >
+                            <img id="liveMtnBN" (click)="initiateLiveMeeting(selectedRoomDetails)" class="img-responsive" src="../../../../assets/images/rom-box/btn_live_meeting.png" height="48" width="180">
+                        </span>
+                        <span class="btn btn-primary"
+                            style="border-radius: 9px;height: 47px;width: 180px;line-height: 2;margin-top: 8px;margin-left: 9px;"
+                            [matMenuTriggerFor]="roomNotificationList" [matBadge]="notifications?.length" matBadgeColor="warn"
+                            [matBadgeHidden]="isMatBadgeHidden" (menuOpened)="menuOpened()">
+                            {{'RoomDetails.notifications' | translate}}
+                        </span>
+
+                        <mat-menu #roomNotificationList="matMenu" class="invitation-menu" yPosition="below" [overlapTrigger]="false">
+                            <div (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
+                                <room-join-request-list [notificationsList]="notifications"></room-join-request-list>
+                            </div>
+                        </mat-menu>
+
+
+                        <span *ngIf="globalValue.currentBuild === 'bn'">
+                            <span class="btn" *ngIf ="bnEnLanguageCheck == 'en'" >
+                                <img id="liveMtnBN" (click)="initiateLiveMeeting(selectedRoomDetails)" class="img-responsive" src="../../../../assets/images/rom-box/btn_live_meeting.png" height="48" width="180">
+                            </span>
+                            <span class="btn" *ngIf ="bnEnLanguageCheck == 'bn'" >
+                                <div id="liveMtnBN" class="d-flex align-items-center justify-content-center" style="background: #FF4848; width: 184px; height: 48px; color: white; border-radius: 10px;" (click)="initiateLiveMeeting(selectedRoomDetails)">মিটিং এ যোগদান করুন</div>
+                            </span>
+                        </span>
+                        
+                    </div>
+                    <div class="navbar-nav ml-auto" style="text-align: right;display: none;">
+                        <span class="btn ">
+                            <img src="../../../../assets/images/rom-box/btn_mschedule.png" height="48" width="180">
+                        </span>
+                        <span class="btn ">
+                            <img src="../../../../assets/images/rom-box/btn_live_meeting.png" height="48" width="180">
+                        </span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+       
+  
+    </div>
+    <div class="row" style="margin-top: 25px;margin-left: 5px;">
+        <div *ngIf="!scheduleSelected" style="display: contents;">
+            <div class="l-box col-sm-12 col-md-12 col-xl-5" style="height: 716px;overflow-y: auto">
+                <div class="l-box-header">
+                    <span
+                        style="width: 157px;color:#3598db;line-height: 43px;font-size: 21px;font-family: MontserratSemiBold;">{{'RoomDetails.all_members' | translate}}</span>
+                    <span style="width: 110px;height: 35px;float: right;border-radius: 30px;margin-right: 10px;display: none;"
+                        class="btn ">
+                        <img src="../../../../assets/images/rom-box/btn_invite.png" width="110" height="35">
+                    </span>
+                    <span *ngIf="selectedRoomDetails && selectedRoomDetails.owner===currentUser.user_name" (click)="openDialog('participants')" style="width: 110px;height: 35px;float: right;border-radius: 30px;margin-right: 10px;"
+                    class="btn btn-primary">{{'RoomDetails.update' | translate}}
+                </span>
+                    <hr class="l-box-hr">
+                </div>
+               
+                <div class="members" *ngIf="selectedRoomDetails">
+                    <div *ngFor="let user of selectedRoomDetails.users" class="member-lists" style="margin-bottom:10px;">
+                        <div style="display: inline-block;vertical-align: top;">
+                            <img height="53" width="53" src="{{user.profile_pic ? user.profile_pic : '../../../../assets/images/Default Profile.png'}}">
+                        </div>
+                        <div style="display:inline-block;margin-left: 5px;
+                        line-height: 1;
+                        margin-top: 8px;width: 235px;">
+                            <div class="participant-name">{{user.user_name | uppercase}}</div>
+                            <div class="participants-email" style="color: #8ea1b4;line-height: 1.5;">{{user.email}}</div>
+                        </div>
+                        <div class="contact" style="display: inline-block;
+                        color: #f49a22;
+                        ">
+                            {{user.contact!= '' ? user.contact : 'N/A'}}
+                        </div>
+                        <div *ngIf="(selectedRoomDetails && selectedRoomDetails.owner!=user.user_name) && (selectedRoomDetails && selectedRoomDetails.owner===currentUser.user_name)"  class="menu" style="
+                        float: right;cursor: pointer;
+                        margin-top: 4px;">
+                            <!-- <img width="6" height="24" src="../../../../assets/images/rom-box/dropdown_3dot.png"> -->
+                            <button matTooltip="{{'RoomDetails.remove' | translate}}" mat-flat-button color="warn" (click)="deleteSelectedUser(user)">{{'RoomDetails.remove' | translate}}</button>
+                        </div>
+                        <!-- <span flex>
+                            <mat-menu #usermenu="matMenu">
+                                <span>
+                                    <button (click)="_deleteSelected(user)" mat-menu-item>{{'RoomDetails.remove' | translate}} {{user.user_name | uppercase}}</button>
+                                </span>
+                            </mat-menu>
+                        </span> -->
+                    </div>
+                </div>
+            </div>
+            <div class="r-box col-sm-12 col-md-12 col-xl-7">
+                <div class="r-box-header">
+                    <div id="chatBadge" *ngIf="notificationCount>0">{{notificationCount}}</div>
+                    <span style="width: 110px;height: 35px;border-radius: 30px;margin-right: 16px;"
+                        class="btn btn-primary btn-selector" (click)="updateSelectedDom($event,'chat')">{{'RoomDetails.chat' | translate}}</span>
+                    <span
+                        style="width: 110px;height: 35px;border-radius: 30px;margin-right: 16px;border: 1px solid #f49a22;color: #f49a22;"
+                        class="btn btn-selector" (click)="updateSelectedDom($event,'resource')">{{'RoomDetails.resources' | translate}}</span>
+      
+                    <span  (click)="updateSelectedDom($event,'discussion')" style="width: 120px;height: 35px;border-radius: 30px;border: 1px solid #f49a22;color: #f49a22;"
+                        class="btn btn-selector">{{'RoomDetails.discussion' | translate}}</span>   
+                        <span (click)="updateSelectedDom($event,'recording')" style="width: 163px;height: 35px;border-radius: 30px;border: 1px solid #f49a22;color: #f49a22;margin-left: 16px;"
+                        class="btn btn-selector">{{'RoomDetails.meeting_recording' | translate}}</span> 
+                </div>
+                <div class="selected" style="min-height: 650px;">
+                    <div class="chat-box" style="min-height: 650px;overflow-y: auto;">
+                        <div class="chat-box-header" style="line-height: 1.3;"  *ngIf ="!isDiscussionSelected">
+                            <span>
+                                <img style="margin-top: 6px;" src="../../../../assets/images/rom-box/group_logo.png"
+                                    height="53" width="53">
+                            </span>
+                            <!-- <span class="status">
+                                
+                            </span> -->
+                            <span class="chat-room-name">
+                                {{selectedRoomDetails?selectedRoomDetails.conference_name:''}}
+                            </span>
+                            <span class="chat-room-sname">
+                                {{'RoomDetails.active_now' | translate}}
+                            </span>
+                            <hr class="chat-box-hr">
+                        </div>
+                        <div  class="chat-contents" style="text-align: center;font-family: PoplinsRegular;">
+                            <app-chat-room-box *ngIf="isChatSelected"></app-chat-room-box>
+                            <app-resource-room-box *ngIf="isResourceSelected"></app-resource-room-box>
+                            <app-discussion #discussion *ngIf = "isDiscussionSelected" [roomId]="roomId" > </app-discussion>
+                            <app-room-recording *ngIf = "isRecordingSelected" [roomId]="roomId"></app-room-recording> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div  style="display: contents;">
+            <!-- <div class="col-md-1">
+                <img (click)="backToRoomDetails()" style="cursor: pointer;" matTooltip="{{'RoomDetails.back_room' | translate}}" width="16.3"
+                    height="30.2" src="../../../assets/images/rom-box/back.png">
+            </div> -->
+            <app-room-box-meeting-schedules style="width: 100%;" *ngIf="scheduleSelected"></app-room-box-meeting-schedules>
+        </div>
+    </div>
+</div>

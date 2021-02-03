@@ -1,0 +1,29 @@
+{
+	"HostMeeting":{
+		"onestop_comm": "One Stop Communications",
+		"host_meeting": "Host Your Meeting",
+		"meeting_discuss_topic": "Meeting/Discussion Topic",
+		"meeting_date": "Meeting Date",
+		"meeting_start": "Meeting start time",
+		"meeting_end": "Meeting end time",
+		"meeting_id": "Meeting Id",
+		"meeting_generate": "Generate Automatically",
+		"password": "Password",
+		"meeting_pass_req": "Meeting Password Required",
+		"cancel": "Cancel",
+		"save_meeting": "Save & Invite",
+		"private_meeting": "Private Meeting (limited to invitees only)",
+		"set_pass_icon": "This is auto generated Meeting Password. You can change it.",
+		"registration_required": "Registered users only (attendees need to be logged in)",
+		"set_pass": "Set Password",
+		"meeting_info": "Meeting Information",
+		"host": "Host",
+		"topic": "Topic",
+		"meeting_scheduling": "Meeting Schedule",
+		"meeting_security": "Meeting Security",
+		"large_meeting" : "Large meeting (more than 8 attendees)",
+		"add_rooms": "Add Rooms",
+		"meeting_record": "Record Meeting",
+		"save_schedule":"Save Schedule"
+	}
+}

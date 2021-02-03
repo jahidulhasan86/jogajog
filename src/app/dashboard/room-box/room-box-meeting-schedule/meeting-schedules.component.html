@@ -1,0 +1,191 @@
+<ngx-spinner color = "#f49823" type = "ball-clip-rotate-pulse" size="medium" [fullScreen] = "true"   ><p style="color: white;">Loading Schedule(s)..</p></ngx-spinner>
+<div class="row" style="float: right;margin-bottom: 10px;margin-right: 3%;">
+<!-- <span class="btn btn-primary">Add Schedule</span> -->
+</div>
+<div class="row text-center" style="width: 100%;margin-top: 10px;">
+  <div class="col-md-1">
+    <img style="cursor: pointer;" (click)="backToRoomDetails()" matTooltip="Back" width="16.3"
+        height="30.2" src="../../../assets/images/rom-box/back.png">
+</div>
+    <div class="col-md-3">
+      <div class="btn-group">
+        <div id="calPrevious"
+          class="btn btn-primary"
+          mwlCalendarPreviousView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+          <!-- Previous -->
+          {{'Meeting_schedules.previous' | translate }}
+        </div>
+        <div id="calToday"
+          class="btn btn-outline-secondary"
+          mwlCalendarToday
+          [(viewDate)]="viewDate"
+        >
+          <!-- Today -->
+          {{'Meeting_schedules.today' | translate }}
+        </div>
+        <div id="calNext"
+          class="btn btn-primary"
+          mwlCalendarNextView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+          <!-- Next -->
+          {{'Meeting_schedules.next' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+    <div class="col-md-4" style="text-align: right;">
+      <div class="btn-group">
+        <div id="calViewMonth"
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Month)"
+          [class.active]="view === CalendarView.Month"
+        >
+          <!-- Month -->
+          {{'Meeting_schedules.month' | translate }}
+        </div>
+        <div id="calViewWeek"
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Week)"
+          [class.active]="view === CalendarView.Week"
+        >
+          <!-- Week -->
+          {{'Meeting_schedules.week' | translate }}
+        </div>
+        <div id="calViewDay"
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Day)"
+          [class.active]="view === CalendarView.Day"
+        >
+          <!-- Day -->
+          {{'Meeting_schedules.day' | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <ng-template #customCellTemplate let-day="day" let-locale="locale">
+    <div class="cal-cell-top" (dblclick)="doubleClick(day)">
+      <span class="cal-day-badge" *ngIf="day.badgeTotal > 0" matTooltip="{{'MEETING_INFO.meeting_count' | translate}}"
+        >{{ day.badgeTotal }}</span
+      >
+      <span class="cal-day-number"
+        >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
+      >
+    </div>
+
+    <small *ngIf="day.badgeTotal > 0" style="margin: 5px;"
+      >
+      {{'MEETING_INFO.room' | translate}}  {{ day.events[0].newTitle}}<br/> {{'MEETING_INFO.host_scheduled' | translate}}  {{ day.events[0].host}}<br/>
+       {{ day.events[0].start | date:'hh:mm a' }} to {{ day.events[0].end | date:'hh:mm a' }}</small
+    >
+  </ng-template>
+
+  <div [ngSwitch]="view" style="width: 95%;margin: 0 auto;border: 3px solid darkgray;padding: 10px;">
+    <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+      [cellTemplate]="customCellTemplate"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+  </div>
+  <ng-template #modalContent let-close="close">
+    <div class="meetingInfo" style='width: 100%;  color: #515c6f; '>
+		<div>
+			<div class="" style=" background: white;padding: 6%;position: relative;padding-top: 2px;">
+				<div class="header"> {{'RoomController.meeting_info' | translate}}</div>
+				<div class="infoData">
+          <span>{{'MEETING_INFO.host' | translate}} </span> {{modalData.event.host}}</div>
+          <div class="infoData"><span>{{'MEETING_INFO.meeting_name' | translate}}</span> {{modalData.event.title}}</div>
+				<div class="infoData">
+					<span>{{'Meeting_schedules.time_span' | translate }}</span>
+					{{modalData.event.time_span }}
+				</div>
+				<!-- <div class="infoData"><span>End time</span>
+					{{modalData.event.end}}
+				</div> -->
+				<div class="infoData"><span>{{'Meeting_schedules.duration' | translate }}</span> {{modalData.event.meeting_duration}} {{'Meeting_schedules.hour' | translate }}
+				</div>
+
+				<div style="margin-top: 26px;text-align: center;">
+            <span class="btn btn-primary" (click)="joinRoomBoxMeeting(modalData.event.meetingInfo);close()">{{'Meeting_schedules.join_meeting' | translate }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="modal-footer" style="float: left;display: block;">
+      <button matTooltip="{{'Meeting_schedules.close' | translate }}" type="button" class="btn btn-primary" (click)="close()">
+        {{'Meeting_schedules.close' | translate }}
+      </button>
+    </div>
+  </ng-template>
+
+  <div (click)="hostMeetingDialog()" matTooltip="Add New Schedule" href="#" class="float">
+    <i class="fa fa-plus btnFloat"></i>
+  </div>
+  
+  <style>
+        .cal-header{
+    background-image: linear-gradient(to bottom, #f5cf1f, #f49823) !important;
+    color: white !important;
+    font-weight: 400 !important;
+  }
+
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background: linear-gradient(to bottom, #F5C71C 0%, #F4AD20 100%);
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.float:hover
+{
+  animation: roll .1s   linear;
+}
+
+.btnFloat{
+	margin-top:22px;
+}
+  </style>

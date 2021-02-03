@@ -1,0 +1,14 @@
+{
+	"Contacts": {
+		"contacts_list" : "Contact List",
+		"add_contacts" : "Add Contacts",
+		"mobile_number": "Mobile Number",
+		"email": "email",
+		"name": "name",
+		"save" : "Save",
+		"close" : "Close",
+		"cancel": "cancel",
+		"class" : "",
+		"no_contacts":"No contacts added"
+	}  
+}

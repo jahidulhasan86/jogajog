@@ -1,0 +1,150 @@
+.participantsPart {
+	position: relative;
+	flex: 1 1 auto;
+	padding: 1rem;
+	background: white;
+	margin: 7px;
+	border-radius: 20px;
+}
+.participantsPart .ListHeader {
+	font-size: medium;
+	text-align: center;
+	margin-bottom: 10px;
+	font-weight: 500;
+	border-bottom: 1px solid white;
+}
+.participantsPart .ListSearch {
+	border-radius: 6px;
+}
+
+.participantsPart .ListSearch .row {
+	background-color: #f0f0f3;
+	padding: 4px 0px;
+}
+.participantsPart .ListSearch .listSearchIcon {
+	color: #bdbdbd;
+	position: relative;
+	top: 3px;
+}
+.participantsPart .ListSearch .listSearchInput {
+	width: 100%;
+	background-color: #f0f0f3;
+	border: none;
+	padding: 4px;
+}
+input:focus {
+	outline: none !important;
+}
+.participantsPart .row {
+	background: white;
+	margin-bottom: 5px;
+	margin-left: 2px;
+	margin-right: 2px;
+	border-radius: 5px;
+}
+.participantsPart .avatarIcon {
+	// width: 30px;
+	margin-top: 4px;
+}
+
+.participantsPart .avatarIcon img {
+	width: 40px;
+}
+
+.participantsPart .userName {
+    padding: 0px;
+    margin-top: 8px;
+    font-size: 14px;
+    position: relative;
+	top: 4px;
+	font-family: Poppins;
+	font-weight: 600;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.53;
+	letter-spacing: normal;
+	text-align: left;
+	color: #515c6f;
+}
+.participantsPart .userName div {
+	max-width: 90%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	float: left;
+}
+
+.participantsPart .userName mat-icon {
+	position: absolute;
+	font-size: 19px;
+	top: 1px;
+	margin-left: 7px;
+}
+.participantsPart .action {
+	padding: 0px;
+}
+.participantsPart .shortProfileImage {
+	content: attr(data-letters);
+	display: inline-block;
+	font-size: 1em;
+	width: 2.5em;
+	height: 2.5em;
+	line-height: 2.5em;
+	text-align: center;
+	border-radius: 50%;
+	// background: plum;
+	vertical-align: middle;
+	margin-right: 1em;
+	color: white;
+	font-weight: 500;
+	margin-bottom: 3px;
+	text-transform: uppercase;
+}
+.participantsPart .videoIcon {
+	font-size: 18px;
+	position: absolute;
+	top: 20px;
+	right: 8px;
+}
+.color-0 {
+	background: #455a64;
+}
+
+.color-1 {
+	background: #f44336;
+}
+
+.color-2 {
+	background: #ff4081;
+}
+.color-3 {
+	background: #9c27b0;
+}
+.color-4 {
+	background: #3f51b5;
+}
+.color-5 {
+	background: #00796b;
+}
+.color-6 {
+	background: #18ffff;
+}
+.color-7 {
+	background: #2196f3;
+}
+.color-8 {
+	background: #ffd740;
+}
+.color-9 {
+	background: plum;
+}
+
+.participantsPart .sideNabCloseBtn {
+	color: white;
+    position: absolute;
+    right: -11px;
+    font-weight: 600;
+    cursor: pointer;
+    top: -16px;
+    z-index: 1;
+}

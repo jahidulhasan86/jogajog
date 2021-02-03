@@ -1,0 +1,37 @@
+[
+	{
+	"type": "room",
+	"room_id": "e10e4600-ddf0-11ea-80ee-f64cd1586235",
+	"conference_name": "Jogajog Product Development",	
+	"root_discussion_id": "",
+	"message_body":"",
+	"subject":"",
+	"participants": "ruhul, jahid and 3 others on this room",
+         "creator": "zeeshan"
+	},
+
+	{
+	"type": "room",
+	"room_id": "3e55fa60-dd47-11ea-946d-2c1163c02d5e",
+	"conference_name": "a2i websdk",	
+	"root_discussion_id": "",
+	"message_body":"",
+	"subject":"",
+	"participants": "ruhul, jahid and 3 others on this room",
+         "creator": "jag.wahid"
+	},
+
+	{
+	"type": "discussion",
+	"room_id": "7f8adbb0-dd45-11ea-bc2d-a656667d3e41",
+	"conference_name": "Daily Scrum",	
+	"root_discussion_id": "75286630-fe1d-11ea-8d8e-caf070c583ec",
+	"message_body":"Minutes",
+	"participants": "ruhul, jahid and 3 others on this room",
+	"subject" :"Daily Scrum Meeting MInutes - 09-24-20",
+         "creator": "tanim",
+         "created":1600921306131
+
+	}
+
+]

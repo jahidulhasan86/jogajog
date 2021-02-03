@@ -1,0 +1,11 @@
+
+{
+	"DiscussionDetails":{
+		"attachments": "অ্যাটাচমেন্টগুলো",
+		"replay_thread": "এই প্রসঙ্গে উত্তর দিন",
+		"previous": "পূর্ববর্তী",
+		"next": "পরবর্তী",
+		"back": "ফিরে যান",
+		"send": "পাঠিয়ে দিন"
+	}
+}

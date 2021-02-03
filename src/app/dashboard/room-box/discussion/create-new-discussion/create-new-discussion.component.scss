@@ -1,0 +1,151 @@
+// #body{
+// 	font-family: "Poppins";
+// }
+.reset-btn{
+	width: 130px;
+    height: 40px;
+    font-family: 'Poppins';
+    font-size: 15px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal;
+    color: #f49a22;
+    text-align: center;
+    border-radius: 4px;
+    border: solid 0.5px #f49a22;
+    background: white;	
+}
+.upload-btn{
+	width: 128px;
+    height: 30px;
+    font-family: 'Poppins';
+    font-size: 15px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal;
+    color: #f49a22;
+    text-align: center;
+    border-radius: 4px;
+    border: solid 0.5px #f49a22;
+    background: white;	
+}
+
+.submit-btn{
+	width: 130px;
+    height: 40px;
+    font-family: 'Poppins';
+    font-size: 15px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.53;
+    letter-spacing: normal;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    border: solid 0.5px #f49a22;
+    background: #f49a22;	
+}
+
+.add-file{
+	height: 30px;
+	width : 128px;
+	cursor: pointer;
+  }
+
+.Thread {
+	object-fit: contain;
+	background-color: #b9b9b9;	
+  }
+.textareaStyle{
+	width: 100%;
+	resize: none;
+	padding-left: 30px;
+	border-radius: 4px;
+	border : solid 0.5px #515c6f;
+	max-height: 100px; 
+	min-height: 100px; 
+	outline: none;
+}
+
+.Thread-Icon {
+	background: url(/assets/images/create_new_thread/thread_icon.png) no-repeat scroll 7px;	
+  }
+.email-Icon {
+	  background: url(/assets/images/create_new_thread/Email_Icon.png) no-repeat scroll 7px;	
+	}
+  
+.description-Icon {
+	  background: url(/assets/images/create_new_thread/description_icon.png) no-repeat scroll 7px 5px;	
+	}
+  
+.uploadfile-Icon {
+	  background: url(/assets/images/create_new_thread/upload_file_icon.png) no-repeat scroll 7px;	
+	}
+
+.divStyle{
+	margin-bottom: 4%;
+	align-items: center;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color:  #515c6f;
+	opacity: 1; /* Firefox */
+  }
+
+.input-text:focus {
+	border:  1px solid #f49a22;
+	border-radius: 4px;
+	// outline: 1px solid  #f49a22;
+}
+
+.textarea:focus {
+	border:  1px solid #f49a22;
+	border-radius: 4px;
+	// outline: 1px solid  #f49a22;
+}
+
+.input-text {
+	width: 100%;
+	height: 30px;
+	border-radius: 4px;
+	border : solid 0.5px #515c6f;
+	padding-left: 30px;
+	outline: none;
+	color:  #515c6f;
+  }
+
+.Create-New-Thread {	
+	-webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+	font-family: 'Poppins';
+	font-size: 16px;
+	font-weight: bold;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 0.92;
+	letter-spacing: normal;
+	text-align: left; 
+	color: #4d4d4d;
+  }
+  .enter-details-info {
+	background-color: #ffffff;
+  }
+
+  .line {
+	border: solid 1px rgba(0, 0, 0, 0);
+	background-color: #b9b9b9;
+  }
+
+  .underHr {
+	margin-top: 10px;
+    margin-bottom: 25px;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+    width: 564px;
+    /* margin: 0 auto; */
+    margin-left: -14px;
+  }

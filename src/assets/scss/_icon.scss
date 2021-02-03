@@ -1,0 +1,40 @@
+.is{
+    position: relative;
+    padding: 15px;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    &:hover{
+        opacity: .7;
+    }
+}   
+.i-search{
+    background-image: url(/assets/img/icon/Search_Icon.png);
+}
+.i-desktop{
+    background-image: url(/assets/img/icon/desktop.png);
+}
+.i-hand{
+    background-image: url(/assets/img/icon/hand.png);
+}
+.i-mic{
+    background-image: url(/assets/img/icon/mic.png);
+}
+.i-speaker{
+    background-image: url(/assets/img/icon/speaker.png);
+}
+.i-chat{
+    background-image: url(/assets/img/icon/chat.png);
+}
+.i-video-camera{
+    background-image: url(/assets/img/icon/video-camera.png);
+}
+.icon-size-16{
+    background-size: 20px;
+}
+.icon-position{        
+    top: 7px;
+    left: 2px;
+}
+
+

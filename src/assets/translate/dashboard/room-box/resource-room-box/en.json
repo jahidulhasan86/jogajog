@@ -1,0 +1,16 @@
+{
+	"ResourceRoomBox":{
+		 "nothing_shared": "Nothing Shared Yet.",
+		 "all": "All",
+		 "images" : "Images",
+		 "add_file": "Add File",
+		 "click_toshow_preview": "Click to show the preview",
+		 "click_download": "Click for download",
+		 "please_wait": "Please Wait..",
+		 "uploader" : "Uploaded by:",
+		 "link": "Link",
+		 "add_link": "Add Link",
+		 "choose_file": "Choose File",
+		 "add_file_link": "Add file or link"
+	}
+}

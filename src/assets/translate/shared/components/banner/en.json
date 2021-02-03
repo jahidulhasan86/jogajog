@@ -1,0 +1,29 @@
+{
+	"Banner": {
+		"text": "Meet Anywhere",
+		"text1": "Securely Connect From Any Device",
+		"text_new":"Secure, easy one-click meetings, with Voice, Video, Chat, Rooms, Discussions and screen sharing. Hosted in Bangladeshi-based Datacenters, on Amazon Cloud or on your own privated hosted Datacenter.",
+		"text2": "Voice, Video, Chat and Screen-sharing from your PC Browser or from your Smart Phone in easy one-click meetings.",
+		"text3": "Scale from small 1-on-1 meetings to very large meetings powered by our Push-to-Talk technology. Meetings are hosted in our Bangladesh based Datacenters.",
+		"meeting_join": "Join A Jag - Meeting",
+		"meeting_host": "Host A Jag - Meeting",
+		"meeting_room": "Go To A - Room",
+		"server_security": "Private Hosting on your own Servers available for security-conscious Business Customers",
+		"subscription": "Subscriptions available for large meetings and confirmed server connections",
+		"card_text": "Easily setup and share your online HD meeting experience with just a few clicks",
+		"try_other_jagajag": "Try Other Jogajog-based apps",
+		"learn_together": "Learn Together",
+		"team_together": "Team Together",
+		"medi_connect": "Medi-Connect",
+		"alert_family": "Alert Family",
+		"go_to_virtual_class_room": "Go To A -Virtual Class Room",
+		"trending_discussion": "Trending Discussions",
+		"public_jog_room": "Popular Public Jog-Rooms",
+		"jogajog_school":"Jogajog School",
+		"one_stop_learning":"One-stop Learning Platform",
+		"jog_school_des":"Live, interactive lectures hosted on Jogajog Meeting Platform. Full classroom experience with online exams, assessments and grading. Breakout sessions, shared whiteboards and streamed audio/video.",
+		"jogajog_teams":"Jogajog Teams",
+		"jogajog_text":"Collaborate, Monitor and Interact with your team",
+		"jogajog_teams_des":" Always-On-Mission-Critical and Enterprise Communications Empowering Field And Teams Operations Team discussion channels in parmanent Rooms."
+	}
+}

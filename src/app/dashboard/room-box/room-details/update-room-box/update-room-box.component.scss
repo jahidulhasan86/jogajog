@@ -1,0 +1,40 @@
+.modal-dialog{
+    font-family: 'PoplinsRegular';
+}
+
+	.room .row .col-sm-2, .col-sm-4,.col-sm-10{
+		padding-left:0px;
+		padding-right:0px
+	}
+	.select-participants{
+		border-bottom: 1px solid orange;
+        width: 96%;
+		margin-left: 2px;
+		font-size: 18px;
+		line-height: 24px;
+		color: #4d4d4d;
+		font-family: 'PoplinsRegular';
+		height: 34px;
+		margin-top: 7px;
+	}
+	
+	.grid-container {
+		display: grid;
+		grid-template-columns: auto auto auto;
+		padding-top: 8px;;
+	   
+	  }
+	//   .grid-item {
+	// 	text-align: center;
+	//   }
+	  ::ng-deep .grid-container .mat-checkbox-frame {
+		border-color: orange;
+	  }
+	  ::ng-deep .room .mat-form-field-underline {
+		display: none;
+	}
+    
+    .mat-checkbox-inner-container{
+        width: 20px !important;
+        height: 20px !important;
+    }

@@ -1,0 +1,14 @@
+.user_counter{
+    padding: 40px 0;
+	background: $bg_gray_light;
+	font-size: $fs-22;
+	font-weight: 600;
+	font-family: $font-secondary;
+	color:$font_1;
+	span{
+		font-size: $fs-28;
+		color: $font_2;
+		font-weight: 600;
+		vertical-align: middle;
+	}
+}

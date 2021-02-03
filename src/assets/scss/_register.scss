@@ -1,0 +1,44 @@
+.register_area{
+    background-image: url(/assets/img/geometric-bg.png);
+    padding: 100px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    @media #{$mobile_device} {
+        padding: 50px 0;
+    }
+    .register_heading{
+        width: 100%;
+        text-align: center;
+        padding-bottom: 40px;
+        h1{
+            font-family: $font-primary;
+            font-size: $fs-26;
+            font-weight: 600;
+            color: $font_2;
+            @media #{$mobile_device} {
+                font-size: $fs-22;
+            }
+            @media #{$tablet_device} {
+                font-size: $fs-22;
+            }
+        }
+        h4{
+            font-family: $font-primary;
+            font-size: $fs-20;
+            font-weight: 300;
+            color: $font_1;
+            @media #{$mobile_device} {
+                font-size: $fs-16;
+            }
+        }
+    }
+    .register_form{
+        margin:0 auto;
+        ::placeholder {
+            color: $font_2;
+            font-size: $fs-14;
+            opacity: 1;
+        }
+    }
+}

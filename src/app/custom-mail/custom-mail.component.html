@@ -1,0 +1,146 @@
+<div class="modal-header  hideInPreview">
+	<div class="d-flex">
+		<div class="sub-header-l offset-left-80">
+			<!-- <img src="../../assets/images/logoEn.png" class="offset-left-24" alt=""><br />
+			<h1>One Stop Communications</h1> -->
+			<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+			<h1
+				[ngStyle]="globalValue.app_logo == '../../../../assets/images/jagajag_logo_with_bangla_text.png' ? {'margin-left': '5%'} : {'margin-left': '0'}">
+				{{'InviteMeeting.onestop_comm' | translate}}</h1>
+		</div>
+		<button type="button" class="close" aria-label="Close" (click)="closeDialog()"
+			matTooltip="{{'InviteMeeting.cancel' | translate}}" matTooltipPosition="below">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+</div>
+<div class="modal-body hideInPreview">
+	<h4 class="modal-title mb-20">{{'custom_invitation.inviation_heading' | translate}}</h4>
+	<div class="container-flied">
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="input-group mb-20">
+					<input type="text" id="meetingURL" class="form-control mr-20" placeholder="Meeting URL"
+						value="{{data.mmodel.meetingInfo.meeting_url}}" readonly matTooltipPosition="below">
+					<button type="button" class="btn btn-info btn-lg" (click)="copyLink()"
+						matTooltip="{{'InviteMeeting.copy_link' | translate}}" matTooltipPosition="below"><i
+							class="fas fa-link">&nbsp;</i>{{'InviteMeeting.copy_link' | translate}}</button>
+				</div>
+				<div class="input-group mb-20">
+					<input style="min-width: 100%;" readonly type="text" id="meetingTitle" class="form-control mr-20"
+						placeholder="{{'custom_invitation.default_msg' | translate}}: {{data.mmodel.messageTitle}}"
+						matTooltip="{{'custom_invitation.default_msg' | translate}}" matTooltipPosition="below">
+				</div>
+				<div class="input-group mb-20">
+					<textarea rows="3" style="min-width: 100%;max-height: 140px;" type="textarea" id="invitationText"
+						class="form-control mr-20" placeholder="{{'custom_invitation.type_msg' | translate}}"
+						matTooltip="{{'custom_invitation.inviation_heading' | translate}}" matTooltipPosition="below"></textarea>
+				</div>
+				<div class="input-group mb-10">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1"><i
+								class="fas fa-envelope-open-text"></i></span>
+					</div>
+					<input id="inviteeMail" type="email" class="form-control"
+						value="{{data.mmodel.parent.inviteMeetingModel.email_list}}"
+						placeholder="{{'custom_invitation.participant_emails' | translate}}"
+						matTooltip="{{'custom_invitation.participant_emails' | translate}}"
+						matTooltipPosition="below">
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="closePreview" style="background-color: #f1f3f9;" style="display: none;">
+	<div style="width: 100%;text-align: center; color: #515c6f;">
+		<div style=" padding: 0% 1%;">
+			<div style=" background: white;padding: 6%;">
+				<div style="margin-bottom: 18px;">
+					<img src="../../assets/images/logoEn.png" alt="jagajag logo" style="width: 250px;">
+				</div>
+				<!-- <div style="font-family: Poppins;font-size: xx-large;font-weight: 300;font-stretch: normal;font-style: normal;	line-height: 1.09;letter-spacing: 0.47px;">
+					Hi, <a style="color: blue;">Invitee</a> 
+				</div> -->
+				<div id="customMessageText"
+					style="white-space: pre-wrap;font-family: Poppins;font-size: 30px;font-weight: bold;font-stretch: normal;font-style: normal;line-height: 1.13;letter-spacing: 0.52px;text-align: center; margin-bottom: 12px;">
+					{{data.mmodel.customMessageText}}</div>
+				<div
+					style="font-family: Poppins;font-size: x-large;font-weight: 600;font-stretch: normal;font-style: normal;	line-height: 1.66;letter-spacing: 0.35px;text-align: center; ">
+					{{data.mmodel.meetingInfo.timing.start_time | date: 'EEEE, MMMM d, y - h:mm a'}}, {{data.mmodel.meetingInfo.timing.total_duration}}
+					&nbsp;Hour</div>
+				<div
+					style="font-family: Poppins;font-size: x-large;font-weight: 300;font-stretch: normal;font-style: normal;line-height: 1.66;letter-spacing: 0.35px;text-align: center; margin-bottom: 12px;">
+					Host: {{data.mmodel.meetingInfo.owner.host_name}} </div>
+
+				<div
+					style="font-family: Poppins;font-size: x-large;font-weight: 600;font-stretch: normal;font-style: normal;line-height: 1.67;letter-spacing: 0.3px;	text-align: center;	margin-bottom: 12px;">
+					<div>Meeting Name: {{data.mmodel.meetingInfo.meeting_name}} </div>
+					<div>Meeting Code: {{data.mmodel.meetingInfo.meeting_code}}</div>
+					<div>Meeting Password: {{data.mmodel.meetingInfo.meeting_password}}</div>
+				</div>
+
+				<div
+					style="font-family: Poppins;font-size: x-large;font-weight: 600;font-stretch: normal;font-style: normal;line-height: 1.66;letter-spacing: 0.35px;	text-align: center;">
+					Meeting URL</div>
+				<div
+					style="font-family: Poppins;font-size: large;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1.64;	letter-spacing: 0.28px;	text-align: center;	color: #2e7bff;margin-bottom: 12px;">
+					<a href="{{data.mmodel.meetingInfo.meeting_url}}" target="_blank"
+						style=" pointer-events: none;cursor: default; word-break: break-all;">{{data.mmodel.meetingInfo.meeting_url}}
+					</a>
+				</div>
+
+				<div style="margin-bottom: 12px;">
+					<a style="pointer-events: none;cursor: default;" href="{{data.mmodel.meetingInfo.meeting_url}}"
+						target="_blank">
+						<img src="../../assets/img/joinmeeting.png" alt="join" style="width: 250px;" />
+					</a>
+				</div>
+
+				<div
+					style="font-family: Poppins;font-size: x-large;font-weight: normal;font-stretch: normal;font-style: normal;	line-height: 1.16;letter-spacing: 0.31px;text-align: center; margin-bottom: 0px;">
+					Cannot Access Your Meeting?
+					<a href="#" style="text-decoration: none;pointer-events: none;cursor: default;" target="_blank">
+						<span
+							style=" font-size: x-large;font-weight: 600;font-stretch: normal; font-style: normal; line-height: 1.16; letter-spacing: 0.31px; text-align: center;color: #2e7bff;">&nbsp;Get
+							Help</span>
+					</a>
+				</div>
+			</div>
+
+			<div style="margin-top: 0px;">
+				<div
+					style="  font-family: Poppins;	font-size: larger;font-weight: bold;	font-stretch: normal;font-style: normal;line-height: 1.15;letter-spacing: 0.27px;text-align: center;">
+					<span><a href="https://www.jagajag.com"
+							style="text-decoration: none;color: #515c6f;pointer-events: none;cursor: default;"
+							target="_blank">Jagajag Home</a></span>
+					<span style="margin: 0 15px;">|</span>
+					<span><a href="https://www.jagajag.com/#/plan-pricing"
+							style="text-decoration: none;color: #515c6f;pointer-events: none;cursor: default;"
+							target="_blank">Plans and Pricing</a></span>
+					<span style="margin: 0 15px;">|</span>
+					<span><a href="https://www.jagajag.com/#/contactus"
+							style="text-decoration: none;color: #515c6f;pointer-events: none;cursor: default;"
+							target="_blank">Contact Us</a></span>
+					<!-- <span style="    margin: 0 15px;">|</span>
+					<span><a href="#" style="text-decoration: none;color: #515c6f;" target="_blank">Contact
+							Us</a></span> -->
+				</div>
+				<div
+					style=" font-family: Poppins;font-size: medium;font-weight: 300;font-stretch: normal;font-style: normal;	line-height: 1.67;letter-spacing: 0.24px;	text-align: center;">
+					<b>Jagajag</b> 40 W Gude Drive Suite - 220 Rockville MD 20850, USA</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer" style="padding: 1rem;">
+	<button type="button" class="btn btn-info hideInPreview" (click)="closeDialog()" matTooltip="{{'custom_invitation.cancel_invitation_tooltip' | translate}}"
+		matTooltipPosition="below">{{data.mmodel.cancelButtonText}}</button>
+	<button type="button" (click)="showMessagePreview()" class="btn btn-outline-secondary hideInPreview"
+		matTooltip="{{'custom_invitation.previous_invitation_email' | translate}}" matTooltipPosition="below">{{'custom_invitation.previous_invitation_email' | translate}}</button>
+	<button type="button" class="btn btn-outline-secondary hideInPreview" (click)="closeOnDialogSubmit()"
+		matTooltip="{{'custom_invitation.send_invitation' | translate}}" matTooltipPosition="below">{{'custom_invitation.send_invitation' | translate}}</button>
+	<button type="button" style="display: none;" class="btn btn-info closePreview" (click)="closeMessagePreview()"
+		matTooltip="Okay" matTooltipPosition="below">Ok</button>
+</div>

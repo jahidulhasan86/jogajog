@@ -1,0 +1,157 @@
+<!-- <div class="user_counter">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-5">Current Meetings in progress : <span>33</span></div>
+			<div class="col-xl-4">Logged in user : <span>120</span></div>
+			<div class="col-xl-3 text-right">Meetings to date : <span>335</span></div>
+		</div>
+	</div>
+</div> -->
+<!-- yellow_area  -->
+<div class="yellow_area">
+	<div class="container">
+		<div class="section_title">
+			<h1>{{'HomeContent.solutions' | translate}} </h1>
+			<h2 *ngIf="globalValue.currentBuild == 'en'">Powered By Jagajag</h2>
+			<h2 *ngIf="globalValue.currentBuild == 'bn'">{{'HomeContent.powerdByJag' | translate}}</h2>
+		</div>
+		<div class="row">
+			<div class="col-xl-3 col-md-3">
+				<div class="card_items">
+					<div class="items_icon">
+						<img src="assets/img/icon/Learn_Together_Icon.png" alt="">
+					</div>
+					<div class="card_info text-center">
+						<h3>{{'HomeContent.learn_together' | translate}}</h3>
+						<p>{{'HomeContent.l2t_text' | translate}}</p>
+						<a [routerLink]="['/learnTogether']" class="btn btn-outline-info mt-20" matTooltip="{{'HomeContent.learn_together' | translate}}" matTooltipPosition="below">{{'HomeContent.click_here' | translate}}
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3">
+				<div class="card_items">
+					<div class="items_icon">
+						<img src="assets/img/icon/Push_To_Talk_Icon.png" alt="">
+					</div>
+					<div class="card_info text-center">
+						<h3>{{'HomeContent.protec_together' | translate}}</h3>
+						<p>{{'HomeContent.p2t_text' | translate}}</p>
+						<a [routerLink]="['/teamTogether']" class="btn btn-outline-info mt-20" matTooltip="{{'HomeContent.protec_together' | translate}}"
+							matTooltipPosition="below">{{'HomeContent.click_here' | translate}}</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3">
+				<div class="card_items">
+					<div class="items_icon">
+						<img src="assets/img/icon/MediSheba_Icon.png" alt="">
+					</div>
+					<div class="card_info text-center">
+						<h3>{{'HomeContent.medi_sheba' | translate}}</h3>
+						<p>{{'HomeContent.medisheba_text' | translate}}</p>
+						<a class="btn btn-outline-info mt-20" matTooltip="{{'HomeContent.medi_sheba' | translate}}" matTooltipPosition="below" (click)="infoSubmit('others')">{{'HomeContent.click_here' | translate}}
+							</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3">
+				<div class="card_items">
+					<div class="items_icon">
+						<img src="assets/img/icon/Alert_Family_Icon.png" alt="">
+					</div>
+					<div class="card_info text-center">
+						<h3>{{'HomeContent.alert_family' | translate}}</h3>
+						<p>{{'HomeContent.alert_family_text' | translate}}</p>
+						<a class="btn btn-outline-info mt-20" matTooltip="{{'HomeContent.alert_family' | translate}}" matTooltipPosition="below" (click)="infoSubmit('others')">{{'HomeContent.click_here' | translate}}
+							</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /yellow_area  -->
+<!-- Service_area  -->
+<div class="service_area">
+	<div class="container">
+		<div class="section_title">
+			<h1 *ngIf="globalValue.currentBuild == 'en'">Why Jagajag</h1>
+			<h1 *ngIf="globalValue.currentBuild == 'bn'">{{'HomeContent.why_jag' | translate}}</h1>
+			<h2>{{'HomeContent.solution_provide' | translate}}</h2>
+		</div>
+		<owl-carousel style="width: 100%;" [options]="serviceOptions" [items]=""
+			[carouselClasses]="['owl-carousel', 'owl-theme', 'sliding']">
+			<div class="item">
+				<div class="single_service">
+					<div class="service_icon">
+						<img src="assets/img/icon/Video_Conference_Icon.png" class="img-fluid center-block" alt="">
+					</div>
+					<div class="service_info text-center">
+						<h3>{{'HomeContent.video_conference' | translate}}</h3>
+						<p>{{'HomeContent.project_heading' | translate}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="single_service">
+					<div class="service_icon">
+						<img src="assets/img/icon/Online_Training_Icon.png" class="img-fluid center-block" alt="">
+					</div>
+					<div class="service_info text-center">
+						<h3>{{'HomeContent.online_training' | translate}}</h3>
+						<p>{{'HomeContent.project_heading1' | translate}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="single_service">
+					<div class="service_icon">
+						<img src="assets/img/icon/Team_Collaborat_on_Icon.png" class="img-fluid center-block" alt="">
+					</div>
+					<div class="service_info text-center">
+						<h3>{{'HomeContent.team_collbration' | translate}}</h3>
+						<p>{{'HomeContent.project_heading2' | translate}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="single_service">
+					<div class="service_icon">
+						<img src="assets/img/icon/Smart_Messaging_Icon.png" class="img-fluid center-block" alt="">
+					</div>
+					<div class="service_info text-center">
+						<h3>{{'HomeContent.smart_msg' | translate}}</h3>
+						<p>{{'HomeContent.project_heading3' | translate}}</p>
+					</div>
+				</div>
+			</div>		
+		</owl-carousel>
+	</div>
+</div>
+<!-- /Servie_area  -->
+<!-- register_area  -->
+<div class="register_area">
+	<div class="container">
+		<div class="register_heading">
+			<h1>{{'HomeContent.signup_text' | translate}}</h1>
+			<h4>{{'HomeContent.communication' | translate}}</h4>
+		</div>
+		<div class="register_form">
+			<!-- <form> -->
+				<div class="row justify-content-center">
+					<div class="col-xl-4 col-sm-12 mb-10">
+						<input type="text" class="form-control" placeholder="{{'HomeContent.company_name' | translate}}" [(ngModel)]="contactModel.company_name">
+					</div>
+					<div class="col-xl-4 col-sm-12 mb-10">
+						<input type="text" class="form-control" placeholder="{{'HomeContent.email' | translate}}"  [(ngModel)]="contactModel.email">
+					</div>
+					<div class="col-xl-1 col-sm-12 mb-10">
+						<button type="submit" style="width: 100px;" class="btn btn-info" matTooltip="{{'HomeContent.submit' | translate}}" matTooltipPosition="below" (click)="sendMessage()">{{'HomeContent.submit' | translate}}</button>
+					</div>
+				</div>
+			<!-- </form> -->
+		</div>
+	</div>
+</div>
+<!-- /register_area  -->

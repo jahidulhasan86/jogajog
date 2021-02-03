@@ -1,0 +1,81 @@
+.banner_area {
+  position: relative;
+  margin: 70px 0;
+  z-index: 0;
+    @media #{$mobile_device} {
+        margin: 60px 0;
+    }
+    @media #{$tablet_device} {
+        margin: 60px 0;
+    }
+    .banner_bg{
+        background-image: url(/assets/img/background-pattern.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        h2{
+            font-size: $fs-18;
+        }
+        .banner_text{ 
+            h1 {
+                font-family: $font-primary;
+                font-size: $fs-36;
+                text-transform: capitalize;
+                font-weight: 600;
+                color: $font_1;
+                    @media #{$mobile_device} {
+                        font-size: $fs-26;
+                        line-height: 30px;
+                    }
+                    @media #{$mobile_device} {
+                        font-size: $fs-26;
+                        line-height: 30px;
+                    }
+            }
+            h2 {
+                font-family: $font-secondary;
+                font-size: $fs-36;
+                font-weight: 400;
+                color: $font_1;
+                    @media #{$mobile_device} {
+                        font-size: $fs-26;
+                        line-height: 30px;
+                    }
+                    @media #{$tablet_device} {
+                        font-size: 30px;
+                    }
+            }
+            h4 {
+                font-family: $font-secondary;
+                font-size: $fs-16;
+                color: $font_1;
+            }
+            span {
+                font-weight: 700;
+            }
+        }
+
+        .card_items{               
+            margin-bottom: 30px;            
+            img {
+                display: block;
+                margin: auto;
+                width: 100px;
+                margin-bottom: 20px;
+            }
+            h3{
+                font-family: $font-secondary !important; 
+                font-size: $fs-14;
+                font-weight: 600;
+                color:$font_1 !important;
+                line-height: normal;
+            }
+        }
+        .vr{
+            border-right: 1px solid $border-color3;
+            @media #{$mobile_device} {
+                border-right: none;
+            }
+        }            
+    }    
+} 

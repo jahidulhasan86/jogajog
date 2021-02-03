@@ -1,0 +1,11 @@
+{
+	"CompanyInvitationList": {
+		"company_notifications": "কোম্পানি নোটিফিকেশন",
+		"invited_by" : "ইনভাইট করেছেন",
+		"no_invitation_received": "কোন নোটিফিকেশন পাওয়া যায়নি",
+		"room_notification": "রুম নোটিফিকেশন",
+		"no_request_received": "কোন নোটিফিকেশন পাওয়া যায়নি",
+		"accept" : "একসেপ্ট",
+		"reject": "বাতিল"
+	}
+}

@@ -1,0 +1,48 @@
+<div>
+	<!-- <div style="text-transform: uppercase;
+    font-size: 85%;
+    font-weight: 700;
+    color: #84929f;
+    padding: 0.5rem 1rem;">
+		{{ 'CompanyInvitationList.room_notification' |translate}}
+	</div> -->
+	<div id="roomInvID" [hidden]="notifications?.length != 0"
+		style="text-align: center; color: gray; padding: 5% 0% 5% 0%;">
+		{{ 'CompanyInvitationList.no_request_received' |translate}}</div>
+	<span *ngFor="let request of notifications">
+		<div style="background: #f3f9fd;
+		padding: 5%; border-top: 1px solid rgba(0, 0, 0, 0.1);" *ngIf="request.action != 'meeting_schedule'">
+			<div style="float: left; width: 50%;">
+				<span style="font-size: 15px;">{{request.requested_by_name}}</span><br>
+				<span style="font-size: 12px;">Room Name: {{request.room_name}}</span>
+			</div>
+			<div>
+				<button style="background: white;
+				border: 1px solid #F49A22;
+				border-radius: 8px;
+				margin-right: 2%;
+				color: #F49A22;
+				padding: 0 3% 0 3%;"
+					(click)="request.action === 'room_invitation' ? acceptRoomInvitation(request) : acceptRequest(request)">{{
+					'CompanyInvitationList.accept' |translate}}</button>
+
+
+				<button style="background: white;
+	border: 1px solid #F49A22;
+	border-radius: 8px;
+	margin-right: 2%;
+	color: #F49A22;
+	padding: 0 3% 0 3%;" (click)="rejectRequest(request)">{{ 'CompanyInvitationList.reject' |translate}}</button>
+			</div>
+		</div>
+
+		<div style="background: #f3f9fd;
+		padding: 5%; border-top: 1px solid rgba(0, 0, 0, 0.1);" *ngIf="request.action == 'meeting_schedule'">
+			<div style="width: 100%;">
+				<span style="font-size: 15px;"> Room meeting scheduled : {{request.room_name}} ({{request.meeting_name}})</span><br>
+				<span style="font-size: 12px;"> Host by: {{request.requested_by_name}}</span><br>
+				<span style="font-size: 12px;"> Meeting time: {{request.data.timing.start_time | date :'short'}} to {{request.data.timing.end_time | date :'short'}}</span>
+			</div>
+		</div>
+	</span>
+</div>

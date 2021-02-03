@@ -1,0 +1,14 @@
+{
+	"Contacts": {
+		"contacts_list" : "কন্টাক্ট লিস্ট",
+		"add_contacts" : "কনটাক্ট যোগ করুন",
+		"mobile_number": "মোবাইল নম্বর",
+		"email": " ইমেল",
+		"name": "নাম",
+		"save" : "সেভ করুন",
+		"close" : "বন্ধ করুন",
+		"cancel": "বাতিল করুন",
+		"class" : "",
+		"no_contacts":"কোনো কন্টাক্টস যোগ করা হয় নি"
+	}
+}

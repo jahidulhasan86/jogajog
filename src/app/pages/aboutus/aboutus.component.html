@@ -1,0 +1,192 @@
+<div class="container">
+	<div class="page-title">
+		<h2>{{'ABOUT_US.about_us' | translate}}</h2>
+	</div>
+
+	<div class="page-banner mt-40">
+		<img src="../../assets/img/banner/aboutus.png" alt="">
+	</div>
+	<div id="scrollHere"></div>
+	<div id="accordion">
+		<div class="btn-header">
+			<a class="btn btn-link" id="WhoWeAreLink" data-toggle="collapse" href="#WhoWeAre" aria-expanded="true"
+				aria-controls="collapseOne">
+				{{'ABOUT_US.who_wr' | translate}}
+			</a>
+			<a class="btn btn-link collapsed" id="DevelopmentServicesLink" data-toggle="collapse"
+				href="#DevelopmentServices" aria-expanded="false" aria-controls="collapseTwo">
+				{{'ABOUT_US.development_service' | translate}}
+			</a>
+			<a class="btn btn-link collapsed" id="ContactUsLink" data-toggle="collapse" href="#ContactUs"
+				aria-expanded="false" aria-controls="collapseTwo">
+				{{'ABOUT_US.contact_us' | translate}}
+			</a>
+		</div>
+		<div id="WhoWeAre" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="page-content">
+				<!-- <p *ngIf="globalValue.currentBuild === 'en'">Jagajag and associated Industry communication solutions are
+					product
+					offerings originally created and managed
+					by Protect Together, a Technology company based in Silicon Valley. We not only host, manage and
+					support
+					round-the-clock production-grade communications and collaboration solutions, we also design,
+					develop, and
+					manage market-leading mobile and web apps. We are focused on end-user value, not using technology
+					for the sake
+					of technology, but bringing technology to solve real-world challenges with great intuitive
+					user-experiences.
+				</p> -->
+				<p>
+					<span *ngIf="globalValue.currentBuild === 'en'">
+						{{'ABOUT_US.who_text1_en' | translate}}
+					</span>
+					<span *ngIf="globalValue.currentBuild === 'bn'">
+						{{'ABOUT_US.who_text1_bn' | translate}}
+					</span>
+					<span><a href="http://www.bengalmobileqa.com" target="_blank">{{'ABOUT_US.link_bengal' | translate}}</a></span>
+					<span>{{'ABOUT_US.who_text5' | translate}}</span>
+					<span><a href="http://www.protect2gether.com" target="_blank">{{'ABOUT_US.link_p2t' | translate}}</a></span>
+					<span>{{'ABOUT_US.who_text6' | translate}}</span>
+					<span><a href="http://technuf.com" target="_blank">{{'ABOUT_US.link_tecnuf' | translate}}</a></span>
+				    <span>{{'ABOUT_US.who_text7' | translate}}</span>
+				</p>
+
+				<p>{{'ABOUT_US.who_text2' | translate}}</p>
+				<!-- <p>{{'ABOUT_US.who_text3' | translate}}</p>
+				<p>{{'ABOUT_US.who_text4' | translate}}</p> -->
+				<div class="tils-body">
+					<div class="tils" style="padding-top: 5%;">
+						<img src="../../../assets/images/bengal_logo.png" alt="">
+						<p style="text-align: center; color: #ffffff; margin-top: 14%;">{{'ABOUT_US.bengal_mobile' | translate}}</p>
+					</div>
+					<div style="padding-top:1%" class="tils-txt">
+						<p>{{'ABOUT_US.box11' | translate}}</p>
+						<p>{{'ABOUT_US.box12' | translate}}</p>
+						<p>{{'ABOUT_US.box13' | translate}}</p>
+					</div>
+				</div>
+				<div class="tils-body">
+					<div class="tils" [ngStyle]="bnEnLanguageCheck == 'bn'? {'padding-top': '5%'} : {'padding-top': '4%'}">
+						<img src="../../../assets/images/ProtectTogether.png" alt="">
+						<p style="text-align: center; color: #ffffff; margin-top: 14%;">{{'ABOUT_US.protectogether' | translate}}</p>
+					</div>
+					<div style="padding-top:1%" class="tils-txt">
+						<p>{{'ABOUT_US.box21' | translate}}</p>
+						<p>{{'ABOUT_US.box22' | translate}}</p>
+						<p>{{'ABOUT_US.box23' | translate}}</p>
+					</div>
+				</div>
+				<div class="tils-body">
+					<div class="tils" [ngStyle]="bnEnLanguageCheck == 'bn'? {'padding-top': '1%'} : {'padding-top': '3%'}" >
+						<img src="../../../assets/images/tecnuf_logo.png" alt="">	
+					</div>
+					<div style="padding-top:1%; padding-bottom: 1%;" class="tils-txt">
+						{{'ABOUT_US.box3' | translate}}
+					</div>
+				</div>
+				<p><span class="text_bold">{{'ABOUT_US.visit1' | translate}}</span>&nbsp;<a href="http://www.protect2gether.com"
+						target="_blank">www.protect2gether.com</a> {{'ABOUT_US.visit2' | translate}}</p>
+			</div>
+		</div>
+		<div id="DevelopmentServices" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="page-content">
+				<h3>{{'ABOUT_US.it_solution_acc' | translate}}</h3>
+				<p>{{'ABOUT_US.it_solution_acc_text' | translate}}</p>
+				<h3>{{'ABOUT_US.mobile_cloud_facebook' | translate}}</h3>
+				<p>{{'ABOUT_US.mobile_cloud_facebook_text' | translate}}
+				</p>
+				<h3>{{'ABOUT_US.creative_design_for_web_mobile' | translate}}</h3>
+				<p>{{'ABOUT_US.creative_design_for_web_mobile_text' | translate}}</p>
+				<h3>{{'ABOUT_US.quality_control' | translate}}</h3>
+				<p>{{'ABOUT_US.quality_control_text' | translate}}</p>
+			</div>
+		</div>
+		<div id="ContactUs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="page-content">
+				<h3>{{'ABOUT_US.findus_here' | translate}}</h3>
+
+				<span *ngIf="globalValue.currentBuild == 'bn'">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.459978250666!2d90.4097084148607!3d23.730971195435327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8f63b2f3641%3A0x37f4f9e3889b97bf!2sBengal%20Mobile%20QA%20Solution!5e0!3m2!1sen!2sbd!4v1592672973042!5m2!1sen!2sbd"
+						width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+						aria-hidden="false" tabindex="0"></iframe>
+				</span>
+
+				<span *ngIf="globalValue.currentBuild == 'en'">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2603.484471775202!2d-77.16112632238976!3d39.104597374416876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7d282a83ceeb7%3A0x98b1d612677cc28c!2zNDAgVyBHdWRlIERyICMyMjAsIFJvY2t2aWxsZSwgTUQgMjA4NTAsIOCmruCmvuCmsOCnjeCmleCmv-CmqCDgpq_gp4HgppXgp43gpqTgprDgpr7gprfgp43gpp_gp43gprA!5e0!3m2!1sbn!2sbd!4v1593437319006!5m2!1sbn!2sbd"
+						width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+						aria-hidden="false" tabindex="0"></iframe>
+				</span>
+
+			</div>
+			<div class="page-content">
+				<h3>{{'ABOUT_US.contactus_forsales' | translate}}</h3>
+				<div class="row mt-40">
+					<div class="col-xl-6">
+						<div class="bg-feedback-form">
+							<div class="form-body">
+								<!-- <form> -->
+									<div class="form-group" id="pageId">
+										<label for="email">{{'ABOUT_US.email' | translate}}</label>
+										<input type="text" class="form-control" id="email" aria-describedby="emailHelp"
+											placeholder="{{'ABOUT_US.email_placeholder' | translate}}" [(ngModel)]="contactModel.email">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">{{'ABOUT_US.subject_optional' | translate}}</label>
+										<input type="text" class="form-control" id="subject" placeholder="{{'ABOUT_US.subject_placeholder' | translate}}" [(ngModel)]="contactModel.subject">
+									</div>
+									<div class="form-group">
+										<label for="msg">{{'ABOUT_US.message' | translate}}</label>
+										<textarea name="msg" id="msg" class="form-control" rows="7" [(ngModel)]="contactModel.message"></textarea>
+									</div>
+									<!-- <div class="form-group">
+										<input type="file" class="form-control-file" id="uploadFile">
+									</div> -->
+									<button type="submit" class="btn btn-primary w-100" (click)="sendMessage()">{{'ABOUT_US.submit' | translate}}</button>
+								<!-- </form> -->
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-6">
+
+						<address class="pl-20 mt-40" *ngIf="globalValue.currentBuild == 'en'">
+
+							<h2><strong>Address:</strong></h2>
+							<p>40 W Gude Drive Suite - 220 Rockville, MD 20850</p>
+							<p>Phone : 12408446009</p>
+
+							<h2><strong>Product & General Information</strong></h2>
+							<p><a href="#">info@jagajag.com</a></p>
+
+							<h2><strong>Sales Information</strong></h2>
+							<p><a href="#">sales@jagajag.com</a></p>
+
+							<h2><strong>Partnership Information</strong></h2>
+							<p><a href="#">tech@jagajag.com</a></p>
+
+						</address>
+
+						<address class="pl-20 mt-40" *ngIf="globalValue.currentBuild == 'bn'">
+
+							<h2><strong>{{'ABOUT_US.address_heading' | translate}}</strong></h2>
+							<p>{{'ABOUT_US.address' | translate}}</p>
+							<p>{{'ABOUT_US.phone' | translate}}</p>
+
+							<h2><strong>{{'ABOUT_US.product_info' | translate}} {{'ABOUT_US.general_info' | translate}}</strong></h2>
+							<p><a href="#">info@jogajog.com</a></p>
+
+							<h2><strong>{{'ABOUT_US.sales_info' | translate}}</strong></h2>
+							<p><a href="#">sales@jogajog.com</a></p>
+
+							<h2><strong>{{'ABOUT_US.Partnership_info' | translate}}</strong></h2>
+							<p><a href="#">tech@jogajog.com</a></p>
+							
+						</address>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

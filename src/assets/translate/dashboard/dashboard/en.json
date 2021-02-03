@@ -1,0 +1,16 @@
+{
+	"DASHBOARD": {
+		"welcome": "Welcome",
+		"home": "Home",
+		"meeting_schedules": "Meeting Schedules",
+		"contacts": "Contacts",
+		"company_members": "Company Members",
+		"language_selector": "বাংলা",
+		"about_us": "About Jagajag",
+		"meeting_schedules_tooltip": "Meeting Calendar function will be enabled on your account soon",
+		"contacts__tooltip": " Meeting Contacts function will be enabled on your account soon",
+		"contacts_list" : "Contact List",
+		"RecordingList" : "Recording",
+		"settings": "Settings"
+	}
+}

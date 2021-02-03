@@ -1,0 +1,12 @@
+.cdk-overlay-dark-backdrop {
+	/* background: rgba(0, 0, 0, 0.32); */
+	background-image: url("../../assets/images/callscreen/BackgroundPattern.png") !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-blend-mode: multiply !important;
+	background-color: #666666 !important;
+}
+
+.disableDiv{
+    pointer-events:none;
+}

@@ -1,0 +1,52 @@
+
+<div class="modal-body">
+	<h4 class="modal-title mb-20">{{'LOGIN.guest_login_text' | translate}}</h4>
+	<div class="container-flied">
+		<div class="row padding-lr-0">
+			<div class="col-xl-12 col-md-12 col-sm-12">
+				<div class="row">
+					<div class="input-group mb-20">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-open-text"></i></span>
+						</div>
+						<input type="email" [formControl]="emailFormControl" class="form-control" matTooltip="{{'LOGIN.email_placeholder' | translate}}"
+							placeholder="{{'LOGIN.email_placeholder' | translate}}" [(ngModel)]="loginModel.email"
+							(keyup)="eventKeyPress($event)">
+						<div *ngIf="emailFormControl.hasError('email') || emailFormControl.hasError('pattern') " style="text-align: left;width: 100%;
+												 font-size: 12px; color: red;">
+							{{'LOGIN.email_invalid' | translate}}
+						</div>
+					</div>
+					<div class="input-group mb-10">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1"><i class="fas fa-font"></i></span>
+						</div>
+						<input type="text" class="form-control" matTooltip="{{'LOGIN.guest_displayname_placeholder' | translate}}"
+						placeholder="{{'LOGIN.guest_displayname_placeholder' | translate}}"
+							[(ngModel)]="loginModel.display_name" (keyup)="eventKeyPress($event)">
+					</div>
+				</div>
+			</div>
+			<!-- <div class="col-xl-1 col-md-1 col-sm-12 vr-border">
+			<img src="../../../../assets/img/login-v-border.png" alt="">
+		  </div>
+		  <div class="hr-border mb-20">
+			<div class="or-wrap">
+			  <div class="or">OR</div>
+			</div>
+		  </div>
+		  <div class="col-xl-5 col-md-5 col-sm-12">
+			<a href=""><img src="../../../../assets/img/icon/Signin_Gmail_Icon.png" class="mb-20 pl-20" alt="" matTooltip="Sign in with Gmall"
+				matTooltipPosition="below"></a>
+			<a href=""><img src="../../../../assets/img/icon/Signin_with_Facebook.png" class="pl-20 mb-20" alt="" matTooltip="Sign in with Facebook"
+				matTooltipPosition="below"></a>
+		  </div> -->
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-info" (click)="(loginModel.email && loginModel.display_name) ? signIn() : null"
+		matTooltip="{{'LOGIN.login_btn' | translate}}" matTooltipPosition="below">{{'LOGIN.login_btn' | translate}}</button>
+	<a href="javascript:void(0)" (click)="registerDialog()" matTooltip="{{'LOGIN.register_btn' | translate}}"
+		matTooltipPosition="below">{{'LOGIN.register_btn' | translate}}</a>
+</div>

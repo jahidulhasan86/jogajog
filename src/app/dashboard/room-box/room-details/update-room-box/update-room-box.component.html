@@ -1,0 +1,66 @@
+<ngx-spinner color="#f49823" type="ball-clip-rotate-pulse" size="medium" [fullScreen]="true">
+  <p style="color: white;">{{'UpdateRoomBox.please_wait' | translate}}</p>
+</ngx-spinner>
+<div class="modal-dialog" role="document">
+  <div class="modal-content" style="border: none;">
+    <div class="modal-header" style="padding: 0px;padding-left: 13px;">
+      <h2 *ngIf="data.target==='name'" class="modal-title">
+        <span *ngIf="globalValue.currentBuild == 'en'">
+          Update name for {{data.selectedRoom.conference_name}}
+        </span>
+        <span *ngIf="globalValue.currentBuild == 'bn'">
+          <span *ngIf="bnEnLanguageCheck == 'bn'">
+            {{data.selectedRoom.conference_name}} এর নাম পরিবর্তন করুন
+          </span>
+          <span *ngIf="bnEnLanguageCheck == 'en'">
+            Update name for {{data.selectedRoom.conference_name}}
+          </span>
+        </span>
+      </h2>
+      <h2 class="modal-title" *ngIf="data.target==='participants'">
+        <!-- Update participants for {{data.selectedRoom.conference_name}} -->
+        <span *ngIf="globalValue.currentBuild == 'en'">
+          Update participants for {{data.selectedRoom.conference_name}}
+        </span>
+        <span *ngIf="globalValue.currentBuild == 'bn'">
+          <span *ngIf="bnEnLanguageCheck == 'bn'">
+            {{data.selectedRoom.conference_name}} এর নাম পরিবর্তন করুন
+          </span>
+          <span *ngIf="bnEnLanguageCheck == 'en'">
+            Update participants for {{data.selectedRoom.conference_name}}
+          </span>
+        </span>
+      </h2>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group" *ngIf="data.target==='name'">
+          <label for="recipient-name" class="col-form-label"
+            style="font-size: 18px;color: #4d4d4d;">{{'UpdateRoomBox.room_name' | translate}}</label>
+          <input type="text" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="roomBoxName"
+            value="{{data.selectedRoom.conference_name}}" id="recipient-name">
+        </div>
+        <div class="form-group" *ngIf="data.target==='participants'">
+          <div id="toggle_participants_listv">
+            <div class="select-participants">
+              {{'UpdateRoomBox.select_participants' | translate}}
+            </div>
+            <div class="grid-container" style="max-height: 200px;overflow: auto;">
+              <div class="grid-item " *ngFor="let user of userData" style="margin-left:10%">
+                <mat-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="user.isChecked"
+                  class="example-margin {{user.email}}" (change)="OnChange($event.checked, user)">
+                  {{user.email}}</mat-checkbox>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" (click)="_updateRoomBox()"
+        class="btn btn-primary">{{'UpdateRoomBox.update' | translate}}</button>
+      <button type="button" mat-dialog-close class="btn btn-secondary"
+        data-dismiss="modal">{{'UpdateRoomBox.close' | translate}}</button>
+    </div>
+  </div>
+</div>

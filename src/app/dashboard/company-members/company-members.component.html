@@ -1,0 +1,82 @@
+<div class="continer-fluid">
+
+	<div class="row" style="margin: 0;">
+	  <div class="col-sm-12" style="padding-top: 2%; padding-bottom: 2%; padding-right: 0; padding-left: 0;">
+		<div class="col-sm-6">
+		  <div class="componentName" style="float: left;">
+			{{'Discussion.company_info' | translate}}
+		  </div>
+		</div>
+		<div class="col-sm-6" style="float: right;">
+		  <button *ngIf="currentUser.role.role_name.toLowerCase() == 'admin'" id="class-find-btn" class="theamButton l2gTheamButtonColor" (click)="openAddContactWindow()">Add Member</button>
+		</div>
+	  </div>
+	</div>
+  
+	<mat-card class="example-card"
+	  style="border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
+  
+	  <mat-card-content>
+		<div class="row">
+		  <!-- <div class="col-sm-12" style="padding-bottom: 1%;"> -->
+		  <div class="col-sm-2 headerText">
+			{{'Discussion.member_list' | translate}}
+		  </div>
+		  <div class="col-sm-6">
+		  </div>
+		  <div class="col-sm-4">
+			<!-- <button id="class-find-btn" class="theamButton l2gTheamButtonColor">Add Contact</button> -->
+		  </div>
+		  <!-- </div> -->
+  
+		  <div style="width: 100%;">
+			<table mat-table [dataSource]="dataSource" matSort matSortActive="created">
+  
+			  <!-- Position Column -->
+			  <ng-container matColumnDef="position">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header class="table_item_heading">{{'Discussion.sl_no' | translate}} </th>
+				<td mat-cell *matCellDef="let element"> {{element.position}} </td>
+			  </ng-container>
+  
+			  <!-- Name Column -->
+			  <ng-container matColumnDef="user_name">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header class="table_item_heading"> {{'Discussion.user_name' | translate}} </th>
+				<td mat-cell *matCellDef="let element" class="table-class-name"> {{element.user_name}} </td>
+			  </ng-container>
+  
+			  <!-- Weight Column -->
+			  <ng-container matColumnDef="email">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header class="table_item_heading"> {{'Discussion.email' | translate}}</th>
+				<td mat-cell *matCellDef="let element"> {{element.email}} </td>
+			  </ng-container>
+  
+			  <!-- Symbol Column -->
+			  <ng-container matColumnDef="contact">
+				<th mat-header-cell *matHeaderCellDef mat-sort-header class="table_item_heading"> {{'Discussion.contact' | translate}}</th>
+				<td mat-cell *matCellDef="let element"> {{element.contact}} </td>
+			  </ng-container>
+  
+			  <!-- <ng-container matColumnDef="action">
+				<th mat-header-cell *matHeaderCellDef class="table_item_heading"> ACTION </th>
+				<td mat-cell *matCellDef="let element">
+				  <span style="cursor: not-allowed;">
+					<img style="width:20px" src="../../../assets/images/edit_delete/Edit Icon.png" alt="">
+				  </span>
+				  <span style="cursor: not-allowed; margin-left: 15px;">
+					<img style="width:20px;" src="../../../assets/images/edit_delete/Delete Icon.png" alt="">
+				  </span>
+				</td>
+			  </ng-container> -->
+  
+			  <tr style="background:#F1F3F9;" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+			  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			</table>
+  
+			<mat-paginator  [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		  </div>
+		</div>
+	  </mat-card-content>
+  
+	</mat-card>
+  
+  </div>

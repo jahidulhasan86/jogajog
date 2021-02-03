@@ -1,0 +1,65 @@
+{
+	"ABOUT_US": {
+		"address_heading": "Address:",
+		"address": "53, Purana Paltan (2nd Floor), Dhaka 1000, BD",
+		"phone": "Phone: +88 01701 64 48 79",
+		"product_info": "Product &",
+		"general_info": "General Information",
+		"sales_info": "Sales Information",
+		"Partnership_info": "Partnership Information",
+		"about_us":"About Us",
+		"who_wr": "Who We Are",
+		"development_service": "Development Services",
+		"contact_us": "Contact Us",
+		"findus_here": "Find us here",
+		"contactus_forsales": "Contact Us For Sales or Other Queries",
+		"email": "Email",
+		"email_placeholder": "Enter Email",
+		"subject_optional": "Subject (Optional)",
+		"subject_placeholder": "Subject",
+		"message": "Message",
+		"submit": "Submit",
+
+		"it_solution_acc": "IT Solution Acceleration",
+		"it_solution_acc_text": "Protect Together is a trusted partner of software and IT development and QA organizations helping ensure high-quality dependable software. With diverse technology practices, we can bring to bear our experience and expertise to solve your challenges in enterprise software such as Oracle, MSSQL or Open Source DB-based applications, Business Intelligence Apps, Python or Shell-script-based platform software, DotNet or PHP-framework-based Web Sites, XML/Web2.0-based distributed apps, or custom mobile or VoIP solutions. Our project managers and architects will work closely with the IT business owners to analyze requirements and then based on project scope, delivery timeline, and budget, we will engage onsite, offsite or offshore resources as desired by the customer.",
+		"mobile_cloud_facebook": "Mobile, Cloud & Facebook Apps",
+		"mobile_cloud_facebook_text":"Protect Together has multiple consumer apps in the Apple App Store and the Android App Store. This includes Business Productivity Apps for dedicated customers as well as Consumer apps such as Games. We can bring to bear our Apps development experience to build complex apps spanning cloud-based management consoles and distributed mobile front-ends. Our sweet spot is not one-off standalone apps, but apps that require deep architectures, high performance, and synchronized execution.",
+		"creative_design_for_web_mobile": "Creative Design for Web, Mobile and Thick Client Apps",
+		"creative_design_for_web_mobile_text": "Protect Together has a powerful creative design practice that we leverage for all our other development activities. For high-end aesthetics, we engage in on-shore resources. For clean interfaces with intuitive interaction flows on a budget, we can also leverage our offshore design experts. Our capabilities include state-of-the-art web site design mixing high functionality and high art, easy navigation, and excellent user experience. Our UI design experience also covers complex enterprise reports or complex forms in Enterprise Applications.",
+		"quality_control": "Quality Control",
+		"quality_control_text": "Protect Together makes sure developments and services are working as expected. With regular quality control inspection in place, it's inevitable that broken or wearing parts of products or services will be uncovered (and therefore can be fixed, preventing lost opportunities from customers who couldn't access what they were looking for). To avoid any inconveniences of our customers related to our products and services we ensure periodic quality control procedures.",
+		"who_text1_en": "Jagajag and associated products such as Learn Together, Team Together, Medi Connect are built by Bengal Mobile QA Solutions -BMQAS ",
+		"who_text1_bn": "Jogajog and associated products such as Learn Together, Team Together, Medi Connect are built by Bengal Mobile QA Solutions - BMQAS ",
+		"link_bengal":"(www.bengalmobileqa.com), ",
+		"who_text5":"a BASIS member company in Bangladesh, on behalf of Protect Together ",
+		"link_p2t":"(www.protect2gether.com), ",
+		"who_text6": "a Silicon Valley-based NRB-led Technology company and Technuf ",
+		"link_tecnuf":"(www.technuf.com), ",
+		"who_text7": "another NRB-led company based near Washington DC, focused on Government business.",  
+
+		"who_text2": "In a true example of global partnership, Protect Together's Silicon Valley-based senior Architects worked with the team of top-notch Engineers, Designers and Testers at BMQAS from the best schools of Bangladesh, to build a world-class secure solution, for both the Bangladesh and global markets. On top of this, Technuf provides the support for the Federal and Military markets, applying cybersecurity hardening for custom secure implementations, thereby bringing the best of Bangladeshi craftsmanship to the global market.",
+		"who_text3":"",
+		"who_text4":"",
+		"box11": "Bengal Mobile QA Solution is a full service Technology development and IT Services provider firm . We design, develop and manage market-leading mobile and web apps and software solutions for clients across industries. We are focused on end-user value, not using technology for the sake of technology, but bringing technology to solve real-world challenges with great intuitive user-experiences.",
+		"box12": "We have Engineers from the best schools in Bangladesh including BUET, RUET, CUET, SUST, IIUC, DU, RU, KU, NSU, AIUB, AUST, EU, BRACU, trained by US and Bangladesh-based Architects. Engineers regularly work with International customers providing round-the-clock support and development services.",
+		"box13": "Our competencies span the digital domain to include business analysis, user experience design, software engineering, quality assurance, and reliable cloud-based application hosting and management. Our mission is to deliver entrepreneurs, and businesses with a full suite of digital services, providing inter-disciplinary expertise on tap. And in our Application products, we aim to provide end-users with a differentiated experience, with an extra level of intelligence, functionality, and usability.",
+		"box21": "Protect Together is a Silicon-Valley based company, providing mission critical communication solutions for customers across the Globe. Our core and extended personnel are spread across Washington DC, Silicon Valley, Asia, Middle East and Africa.",
+		"box22": "The Principals and Partners have over 20 years of software & hardware products and services delivery experience at companies like CISCO, Oracle. HP & Price Waterhouse and are instilled with a singular devotion towards customer satisfaction & end-user value with high quality deliverables.",
+		"box23": "Their educational backgrounds include institutions such as MIT, Stanford, Harvard & UC Barkeley. There is a strong emphasis on product innovation, bringing the right technology to solve complex real-world challenges with sophisticated AI-enhanced back-ends and front-end App experiences with great intuitive user experiences.",
+		"box3": "Technuf is a Maryland-based company providing leading edge and proven technologies, industry vertical domain expertise and highly skilled and motivated professionals to achieve customers’ mission critical business needs. Technuf provides comprehensive solutions encompassing a range of products and services in CyberSecurity, Business Intelligence, Software Engineering and Mobile IoT App Development and Program and Project Management support.",
+		"box32": "",
+		"box33": "",
+		"visit1": "Please visit",
+		"visit2": "for more details.",
+		"protectogether": "Protect Together",
+		"bengal_mobile": "Bengal Mobile QA Solution"
+	},
+	"backup":{
+		"who_text1": "BengalMobileQA (BMQA) Protect Together's implementation partner in Bangladesh,(BMQA) is a full-service Technology development and IT Services provider firm based in Bangladesh. BMQA has built core communications components for Protect Together and provides local implementation support for Protect Together products. With a team of top-notch Engineers from the best schools in Bangladesh, BMQA brings together Silicon Valley creativity with Bangladeshi craftsmanship to produce world-class products.",
+		"who_text2": "Our competencies span the digital domain to include business analysis, user experience design, software engineering, quality assurance, and reliable cloud-based application hosting and management. Our mission is to deliver entrepreneurs, and businesses with a full suite of digital services, providing inter-disciplinary expertise on tap. And in our Application products, we aim to provide end-users with a differentiated experience, with an extra level of intelligence, functionality, and usability"
+	}
+	
+}
+
+
+	

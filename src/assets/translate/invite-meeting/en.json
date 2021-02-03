@@ -1,0 +1,54 @@
+{
+	"InviteMeeting": {
+		"onestop_comm": "One Stop Communications",
+		"meeting_ready": "Meeting is ready to start!",
+		"copy_link": "Copy Link",
+		"add_new_part_email": "Specify Participant Email addresses, separated by commas",
+		"send_invite": "Send Invitations",
+		"done": "Done",
+		"cancel_meeting": "Cancel Meeting",
+		"start_now": "Start Now",
+		"private_meeting": "This is a private meeting. Only invited participants can join.",
+		"non_private_meeting": "This is a non-private meeting. Anyone with the meeting link or id can join.",
+		"cancel": "Cancel",
+		"meeting_url": "Meeting URL",
+		"meeting": "Meeting",
+		"start": "Start",
+		"host": "Host",
+		"duration": "Duration",
+		"time": "hours",
+		"customize_invite": "Customize Invitation",
+		"send_me_copy": "Send me a copy",
+		"recipients":"Recipients"
+	},
+	"custom_invitation": {
+		"inviation_heading": "Custom Invitation",
+		"default_msg": "Default Message",
+		"type_msg": "Type here if you would like to change the default message",
+		"participant_emails": "Specify Participant Email Addresses,Separated by commas",
+		"cancel_invitation_tooltip": "Cancel",
+		"previous_invitation_email": "Preview Invitation Email",
+		"send_invitation": "Send Invitation"
+	},
+	"Multicompany": {
+		"current_company": "Your current company is ",
+		"select_company":"Select Company",
+		"switch_company": "Switch company",
+		"go_to_company": "Go to company"
+	},
+	"Recording": {
+		"recording_list": "Recording List",
+		"name":"Name",
+		"initiator": "Initiatior",
+		"start_time": "Start Time",
+		"end_time": "End Time",
+		"status":"Status",
+		"play_recording": "Play Recording",
+		"play": "Play"
+	},
+
+	"Participants":{
+		"host_me":"(Host, me)",
+		"me": "(Me)"
+	}
+}

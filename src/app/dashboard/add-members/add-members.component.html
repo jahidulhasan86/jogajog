@@ -1,0 +1,54 @@
+<div class="modal add_member" >
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content cardContainer">
+
+			<div class="modal-header no-flex">
+				<div class="d-flex">
+					<div class="sub-header-l offset-left-80" style="padding-left: 78px;">
+						<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+						<h1>One Stop Communications</h1>
+					</div>
+					
+					<button mat-mini-fab (click)="close()" class="closeButton" id="closeButton">
+						<mat-icon color="warn" matTooltip="Close">highlight_off</mat-icon>
+					</button>
+				</div>
+			</div>
+			<h4 class="modal-title mb-20" style="text-align: center;font-weight: 500;">Add Members</h4>
+			<!-- Modal body -->
+			<div class="modal-body" #bodyCard>
+
+				
+					<mat-form-field style="width: 100%;">
+					  <mat-chip-list #chipList aria-label="member selection">
+						<mat-chip 
+						  *ngFor="let member of members;"
+						  [selectable]="selectable"
+						  [removable]="removable"
+						  (removed)="remove(member)">
+						  {{member.email}}
+						  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+						</mat-chip>
+						<input style="caret-color: auto;" placeholder="Enter email address"
+						  [matChipInputFor]="chipList"
+						  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+						  [matChipInputAddOnBlur]="addOnBlur"
+						  (matChipInputTokenEnd)="add($event)">
+					  </mat-chip-list>
+					  
+					</mat-form-field>
+				  
+			</div>
+
+			
+			<div class="modal-footer" style="justify-content: center;border:none">
+				
+				<span >
+					<button type="button" class="btn btn-info" [disabled]="!members.length" 
+						style="margin-bottom: 4px;" (click)="inviteEmployee()">Add</button>
+				</span>
+			</div>
+
+		</div>
+	</div>
+</div>

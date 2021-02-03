@@ -1,0 +1,282 @@
+<div class="modal-header no-flex">
+	<div class="d-flex">
+		<div class="sub-header-l offset-left-80">
+			<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+			<h1
+				[ngStyle]="globalValue.app_logo == '../../../../assets/images/jagajag_logo_with_bangla_text.png' ? {'margin-left': '5%'} : {'margin-left': '0'}">
+				{{'InviteMeeting.onestop_comm' | translate}}</h1>
+		</div>
+		<button type="button" class="close" aria-label="Close" (click)="closeDialog()"
+			matTooltip="{{'InviteMeeting.cancel' | translate}}" matTooltipPosition="below">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+</div>
+<div class="modal-body">
+
+	<!-- <h4 class="modal-title mb-20">{{'InviteMeeting.meeting_ready' | translate}}</h4> -->
+
+	<div style="margin-bottom: 26px;font-size: 17px;" *ngIf="globalValue.currentBuild === 'en' ">
+		<div class="row">
+			<div class="col-xl-6">
+				Meeting : {{pushData.meeting_name}}
+			</div>
+			<div class="col-xl-6">
+				Start : {{pushData.timing.start_time | date:'EEEE, MMMM d, y - h:mm:ss a'}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-6">
+				Host : {{pushData.owner.host_name}}
+			</div>
+			<div class="col-xl-6">
+				Duration : {{pushData.timing.total_duration}} hours
+			</div>
+		</div>
+	</div>
+
+	<!-- <h4 *ngIf="globalValue.currentBuild === 'en' " class="modal-title mb-20"
+		style="	font-size: 18px;text-align: center;line-height: 1.4;word-spacing: 5px;font-weight: 500 !important;">
+		Meeting
+		<span style="border-bottom: 2px solid #515c6f;">{{pushData.meeting_name}} </span>
+		hosted by
+		<span style="border-bottom: 2px solid #515c6f;">{{pushData.owner.host_name}} </span>
+		scheduled for
+		<span style="border-bottom: 2px solid #515c6f;">{{pushData.timing.start_time | date:'EEEE, MMMM d, y'}}</span>
+		at
+		<span style="border-bottom: 2px solid #515c6f;">{{pushData.timing.start_time | date:'h:mm a'}} </span>
+		for
+		<span style="border-bottom: 2px solid #515c6f;">{{pushData.timing.total_duration}} hours </span>
+	</h4> -->
+
+	<span *ngIf="globalValue.currentBuild === 'bn'">
+		<span *ngIf="!bnEnLanguageCheck">
+			<div style="margin-bottom: 26px;font-size: 17px;">
+				<div class="row">
+					<div class="col-xl-6">
+						{{'InviteMeeting.meeting' | translate}} : {{pushData.meeting_name}}
+					</div>
+					<div class="col-xl-6">
+						{{'InviteMeeting.start' | translate}} : {{pushData.timing.start_time | date:'EEEE, MMMM d, y'}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xl-6">
+						{{'InviteMeeting.host' | translate}} : {{pushData.owner.host_name}}
+					</div>
+					<div class="col-xl-6">
+						{{'InviteMeeting.duration' | translate}} : {{pushData.timing.total_duration}}
+						{{'InviteMeeting.time' | translate}}
+					</div>
+				</div>
+			</div>
+		</span>
+
+		<span *ngIf="bnEnLanguageCheck">
+			<div style="margin-bottom: 26px;font-size: 17px;">
+				<div class="row">
+					<div class="col-xl-6">
+						{{'InviteMeeting.meeting' | translate}} : {{pushData.meeting_name}}
+					</div>
+					<div class="col-xl-6">
+						{{'InviteMeeting.start' | translate}} : {{pushData.timing.start_time | date:'EEEE, MMMM d, y'}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xl-6">
+						{{'InviteMeeting.host' | translate}} : {{pushData.owner.host_name}}
+					</div>
+					<div class="col-xl-6">
+						{{'InviteMeeting.duration' | translate}} : {{pushData.timing.total_duration}}
+						{{'InviteMeeting.time' | translate}}
+					</div>
+				</div>
+			</div>
+		</span>
+	</span>
+
+	<!-- <h4 *ngIf="globalValue.currentBuild === 'bn'" class="modal-title mb-20"
+		style="	font-size: 18px;text-align: center;line-height: 1.4;word-spacing: 5px;font-weight: 500 !important;">
+
+		<span *ngIf="!bnEnLanguageCheck ">
+			Meeting
+			<span style="border-bottom: 2px solid #515c6f;">{{pushData.meeting_name}} </span>
+			hosted by
+			<span style="border-bottom: 2px solid #515c6f;">{{pushData.owner.host_name}} </span>
+			scheduled for
+			<span
+				style="border-bottom: 2px solid #515c6f;">{{pushData.timing.start_time | date:'EEEE, MMMM d, y'}}</span>
+			at
+			<span style="border-bottom: 2px solid #515c6f;">{{pushData.timing.start_time | date:'h:mm a'}} </span>
+			for
+			<span style="border-bottom: 2px solid #515c6f;">{{pushData.timing.total_duration}} hours </span>
+		</span>
+
+		<span *ngIf="bnEnLanguageCheck">
+			<span
+				style="border-bottom: 2px solid #515c6f;">{{pushData.timing.start_time | date:'EEEE, MMMM d, y'}}</span>
+			&nbsp;
+			<span style="border-bottom: 2px solid #515c6f;">{{pushData.timing.start_time | date:'h:mm a'}} </span>
+			{{'InviteMeeting.aa' | translate}}
+			<span style="border-bottom: 2px solid #515c6f;">{{pushData.owner.host_name}} </span>
+			{{'InviteMeeting.a_meeting' | translate}}
+			<span style="border-bottom: 2px solid #515c6f;">{{pushData.meeting_name}} </span>
+			{{'InviteMeeting.hosted' | translate}}
+			<span style="border-bottom: 2px solid #515c6f;">{{pushData.timing.total_duration}} </span>
+			{{'InviteMeeting.for' | translate}}
+		</span>
+	</h4> -->
+
+	<div class="container-flied">
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="input-group mb-20">
+					<input type="text" id="meetingURL" class="form-control mr-20" placeholder="Meeting URL"
+						[(ngModel)]="inviteMeetingModel.meeting_url"
+						matTooltip="{{'InviteMeeting.meeting_url' | translate}}" matTooltipPosition="below">
+					<button type="button" class="btn btn-info btn-lg" (click)="copyLink()"
+						matTooltip="{{'InviteMeeting.copy_link' | translate}}" matTooltipPosition="below"><i
+							class="fas fa-link">&nbsp;</i>{{'InviteMeeting.copy_link' | translate}}</button>
+				</div>
+				<!-- <div class="input-group mb-10">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1"><i
+								class="fas fa-envelope-open-text"></i></span>
+					</div> -->
+
+
+		<div class="input-group">
+			<div class="">
+				<span class="mat-form-field" ng-if ="inviteMeetingModel.email_list"><b>To: </b></span>
+						
+			</div>
+			 <mat-form-field class="example-chip-list" style="width: 75%; padding-left: 10px;"> 
+				<mat-chip-list #chipList aria-label="Email selection">
+				<mat-chip
+					*ngFor="let contact of contacts" 
+					[selectable]="selectable"
+					[removable]="removable"
+					(removed)="remove(contact)">
+					{{contact.name}}
+					<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+				</mat-chip>
+				 <input id="emailInput"
+					placeholder="{{'InviteMeeting.recipients' | translate}}"
+					#emailInput
+					[formControl]="contactCtrl"
+					[matAutocomplete]="auto"
+					[matChipInputFor]="chipList"
+					[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+					(matChipInputTokenEnd)="add($event)"
+					[(ngModel)]="emailList"> 
+
+					<!-- <input type="email" mattooltipposition="below" 
+					class="form-control mr-20 ng-valid ng-touched ng-dirty" 
+					placeholder="Specify Participant Email addresses, separated by commas" 
+					aria-describedby="cdk-describedby-message-40" cdk-describedby-host=""
+					[formControl]="contactCtrl"
+					[matAutocomplete]="auto"
+					[matChipInputFor]="chipList"
+					[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+					(matChipInputTokenEnd)="add($event)"> -->
+
+
+				</mat-chip-list>
+				<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+				<mat-option *ngFor="let contact of filteredContacts | async" [value]="contact">
+					{{contact.name}} <b style="float: right; font-style: italic">{{contact.type}}</b>
+				</mat-option>
+				</mat-autocomplete>
+		 </mat-form-field>
+		 <button type="button" class="btn btn-info btn-lg btn-my-class" style="height: 40px;
+		 left: 50%;
+		 position: absolute;
+		 top: 50%;
+		 transform: translate(130%, -50%);"
+	
+						(click)="inviteMeeting()"
+						matTooltip="{{'InviteMeeting.send_invite' | translate}}"
+						matTooltipPosition="below" style="float: right;">{{'InviteMeeting.send_invite' | translate}}</button><br/>
+						
+	
+	</div>
+	<div style="margin-top: 8px;">
+	<mat-checkbox  [(ngModel)]="checkbox_checked" (change)='sendMeCopy($event)'>{{'InviteMeeting.send_me_copy' | translate}}</mat-checkbox>
+	</div>			
+		
+
+					
+				
+				<div class="input-group mb-10" style="margin-top: 18px !important;">
+					<!-- <div>
+						<i class="fa fa-exclamation-triangle" style="color: red;"></i>
+						This is a non-private meeting. Anyone with the meeting link<br> <span style="margin-left: 20px;">or id can join.</span> 
+					</div>
+					<div>
+						<mat-checkbox (change)="openCustomMailMessagePopup($event.checked)" style="margin-left: 50%;">
+							Customize Invitation
+						</mat-checkbox>
+					</div>
+				</div> -->
+				</div>
+				<div style="display: flex;margin-bottom: 10px;font-size: 12px;">
+					<div >
+						<div *ngIf="pushData.is_private === '1'">
+							<mat-icon color='info' style="position: relative;top: 6px;color: #f5c21d;"
+								matTooltip="Information">
+								info</mat-icon>
+							<!-- This is a private meeting. Only invited participants can join. -->
+							{{'InviteMeeting.private_meeting' | translate}}
+						</div>
+						<div *ngIf="pushData.is_private === '0'">
+							<mat-icon color='warn' style="position: relative;top: 5px;" matTooltip="Warning">warning
+							</mat-icon>
+							<!-- This is a non-private meeting. Anyone with the meeting link or id can join. -->
+							{{'InviteMeeting.non_private_meeting' | translate}}
+						</div>
+
+					</div>
+
+					<div [ngStyle]="bnEnLanguageCheck ? {'margin-left': '60px'} : {'margin-left': '71px'}">
+						<div class="form-check mt-10">
+							<label class="check" style="font-size: 12px;">{{'InviteMeeting.customize_invite' | translate}}
+								<input id="cCheck" type="checkbox"
+									(change)="openCustomMailMessagePopup($event.currentTarget.checked)">
+								<span class="checkmark"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- <div class="col-xl-12" *ngIf="globalValue.currentBuild === 'bn'">
+					<div *ngIf="pushData.is_private === '1'">
+						<mat-icon color='info' style="position: relative;top: 6px;color: #f5c21d;"
+							matTooltip="Information">
+							info</mat-icon>
+						{{'InviteMeeting.private_meeting' | translate}}
+					</div>
+					<div *ngIf="pushData.is_private === '0'">
+						<mat-icon color='warn' style="position: relative;top: 5px;" matTooltip="Warning">warning
+						</mat-icon>
+						{{'InviteMeeting.non_private_meeting' | translate}}
+					</div>
+				</div> -->
+
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-secondary" (click)="closeDialog()"
+			matTooltip="{{'InviteMeeting.done' | translate}}"
+			matTooltipPosition="below">{{'InviteMeeting.done' | translate}}</button>
+		<button type="button" class="btn btn-outline-secondary" (click)="cancelMeeting()"
+			matTooltip="{{'InviteMeeting.cancel_meeting' | translate}}"
+			matTooltipPosition="below">{{'InviteMeeting.cancel_meeting' | translate}}</button>
+		<button type="button" class="btn btn-info" (click)="joinMeetingNow()"
+			matTooltip="{{'InviteMeeting.start_now' | translate}}"
+			matTooltipPosition="below">{{'InviteMeeting.start_now' | translate}}</button>
+		<!-- <button type="button" class="btn btn-info" (click)="inviteMeetingModel.email_list ? inviteMeeting() : null"
+	matTooltip="Send invitations" matTooltipPosition="below">Send
+	Invitations</button> -->
+	</div>

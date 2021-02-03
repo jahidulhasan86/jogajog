@@ -1,0 +1,19 @@
+:host ::ng-deep  .mat-card-header-text {
+	width: 100%;
+	text-align: left;
+}
+
+:host ::ng-deep .mat-card-header .mat-card-title {
+    font-size: 13px;
+}
+
+.row1 {
+	display: flex;
+  }
+  
+  /* Create three equal columns that sits next to each other */
+  .column1 {
+	flex: 33.33%;
+	padding: 5px;
+  }
+  a { cursor: pointer; }

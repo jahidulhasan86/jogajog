@@ -1,0 +1,59 @@
+<!-- New Register -->
+
+<div class="modal-header no-flex">
+    <div class="d-flex">
+      <div class="sub-header-l offset-left-80">
+        <img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br/>  
+        <h1 [ngStyle]="globalValue.app_logo == '../../../../assets/images/jagajag_logo_with_bangla_text.png' ? {'margin-left': '5%'} : {'margin-left': '0'}">{{'SIGNUP.title_text'| translate}}</h1>
+      </div>
+      <button type="button" class="close" aria-label="Close" (click)="closeDialog()" matTooltip="{{'LOGIN.cancel' | translate}}"
+      matTooltipPosition="below">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body">
+    <h4 class="modal-title mb-20">{{'SIGNUP.signup_text'| translate}}</h4>
+       
+      <div class="container-flied">
+        <div class="row">
+          <div class="col-xl-12 mb-20">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-open-text"></i></span>
+              </div>
+              <input type="email" [formControl]="emailFormControl" class="form-control" placeholder="{{'SIGNUP.email_placeholder'| translate}}" [(ngModel)]="registerModel.email" required>
+              <div *ngIf="emailFormControl.hasError('email') || emailFormControl.hasError('pattern') " style="text-align: left;width: 100%;
+												 font-size: 12px; color: red;">
+													{{'LOGIN.email_invalid' | translate}}
+												</div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-sm-12 mb-20">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="{{'SIGNUP.userid_placeholder'| translate}}" [(ngModel)]="registerModel.user_name" autocomplete="false"  required>
+            </div>
+          </div>
+          <div class="col-xl-6 col-sm-12 mb-20">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+              </div>
+              <input type="password" class="form-control" placeholder="{{'SIGNUP.password_placeholder'| translate}}" [(ngModel)]="registerModel.password" autocomplete="new-password" required>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-info"  (click)="register()" matTooltip="{{'SIGNUP.register_btn'| translate}}"
+    matTooltipPosition="below">{{'SIGNUP.register_btn'| translate}}</button>
+    <a href="javascript:void(0)" (click)="loginDialog()" matTooltip="{{'SIGNUP.login_btn'| translate}}"
+    matTooltipPosition="below">{{'SIGNUP.login_btn'| translate}}</a>
+  </div>
+
+<!-- /New Register -->

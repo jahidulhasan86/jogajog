@@ -1,0 +1,17 @@
+{
+	"CreateNewDiscussion":{
+		"create_new_thread": "Create New Thread",
+		"thread_details": "Enter details information to create new thread",
+		"thread_title": "Thread Title/Discussion Topic",
+		"email_id": "Email ID",
+		"email_add": "Enter Email Addresses with (,) seperator",
+		"description": "Description",
+		"des_details": "Enter Detail Description Here",
+		"attach": "Attach File",
+		"attach_des": "Upload your Attachment File Here",
+		"upload_files":"Upload Files",
+		"reset": "RESET",
+		"submit": "Submit"
+
+	}
+}

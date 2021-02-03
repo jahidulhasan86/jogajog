@@ -1,0 +1,311 @@
+<div id="roomConfig" [ngStyle]="{ display: (ovSettings | isAutoPublish) ? 'none' : 'block' }">
+	<!-- Modal -->
+	<div class="modal" *ngIf="showConfigCard">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content cardContainer" [ngStyle] ="is_req_password ? {'padding-bottom':'0'} : {'padding-bottom':'12%'}  ">
+
+				<div class="modal-header no-flex" style="border-bottom: none;">
+					<div class="d-flex">
+						<div class="sub-header-l offset-left-80" style="padding-left: 78px;">
+							<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+							<h1
+								[ngStyle]="globalValue.app_logo == '../../../../assets/images/jagajag_logo_with_bangla_text.png' ? {'margin-left': '5%'} : {'margin-left': '0'}">
+								{{'RoomConfig.onestop_comm' | translate}}</h1>
+						</div>
+						<!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			  </button> -->
+						<button mat-mini-fab (click)="close()" class="closeButton" id="closeButton">
+							<mat-icon color="warn" matTooltip="Close">highlight_off</mat-icon>
+						</button>
+					</div>
+				</div>
+				<!-- *ngIf="isProgress" -->
+				<!-- color="accent" -->
+				<mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>
+				<h4 class="modal-title mb-20" style="text-align: center;font-weight: 500;">
+					</h4>
+				<!-- Modal body -->
+				<div class="modal-body" #bodyCard>
+
+					<div class="row align-items-center">
+						<div class="col-sm-6 col-md-6 col-lg-6 leftSection">
+							<div class="videoContainer">
+
+								<div *ngFor="let localUser of localUsers; let i = index">
+									<!-- Only webcam video will be shown if webcamera is available -->
+									<ov-video *ngIf="(localUser.isCamera() && hasVideoDevices) || localUser.isScreen()"
+										[streamManager]="localUser.streamManager"
+										[className]="localUsers.length > 1 && i === 0 ? 'ovVideoSmall' : ''" [itsCallFromRoomConfig]='true'>
+									</ov-video>
+									<div class="cameraMessageContainer" *ngIf="localUser.isCamera() && !hasVideoDevices">
+										<span>{{'RoomConfig.video_device_not_found' | translate}}</span>
+									</div>
+									<div [ngStyle]="isVideoActive ? {'top': '32%'}: {'top': '17%'}" class="call_icon_text">
+										<div style="margin-top: 3px;" *ngIf="!isVideoActive">{{'RoomConfig.video_off' | translate}}</div>
+										<div *ngIf="!isAudioActive">{{'RoomConfig.speaker_off' | translate}}</div>
+										<div *ngIf="!this.oVSessionService.isScreenShareEnabled()">{{'RoomConfig.screen_share_off' | translate}}</div>
+									</div>
+									<div class="resulationDiv" *ngIf="localUser.streamManager.stream.videoActive && (localUser.isCamera() && hasVideoDevices) || localUser.isScreen()">
+										<button style="border-right: 1px solid #788191;" data-index="0" class="resBtn" [ngClass]="{active: videoResulationType === '720p'}" (click)='onCameraResulationChange("720p")' matTooltip="Change Resulation - High">High</button>
+										<button style="border-right: 1px solid #788191;" data-index="1" class="resBtn" [ngClass]="{active: videoResulationType === '480p'}" (click)='onCameraResulationChange("480p")' matTooltip="Change Resulation - Medium">Medium</button>
+										<button data-index="2" class="resBtn" [ngClass]="{active: videoResulationType === '360p'}" (click)='onCameraResulationChange("360p")' matTooltip="Change Resulation - Low">Low</button>
+									</div>
+									
+										<div style="width: 100%;">
+											<div [ngStyle]="isVideoActive ? {'background-color': 'rgba(34, 34, 34, 0.5)'}: {'background-color': '#515c6f;'}" class="call_view_icon">
+												<!-- Microphone -->
+												   &nbsp; &nbsp;  
+													<button mat-mini-fab (click)="toggleMic()" class="deviceButton" id="configCardMicrophoneButton">
+														<!-- <mat-icon *ngIf="isAudioActive" style="color:#f49a22;" matTooltip="Microphone Enabled">mic
+														</mat-icon>
+														<mat-icon *ngIf="!isAudioActive" color="warn" matTooltip="Microphone Disabled">mic_off</mat-icon> -->
+														<span *ngIf="isAudioActive" matTooltip="Microphone Enabled"><img width="25" height="25" src="../../../../assets/images/call-view/Mask Group 7.png" alt="audio on"></span>
+														<span *ngIf="!isAudioActive" matTooltip="Microphone Disabled"><img width="25" height="25" src="../../../../assets/images/call-view/Group 19776.png" alt="audio off"></span>
+														
+														
+													</button> 
+													&nbsp; &nbsp;  
+			
+												<!-- Video -->
+											
+												<button mat-mini-fab (click)="toggleCam()" class="deviceButton" id="configCardCameraButton">
+													<!-- <mat-icon *ngIf="isVideoActive" style="color:#f49a22;" matTooltip="Camera Enabled">videocam
+													</mat-icon>
+													<mat-icon *ngIf="!isVideoActive" color="warn" matTooltip="Camera Disabled">videocam_off</mat-icon> -->
+													<span *ngIf="isVideoActive" matTooltip="Camera Enabled"><img width="24" height="24" src="../../../../assets/images/call-view/Mask Group 8.png" alt="camera on"></span>
+													<span *ngIf="!isVideoActive" matTooltip="Camera Disabled"><img width="24" height="24" src="../../../../assets/images/call-view/Group 19778.png" alt=" camera off"></span>
+												</button>
+												
+												&nbsp; &nbsp; 
+												<!-- Share Screen -->
+											
+													<button mat-mini-fab (click)="toggleScreenShare()" class="deviceButton" id="configCardScreenButton">
+														<!-- <mat-icon *ngIf="this.oVSessionService.isScreenShareEnabled()" style="color:#f49a22;"
+															title="Screen Share Enabled">
+															screen_share</mat-icon>
+														<mat-icon *ngIf="!this.oVSessionService.isScreenShareEnabled()" color="warn"
+															matTooltip="Screen Share Disabled">
+															stop_screen_share</mat-icon> -->
+															<span *ngIf="this.oVSessionService.isScreenShareEnabled()" matTooltip="Screen Share Enabled"><img width="26" height="26" src="../../../../assets/images/call-view/Mask Group 10.png" alt="screen share on"></span>
+															<span *ngIf="!this.oVSessionService.isScreenShareEnabled()" matTooltip="Screen Share Disabled"><img width="26" height="26" src="../../../../assets/images/call-view/Group 19786.png" alt="screen share off"></span>
+													</button>
+													<!-- <div class="resulationDiv">
+														<button style="border-right: 1px solid #788191;" data-index="0" class="resBtn" [ngClass]="{active: videoResulationType === '720p'}" (click)='onCameraResulationChange("720p")' matTooltip="Change Resulation - High">High</button>
+														<button style="border-right: 1px solid #788191;" data-index="1" class="resBtn" [ngClass]="{active: videoResulationType === '480p'}" (click)='onCameraResulationChange("480p")' matTooltip="Change Resulation - Medium">Medium</button>
+														<button data-index="2" class="resBtn" [ngClass]="{active: videoResulationType === '360p'}" (click)='onCameraResulationChange("360p")' matTooltip="Change Resulation - Low">Low</button>
+													</div> -->
+													
+												
+											</div>
+										</div>
+									
+									
+								</div>
+								<!-- resource option -->
+								
+							</div>
+							<!-- Avatar -->
+							<!-- <div class="avatarButton">
+					<button mat-stroked-button (click)="takePhoto()">
+						<mat-icon matTooltip="Take Photo">photo_camera</mat-icon>
+						<span style="margin-left: 5px;">Capture Avatar</span>
+					</button>
+				</div> -->
+						</div>
+
+						<div class="col-sm-6 col-md-6 col-lg-6 rightSection">
+							<!-- Avatar -->
+							<!-- <div class="avatarContainer">
+					<h3>Avatar</h3>
+
+				</div>
+				<div fxLayout="row" fxFill id="avatarSection" *ngIf="hasVideoDevices">
+
+					<div class="" fxFlex="100" fxLayoutAlign="center center">
+
+
+						<div
+							id="avatarContainer"
+							(click)="setAvatar('video')"
+							[style.background]="avatarSelected === 'video' ? 'lightgreen' : 'transparent'"
+						>
+							<div id="imgText" *ngIf="!videoAvatar">
+								<span>Press Avatar Button</span>
+							</div>
+							<img id="avatarImg" *ngIf="videoAvatar" [src]="videoAvatar" />
+						</div>
+						<div
+							id="avatarContainer"
+							(click)="setAvatar('random')"
+							[style.background]="avatarSelected === 'random' ? 'lightgreen' : 'transparent'"
+						>
+							<mat-spinner id="imgText" [diameter]="70" *ngIf="!randomAvatar" color="accent"></mat-spinner>
+							<img id="avatarImg" *ngIf="randomAvatar" [src]="randomAvatar" />
+						</div>
+					</div>
+
+				</div> -->
+						<h4 class="modal-title mb-20" style="text-align:left;font-weight: 500;">
+							{{'RoomConfig.join_meeting' | translate}}</h4>
+							<!-- Devices section / Nickname-->
+							<div fxLayout="row" fxFill id="devicesSection">
+								<div fxLayout fxFlex>
+									<!-- <div class="one" fxFlex="20" fxLayoutAlign="center center">
+										<button mat-mini-fab (click)="setNicknameForm()" class="deviceButton">
+											<mat-icon matTooltip="Nickname">person</mat-icon>
+										</button>
+									</div> -->
+									<div class="two" fxFlex="100" fxLayoutAlign="center center">
+										<form id="nicknameForm" class="alternate-theme" autocomplete="off">
+											<div *ngIf="!hideMeetindId" style="text-align: left; margin-top: 10px;">
+												<label for="roomName" style="text-align: left;">{{'RoomConfig.meeting_id' | translate}}</label>
+												<input placeholder="{{'RoomConfig.meeting_id' | translate}}" [formControl]="roomNameFormControl"
+													[errorStateMatcher]="matcher" (keyup)="eventKeyPress($event)" [readonly]="isParamValue"
+													(keypress)="eventKeyPress($event)" autocomplete="false" type='text' class="input-text" />
+												<div *ngIf="roomNameFormControl.hasError('required')"
+													style="text-align: left;font-size: 10px; color: red;">
+													{{'RoomConfig.meeting_id_req' | translate}}
+												</div>
+												<div *ngIf="!roomNameFormControl.hasError('required') && !validMeetingInfo"
+													style="text-align: left;font-size: 10px; color: red;">
+													{{'RoomConfig.meeting_id_not_valid' | translate}}
+												</div>
+											</div>
+											<div *ngIf="is_req_password" style="text-align: left; margin-top: 10px;">
+												<label for="password"
+													style="text-align: left;">{{'RoomConfig.meeting_pass' | translate}}</label>
+												<input type='password' placeholder="{{'RoomConfig.meeting_paswd' | translate}}"
+													[formControl]="passwordFormControl" [errorStateMatcher]="matcher" autocomplete="new-password"
+													class="input-text" />
+											</div>
+											<div style="text-align: left; margin-top: 10px;">
+												<label *ngIf="accountService.currentUser.role_name == 'UnRegisteredGuest'"
+													for="name">{{'RoomConfig.guest_display_name' | translate}}</label>
+												<label
+													*ngIf="!accountService.currentUser.role_name || accountService.currentUser.role_name != 'UnRegisteredGuest'"
+													for="name">{{'RoomConfig.name' | translate}}</label>
+												<input type='text' class="input-text" placeholder="Nickname" [formControl]="nicknameFormControl"
+													[errorStateMatcher]="matcher" [readonly]='true' autocomplete="false" />
+												<div *ngIf="nicknameFormControl.hasError('required')" style="text-align: left;
+												 font-size: 10px; color: red;">
+													{{'RoomConfig.name_req' | translate}}
+												</div>
+												<div style="margin-top: 10px;">
+													<button type="button" class="btn-width btn btn-outline-secondary"
+														(click)="close()">{{'RoomConfig.cancel' | translate}}</button> &nbsp;
+													<span *ngIf="!isProgress">
+														<button *ngIf="validMeetingInfo" type="button" id="joinBtn" class="btn-width btn btn-info" (click)="joinSession()"
+															form="nicknameForm" style="margin-bottom: 4px;">{{'RoomConfig.join_now' | translate}}</button>
+														<button *ngIf="!validMeetingInfo" type="button" class="btn-width  disableBtn" title="Meeting Id Is Not Valid"
+															style="margin-bottom: 4px;">{{'RoomConfig.join_now' | translate}}</button>
+													</span>
+													<span *ngIf="isProgress">
+														<button type="button" class="btn-width  disableBtn" title="Progressing... Please wait"
+															style="margin-bottom: 4px;">{{'RoomConfig.join_now' | translate}}</button>
+													</span>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						
+							<!-- Don't delete on Down comment code -->
+							<!-- Devices section / Microphone-->
+							<!-- <div fxLayout="row" fxFill id="devicesSection" *ngIf="hasAudioDevices && (ovSettings | hasAudio)">
+								<div fxLayout fxFlex>
+									<div class="one" fxFlex="20" fxLayoutAlign="center center">
+										<button mat-mini-fab (click)="toggleMic()" class="deviceButton" id="configCardMicrophoneButton">
+											<mat-icon *ngIf="isAudioActive" matTooltip="Microphone Enabled">mic</mat-icon>
+											<mat-icon *ngIf="!isAudioActive" color="warn" matTooltip="Microphone Disabled">mic_off</mat-icon>
+										</button>
+									</div>
+									<div class="two" fxFlex="80" fxLayoutAlign="center center">
+										<mat-form-field class="alternate-theme">
+											<mat-select placeholder="Microphone Options"
+												[ngModel]="isAudioActive && micSelected ? micSelected.device : 'None'"
+												(selectionChange)="onMicrophoneSelected($event)">
+												<mat-option *ngFor="let microphone of microphones" [value]="microphone.device">
+													{{ microphone.label }}
+												</mat-option>
+											</mat-select>
+										</mat-form-field>
+									</div>
+								</div>
+							</div> -->
+							<!-- Devices section / Camera-->
+							<!-- <div fxLayout="row" fxFill id="devicesSection" *ngIf="hasVideoDevices && (ovSettings | hasVideo)">
+								<div fxLayout fxFlex>
+									<div class="one" fxFlex="20" fxLayoutAlign="center center">
+										<button mat-mini-fab (click)="toggleCam()" class="deviceButton" id="configCardCameraButton">
+											<mat-icon *ngIf="isVideoActive" matTooltip="Camera Enabled">videocam</mat-icon>
+											<mat-icon *ngIf="!isVideoActive" color="warn" matTooltip="Camera Disabled">videocam_off</mat-icon>
+										</button>
+									</div>
+									<div class="two" fxFlex="80" fxLayoutAlign="center center">
+										<mat-form-field class="alternate-theme">
+											<mat-select placeholder="Camera Options"
+												[ngModel]="isVideoActive && camSelected ? camSelected.device : 'None'"
+												(selectionChange)="onCameraSelected($event)">
+												<mat-option *ngFor="let camera of cameras" [value]="camera.device">
+													{{ camera.label }}
+												</mat-option>
+											</mat-select>
+										</mat-form-field>
+									</div>
+								</div>
+							</div> -->
+
+							<!-- Devices section / ScreenShare-->
+							<!-- <div fxLayout="row" fxFill id="devicesSection" *ngIf="ovSettings | hasScreenSharing">
+								<div fxLayout fxFlex>
+									<div class="one" fxFlex="20" fxLayoutAlign="center center">
+										<button mat-mini-fab (click)="toggleScreenShare()" class="deviceButton" id="configCardScreenButton">
+											<mat-icon *ngIf="this.oVSessionService.isScreenShareEnabled()" matTooltip="Screen Share Enabled">
+												screen_share</mat-icon>
+											<mat-icon *ngIf="!this.oVSessionService.isScreenShareEnabled()" color="warn"
+												matTooltip="Screen Share Disabled">
+												stop_screen_share</mat-icon>
+										</button>
+									</div>
+									<div class="two" fxFlex="80" fxLayoutAlign="center center">
+										<mat-form-field class="alternate-theme">
+											<input matInput disabled placeholder="Screen"
+												[ngModel]="this.oVSessionService.isScreenShareEnabled() ? 'Screen' : 'None'" />
+										</mat-form-field>
+									</div>
+								</div>
+							</div> -->
+							<!-- Don't delete on Up comment code -->
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Modal footer -->
+				<!-- <div class="modal-footer" style="justify-content: center">
+					<button mat-flat-button color="accent" (click)="joinSession()" form="nicknameForm"
+						id="joinButton">JOIN</button>
+
+				</div> -->
+				<!-- <div style="justify-content: center;height: 30px;">
+					<button type="button" class="btn btn-outline-secondary"
+						(click)="close()">{{'RoomConfig.cancel' | translate}}</button>
+					<span *ngIf="!isProgress">
+						<button *ngIf="validMeetingInfo" type="button" id="joinBtn" class="btn btn-info" (click)="joinSession()"
+							form="nicknameForm" style="margin-bottom: 4px;">{{'RoomConfig.join_now' | translate}}</button>
+						<button *ngIf="!validMeetingInfo" type="button" class=" disableBtn" title="Meeting Id Is Not Valid"
+							style="margin-bottom: 4px;">{{'RoomConfig.join_now' | translate}}</button>
+					</span>
+					<span *ngIf="isProgress">
+						<button type="button" class=" disableBtn" title="Progressing... Please wait"
+							style="margin-bottom: 4px;">{{'RoomConfig.join_now' | translate}}</button>
+					</span>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<ngx-spinner *ngIf="isPopedOut" color = "#f49823" type = "ball-clip-rotate-pulse" size="medium" [fullScreen] = "true"   ><p style="color: white;">Please Wait..</p></ngx-spinner>

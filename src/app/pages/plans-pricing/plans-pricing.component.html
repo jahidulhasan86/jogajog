@@ -1,0 +1,750 @@
+<div style="padding: 5% 9% 0 9%;">
+	
+	<h2 *ngIf="globalValue.currentBuild === 'en'" class="heading" style="color:#515c6f"> JAGAJAG </h2>
+	<h2 *ngIf="globalValue.currentBuild === 'bn'" class="heading" style="color:#515c6f"> {{'PlansPricing.jogajog' | translate}} </h2>
+	<h2 class="heading">
+		{{'PlansPricing.pricing_planing' | translate}}
+	</h2>
+	
+	<img src="../../../assets/images/plans_pricing/plan-pricing-featured-img.png" class="plans-featured-img-responsive" >
+	
+	<p style="font-weight: 500;font-size: 16px;margin-bottom:16px"> {{'PlansPricing.contacting_us' | translate}}</p>
+	
+
+	<p *ngIf="globalValue.currentBuild === 'en'" style="font-size: 16px;">
+		<span class="text_bold">
+			Note:
+		</span>
+		<span style="font-weight: 500;">
+			Jagajag pricing schedule will be effective upon production launch. Currently any meeting up to 16
+			participants is freely available.
+		</span>
+	</p>
+
+	<p *ngIf="globalValue.currentBuild === 'bn'" style="font-size: 16px;">
+		<span class="text_bold">{{'PlansPricing.note' | translate}}</span>
+		<span style="font-weight: 500;">{{'PlansPricing.note2' | translate}}</span>
+		<span style="font-weight: 500;">{{'PlansPricing.note3' | translate}}</span>
+	</p>
+	
+
+	<div class="item-section section1">
+		<div class="main-body" id="plans-pricing-main-body">
+			<div class="row" >
+				<div class="col-md-3 pricing-area-div" >
+					<div class="card" style="width:95%;border:1px solid rgba(0, 0, 0, 0.16)">
+
+						<div class="card-header" style="background: #ffffff;height:310px;">
+							<div style="height:23px;background:#515c6f;width:100%;float:left">
+							</div>
+							<!--top-text only-->
+							<div style="float:left;padding:10% 0 0 10%" class="top-text-pricing">
+								<span  > {{'PlansPricing.pricing-table-header-part1' | translate}}  </span>
+								<br>
+								<span style="line-height: 1.8;" id="meeting">		
+									{{'PlansPricing.pricing-table-header-part2' | translate}}
+								</span>
+
+
+							</div>
+						</div>
+						<div class="card-body" style="background:#ffffff;" >
+							<div id="accordion"> 
+								<!-- all menues card -->
+
+								<!-- meeting-->
+								<div class="card">
+								 
+								  <div class="card-header collapse-header collapse-header-style " id="headingOne">
+									
+									<a href="/#/plan-pricing/#meeting">
+										<img title="See items" *ngIf="!collapseInfo[0]" src="../../../assets/images/plans_pricing/collapse-icon.png"  class="collapsed collapse-icon " data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" (click)="toggleCollapseMenuWithInfo(0)" >
+										
+										
+									</a>
+									<img title="hide" *ngIf="collapseInfo[0]" src="../../../assets/images/plans_pricing/after-collapse-icon.png" class="collapsed collapse-icon-after" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" (click)="toggleCollapseMenuWithInfo(0)" >
+									<p class="collapse-header-text" >
+										{{'PlansPricing.meetings' | translate}}
+									</p>
+									 
+								  </div>
+								 
+							  
+								  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+									<div class="card-body" style="width:98%">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item li-collapse-meeting">
+												<span> {{'PlansPricing.1on1' | translate}}</span>
+											</li>
+											<li class="list-group-item li-collapse-meeting">
+												<span> {{'PlansPricing.upto_4' | translate}}</span>	
+											</li>
+											<li class="list-group-item  high-li" style="background: #fff;font-size: 16px;margin-top: 13px;
+											padding-left: 6px;" >
+												<span> {{'PlansPricing.upto_8' | translate}}</span>	
+											</li>
+											<li class="list-group-item li-collapse-meeting">
+												<span> {{'PlansPricing.9_16' | translate}}</span>
+											</li>
+											<li class="list-group-item li-collapse-meeting">
+												<span> {{'PlansPricing.17_25' | translate}}</span>
+												
+											</li>
+											<li class="list-group-item li-collapse-meeting">
+												<span> {{'PlansPricing.26_50' | translate}}</span>
+												
+											</li>
+											
+										</ul>
+									</div>
+								  </div>
+								</div>
+								<!-- enterprise -->
+								<div class="card">
+								<div class="card-header  collapse-header collapse-header-style" id="headingTwo">
+									<a href="/#/plan-pricing/#enterprise">
+										<img title="See items" *ngIf="!collapseInfo[1]" src="../../../assets/images/plans_pricing/collapse-icon.png"
+											class="collapsed collapse-icon " data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+											aria-controls="collapseTwo" (click)="toggleCollapseMenuWithInfo(1)">
+										
+										
+									</a>
+									<img title="hide" *ngIf="collapseInfo[1]" src="../../../assets/images/plans_pricing/after-collapse-icon.png"
+											class="collapsed collapse-icon-after" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+											aria-controls="collapseTwo" (click)="toggleCollapseMenuWithInfo(1)">
+								    <p class="collapse-header-text" >
+								
+										{{'PlansPricing.enterprise_team' | translate}}
+									</p>
+								
+								</div> <!-- card-header -->
+								  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+									<div class="card-body">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item li-collapse-enterprise">
+												<span> {{'PlansPricing.on_off_meeting_calender' | translate}} </span>
+												
+											</li>
+											<li class="list-group-item li-collapse-enterprise">
+												<span> {{'PlansPricing.contact_list' | translate}} </span>
+												
+											</li>
+											<li class="list-group-item high-li" style="font-size: 16px;margin-top:13px;
+											padding-left: 6px;
+											background:#fff;
+											border-bottom: 1px solid #515c6f;">
+												<span > {{'PlansPricing.room_topics' | translate}} </span>
+												
+											</li>
+											<li class="list-group-item li-collapse-enterprise">
+												<span > {{'PlansPricing.company_account' | translate}}</span>
+												
+											</li>
+	
+										</ul>
+									</div>
+								  </div>
+								</div>
+								<!-- advanced -->
+								<div class="card">
+									<div class="card-header collapse-header collapse-header-style" id="headingThree">
+										<a href="/#/plan-pricing/#advanced">
+											<img title="See items" *ngIf="!collapseInfo[2]" src="../../../assets/images/plans_pricing/collapse-icon.png"
+												class="collapsed collapse-icon " data-toggle="collapse" data-target="#collapseThree"
+												aria-expanded="false" aria-controls="collapseThree" (click)="toggleCollapseMenuWithInfo(2)">
+											
+											
+										</a>
+										<img title="hide" *ngIf="collapseInfo[2]" src="../../../assets/images/plans_pricing/after-collapse-icon.png"
+												class="collapsed collapse-icon-after" data-toggle="collapse" data-target="#collapseThree"
+												aria-expanded="true" aria-controls="collapseThree" (click)="toggleCollapseMenuWithInfo(2)">
+										<p class="collapse-header-text" >
+								
+											{{'PlansPricing.entrprise_grade' | translate}}
+										</p>
+								
+								
+									</div>
+								  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+									<div class="card-body">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item li-collapse-enterprise">
+												<span > {{'PlansPricing.meeting_recordings' | translate}}</span>
+											</li>
+											<li class="list-group-item li-collapse-enterprise">
+												<span > {{'PlansPricing.join_phone' | translate}}</span>
+												
+											</li>
+											<li class="list-group-item li-collapse-enterprise">
+												<span > {{'PlansPricing.room_storge' | translate}}</span>
+												
+											</li>
+											<li class="list-group-item li-collapse-enterprise">
+												<span > {{'PlansPricing.meeting_history' | translate}}</span>
+												
+											</li>
+										</ul>
+									</div>
+								  </div>
+								  
+								</div>
+
+								<!-- online learning features -->
+								<div class="card">
+									<div class="card-header collapse-header collapse-header-style" id="headingFour" >
+									<a href="/#/plan-pricing/#online">
+										<img title="See items" *ngIf="!collapseInfo[3]" src="../../../assets/images/plans_pricing/collapse-icon.png"
+											class="collapsed collapse-icon " data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+											aria-controls="collapseFour" (click)="toggleCollapseMenuWithInfo(3)">
+										
+										
+									</a>
+									<img title="hide" *ngIf="collapseInfo[3]" src="../../../assets/images/plans_pricing/after-collapse-icon.png"
+											class="collapsed collapse-icon-after" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+											aria-controls="collapseFour" (click)="toggleCollapseMenuWithInfo(3)">
+									<p class="collapse-header-text" >
+										{{'PlansPricing.Online_learning_features' | translate}}
+									</p>
+									</div>
+									  
+
+									
+									<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+									  <div class="card-body">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item li-collapse-enterprise">
+												<span > 
+													{{'PlansPricing.learn1' | translate}} 
+
+												</span>
+												
+											</li>
+											<li class="list-group-item li-collapse-enterprise">
+												<span >
+													{{'PlansPricing.learn2' | translate}} 
+												</span>
+												
+											</li>
+											<li class="list-group-item li-collapse-enterprise">
+												<span > {{'PlansPricing.learn3' | translate}} </span>
+												
+											</li>
+	
+										</ul>
+									  </div>
+									</div>
+									
+								</div>
+
+								
+								
+							  </div>
+						</div>
+
+					</div>
+
+				</div>
+				<!--free-->
+				<div class="col-md-3 pricing-area-div">
+					<div class="card " style="width:95%">
+						<div class="card-header top-text-pricing"
+							style="background:#edf1f3;text-align: center;height:310px">
+							<div style="height:100%">
+								<img class="pricing-icons"
+									src="../../../assets/images/plans_pricing/free-top.png">
+								<div class="top-text-pricing header-part1">
+									
+									{{'PlansPricing.free-table-header-part1' | translate}}
+
+								</div>
+								
+							</div>
+							<div style="margin-top:-38px;" class="bangla_pricing">
+								{{'PlansPricing.free_' | translate}}
+								
+							</div>
+						</div>
+						<div class="card-body text-center" style="background:#edf1f3;">
+									   <!-- Meeting -->
+							<div *ngIf="!collapseInfo[0]"  class="meeting-height-non-collapse" id="enterprise"> </div>
+
+							<div  *ngIf="collapseInfo[0]" style="padding:0 10px 0 10px;" class="meeting-margin-collapse" >
+								<ul class="list-group list-group-flush">
+									<li class="free-tier-ul-one list-group-item" >
+										<span > {{'PlansPricing.upto_20hours' | translate}} </span>
+										
+									</li>
+									<li class=" list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_2hours' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item  high-li" >
+										<span > {{'PlansPricing.upto_1hours' | translate}} </span>
+										
+									</li>
+									<li class=" list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_1hours_pre' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">---</li>
+									<li class="list-group-item free-tier-ul-one">---</li>
+									
+
+
+								</ul>
+							</div>
+
+							<!-- Enterprise Team Features: Contacts, Calendars, Rooms-->
+										<!-- padding-->
+							<div *ngIf="!collapseInfo[1]" class="enterprise-height-non-collapse" id="advanced"> </div>
+
+
+							<div style="padding:0 10px 0 10px;" *ngIf="collapseInfo[1]" class="enterprise-margin-collapse" >
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_2month' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_50contacts' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item high-li" style="font-size: 16px;margin-top: 13px;
+									padding-left: 6px;
+									border-bottom: 1px solid #515c6f">
+										<span > {{'PlansPricing.3_rooms' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_2companies' | translate}}</span>
+										
+
+									</li>
+								</ul>
+
+
+							</div>
+							<!--padding-->
+
+							<!-- Advanced Enterprise-grade Features:-->
+							<div *ngIf="!collapseInfo[2]" class="enterprise-height-non-collapse" id="online"> </div>
+							<div style="padding:0 10px 0 10px;" *ngIf="collapseInfo[2]" class="enterprise-margin-collapse" >
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one"> --</li>
+									<li class="list-group-item free-tier-ul-one">--</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.5mb' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.1_year' | translate}} </span>
+										
+									</li>
+
+								</ul>
+
+
+							</div>
+
+							<!-- Online Learning Features -->
+							<!--padding-->
+							<div *ngIf="!collapseInfo[3]" class="enterprise-height-non-collapse" id="field"> </div>
+							<div  style="padding:0 10px 0 10px;"
+							*ngIf="collapseInfo[3]" class="enterprise-margin-collapse">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn11' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn21' | translate}} </span>
+										
+									</li>
+
+
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn31' | translate}} </span>
+										
+									</li>
+
+								</ul>
+
+
+							</div>
+
+							
+						</div>
+					</div>
+
+				</div>
+				<!-- entry level-->
+				<div class="col-md-3 pricing-area-div">
+					<div class="card " style="width:95%">
+						<div class="card-header" style="background:#edf1f3;text-align: center;height:310px">
+							<div style="height:100%">
+								<img class="pricing-icons"
+									src="../../../assets/images/plans_pricing/entry-level-top.png">
+								<div class="top-text-pricing header-part1">
+
+									<span >  {{'PlansPricing.entry-header-part1' | translate}}  </span>
+									
+
+								</div>
+								<div class="top-text-pricing header-part2" >
+									<span >  {{'PlansPricing.entry-header-part2' | translate}}  </span>
+									
+								</div>
+								<div class="top-text-entry-footer"
+									>
+									<span >  {{'PlansPricing.entry_label_package' | translate}}  </span>
+									
+								</div>
+							</div>
+							<div style="font-weight:bold;margin-top: -37px">
+								<!--price-->
+								<div *ngIf="globalValue.currentBuild=='en'" class="only_english_pricing">
+
+									<span >  {{'PlansPricing.entry-level-fee-part1' | translate}}  </span>
+
+									
+
+								</div>
+								<div *ngIf="globalValue.currentBuild=='bn' && bnEnLanguageCheck=='bn'"  class="bangla_pricing">
+
+									<span >  {{'PlansPricing.entry-level-fee-part1' | translate}}  </span>
+
+								</div>
+								<div *ngIf="globalValue.currentBuild=='bn' && bnEnLanguageCheck=='en'" class="english_pricing" >
+
+									<span >  200 taka  </span>
+
+								</div>
+								<!-----oblique month -->
+								<div *ngIf="globalValue.currentBuild=='en'" class="pricing_figure_per_month_only_en ">
+										
+									<span > / month  </span>
+								</div>
+								<span *ngIf="globalValue.currentBuild=='bn'">
+									<div  *ngIf="bnEnLanguageCheck =='bn'" class="pricing_figure_per_month_bn" >
+									
+										<span > {{'PlansPricing.obliq-month' | translate}}  </span>
+									</div>
+									<div  *ngIf="bnEnLanguageCheck =='en'" class="pricing_figure_per_month_en">
+									
+										<span > {{'PlansPricing.obliq-month' | translate}}  </span>
+									</div>
+								</span>
+								
+							</div>
+						</div>
+						<div class="card-body text-center" style="background:#edf1f3;">
+							<!--Meeting-->
+							<div *ngIf="!collapseInfo[0]" class="meeting-height-non-collapse"> </div>
+							<div *ngIf="collapseInfo[0]" style="padding:0 10px 0 10px;" class="meeting-margin-collapse" >
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_50hours' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_10hours' | translate}} </span>
+										
+
+									</li>
+									<li class="list-group-item  high-li " >
+										<span > {{'PlansPricing.upto_2bidirectional' | translate}} </span>
+										
+
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_5hours' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one"><span >--- </span></li>
+									<li class="list-group-item free-tier-ul-one">---</li>
+									
+
+								</ul>
+							</div>
+							<!-- Enterprise Team Features: Contacts, Calendars, Rooms-->
+							<div *ngIf="!collapseInfo[1]" class="enterprise-height-non-collapse"> </div>
+							<div  style="padding:0 10px 0 10px;" class="enterprise-margin-collapse"
+							*ngIf="collapseInfo[1]">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.unlimited' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_200contacts' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item high-li" style="font-size: 16px;
+									margin-top: 13px;
+									padding-left: 6px;
+									border-bottom: 1px solid #515c6f;"  >
+										<span > {{'PlansPricing.upto_10rooms' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span >{{'PlansPricing.unlimited_companies' | translate}}</span>
+										
+									</li>
+								</ul>
+
+
+							</div>
+
+							<!-- Advanced Enterprise-grade Features:-->
+							<div *ngIf="!collapseInfo[2]" class="enterprise-height-non-collapse " > </div>
+							<div  style="padding:0 10px 0 10px"
+							*ngIf="collapseInfo[2]" class="enterprise-margin-collapse">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one"> --</li>
+									<li class="list-group-item free-tier-ul-one">--</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.100mb' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.unlimited' | translate}} </span>
+									</li>
+								</ul>
+
+
+							</div>
+
+							<!-- Online Learning Features -->
+							<div *ngIf="!collapseInfo[3] " class="enterprise-height-non-collapse"> </div>
+							<div style="padding:0 10px 0 10px;"
+							*ngIf="collapseInfo[3]" class="enterprise-margin-collapse">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn12' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn22' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn32' | translate}} </span>
+										
+									</li>
+
+								</ul>
+
+
+							</div>
+							
+
+
+						</div>
+					</div>
+				</div>
+				<!-- pro packages -->
+				<div class="col-md-3 pricing-area-div">
+					<div class="card " style="width:95%">
+						<div class="card-header" style="background:#edf1f3;text-align: center;height:310px">
+							<div style="height:80%">
+								<img class="pricing-icons"
+									src="../../../assets/images/plans_pricing/pro-top.png">
+								<div class="top-text-pricing header-part1">
+
+
+									
+									<span >
+										  {{'PlansPricing.pro-header-part1' | translate}}  
+										
+									</span>
+
+								</div>
+								<div class="top-text-pricing header-part2"  >
+
+									<span > {{'PlansPricing.pro-header-part2' | translate}}</span>
+									
+								</div>
+								<!---->
+								<div style="font-weight:bold;margin-top: 37px">
+									
+									<!---->
+									<div *ngIf="globalValue.currentBuild=='en'" class="only_english_pricing">
+
+										<span > {{'PlansPricing.pro-fee-part1' | translate}}  </span>
+
+										
+
+									</div>
+									<div *ngIf="globalValue.currentBuild=='bn' && bnEnLanguageCheck=='bn'" class="bangla_pricing">
+
+										<span >  {{'PlansPricing.pro-fee-part1' | translate}}  </span>
+
+									</div>
+									<div *ngIf="globalValue.currentBuild=='bn' && bnEnLanguageCheck=='en'" class="english_pricing" >
+
+										<span >  1000 taka  </span>
+
+									</div>
+									<!-----oblique month -->
+									
+									
+									<div *ngIf="globalValue.currentBuild=='en'" class="pricing_figure_per_month_only_en">
+										
+										<span > / month  </span>
+									</div>
+									<span *ngIf="globalValue.currentBuild=='bn'">
+										<div  *ngIf="bnEnLanguageCheck =='bn'" class="pricing_figure_per_month_bn" >
+										
+											<span > {{'PlansPricing.obliq-month' | translate}}  </span>
+										</div>
+										<div  *ngIf="bnEnLanguageCheck =='en'" class="pricing_figure_per_month_en" >
+										
+											<span > {{'PlansPricing.obliq-month' | translate}}  </span>
+										</div>
+									</span>
+									<!---->
+								</div><!-- -->
+
+							</div>
+
+						</div>
+
+						<div class="card-body text-center" style="background:#edf1f3;">
+							<!--meeting -->
+							<div  *ngIf="!collapseInfo[0]" class="meeting-height-non-collapse"> </div>
+							<div  *ngIf="collapseInfo[0]" style="padding:0 10px 0 10px;"  class="meeting-margin-collapse" >
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.unlimited' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_20hours' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item  high-li" >
+										<span > {{'PlansPricing.upto_10hours_included' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_10hours' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.upto_5hours_included' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one"><span > {{'PlansPricing.upto_2hours_included' | translate}} </span></li>
+									
+
+								</ul>
+							</div>
+
+							<!-- Enterprise Team Features: Contacts, Calendars, Rooms-->
+							<div *ngIf="!collapseInfo[1]" class="enterprise-height-non-collapse" > </div>
+							<div  style="padding:0 10px 0 10px;"
+							*ngIf="collapseInfo[1]" class="enterprise-margin-collapse">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.unlimited' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.unlimited' | translate}} </span>
+									</li>
+									<li class="list-group-item high-li" style="font-size: 16px;
+									
+									margin-top: 13px;
+									padding-left: 6px;
+									border-bottom: 1px solid #515c6f;">
+										<span > {{'PlansPricing.unlimited_rooms' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.unlimited_companies' | translate}} </span>
+										
+									</li>
+								</ul>
+
+
+							</div>
+
+							<div *ngIf="!collapseInfo[2]" class="enterprise-height-non-collapse"> </div>
+							<!-- Advanced Enterprise-grade Features:-->
+							<div  style="padding:0 10px 0 10px;"
+							*ngIf="collapseInfo[2]" class="enterprise-margin-collapse">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one"> --</li>
+									<li class="list-group-item free-tier-ul-one">--</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.1GB' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.unlimited' | translate}} </span>
+										
+									</li>
+								</ul>
+
+
+							</div>
+
+							<div *ngIf="!collapseInfo[3]" class="enterprise-height-non-collapse"> </div>
+							<!-- Online Learning Features -->
+							<div  style="padding:0 10px 0 10px;"
+							*ngIf="collapseInfo[3]" class="enterprise-margin-collapse">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn13' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn23' | translate}} </span>
+										
+									</li>
+									<li class="list-group-item free-tier-ul-one">
+										<span > {{'PlansPricing.learn33' | translate}} </span>
+										
+									</li>
+
+								</ul>
+
+
+							</div>
+
+							
+
+						</div>
+					</div>
+				</div>
+
+				
+				
+			</div>
+
+			<!-- <div class="row right-moving-icon " style="float:left;width:8%;">
+
+				<span *ngIf="isLeftVisible">
+					<img (click)="changeToogle(false)" title="Basic packages"
+						src="../../../assets/images/plans_pricing/next-icon.png" class="next-prev-top-img">
+				</span>
+				<span *ngIf="!isLeftVisible">
+					<img (click)="changeToogle(true)" title="More packages"
+						src="../../../assets/images/plans_pricing/prev-icon.png" class="next-prev-top-img">
+				</span>
+
+
+			</div> -->
+		</div>
+		<!-- <div style="margin:4% 0 0 45%;">
+
+			<div class="below-circle-icon" (click)="changeToogle(true)" title="Basic packages"> </div> 
+
+			<div class="below-next-icon" (click)="changeToogle(false)" title="More packages">
+			</div> 
+
+		</div> -->
+	</div>
+
+
+</div>

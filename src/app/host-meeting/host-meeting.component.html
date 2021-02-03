@@ -1,0 +1,331 @@
+<div class="modal-header no-flex">
+	<div class="d-flex">
+		<div class="sub-header-l offset-left-80">
+			<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+			<h1
+				[ngStyle]="globalValue.app_logo == '../../../../assets/images/jagajag_logo_with_bangla_text.png' ? {'margin-left': '5%'} : {'margin-left': '0'}">
+				{{'HostMeeting.onestop_comm' | translate}}</h1>
+		</div>
+		<button type="button" class="close" aria-label="Close" (click)="closeDialog()"
+			matTooltip="{{'HostMeeting.cancel' | translate}}" matTooltipPosition="below">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+</div>
+<div class="modal-body">
+	<!-- <h4 class="modal-title mb-20">{{'HostMeeting.host_meeting' | translate}}</h4> -->
+	<div class="container-flied" style="padding: 0 6%;">
+		<div class="row">
+			<div class="col-xl-12 col-sm-12">
+				<div style="font-family: Poppins;
+				font-size: 20px;
+				font-weight: 600;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.42;
+				letter-spacing: 0.26px;
+				text-align: left;
+				color: #515c6f;">
+					{{'HostMeeting.meeting_info' | translate}}</div>
+			</div>
+			<div class="col-xl-12" style="margin-top: 7px;">
+				<div class="input-group">
+					<!-- <label style="margin-top: 3px;
+					font-size: 18px;
+					width: 16%;">{{'HostMeeting.host' | translate}}:</label> -->
+					<div style="background-color: #e9ecef;
+					padding: 7px 14px; width: 100%;">
+						<span><img src="../../assets/images/Participants Email Icon.png" alt=""></span> &nbsp;
+					<span>{{email}}</span>
+					</div>
+				</div>
+				<div class="input-group" style="margin-top: 8px;">
+					<!-- <label style="margin-top: 10px;
+					font-size: 18px;
+					width: 16%;">{{'HostMeeting.topic' | translate}}:</label> -->
+						<div style="width: 100%;">
+							<span style="position: absolute; top: 7px; left: 9px;"><img src="../../assets/images/Meeting Topic Icon.png" alt=""></span>
+							<input style="padding-left: 41px;" type="text" class="form-control"
+								placeholder="{{'HostMeeting.meeting_discuss_topic' | translate}}"
+								[(ngModel)]="addMeetingModel.meeting_name"
+								matTooltip="{{'HostMeeting.meeting_discuss_topic' | translate}}" matTooltipPosition="above">
+						</div>
+				</div>
+			</div>
+			<div class="col-xl-12 col-sm-12" style="margin-top: 7px;">
+				<h4 class="modal-title" style="font-family: Poppins;
+				font-size: 20px;
+				font-weight: 600;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.42;
+				letter-spacing: 0.26px;
+				text-align: left;
+				color: #515c6f;
+			  ">
+					{{'HostMeeting.meeting_scheduling' | translate}}</h4>
+			</div>
+			<div class="col-xl-4 col-sm-12 mb-10">
+
+				<div class="input-group">
+					<div class="input-group-prepend w-100">
+						<mat-datepicker-toggle class="mat-btn-toggle" matSuffix [for]="picker"></mat-datepicker-toggle>
+						<input class="form-control" matInput [matDatepicker]="picker"
+							placeholder="{{'HostMeeting.meeting_date' | translate}}" min="{{dateNow}}"
+							value="{{dateNow}}" (dateChange)="datePickerEvent($event.target.value);"
+							matTooltip="{{'HostMeeting.meeting_date' | translate}}" matTooltipPosition="below">
+					</div>
+					<mat-datepicker #picker></mat-datepicker>
+				</div>
+			</div>
+			<div class="col-xl-4 col-sm-12 mb-10">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text timepicker" id="basic-addon1" darktheme="true"><i
+								class="far fa-clock"></i></span>
+					</div>
+					<input id="Start_Time" placeholder="{{'HostMeeting.meeting_start' | translate}}"
+						[value]="startTimePickerUIBind" class="form-control" aria-label="12hr format"
+						[ngxTimepicker]="min" [min]="min_start_time"
+						matTooltip="{{'HostMeeting.meeting_start' | translate}}" matTooltipPosition="below">
+					<ngx-material-timepicker #min (timeSet)="timeSelector($event, 'start_time')">
+					</ngx-material-timepicker>
+				</div>
+			</div>
+			<div class="col-xl-4 col-sm-12 mb-10">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text timepicker" id="basic-addon1" darktheme="true"><i
+								class="far fa-clock"></i></span>
+					</div>
+					<input id="End_Time" placeholder="{{'HostMeeting.meeting_end' | translate}}"
+						[value]="endTimePickerUIBind" [min]="min_end_time" class="form-control" aria-label="12hr format"
+						[ngxTimepicker]="fullTime" [format]="12" matTooltip="{{'HostMeeting.meeting_end' | translate}}"
+						matTooltipPosition="below">
+					<ngx-material-timepicker #fullTime (timeSet)="timeSelector($event, 'end_time')">
+					</ngx-material-timepicker>
+				</div>
+			</div>
+			<!--large meeting checkbox-->
+			<div class="col-xl-8 col-sm-8">
+				<div class="form-check">
+					<label class="check" style="font-family: Poppins;
+					font-size: 14px;
+					font-weight: 300;
+					font-stretch: normal;
+					font-style: normal;
+					letter-spacing: 0.18px;
+					text-align: left;
+					color: #515c6f;"> {{ 'HostMeeting.large_meeting' | translate}}
+						<input type="checkbox"  [(ngModel)]="large_meeting.isChecked"
+							(change)="largeMeetingCheckBoxChanger($event.currentTarget.checked)" >
+						<span class="checkmark"></span>
+					</label>
+				</div>
+			</div>
+
+			<div class="col-xl-4 col-sm-4">
+				<div class="form-check">
+					<label class="check" style="font-family: Poppins;
+					font-size: 14px;
+					font-weight: 300;
+					font-stretch: normal;
+					font-style: normal;
+					letter-spacing: 0.18px;
+					text-align: left;
+					color: #515c6f;"> {{ 'HostMeeting.meeting_record' | translate}}
+						<input type="checkbox"  [(ngModel)]="addMeetingModel.auto_recording"
+							 >
+						<span class="checkmark"></span>
+					</label>
+				</div>
+			</div>
+			<!-- <div class="col-xl-12 col-md-12 col-sm-12">
+				<div class="form-check" style="float: right; padding-top: 10px;">
+					<label class="check ">Recurring Meeting
+						<input type="checkbox" name="Recurring_Meeting" [disabled]="true">
+						<span class="checkmark" style="cursor: not-allowed;"></span>
+					</label>
+				</div>
+			</div> -->
+			<div class="col-xl-12 col-sm-12">
+				<h4 class="modal-title" style="font-family: Poppins;
+				font-size: 20px;
+				font-weight: 600;
+				font-stretch: normal;
+				font-style: normal;
+				letter-spacing: 0.26px;
+				text-align: left;
+				color: #515c6f;">
+					{{'HostMeeting.meeting_security' | translate}}</h4>
+			</div>
+			
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+				<div class="form-check">
+					<label class="check" style="font-family: Poppins;
+					font-size: 14px;
+					font-weight: 300;
+					font-stretch: normal;
+					font-style: normal;
+					letter-spacing: 0.18px;
+					text-align: left;
+					color: #515c6f;">{{'HostMeeting.private_meeting' | translate}}
+						<input type="checkbox" name="Private_Meeting"
+							(change)="privateMeetingCheckBoxChanger($event.currentTarget.checked)">
+						<span class="checkmark"></span>
+					</label>
+				</div>
+			</div>
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+				<div class="form-check">
+					<label class="check" style="font-family: Poppins;
+					font-size: 14px;
+					font-weight: 300;
+					font-stretch: normal;
+					font-style: normal;
+					letter-spacing: 0.18px;
+					text-align: left;
+					color: #515c6f;">{{'HostMeeting.registration_required' | translate}}
+						<input id='registration_required' [checked]="addMeetingModel.isRequiredRegistration == '1'"
+							type="checkbox" name="registration_required"
+							(change)="registrationRequiredCheckBoxChanger($event.currentTarget.checked)">
+						<span class="checkmark"></span>
+					</label>
+				</div>
+			</div>
+			<!-- <div class="col-xl-6 col-md-6 col-sm-12 mt-10">
+				<div class="form-check mt-10">
+					<label class="check">Requried Registration
+						<input type="checkbox" name="Requried_Registration">
+						<span class="checkmark" style=""></span>
+					</label>
+				</div>
+			</div> -->
+			<!-- <div class="sr-only"> -->
+			<div *ngIf="false" class="col-xl-6 col-md-6 col-sm-12 mt-10">
+				<div class="form-check">
+					<label class="check ">Recurring Meeting
+						<input type="checkbox" name="Recurring_Meeting" [disabled]="true">
+						<span class="checkmark" style="cursor: not-allowed;"></span>
+					</label>
+				</div>
+			</div>
+			<div *ngIf="false" class="col-xl-6 col-md-6 col-sm-12 text-right mt-10">
+				<div class="input-group">
+					<select class="custom-select" id="inputGroupSelect01" [disabled]="true">
+						<option selected>Time Zone</option>
+						<option value="2">(GMT+05:30) Chennai, Kolkata, Mumbai</option>
+						<option value="3">(GMT+05:45) Kathmandu</option>
+						<option value="1">(GMT+06:00) Astana, Dhaka</option>
+					</select>
+				</div>
+			</div>
+			<!-- </div> -->
+		</div>
+
+		<!-- <div class="sr-only"> -->
+		<div class="row" *ngIf="false">
+			<div class="col-xl-12 ">
+				<h4 class="modal-title mb-20">{{'HostMeeting.meeting_id' | translate}}</h4>
+			</div>
+			<div class="col-xl-6 col-md-6 col-sm-12">
+				<div class="form-check">
+					<label class="radio">{{'HostMeeting.meeting_id' | translate}}
+						<input type="radio" checked="checked" name="Generate_Automatically">
+						<span class="checkround"></span>
+					</label>
+				</div>
+			</div>
+			<div class="col-xl-6 col-md-6 col-sm-12">
+				<div *ngIf="false" class="form-check">
+					<label class="radio">Personal Meeting ID: 245 876 0255
+						<input type="radio" name="Generate_Automatically" [disabled]="true">
+						<span class="checkround" style="cursor: not-allowed;"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="row hr"></div> -->
+		<div class="row mt-10">
+			<div class="col-xl-12">
+				<h4 class="modal-title" style=" font-family: Poppins;
+				font-size: 20px;
+				font-weight: 600;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 0;
+				margin-top: 5px;
+				letter-spacing: 0.26px;
+				text-align: left;
+				color: #515c6f;">{{'HostMeeting.password' | translate}}</h4>
+			</div>
+			<div class="col-xl-5 col-md-5 col-sm-12 d-flax" style="padding-right:0">
+				<div class="form-check mt-10">
+					<label class="check" style="font-family: Poppins;
+					font-size: 14px;
+					font-weight: 300;
+					font-stretch: normal;
+					font-style: normal;
+					letter-spacing: 0.18px;
+					text-align: left;
+					color: #515c6f;">{{'HostMeeting.meeting_pass_req' | translate}}
+						<input type="checkbox" checked name="Meeting_Password_Required"
+							(change)="passwordCheckBoxChanger($event.currentTarget.checked)">
+						<span class="checkmark"></span>
+					</label>
+				</div>
+			</div>
+			<div class="col-xl-7 col-md-7 col-sm-12 d-flax" style="padding-left:0;margin-left:-20px">
+				<div class="input-group" style=" width: 106%;
+				margin-left: 10px">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+					</div>
+					<input type="text" class="form-control" placeholder="{{'HostMeeting.set_pass' | translate}}"
+						[(ngModel)]="addMeetingModel.meeting_password"
+						matTooltip="{{'HostMeeting.set_pass' | translate}}" matTooltipPosition="below" >
+					<a class="icon-info"><i class="fas fa-info-circle"
+							matTooltip="{{'HostMeeting.set_pass_icon' | translate}}"></i></a>
+				</div>
+				
+			</div>
+		</div>
+		<!-- <div class="row pass">
+			<div class="col-xl-7 col-md-7 col-sm-12 d-flax" style="padding-left:0;margin: -43px 0 0  192px">
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
+					</div>
+					<input type="text" class="form-control" placeholder="{{'HostMeeting.set_pass' | translate}}"
+						[(ngModel)]="addMeetingModel.meeting_password" matTooltip="{{'HostMeeting.set_pass' | translate}}"
+						matTooltipPosition="below" >
+					
+				</div>
+				<a class="icon-info" style="position: absolute;
+				left: 295px;
+				top: 0;
+				font-size: 18px;
+				color: #F5C71C;"><i class="fas fa-info-circle"
+					matTooltip="{{'HostMeeting.set_pass_icon' | translate}}"></i></a>
+			</div>
+		</div> -->
+		<div *ngIf="false" class="row hr"></div>
+		<div *ngIf="false" class="row">
+			<div class="col-xl-12 mb-20">
+				<h4 class="modal-title">Advance Options <i class="far fa-arrow-alt-circle-down"></i> </h4>
+			</div>
+			
+
+		</div>
+		<!-- </div> -->
+	</div>
+</div>
+<div class="modal-footer" style="justify-content: center;">
+	<button type="button" class="btn btn-outline-secondary" (click)="closeDialog()"
+		matTooltip="{{'HostMeeting.cancel' | translate}}"
+		matTooltipPosition="below">{{'HostMeeting.cancel' | translate}}</button>
+	<button type="button" style="padding: .375rem 1rem;" class="btn btn-info" (click)="addMeeting()"
+		matTooltip="{{'HostMeeting.save_meeting' | translate}}"
+		matTooltipPosition="below">{{'HostMeeting.save_meeting' | translate}}</button>
+</div>
+<!-- Host Your Meeting -->

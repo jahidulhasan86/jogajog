@@ -1,0 +1,66 @@
+.meetingInfo {
+}
+.meetingInfo .header {
+	font-family: Poppins;
+	font-size: xx-large;
+	font-weight: 600;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.66;
+	letter-spacing: 0.35p;
+	text-align: center;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #FFC107;
+}
+
+.meetingInfo .close {
+	position: absolute;
+	right: 21px;
+	top: 12px;
+	cursor: pointer;
+}
+
+.meetingInfo .infoData {
+	font-family: Poppins;
+	font-size: larger;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.66;
+	letter-spacing: 0.35px;
+}
+.meetingInfo .infoData span{
+	font-weight: 600;
+}
+
+.meetingInfo .copyClipboardIcon {
+	position: absolute;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+}
+
+.meetingInfo .nameAndPassInfo,.urlInfo {
+	border: 2px solid #FFC107;
+    border-radius: 8px;
+    position: relative;
+    padding: 5px;
+}
+
+h3 {
+    margin: 0 0 10px;
+  }
+  
+  pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+  }
+
+  .cal-header{
+    background-image: linear-gradient(to bottom, #f5cf1f, #f49823) !important;
+    color: white !important;
+    font-weight: 400 !important;
+  }
+
+  .m-invited-class span {
+    color: #ff3d7f !important;
+  }

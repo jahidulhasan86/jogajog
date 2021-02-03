@@ -1,0 +1,309 @@
+.no-flex{
+    display: block !important;
+}
+.cdk-global-overlay-wrapper {
+    pointer-events: auto !important; // be able to scroll event
+    overflow-y: scroll !important;
+  .cdk-overlay-pane { 
+        width: 49%!important;   
+        max-width: 49vw !important;
+        margin: 1rem;
+        z-index: 1000; // over the overlay
+        @media #{$mobile_device} {
+            width: 100%!important;  
+            max-width: 100vw !important;
+        }
+        @media #{$tablet_device} {
+            width: 100%!important;  
+            max-width: 100vw !important;
+        }
+    }
+}
+.mat-dialog-container{
+    padding:0!important;
+    button.close{
+        font-size: $fs-26;
+        &:hover{
+            color:$btn_hover;
+        }
+    }    
+    .modal-header{
+        .sub-header-l{
+            margin: 0 auto;
+            img{
+                width:60%;
+                @media #{$mobile_device} {
+                    width:68%;
+                }
+            }
+            h1{
+                font-size: $fs-14;
+                color: $font_1;
+                line-height: 1.5;
+                margin: 0;
+            }        
+        }
+        .lt-header{
+            h1{
+                font-family: $font-secondary;
+                font-size: $fs-22;
+                color: $font_2;
+                line-height: 0em;
+            }
+            h2{
+                font-family: $font-secondary;
+                font-size: $fs-14;
+                color: $font_1;
+                line-height: normal;
+            }             
+        }
+        .lt-logo{
+            width: 85px;
+        } 
+        .offset-left-80{
+            padding-left: 162px;
+            
+            @media #{$mobile_device} {
+                padding-left: 20px;
+            }
+            @media #{$tablet_device} {
+                padding-left: 82px;
+            }
+        }
+        .offset-left-24{
+            padding-left: 24px;
+            @media #{$mobile_device} {
+                padding-left: 12px;
+            }
+            @media #{$tablet_device} {
+                padding-left: 12px;
+            }
+        }
+    }
+    .modal-body{
+        display: block;
+        a{
+            font-size: $fs-12;
+        }
+        h2.lt-text{
+            font-size: $fs-14;
+        }
+        .mat-btn-toggle{
+            display: flex;
+            background-color: #e9ecef;
+            border:1px solid #F49A22;
+            border-radius:  .25rem;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            text-align: center;
+            white-space: nowrap;
+            .mat-icon-button{
+                height:36px;
+            }
+            .mat-icon-button{
+                @include border-radius(0);
+            }
+        }
+        input.mat-input-element {
+            margin-top: 0;
+            margin-left: -1px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        svg{
+            height:20px !important;
+            width:20px !important;
+            border-radius: 0 !important;            
+        }
+        
+        h4.modal-title{
+            font-size: $fs-16;
+            color: $font_1;
+            font-weight: 600 !important;
+        }
+        .btn-lg{
+            width:150px;
+        }
+        .form-control{
+            border:1px solid $border_color;
+            height: calc(1.5em + .75rem + 3px);
+        }
+        .form-check-label1{
+            font-size: $fs-16;
+            color: $font_1;
+        }
+        .hr{
+            border-top: 2px solid $border-color3;
+            margin: 20px 0;
+        }
+        .hr-1{
+            border-top: 2px solid $border-color1;
+            margin: 20px 0;
+        }
+        .icon-info{
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: $fs-18;
+            color: $font_3;
+        }
+        .form-check {
+            padding-left: 0;
+        }
+        .input-group-text{
+            border: 1px solid $border-color;
+        }
+        /* The radio */
+        .radio {        
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: $fs-14;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+
+                &:checked ~ .checkround {
+                    background-color:$bg_white;
+                    &:after {
+                        display: block;
+                    }
+                }
+            }
+            .checkround:after {
+                left: 2px;
+                top: 2px;
+                width: 12px;
+                height: 12px;
+                @include border-radius(50%);
+                background:$bg_orange;
+            }
+        }
+        .checkround {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: $bg_white ;
+            border-color:$bg_orange;
+            border-style:solid;
+            border-width:2px;
+            border-radius: 50%;
+
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+        }
+        /* The check */
+        .check {
+            display: block;
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            padding-right: 15px;
+            cursor: pointer;
+            font-size: $fs-12;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+
+                &:checked ~ .checkmark {
+                    background-color: $bg_white;
+                
+                    &:after {
+                        display: block;
+                    }
+                }
+            }
+            .checkmark:after {
+                left: 5px;
+                top: 1px;
+                width: 5px;
+                height: 10px;
+                border: solid ;
+                border-color:$bg_orange;
+                border-width: 0 3px 3px 0;
+                @include transform(rotate(45deg));
+            }
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: $bg_white ;
+            border-color: $bg_orange;
+            border-style:solid;
+            border-width:2px;
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+            }
+        }
+        img{
+            margin: 0 auto;
+        }
+    }
+    .modal-footer{
+        justify-content: left;
+        a{
+            font-weight: 500;
+            font-size: $fs-14;
+        }
+        button{
+            padding: .375rem 3rem;
+        }
+    }
+    @media #{$mobile_device} {
+        .vr-border{
+            display: none;
+        }
+        .hr-border{
+            width: 100%;
+            border-top:2px solid $border-color2;
+            margin-top: 20px;
+            text-align: center;
+            .or-wrap{
+                width: 30px;
+                margin: 0 auto;                
+                background: $bg_white;
+                .or{
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin-top: -11px;
+                }
+            }
+        }    
+        
+    }    
+}
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: 700px;
+    }
+    .hr-border{
+        display: none;
+    }
+}

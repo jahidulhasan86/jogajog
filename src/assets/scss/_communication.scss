@@ -1,0 +1,142 @@
+.communication_area{
+    margin-bottom: 40px;
+    .section_title{
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+        %header-shared{
+            font-family: $font-primary;
+            font-size: $fs-28;
+        }
+        h1{
+            @extend %header-shared;
+            color: $font_1;
+            font-weight: 500;
+            text-transform: uppercase;
+            @media #{$mobile_device} {
+                font-size: $fs-26;
+            }
+            @media #{$tablet_device} {
+                font-size: $fs-26;
+            }
+        }
+        h2{
+            @extend %header-shared;
+            color: $font_2;
+            font-weight: 600;
+            text-transform: uppercase;
+            @media #{$mobile_device} {
+                font-size: $fs-26;
+            }
+            @media #{$tablet_device} {
+                font-size: $fs-22;
+            }
+        }
+    }
+    .communication_main{
+        width: 100%;
+        padding: 20px;
+        border: 1px solid $border_color;
+        @include border-radius(10px);
+
+        .video_card{
+            display: flex;
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+        
+        .owl-theme .owl-dots .owl-dot span {
+            width: 20px;
+            height: 20px;
+        }
+        .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+            @include linearGradient-tb($btn_hover1, $btn_hover);
+        }
+        .btn-control{
+            position: relative;
+            bottom: 100px;
+            margin: 0 auto;
+            z-index: 99;
+            %bg-icon-shared{
+                display: inline-block;
+                width: 32px;
+                height: 32px;
+                margin: 3px;
+            }
+            .bg-icon{
+                @extend %bg-icon-shared;
+                @include border-radius(50%);
+                @include linearGradient-tb($btn_hover1, $btn_hover);
+            }
+            .bg-w-icon{                
+                @extend %bg-icon-shared;
+                @include border-radius(50%);
+                background-color: $bg_white;
+            }
+            .bg-r-icon{                
+                @extend %bg-icon-shared;
+                @include border-radius(50%);
+                background-color: #FF4848;
+            }
+        }
+        .text_card{
+            width: 100%;
+            margin-top: -28px;
+            text-align: center;
+            h4{
+                font-family: $font-secondary;
+                font-size: $fs-18;
+                font-weight: 600;
+                color: $font_1;
+                @media #{$mobile_device} {
+                    font-size: $fs-16;
+                }
+            }
+        }
+        .jag_apps_icon{
+            color:$font_7;
+    
+            .items_icon{
+                margin:0 auto;
+                height: 50px;
+                width: 50px;
+                padding: 5px;
+                @include linearGradient-tb($btn_hover1, $btn_hover);
+                @include border-radius(50%);
+                img {
+                    display: block;
+                    margin: auto;
+                    width: 25px;
+                    padding-top: 8px;
+                }
+            }
+            h2{
+                font-family: $font-secondary;
+                font-size: $fs-14;
+                font-weight: 600;
+                color: $font_2;
+                text-align: center;
+                margin: 0;
+                @media #{$mobile_device} {
+                    font-size: $fs-12;
+                }
+            }
+            h4{
+                font-family: $font-secondary;
+                font-size: $fs-20;
+                font-weight: 600;
+                color: $font_1;
+                @media #{$mobile_device} {
+                    font-size: $fs-16;
+                }
+            }
+        }
+        .hr{
+            border: 1px solid $border_color1;
+            margin: 20px;
+        }
+    }
+}

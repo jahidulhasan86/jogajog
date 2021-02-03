@@ -1,0 +1,10 @@
+{
+	"ChatRoomBox":{
+		"nothing_discuss_yet": "Discussion has not been started yet.",
+		"is_typing": " is typing",
+		"click_toshow_better_resulation": "Click to show better resolution",
+		"download": "Download",
+		"send": "Send",
+		"type_message": "Type a message"
+	}
+}

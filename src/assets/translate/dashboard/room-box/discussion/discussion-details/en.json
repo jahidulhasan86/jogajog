@@ -1,0 +1,10 @@
+{
+	"DiscussionDetails":{
+		"attachments": "attachment(s)",
+		"replay_thread": "Reply to this Thread",
+		"previous": "Previous",
+		"next": "Next",
+		"back": "Back",
+		"send": "Send"
+	}
+}

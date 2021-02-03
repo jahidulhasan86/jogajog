@@ -1,0 +1,268 @@
+<ngx-spinner color="#f49823" type="ball-clip-rotate-pulse" size="medium" [fullScreen]="true">
+	<p style="color: white;">Please Wait..</p>
+</ngx-spinner>
+<div style="background-color: white; padding:3%">
+	<div class="room shadow-sm">
+		<div class="row">
+			<span matTooltip="{{'CreateRoom.back_list' | translate}}" [routerLink]="['/dashboard/room-box']"
+				class="backIcon" style="cursor: pointer;">
+				<img src="../../../../assets/images/rom-box/back.svg" alt="">
+			</span> &nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="room-info">
+				<span class="create-room">{{'CreateRoom.create_new_room' | translate}}</span><br />
+				<span class="room-details">{{'CreateRoom.room_details' | translate}}</span>
+			</span>
+			<div class="col-sm-12">
+				<div class="col-sm-12">
+					<hr>
+				</div>
+			</div>
+		</div>
+		<div style="padding: 2%;">
+			<div class="row">
+				<div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7">
+					<mat-checkbox class="example-margin" [(ngModel)]="auto_recording">{{'CreateRoom.record_meeting' |
+						translate}}</mat-checkbox>
+				</div>
+				<div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+					<mat-checkbox class="example-margin" [(ngModel)]="publicRoom" (change)="publicSelected($event)">
+						{{'CreateRoom.public' | translate}}</mat-checkbox>&nbsp;
+					<mat-checkbox *ngIf="selected" class="example-margin" [(ngModel)]="isRoomHidden">
+						{{'CreateRoom.hidden' | translate}}</mat-checkbox>&nbsp;
+					<mat-checkbox class="example-margin" *ngIf="selected" [(ngModel)]="participantHidden">
+						{{'CreateRoom.participants_hidden' | translate}}</mat-checkbox>&nbsp;
+				</div>
+			</div>
+			<div class="row">
+				<div [ngStyle]="bnEnLanguageCheck == 'bn' ? {'font-size': '15px'} : {'font-size': '20px'}"
+					style="line-height: 2;" class="col-sm-2 room-name">
+					{{'CreateRoom.room_name' | translate}}
+				</div>
+				<div class="col-sm-4" style="padding:0;">
+					<input [(ngModel)]="roomBoxName" class="input-text" type="text">
+				</div>
+				<div [ngStyle]="bnEnLanguageCheck == 'bn' ? {'font-size': '15px'} : {'font-size': '20px'}"
+					class="col-sm-2 room-name" style="line-height: 2">
+					{{'CreateRoom.host_name' | translate}}
+				</div>
+				<div class="col-sm-4" style="padding:0;">
+					<input [(ngModel)]="sessionUserName" disabled class="input-text" type="text">
+				</div>
+				<div class="col-sm-12" style="padding-right: 0;">
+					<hr>
+				</div>
+			</div>
+
+			<div class="row">
+				<div [ngStyle]="bnEnLanguageCheck == 'bn' ? {'font-size': '15px'} : {'font-size': '20px'}"
+					style="line-height: 2;" class="col-sm-2 room-name">
+					{{'CreateRoom.invite_people' | translate}}
+				</div>
+				<div class="col-sm-10" style="padding: 0;">
+
+					<mat-form-field class="example-chip-list pemail"
+						style="width: 100%; background-color: white;padding:0% 20% 0% 2% ">
+						<mat-chip-list #chipList aria-label="participants selection" style="outline: 0; border:none;">
+							<mat-chip id="{{i}}" *ngFor="let participant of participantModel ; let i=index"
+								[selectable]="selectable" [removable]="removable" (removed)="remove(participant)">
+								{{participant.email}}
+								<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+							</mat-chip>
+							<mat-chip id="count" *ngIf="participantModel.length>=2 && showPreview"
+								[selectable]="selectable" [removable]="removable" (removed)="remove(participant)">
+								+ {{(participantModel.length -2)}} more..
+							</mat-chip>
+							<input placeholder="" [disabled]="disabled" [matChipInputFor]="chipList"
+								[matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+								(matChipInputTokenEnd)="add($event)">
+						</mat-chip-list>
+
+					</mat-form-field>
+
+
+
+					<span id="show_hide" class="add-icon">
+						<span>
+							<img src="../../../../assets/images/rom-box/Mask Group 9.png" alt="addIconImage">
+							&nbsp;<span style="color: orange;">{{'CreateRoom.add_people' | translate}}</span>
+						</span>
+					</span>
+
+					<div id="toggle_participants_list">
+						<div class="select-participants">
+							{{'CreateRoom.select_multiple_participants' | translate}}
+						</div>
+						<div class="grid-container">
+							<div class="grid-item" *ngFor="let user of userObj index as i" style="margin-left:10%">
+								<div style="width: 50%; float: left;">
+									<mat-checkbox [(ngModel)]="user.isChecked" class="example-margin {{user.email}}"
+										(change)="OnChange($event.checked, user, false)">
+										{{user.email}}</mat-checkbox>
+								</div>
+
+								<div>
+									<mat-checkbox class="example-margin {{user.email}}"
+										(change)="OnChange($event.checked, user, true)" [(ngModel)]="user.host"
+										[disabled]="!user.isChecked">
+										Meeting Host
+									</mat-checkbox>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row btn-container">
+				<div class="col-sm-12" style="padding-right: 0;">
+					<hr id="hr-margin">
+				</div>
+				<div class="col-sm-12" style="text-align: center; padding-bottom: 1%; margin-top:2%;">
+
+					<button [ngStyle]="bnEnLanguageCheck =='bn' ? {'width': '28%'} : {'width': '183px'}"
+						class="reset-btn" (click)="resetField()">{{'CreateRoom.reset' | translate}}</button> &nbsp;
+					<button [ngStyle]="bnEnLanguageCheck =='bn' ? {'width': '28%'} : {'width': '183px'}"
+						class="confirm-now" (click)="_addRoomIntoBox()">{{'CreateRoom.confirm_now' |
+						translate}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div style="background-color: white; padding:3%">
+	<div class="room shadow-sm">
+		<div style="padding: 2%;">
+			<span matTooltip="{{'CreateRoom.back_list' | translate}}" [routerLink]="['/dashboard/room-box']" class="" style="cursor: pointer;">
+				<img src="../../../../assets/images/rom-box/back.svg" alt="">
+			</span>
+
+			<div class="border-bottom room-info">
+				<div class="create-room">{{'CreateRoom.create_new_room' | translate}}</div>
+				<div class="room-details">{{'CreateRoom.room_details' | translate}}</div>
+			</div>
+			<div style="position: absolute;
+			line-height: 1;
+			left: 10%;
+			top: 165px;
+			font-size: 22px;
+			font-family: PoplinsMedium
+			"> 
+					<mat-checkbox class="example-margin" [(ngModel)]="auto_recording" style="float:left; margin-top: 10px; padding-right:10px;">{{'CreateRoom.record_meeting' | translate}}</mat-checkbox>
+		</div>
+
+			 <div style="position: absolute;
+			line-height: 1;
+			left: 65%;
+			top: 165px;
+			font-size: 22px;
+			font-family: PoplinsMedium
+			"> 
+					
+					<mat-checkbox class="example-margin" *ngIf = "selected" [(ngModel)]="participantHidden" style="float:right; margin-top: 10px; padding-right:10px;">{{'CreateRoom.participants_hidden' | translate}}</mat-checkbox>
+					
+					<mat-checkbox *ngIf= "selected" class="example-margin" [(ngModel)]="isRoomHidden" style="float:right; margin-top: 10px;padding-right:10px;">{{'CreateRoom.hidden' | translate}}</mat-checkbox>
+					<mat-checkbox class="example-margin" [(ngModel)]="publicRoom" style="float:right; margin-top: 10px;padding-right:10px;" (change)="publicSelected($event)">{{'CreateRoom.public' | translate}}</mat-checkbox>	
+			</div> 
+
+			 
+			
+			<div style="margin-left: 18px;margin-top: 28px;">
+				<div class="row border-bottom row-pad ">
+					<div [ngStyle]="bnEnLanguageCheck == 'bn' ? {'font-size': '15px'} : {'font-size': '22px'}" style="line-height: 2;" class="col-sm-2 room-name">
+						{{'CreateRoom.room_name' | translate}}
+					</div>
+					<div class="col-sm-4">
+						<input [(ngModel)]="roomBoxName" class="input-text" type="text">
+					</div>
+					<div [ngStyle]="bnEnLanguageCheck == 'bn' ? {'font-size': '15px'} : {'font-size': '22px'}" class="col-sm-2 room-name" style="padding-left:15px;padding-right:15px;line-height: 2">
+						{{'CreateRoom.host_name' | translate}}
+					</div>
+					<div class="col-sm-4">
+						<input [(ngModel)]="sessionUserName" disabled class="input-text" type="text">
+					</div>
+				</div>
+				<div class="row row-pad">
+					<div [ngStyle]="bnEnLanguageCheck == 'bn' ? {'font-size': '15px'} : {'font-size': '22px'}" style="line-height: 2;" class="col-sm-2 room-name">
+						{{'CreateRoom.invite_people' | translate}}
+					</div>
+					<div class="col-sm-10">
+
+						<mat-form-field class="example-chip-list pemail"
+							style="width: 100%; background-color: white;padding:0% 20% 0% 2% ">
+							<mat-chip-list #chipList aria-label="participants selection" style="outline: 0; border:none;">
+								<mat-chip id="{{i}}" *ngFor="let participant of participantModel ; let i=index"
+									[selectable]="selectable" [removable]="removable" (removed)="remove(participant)">
+									{{participant.email}}
+									<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+								</mat-chip>
+								<mat-chip id="count" *ngIf="participantModel.length>=2 && showPreview"
+									[selectable]="selectable" [removable]="removable" (removed)="remove(participant)">
+									+ {{(participantModel.length -2)}} more..
+								</mat-chip>
+								<input placeholder="" [disabled]="disabled" [matChipInputFor]="chipList"
+									[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+									[matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+							</mat-chip-list>
+							
+						</mat-form-field>
+
+					
+					
+						<span id="show_hide" class="add-icon">
+							<span>
+								<img src="../../../../assets/images/rom-box/Mask Group 9.png" alt="addIconImage">
+								&nbsp;<span style="color: orange;">{{'CreateRoom.add_people' | translate}}</span>
+							</span>
+						</span>
+
+						<div id="toggle_participants_list">
+							<div class="select-participants">
+								{{'CreateRoom.select_multiple_participants' | translate}}
+							</div>
+							<div class="grid-container">
+								<div class="grid-item " *ngFor="let user of userObj" style="margin-left:10%">
+									<mat-checkbox [(ngModel)]="user.isChecked" class="example-margin {{user.email}}"
+										(change)="OnChange($event.checked, user)">
+										{{user.email}}</mat-checkbox>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="btn-container" style="text-align: center; padding-bottom: 2%; margin-top:5%;">
+				<hr id="hr-margin">
+				<button [ngStyle]="bnEnLanguageCheck =='bn' ? {'width': '28%'} : {'width': '183px'}" class="reset-btn" (click)="resetField()">{{'CreateRoom.reset' | translate}}</button> &nbsp;
+				<button [ngStyle]="bnEnLanguageCheck =='bn' ? {'width': '28%'} : {'width': '183px'}" class="confirm-now" (click)="_addRoomIntoBox()">{{'CreateRoom.confirm_now' | translate}}</button>
+			</div>
+		</div>
+	</div>
+</div> -->

@@ -1,0 +1,14 @@
+{
+    "RoomBox":{
+		"rooms": "Rooms",
+		"please_wait": "Please Wait..",
+		"my_rooms": "My Rooms",
+		"hosted_by": "Hosted By: ",
+		"back_home": "Back to Home",
+		"invited_rooms": "Invited Rooms",
+		"delete": "Delete",
+		"public_rooms" : "Public Rooms",
+		"add_a_public_room" : "Add a Public Room"
+	}
+
+}

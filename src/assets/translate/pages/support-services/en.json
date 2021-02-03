@@ -1,0 +1,47 @@
+{
+	
+	"SupportServices":
+	{
+		"support_service": "Support & Services",
+		"support_center": "Support Center",
+		"community_feedback": "Community Feedback",
+		"privacy_security": "Privacy & Security",
+		"24hour_support": "24 / 7 Customer Support",
+		"24hour_support_text_BACKUP":"Protect Together strives for uninterrupted service to our clients with our 24/7 Support center. Please email us or submit issues via the following form to contact us.",
+		"24hour_support_text":"Jagajag is committed to uninterrupted service for  our clients, with our 24/7 Support center. Please email us or submit issues via the following form to contact us.",
+		"live_chat": "Live Chat",
+		"live_chat_text_en": "Please go to jagajag.com/support to join our chat room.",
+		"live_chat_text_bn": "Please go to jogajog.com/support to join our chat room.",
+		"live_training": "Live Training",
+		"live_training_text": "If you would like live training for our services, please contact us here. Our experts host free and interactive live training webinars daily. Get a better view of our product and services in less than an hour. Please select the time zone that fits best for you when registering for one of our live training webinars."
+	},
+	"CommuntyFeedback":
+	{"community_feedback_text": "Please fill up the below form to provide us feedback on our services. We will try our best to accommodate your concern.",
+		"community_feedback_text1": "Please",
+		"community_feedback_text2": "click here",
+		"community_feedback_text3": "to provide us feedback on our services. We will try our best to accommodate your concern."
+
+	},
+
+	"PrivacySecurity":{
+		"privacy_security_text":"Jagajag and Protect Together is committed to protecting your privacy. This Privacy Policy explains our practices regarding the collection, use, disclosure, and protection of information that is collected through our mobile app and our website (collectively, our “Service”), as well as your choices regarding the collection and use of information.",
+		"personal_info": "Personal Information",
+		"personal_info_text1": "We collect personal information for a variety of reasons, such as processing your order, sending marketing communications, sending alert notifications, or personalizing your experience.",
+		"personal_info_text2": "We will inform you of the purpose for collecting personal information when we collect it from you and keep it to fulfill the purposes for which it was collected or as required by applicable laws or for legitimate purposes.",
+		"personal_info_text3": "Read More",
+		"notice_add": "Notice and your choices of data use",
+		"notice_add_text1": "We will use your personal information for the purpose it was collected and will not use it for a different purpose without first asking for your permission.",
+		"notice_add_text2": "We will ask your permission before we share your personal information with third parties for any purpose other than the reason you provided it.",
+		
+		"mode_place": "Mode and place of processing the data",
+		"place": "Place",
+		"place_text": "The Data is processed at our operating offices and in any other places where the parties involved with the processing are located. For further information, please contact us",
+		"rentation_time": "Retention time",
+		"rentation_time_text": "The Data is kept for the time necessary to provide the service requested by the User, or stated by the purposes outlined in this document, and the User can always request that we suspend or remove the data.",
+		"enforcement": "Questions",
+		"enforcement_text": "If you have any questions about this Privacy Policy, please contact us at ",
+		"enforcement_text2": " tech@protect2gether.com"
+
+	}
+
+}

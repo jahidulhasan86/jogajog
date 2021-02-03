@@ -1,0 +1,162 @@
+.btnSchedule{
+    cursor: pointer;
+    border: 1px solid #ff4848;
+    color: #ff4848;
+    margin-left: 10px;
+    width: 165px;
+}
+
+.btnLiveMeeting{
+    cursor: pointer;
+    border: 1px solid #ff4848;
+    background-color:  #ff4848;
+    color: white;
+    margin-left: 10px;
+    width: 165px;
+}
+
+hr.hrule {
+    border-top: 1px solid #ffba09 !important;
+    width: 80vw;
+    margin-left: 27px;
+  }
+
+  hr.l-box-hr{
+    // border-top: 1px solid #ffba09 !important;
+    width: inherit;
+    // margin-left: 20px;
+    // margin-top: 23px;
+    box-shadow: 0px 1px 23px 1px rgba(138, 138, 138, 0.1);
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  hr.chat-box-hr{
+    width: inherit;
+    box-shadow: 0px 1px 23px 1px rgba(138, 138, 138, 0.1);
+
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .l-box{
+    // min-height: 60vh;
+    box-shadow: 0px 1px 23px 1px rgba(138, 138, 138, 0.1);
+    background-color: white;
+    padding: 15px;
+    // overflow-y: auto;
+    // width: 450px;
+  }
+
+  .r-box{
+    //   margin-left: 25px;
+    //   width: 630px;
+    // overflow-y: auto;
+  }
+  .r-box.col-sm-12{
+      margin-top: 15px;
+      margin-bottom: 15px;
+  }
+  .room-name{
+    font-family: "PoplinsRegular";
+}
+.host-name{
+    font-family: "PoplinsMedium";
+    margin-left: 5px;
+}
+.chat-room-name{
+    font-family: "MontserratBold";
+    font-size: 19px;
+    display: block;
+    margin-top: 5px;
+}
+
+.participant-name{
+    font-family: "MontserratBold";
+}
+  .participant-email,.contact{
+    font-family: "LatoRegular";
+  }
+
+  .chat-room-sname{
+      color: #333333;
+      font-family: "MontserratRegular";
+  }
+
+  .chat-box{
+    margin-top: 15px;
+    box-shadow: 0px 1px 23px 0px rgba(138, 138, 138, 0.1);
+    background-color: #ffffff;
+    height: 410px;
+  }
+  .chat-box-header{
+      text-align: center;
+      
+  }
+
+  .container1{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+.navbar-toggler{
+    z-index: 99999999999;
+    background-color: gold;
+    position: relative;
+    top: -85px;
+    left: 90%;
+}
+
+#k{
+    z-index: 999999;
+    margin-left: 65%;
+    margin-top: -88px;
+    /* background-image: linear-gradient(to bottom, #f5cf1f, #f49823); */
+    background-color: rgb(0 0 0 / 27%);
+}
+
+.btn-normal{
+  width: 163px;
+    height: 35px;
+    border-radius: 30px;
+    border: 1px solid #f49a22;
+    color: #f49a22;
+}
+.btn-primary{
+  color: white !important;
+}
+
+#chatBadge {
+  background-color: red;
+  color: white;
+  border-radius: 11px;
+  position: relative;
+  left: 97px;
+  top: 10px;
+  width: 25px;
+  text-align: center;
+}
+
+.l-box::-webkit-scrollbar {
+  display: none;
+}
+
+.l-box {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+
+.chat-box::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+.chat-box {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+
+:host ::ng-deep .mat-badge {
+  position: unset;
+}

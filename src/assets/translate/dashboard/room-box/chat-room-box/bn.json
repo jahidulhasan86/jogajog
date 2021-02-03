@@ -1,0 +1,10 @@
+{
+	"ChatRoomBox":{
+		"nothing_discuss_yet": "আলোচনা এখনো শুরু হয় নি",
+		"is_typing": " টাইপ করছে",
+		"click_toshow_better_resulation": "ভাল রেজোলিউশনে দেখার জন্য ক্লিক করুন",
+		"download": "ডাউনলোড",
+		"send": "সেন্ড",
+		"type_message": "মেসেজ টাইপ করুন"
+	}
+}

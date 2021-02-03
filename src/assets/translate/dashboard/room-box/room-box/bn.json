@@ -1,0 +1,14 @@
+{
+    "RoomBox":{
+		"rooms": "রুম",
+		"please_wait": "অনুগ্রহপূর্বক অপেক্ষা করুন..",
+		"my_rooms": "আমার রুম",
+		"hosted_by": "আয়োজক: ",
+		"back_home": "হোমে ফিরে যান",
+		"invited_rooms": "আমন্ত্রিত রুম",
+		"delete": "মুছুন",
+		"public_rooms" : "পাবলিক রুম",
+		"add_a_public_room" : "একটি পাবলিক রুম যোগ করুন"
+	}
+
+}

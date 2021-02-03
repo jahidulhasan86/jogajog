@@ -1,0 +1,88 @@
+<ngx-spinner color = "#f49823" type = "ball-clip-rotate-pulse" size="medium" [fullScreen] = "false"   ><p style="color: white;">Please Wait..</p></ngx-spinner>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 1%;margin-bottom: 2%;">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+               <span class="recording-list"> {{'Recording.recording_list' | translate}}</span>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div class="input-group">
+                            <input id="myInputSearch" type="text" class="form-control search_input" placeholder="{{'MENU.search_placeholder' | translate}}" aria-label="Search..."
+                                aria-describedby="button-addon2" (keyup)="searchByName()">
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="button" id="button-addon2">{{'MENU.search_btn' | translate}}</button>
+                            </div>
+                        </div>
+            </div>
+        </div>
+   
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <div class="row">
+                            <!-- <div class="col-lg-6 col-md-12">
+                                <h4 class="card-title">Reco</h4>
+                                <p class="card-category">Showing Data For Last {{daySelected}} days</p>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <input [(ngModel)]="meetingFilter.meeting_name" style="width: 321px;float: right;outline: white;color: white;padding: 10px;border-color:white; border: none !important;box-shadow: none !important;
+                                background-image: linear-gradient(to top, #fafafa 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);" placeholder="Search by name / owner / initiator.." class="form-control">
+                            </div> -->
+                        </div>                       
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table id="rptTable" class="table table-hover">
+                            <thead class="text-warning">
+                                <tr>
+                                    <th>{{'Recording.name' | translate}}</th>
+                                    <th>{{'Recording.initiator' | translate}}</th>
+                                    <th>{{'Recording.start_time' | translate}}</th>
+                                    <th>{{'Recording.end_time' | translate}}</th>
+                                    <th>{{'Recording.status' | translate}}</th>
+                                    <!-- <th>Participants</th> -->
+                                  </tr>
+                        
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let rec of recordingList">
+                                    <td>{{rec.name}}</td>
+                                    <td>{{rec.created_by}}</td>
+                                    <td>{{rec.start_time | date: 'MMM d, y, h:mm:ss a'}}</td>
+                                    <td>{{rec.end_time | date: 'MMMM d, y, h:mm:ss a'}}</td>
+									<td>{{rec.status}}</td>
+									<td style="cursor: pointer;" matTooltip="{{'Recording.play_recording' | translate}}"
+									class="participants_details">
+										<a [href]=rec.url target="_blank">{{'Recording.play' | translate}}</a>
+									</td>
+                                    <!-- <td style="cursor: pointer;" (click)="showParticipantDetails(alog.participants)" title="Click to view details."
+                                        class="participants_details">{{alog.participants.length}}</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .participants_details {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+        text-align: center;
+    }
+    /* ::placeholder {
+        color: white !important;
+        opacity: 1; 
+        } */
+
+    /* :-ms-input-placeholder {
+    color: white !important;
+    } */
+
+    /* ::-ms-input-placeholder {
+    color: white !important;
+    } */
+</style>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../app/core/components/generate-link/generate-link.component.scss"
+    ],
+    "names": [],
+    "file": "generate-link.component.css"
+}

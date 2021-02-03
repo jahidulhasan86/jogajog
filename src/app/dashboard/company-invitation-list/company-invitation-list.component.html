@@ -1,0 +1,34 @@
+<div>
+	<!-- <div style="text-transform: uppercase;
+    font-size: 85%;
+    font-weight: 700;
+    color: #84929f;
+    padding: 0.5rem 1rem;">
+		 {{ 'CompanyInvitationList.company_notifications' |translate}}
+	</div> -->
+	<div id="comInvID" [hidden]="notifications?.length != 0" style="text-align: center; color: gray; padding: 5% 0% 5% 0%;">{{ 'CompanyInvitationList.no_invitation_received' |translate}}</div>
+	<div style="background: #f3f9fd;
+    padding: 5%; border-top: 1px solid rgba(0, 0, 0, 0.1);" *ngFor="let companyInvitation of notifications">
+		<div style="float: left; width: 75%;">
+			<div style="font-size: 13px; white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;" title="Company Name: {{companyInvitation.data.company_name}}">Company Name : {{companyInvitation.data.company_name}} <br> <span style="font-size: 12px;">{{ 'CompanyInvitationList.invited_by' |translate}}: {{companyInvitation.data.inviter_user_name}}</span>
+</div>
+			<!-- <br> -->
+			<!-- <span style="font-size: 12px;">{{ 'CompanyInvitationList.invited_by' |translate}}: {{companyInvitation.data.inviter_user_name}}</span> -->
+		</div>
+		<div>
+			<button style="background: white;
+			border: 1px solid #F49A22;
+			border-radius: 8px;
+			margin-right: 2%;
+			color: #F49A22;
+			padding: 0 3% 0 3%;" (click)="acceptCompanyInvitation(companyInvitation)">{{ 'CompanyInvitationList.accept' |translate}}</button>
+			<!-- <button style="background: white;
+			border: 1px solid #F49A22;
+			border-radius: 8px;
+			color: #F49A22;
+			padding: 0 3% 0 3%;" (click)="declineCompanyInvitation(companyInvitation)">Reject</button> -->
+		</div>
+	</div>
+</div>

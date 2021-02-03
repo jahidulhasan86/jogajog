@@ -1,0 +1,20 @@
+{
+	"CreateRoom":{
+		"create_new_room": "নতুন রুম তৈরি করুন",
+		"room_details": "রুম তৈরি করার জন্য বিস্তারিত তথ্য দিন",
+		"room_name": "রুমের নাম",
+		"host_name": "আয়োজকের নাম",
+		"invite_people": "অংশগ্রহণকারীদের আমন্ত্রণ জানান",
+		"add_people": "অংশগ্রহণকারী যোগ করুন",
+		"select_multiple_participants": "একাধিক অংশগ্রহণকারী বাছাই করুন",
+		"reset": "নতুন করে সেট করুন",
+		"confirm_now": "এই ফর্ম এর তথ্য জমা দিন",
+		"back_list": "লিস্ট এ ফিরে যান",
+		"hidden": "গোপন",
+		"public": "পাবলিক",
+		"participants_hidden": "অংশগ্রহণকারীদের হাইড করুন",
+		"private" : "",
+		"record_meeting": "রেকর্ড মিটিং"
+		
+	}
+}

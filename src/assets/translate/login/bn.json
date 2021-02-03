@@ -1,0 +1,26 @@
+{
+	"LOGIN": {
+		"logo_text": "যোগাযোগ",
+		"title_text": "সংযোগ - সদা, সর্বত্র, নিরাপদে",
+		"login_text": " আপনার অ্যাকাউন্টে লগ ইন করুন",
+		"guest_login_text": "অতিথির তথ্যাবলি",
+		"guest_display_name_text": "এখানে আপনার প্রদর্শনের নাম লিখুন",
+		"email_placeholder": "নিরাপত্তাজনিত কারনে মিটিং এ প্রবেশের আগেই আপনার ইমেইল এখানেই নিবন্ধন করুন",
+		"userid_placeholder": "এখানে আপনার আইডি টাইপ করুন",
+		"password_placeholder": " এখানে আপনার পাসওয়ার্ড টাইপ করুন",
+		"checkbox_text": "পাসওয়ার্ড মনে রাখুন",
+		"forget_password": "পাসওয়ার্ড ভুলে গেছেন?",
+		"alternative_login": "অথবা",
+		"register_btn": "রেজিস্টার করুন",
+		"login_btn": "লগ-ইন",
+		"cancel": "বাতিল করুন",
+		"google_signin": "জিমেইলের মাধ্যমে লগ-ইন",
+		"fb_signin": "ফেসবুকের মাধ্যমে লগ-ইন",
+		"guest_displayname_placeholder": "মিটিং এ আপনার প্রদর্শিত নাম এখানে লিখুন",		
+		"email_invalid" : "একটি বৈধ ইমেইল ঠিকানা প্রদান করুন",
+		"join_as_guest" : "অতিথি হিসেবে যোগদান করুন",
+		"join_as_register_user" : "রেজিস্টার্ড ইউজার হিসেবে যোগদান করুন",
+		"join_as_guest_info": "আপনি যদি রেজিস্টার না করতে চান",
+		"join_as_register_user_info": "আপনি যদি আগেই রেজিস্টার করে থাকেন অথবা রেজিস্টার করতে চান"
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"LOGIN": {
+		"logo_text": "Jagajag",
+		"title_text": "One Stop Communications",
+		"login_text": "Login to Your Account",
+		"guest_login_text": "Guest Info",
+		"guest_displayname_placeholder": "Enter the name you would like to be displayed for you",
+		"email_placeholder": "Enter your email address here for security reasons",
+		"userid_placeholder": "Enter your user name",
+		"password_placeholder": "Enter your password",
+		"checkbox_text": "Keep me logged in",
+		"forget_password": "Forgot Password?",
+		"alternative_login": "OR",
+		"register_btn": "Register",
+		"login_btn": "Login Here",
+		"cancel": "Cancel",
+		"google_signin": "Sign in with Gmail",
+		"fb_signin": "Sign in with Facebook",
+		"email_invalid" : "Please provide a valid email address",
+		"join_as_guest" : "Join as  Guest",
+		"join_as_register_user" : "Join as Registered User",
+		"join_as_guest_info": "If you do not want to register as a Jogajog user now",
+		"join_as_register_user_info": "If you are already registered, or would like to register"
+
+	}
+}

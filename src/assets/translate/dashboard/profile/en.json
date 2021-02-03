@@ -1,0 +1,32 @@
+{
+	"Profile": {
+		"enter_current_password": "Enter current password",
+		"confirm_your_current_password_first": "*Confirm your current password first",
+		"confirm_with_new_password": "*Confirm with new password",
+		"enter_new_password": "Enter new password",
+		"confirm_password": "Confirm Password",
+		"update": "Update",
+		"upate_password": "Update Password",
+		"close": "close",
+		"profile": "Profile",
+		"name":"Name",
+		"first_name": "First Name",
+		"last_name": "Last Name",
+		"email": "Email",
+		"password": "Password",
+		"address": "Address",
+		"contact": "Contact",
+		"gender": "Gender",
+		"male": "Male",
+		"female": "Female",
+		"others": "Others",
+		"birth_date": "Birth date",
+		"enter_your_birth_date": "Enter your bith day",
+		"enter_your_address": "Enter your address",
+		"enter_your_phone_number": "Enter your phone number",
+		"enter_your_first_name": "Enter your first name",
+		"enter_your_last_name": "Enter your last name",
+		"update_password": "Update Password"
+		
+	}
+}

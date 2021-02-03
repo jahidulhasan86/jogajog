@@ -1,0 +1,20 @@
+{
+	"RoomConfig":{
+		"onestop_comm": "One Stop Communications",
+		"join_meeting": "Join A Meeting",
+		"meeting_id": "Meeting ID / Personal Link",
+		"meeting_id_req": "Meeting ID is required",
+		"meeting_pass": "Meeting Password (Optional)",
+		"meeting_paswd": "Meeting Password (Optional)",
+		"name": "Your Name",
+		"guest_display_name": "Guest Name",
+		"name_req": "Name is required",
+		"join_now": "Join Now",
+		"cancel" : "Cancel",
+		"meeting_id_not_valid" : "Meeting ID is not valid",
+		"video_device_not_found": "Oops! Camera device not found",
+		"video_off": "Video OFF",
+		"speaker_off":"Speaker OFF",
+		"screen_share_off": "Screen Share OFF"
+	}
+}

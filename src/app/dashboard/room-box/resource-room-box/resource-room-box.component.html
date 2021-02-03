@@ -1,0 +1,239 @@
+
+<ngx-spinner color="#f49823" type="ball-clip-rotate-pulse" size="medium" [fullScreen]="true">
+  <p style="color: white;">{{'ResourceRoomBox.please_wait' | translate }}</p>
+</ngx-spinner>
+
+<div class="containerx shadowxl" style="background-color: white">
+  <div class="share-res-header" style="width: 96%;">
+    <div class="" style="color: #000000a8;padding: 1px;">
+      <div class="resHeader" style="font-weight: 500;padding-bottom: 2%; font-size: 17px;margin-top: 15px;width: 100%;">
+        
+        <span *ngIf="currentType === 'all' " style="float: right;margin-top: -14px;" [matMenuTriggerFor]="usermenu">
+          <label for="file_picker_shared" style="display: inline;">
+            <i id="attachmentFromShared" style="cursor: pointer;">
+              <img class="add-file" name="MyImage" matTooltip="{{'ResourceRoomBox.add_file_link' | translate }}"
+                (mouseover)="onMouseOver()" (mouseout)="onMouseOut()" src="{{imgSrc}}" alt="Files Icon"
+                (click)="addFile()">
+            </i>
+          </label>
+          <!-- <input id="file_picker_shared" type="file" multiple ngModel (change)="getFiles($event);"
+            style="display: none;" /> -->
+        </span>
+
+        <span *ngIf="currentType === 'images' " style="float: right;margin-top: -14px;">
+          <label for="file_picker_shared" style="display: inline;">
+            <i id="attachmentFromShared" style="cursor: pointer;">
+              <img class="add-file" matTooltip="{{'ResourceRoomBox.add_file' | translate }}" name="MyImage"
+                (mouseover)="onMouseOver()" (mouseout)="onMouseOut()" src="{{imgSrc}}" alt="Files Icon"
+                (click)="addFile()">
+            </i>
+          </label>
+          <input id="file_picker_shared" type="file" multiple ngModel (change)="getFiles($event);"
+            style="display: none;" />
+        </span>
+
+        <span *ngIf="currentType === 'link' " style="float: right;margin-top: -14px;">
+          <label for="file_picker_shared" style="display: inline;">
+            <i id="attachmentFromShared" style="cursor: pointer;">
+              <img class="add-file" matTooltip="{{'ResourceRoomBox.add_link' | translate }}" name="MyImage"
+                (mouseover)="onMouseOver()" (mouseout)="onMouseOut()" src="{{imgSrc}}" alt="Files Icon"
+                (click)="showLinkUpload();addFile()">
+            </i>
+          </label>
+          <!-- <input id="file_picker_shared" type="file" multiple ngModel (change)="getFiles($event);"
+            style="display: none;" /> -->
+        </span>
+
+        <mat-menu #usermenu="matMenu">
+          <button mat-menu-item class="resources_menu" (click)="fileInput.click()">{{'ResourceRoomBox.choose_file' |
+            translate }}</button>
+          <input hidden #fileInput type="file" multiple ngModel (change)="getFiles($event);">
+
+          <button mat-menu-item class="resources_menu" (click)="showLinkUpload()">{{'ResourceRoomBox.add_link' |
+            translate }}</button>
+        </mat-menu>
+
+      </div>
+    </div>
+  </div>
+  <div class="resHeader" style="font-size: 14px;color: #000000a8;width: 100%;" *ngIf="fileList.length===0">
+    {{'ResourceRoomBox.nothing_shared' | translate }}
+  </div>
+  <div *ngIf="fileList.length>0">
+    <ul class="nav nav-tabs share-res-nav" style="margin-bottom: 7px;font-size: 15px;">
+      <li class="active all cursor"><a data-toggle="tab" (click)="changeTab('all')">{{'ResourceRoomBox.all' | translate
+          }}</a></li>
+      <li class="images cursor"><a data-toggle="tab" (click)="changeTab('images')">{{'ResourceRoomBox.images' |
+          translate }}</a></li>
+      <li class="link cursor"><a data-toggle="tab" (click)="changeTab('link')">{{'ResourceRoomBox.link' | translate
+          }}</a></li>
+    </ul>
+    <div class="share-res-tab-content tab-content" style="overflow: auto;">
+
+      <div id="all" class="tab-pane in active  all">
+        <div id="fileListScroll" style="overflow-y: auto;margin-top: 10px;overflow-x: hidden;max-height: 434px;">
+          <ul class="list-group" [style.width]="listItemWidth">
+            <span style="margin-left: 24px;" *ngFor="let file of fileList">
+              <div class="list-group-item shared_res_item" matTooltip="{{file.originalname}}"
+                style="margin-bottom: 9px;color: #000000a8;width: 94%;text-align: justify;">
+                <div style="display: flex;padding-left: 13px;">
+                  <div style="border-right: 1px solid #8080808a;width:10%"><i (click)="viewToNewTab(file)" style="cursor: pointer;"><img height="40" width="45"
+                        src="{{file.mimetype_img}}" /></i></div>
+                  <div style="width: 90%;padding-left: 10px;">
+                    <div class="d-flex ">
+                      <div class=" flex-grow-1 ">
+                        <span style="cursor: pointer" (click)="viewToNewTab(file)">
+                          {{file.shortname}}
+                        </span>
+                      </div>
+                      <div class="">
+                        <i style="cursor: pointer"> <img matTooltip="{{'RoomBox.delete' | translate }}" width="20"
+                            height="20" src="../../../../assets/images/edit_delete/Delete Icon.png"
+                            (click)="openFileDeletePopup(file)" /></i>&nbsp;
+                      </div>
+                      <div class=""><i style="cursor: pointer;" *ngIf="file.resource_type != 'url'">
+                          <img (click)="download(file)" matTooltip="{{'ResourceRoomBox.click_download' | translate }}"
+                            src="{{downloadFile}}" />
+                        </i>
+                      </div>
+                    </div>
+                    <div *ngIf="file.resource_type == 'url'"> <a class="wordWrapAnchor" href="{{file.url}}" target="_blank"
+                        style="color:#0000ff;text-decoration: underline;">{{file.url}}</a> </div>
+                    <div>
+                      <span *ngIf="file.uploaded_by" style="color:#b2beb5">
+                        {{ 'ResourceRoomBox.uploader' | translate }} <span> {{file.uploaded_by_name}} </span>
+                      </span>  &nbsp; &nbsp;
+                      <span style="color:#b2beb5;">
+                        {{file.added_at | date: 'dd:MM:yy hh:mm a'}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </ul>
+
+        </div>
+      </div>
+      <div id="images" class="tab-pane  images">
+        <div id="fileListScroll" style="overflow-y: auto;margin-top: 10px;overflow-x: hidden;max-height: 434px;">
+          <ul class="list-group" [style.width]="listItemWidth">
+            <span style="margin-left: 24px;" *ngFor="let file of imgFileList">
+              <div class="list-group-item shared_res_item" matTooltip="{{file.originalname}}"
+                style="margin-bottom: 9px;color: #000000a8;width: 94%;text-align: justify;">
+                <div style="display: flex;padding-left: 13px;">
+                  <div style="border-right: 1px solid #8080808a;width:10%"><i (click)="viewToNewTab(file)"><img height="40" width="45"
+                        src="{{file.mimetype_img}}" /></i></div>
+                  <div style="width: 90%;padding-left: 10px;">
+                    <div class="d-flex ">
+                      <div class=" flex-grow-1 ">
+                        <span style="cursor: pointer" (click)="viewToNewTab(file)">
+                          {{file.shortname}}
+                        </span>
+                      </div>
+                      <div class="">
+                        <i style="cursor: pointer"> <img matTooltip="{{'RoomBox.delete' | translate }}" width="20"
+                            height="20" src="../../../../assets/images/edit_delete/Delete Icon.png"
+                            (click)="openFileDeletePopup(file)" /></i>&nbsp;
+                      </div> 
+                      <div class=""><i style="cursor: pointer;">
+                          <img (click)="download(file)" matTooltip="{{'ResourceRoomBox.click_download' | translate }}"
+                            src="{{downloadFile}}" />
+                        </i>
+                      </div>
+                    </div>
+                  
+                    <div>
+                      <span *ngIf="file.uploaded_by" style="color:#b2beb5">
+                        {{ 'ResourceRoomBox.uploader' | translate }} <span> {{file.uploaded_by_name}} </span>
+                      </span>  &nbsp; &nbsp;
+                      <span style="color:#b2beb5;">
+                        {{file.added_at | date: 'dd:MM:yy hh:mm a'}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </ul>
+      
+        </div>
+      </div>
+
+      <div id="link" class="tab-pane  link">
+        <div id="fileListScroll" style="overflow-y: auto;margin-top: 10px;overflow-x: hidden;max-height: 434px;">
+  
+          <ul class="list-group" [style.width]="listItemWidth">
+            <span style="margin-left: 24px;" *ngFor="let file of linkFileList">
+              <div class="list-group-item shared_res_item" matTooltip="{{file.originalname}}"
+                style="margin-bottom: 9px;color: #000000a8;width: 94%;text-align: justify;">
+                <div style="display: flex;padding-left: 13px;">
+                  <div style="border-right: 1px solid #8080808a;width:10%"><i (click)="viewToNewTab(file)" style="cursor:pointer;"><img height="40" width="45"
+                        src="{{file.mimetype_img}}" /></i></div>
+                  <div style="width: 90%;padding-left: 10px;">
+                    <div class="d-flex ">
+                      <div class=" flex-grow-1 ">
+                        <span style="cursor: pointer" (click)="viewToNewTab(file)">
+                          {{file.shortname}}
+                        </span>
+                      </div>
+                      <div class="">
+                        <i style="cursor: pointer"> <img matTooltip="{{'RoomBox.delete' | translate }}" width="20"
+                            height="20" src="../../../../assets/images/edit_delete/Delete Icon.png"
+                            (click)="openFileDeletePopup(file)" /></i>
+                      </div>
+                      <!-- <div class=""><i style="cursor: pointer;" *ngIf="file.resource_type != 'url'">
+                          <img (click)="download(file)" matTooltip="{{'ResourceRoomBox.click_download' | translate }}"
+                            src="{{downloadFile}}" />
+                        </i>
+                      </div> -->
+                    </div>
+                    <div> <a class="wordWrapAnchor"  href="{{file.url}}" target="_blank"
+                      style="color:#0000ff;text-decoration: underline;">{{file.url}}</a></div>
+                    <div>
+                      <span *ngIf="file.uploaded_by" style="color:#b2beb5">
+                        {{ 'ResourceRoomBox.uploader' | translate }} <span> {{file.uploaded_by_name}} </span>
+                      </span> &nbsp; &nbsp;
+                      <span style="color:#b2beb5;">
+                        {{file.added_at | date: 'dd:MM:yy hh:mm a'}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </ul>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .mat-list-item-content {
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5) !important;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5) !important;
+    padding: 5px;
+    height: 44px;
+  }
+
+  .separator {
+    border-right: 1px solid #8080808a;
+    margin-left: 3px;
+    margin-right: 5px;
+    display: inline-block;
+    height: 26px;
+  }
+  .wordWrapAnchor{
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: normal;
+            display:block;
+ }
+</style>

@@ -1,0 +1,144 @@
+.nickname {
+  padding: 0px;
+  position: absolute;
+  z-index: 999;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Ubuntu', sans-serif;
+  top: 13px;
+  left: 26px;
+}
+.nicknameContainer {
+  background-color: #0000005e;
+  padding: 5px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#dialogNickname {
+  background-color:  #0000005e;
+  border-radius: 5px;
+}
+
+#closeButton {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  z-index: 999;
+}
+
+#nicknameForm {
+  padding: 10px;
+}
+
+.fullscreen {
+  top: 40px;
+}
+
+mat-error {
+  text-align: center;
+  color: #353535;
+}
+
+ .videoOn{
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  /* border-radius: 20px; */
+}
+ .videoOff{
+  /* -o-object-fit: cover; */
+  width: 100%;
+  /* height: fit-content; */
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  /* object-fit: contain;  */
+  transform: rotateY(180deg);
+  /* border-radius: 20px; */
+}
+
+.statusIcons {
+  bottom: 13px;
+  left: 20px;
+  width: 40px;
+  height: fit-content;
+  position: absolute;
+  color: #ffffff;
+}
+
+.statusIcons mat-icon {
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: -moz-middle-with-baseline;
+}
+
+.statusIcons mat-icon {
+  font-size: 20px;
+}
+
+.videoButtons mat-icon {
+  font-size: 24px;
+}
+.videoButtons .mat-icon-button{
+  line-height: 0px;
+}
+
+#camStatus {
+  bottom: 43px;
+}
+
+#statusCam, #statusMic {
+  text-align: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #627885;
+  margin: 5px auto;
+}
+
+.videoButtons{
+  right: 10px;
+  position: absolute;
+  bottom: 20px;
+  z-index: 9999999;
+  width: 50px;
+  text-align: center;
+}
+.videoButtons button {
+  background-color: #000000c4;
+  width: 30px;
+  height: 30px;
+  margin: 1px;
+
+}
+
+/* Contains the video element, used to fix video letter-boxing */
+.OT_widget-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+mat-error,
+::ng-deep .mat-focused .mat-form-field-label,
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+  color: #cacaca !important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline,
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #cacaca !important;
+}
+
+input {
+  caret-color: #ffffff !important;
+}

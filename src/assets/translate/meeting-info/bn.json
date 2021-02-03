@@ -1,0 +1,19 @@
+{
+	"MEETING_INFO": {
+		"meeting_heading": "মিটিং এর বিবরণ",
+		"host": "মিটিং পরিচালক:",
+		"start_time": "শুরুর সময়:",
+		"end_time": "সমাপ্তির সময়:",
+		"duration": "সময়কাল:",
+		"meeting_name": "মিটিং এর নাম:",
+		"meeting_code": "মিটিং এর কোড:",
+		"meeting_password": "মিটিং এর পাসওয়ার্ড:",
+		"meeting_url": "মিটিং এর লিংক:",
+		"cancel": "বাতিল করুন",
+		"copy": "অনুলিপি",
+		"meeting_count": "মোট মিটিং এর সংখ্যা",
+		"creator":"[আয়োজক: ",
+		"room": "রুম: ",
+		"host_scheduled": "আয়োজক: "
+	}
+}

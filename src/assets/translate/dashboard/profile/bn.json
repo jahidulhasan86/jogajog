@@ -1,0 +1,32 @@
+{
+	"Profile": {
+		"enter_current_password": "বর্তমান পাসওয়ার্ডটি দিন",
+		"confirm_your_current_password_first": "*বর্তমান পাসওয়ার্ডটি প্রথমে নিশ্চিত  করুন",
+		"confirm_with_new_password": "*নতুন পাসওয়ার্ড এর সাথে মিলিয়ে নিশ্চিত করুন",
+		"enter_new_password": "নতুন পাসওয়ার্ডটি দিন",
+		"confirm_password": "পাসওয়ার্ডটি নিশ্চিত করুন",
+		"update": "আপডেট করুন ",
+		"upate_password": "পাসওয়ার্ড আপডেট করুন",
+		"close": "বাতিল করুন",
+		"profile": "প্রোফাইল",
+		"name":"নাম",
+		"first_name": "নামের প্রথম অংশ",
+		"last_name": "নামের শেষ অংশ",
+		"email": "ইমেইল",
+		"password": "পাসওয়ার্ড",
+		"address": "ঠিকানা",
+		"contact": "কন্টাক্ট",
+		"gender": "লিঙ্গ",
+		"male": "পুরুষ",
+		"female": "মহিলা",
+		"others": "অন্যান্য",
+		"birth_date": "জন্ম তারিখ",
+		"enter_your_birth_date": "আপনার জন্ম তারিখ লিখুন",
+		"enter_your_address": "আপনার ঠিকানা লিখুন",
+		"enter_your_phone_number": "আপনার ফোন নম্বর লিখুন",
+		"enter_your_first_name": "আপনার নামের প্রথম অংশ লিখুন",
+		"enter_your_last_name": "আপনার নামের শেষ অংশ লিখুন",
+		"update_password": "পাসওয়ার্ড আপডেট করুন"
+		
+	}
+}

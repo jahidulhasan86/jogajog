@@ -1,0 +1,48 @@
+<div  style="padding-top: 5%; padding-right: 7%; padding-bottom: 3%; padding-left: 8%;">
+	<div class="row">
+		<div class="Create-New-Thread">{{'CreateNewDiscussion.create_new_thread' | translate}}</div>
+		 <div mat-dialog-close  [ngStyle]="bnEnLanguageCheck =='bn' ? {'margin-left': '92%'} : {'margin-left': '67%'}" >
+		   <img src="../../../../../assets/images/rom-box/Close Icon@2x.png" width="20" height="20"> 
+		</div>
+	</div>
+	<div class="row">
+		{{'CreateNewDiscussion.thread_details' | translate}}
+	</div>
+	<hr class="underHr">
+	<!-- <div class="row line"></div><br> -->
+	<div class="row divStyle">
+		<div class="col-sm-3">{{'CreateNewDiscussion.create_new_thread' | translate}}</div>		
+		<div class="col-sm-9">
+			<input required [(ngModel)]="discussion.subject" class="input-text Thread Thread-Icon" placeholder="{{'CreateNewDiscussion.thread_title' | translate}}" >
+		</div>
+	</div>
+	<!-- <div class="row divStyle">
+		<div class="col-sm-3">	{{'CreateNewDiscussion.email_id' | translate}}</div>		
+		<div class="col-sm-9">
+			<input [(ngModel)]="discussion.email" class="input-text Thread email-Icon" placeholder="{{'CreateNewDiscussion.email_add' | translate}}" >
+		</div>
+	</div> -->
+	<div class="row divStyle" style="height: 100px;">
+		<div class="col-sm-3">	{{'CreateNewDiscussion.description' | translate}}</div>		
+		<div class="col-sm-9">
+			<textarea required [(ngModel)]="discussion.message_body" class="textarea textareaStyle Thread description-Icon" placeholder="	{{'CreateNewDiscussion.des_details' | translate}}" ></textarea>
+		</div>
+	</div>
+	<div class="row divStyle">
+		<div class="col-sm-3">{{'CreateNewDiscussion.attach' | translate}}</div>		
+		<div class="col-sm-6">
+			<input (paste)='$event.preventDefault()' (keydown)='($event.keyCode === 8 || $event.keyCode === 46) ? $event.preventDefault() : true; ' (keypress)='$event.preventDefault();' class="input-text Thread uploadfile-Icon" placeholder="{{'CreateNewDiscussion.attach_des' | translate}}" [(ngModel)]='file_names' >
+		</div>
+		<div class="col-sm-3">
+			<button class="upload-btn" style="margin-left: -12px;" (click)='addFile()' alt="Files Icon"> {{'CreateNewDiscussion.upload_files' | translate}}
+				<input id="file_picker_shared" type="file" multiple ngModel (change)="getFiles($event);"
+				style="display: none;" /> </button>
+				  
+		</div>
+		
+	</div>
+	<div class="row divStyle" style="margin-left: 26%; margin-top: 5%;"> 
+		<button [ngStyle]="bnEnLanguageCheck =='bn' ? {'width': '46%'} : {'width': '130px'}" class="reset-btn" (click)="reset()">{{'CreateNewDiscussion.reset' | translate}}</button> &nbsp;&nbsp;&nbsp;
+		<button [ngStyle]="bnEnLanguageCheck =='bn' ? {'width': '46%'} : {'width': '130px'}" class="submit-btn" (click)="create()">{{'CreateNewDiscussion.submit' | translate}}</button>
+	</div>
+</div>

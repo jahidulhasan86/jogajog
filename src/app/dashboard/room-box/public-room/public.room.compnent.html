@@ -1,0 +1,42 @@
+<div class="modal-header no-flex">
+	<div class="d-flex">
+		<div class="sub-header-l offset-left-80" style="padding-left: 78px;">
+			<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+			<h1>One Stop Communications</h1>
+		</div>
+		
+		<button type="button" class="close" aria-label="Close" (click)="close()"
+			matTooltip="{{'HostMeeting.cancel' | translate}}" matTooltipPosition="below">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+</div>
+<h4 class="modal-title" style="text-align: center;font-weight: 500;">Rooms</h4>
+
+<mat-list style="overflow-y: scroll;height:400px ;">
+	<!-- <h3 matSubheader>Rooms</h3> -->
+	<mat-list-item *ngFor="let room of rooms">
+	 <!-- //   <mat-icon matListIcon>folder</mat-icon> -->
+	   <mat-checkbox matListIcon (change)="showOptions($event, room)"></mat-checkbox>
+	   <h4 matLine style="font-weight: 500;">{{room.conference_name}} <span style="float:right; color:darkgray ;font-size: 14px;">Owner: &nbsp;<b style="color: #515c6f">{{room.owner}}</b> 
+			<!-- <b *ngIf = "room.is_active" style="color:green">Active</b>
+			<b *ngIf = "!room.is_active" style="color:red">Inactive</b> -->
+	</span></h4>
+	   <p matLine class="demo-2"> <b>{{room.users.length}}</b> Participants <span style="float:right">{{room.created | date: 'dd/MM/yyyy'}} </span> </p>
+	   <mat-divider></mat-divider>
+	</mat-list-item>
+	
+ </mat-list>
+ <!-- <div class="btn-group" style="float: right; margin: 20px;">
+	<button mat-raised-button color="accent" (click)="close()">Close</button>
+    <button mat-raised-button color="primary" (click)="add()">Add</button>
+ </div> -->
+
+ <div class="modal-footer">
+	<button type="button" class="btn btn-outline-secondary"(click)="close()"
+		matTooltip="{{'HostMeeting.cancel' | translate}}"
+		matTooltipPosition="below">{{'HostMeeting.cancel' | translate}}</button>
+	<button type="button" style="    padding: .375rem 1rem;" class="btn btn-info" (click)="add()"
+		matTooltip="add public rooms"
+		matTooltipPosition="below">{{'HostMeeting.add_rooms' | translate}}</button>
+</div>

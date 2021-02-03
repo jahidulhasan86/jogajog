@@ -1,0 +1,17 @@
+{
+	"MENU": {
+		"solutions": "অ্যাপ্স",
+		"plans_pricing": "মূল্য-সূচী",
+		"resources": "তথ্যসূচি",
+		"contact": "যোগাযোগ করুন",
+		"register_btn": "রেজিস্টার করুন",
+		"login_btn": " লগ-ইন",
+		"search_placeholder": "এখানে অনুসন্ধান করুন...",
+		"search_btn" : "অনুসন্ধান",
+		"dashboard": "ড্যাশবোর্ড",
+		"logout": "লগ-আউট",
+		"faq": "প্রশ্নোত্তর",
+		"user_manual": "ব্যবহার বিধি",
+		"why_jogajog": "কেন যোগাযোগ?"
+	}
+}

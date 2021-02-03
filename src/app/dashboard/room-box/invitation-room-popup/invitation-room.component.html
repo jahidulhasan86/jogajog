@@ -1,0 +1,22 @@
+
+<div class="modal-body">
+		<h4 class="modal-title mb-20"> {{roomPayload.user_name}} &nbsp; wants to join &nbsp; {{roomPayload.conference_name}} &nbsp;Do you accept him/her?</h4>
+	<!-- <div class="container-fluid">
+		
+	</div> -->
+</div>
+<ngx-spinner></ngx-spinner>
+<!-- <recaptcha
+          [(ngModel)]="hasCompleteRecaptcha"
+		  (scriptLoad)="onRecaptchaLoad()"
+          (scriptError)="onRecaptchaError()"></recaptcha> -->
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-info" (click)="accept()" matTooltip="Accept"
+		matTooltipPosition="below">Accept</button>
+	<button type="button" class="btn btn-danger" (click)="reject()" matTooltip="Reject"
+		matTooltipPosition="below">Reject</button>
+
+	<a href="javascript:void(0)" (click)="cancel()" matTooltip="cancel"
+		matTooltipPosition="below">Cancel</a>
+</div>

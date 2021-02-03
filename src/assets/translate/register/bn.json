@@ -1,0 +1,13 @@
+{
+	"SIGNUP": {
+		"logo_text": "যোগাযোগ",
+		"title_text": "সংযোগ - সদা, সর্বত্র, নিরাপদে",
+		"signup_text": "নতুন অ্যাকাউন্ট নিবন্ধন করুন",
+		"email_placeholder": "এখানে আপনার ইমেইল টাইপ করুন",
+		"userid_placeholder": "এখানে আপনার আইডি টাইপ করুন",
+		"password_placeholder": " এখানে আপনার পাসওয়ার্ড টাইপ করুন",
+		"register_btn": "রেজিস্টার করুন",
+		"login_btn": "লগ-ইন",
+		"cancel": "বাতিল করুন"
+	}
+}

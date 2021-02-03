@@ -1,0 +1,136 @@
+<!-- For English content -->
+<div style="padding: 5% 9% 0 9%; text-align: justify;" *ngIf="globalValue.currentBuild == 'en'">
+	<h2 class="heading">
+		{{'FAQ_en.faq' | translate}}
+	</h2>
+	<p style="font-weight: 600; padding-bottom: 1%;">{{'FAQ_en.faq_des' | translate}}</p>
+	<div class="item-section">
+
+      <p class="text_bold" *ngFor ="let faq_ques of 'FAQ_en.faq_question' | translate">
+		  <span>{{faq_ques}}</span>
+	  </p>
+	</div>
+</div>
+
+<!-- For Bangla content -->
+
+<div style="padding: 5% 9% 0 9%; text-align: justify;" *ngIf="globalValue.currentBuild == 'bn'">
+	<h2 class="heading">
+		{{'FAQ.faq' | translate}}
+	</h2>
+	<p style="font-weight: 600; padding-bottom: 1%;">{{'FAQ.faq_des' | translate}}</p>
+	<div class="item-section">
+
+      <p class="text_bold" *ngFor ="let faq_ques of 'FAQ.faq_question' | translate">
+		  <span>{{faq_ques}}</span>
+	  </p>
+	</div>
+</div>
+		<!-- <p> <span class="text_bold">{{'FAQ.guests_invite_jogajog' | translate}}</span>
+		</p>
+		<p>
+			<span class="text_bold">{{'FAQ.host_meeting_free_tier' | translate}}</span> 
+			{{'FAQ.host_meeting_free_tierdes' | translate}}
+		</p>
+		<p>
+			<span class="text_bold">{{'FAQ.free_tokens' | translate}}</span> 
+			{{'FAQ.free_tokens_des' | translate}}
+
+		<p class="text_bold">{{'FAQ.meeting_tier' | translate}}</p>
+		<p>{{'FAQ.meeting_cost' | translate}}</p>
+		<div style="padding-left: 1%;">
+			<p style="font-size: 15px;"><span class="text_bold">{{'FAQ.meeting_level1' | translate}}</span>
+			<span>{{'FAQ.meeting_level1_des' | translate}}</span>
+			</p>
+			<p style="font-size: 15px;"><span class="text_bold">{{'FAQ.meeting_lavel2' | translate}}</span>
+			<span>{{'FAQ.meeting_lavel2_des' | translate}}</span>
+			</p>
+			<p style="font-size: 15px;"><span class="text_bold">{{'FAQ.meeting_level3' | translate}}</span>
+			<span>{{'FAQ.meeting_level3_des' | translate}}</span>
+			</p>
+			<p style="font-size: 15px;"><span class="text_bold">{{'FAQ.meeting_level4' | translate}}</span>
+			<span>{{'FAQ.meeting_level4_des' | translate}}</span>
+			</p>
+			<p style="font-size: 15px;"><span class="text_bold">{{'FAQ.meeting_level5' | translate}}</span>
+			<span>{{'FAQ.meeting_level5_des' | translate}}</span>
+			</p>
+			<p style="font-size: 15px;"><span class="text_bold">{{'FAQ.meeting_level6' | translate}}</span>
+			<span>{{'FAQ.meeting_level6_des' | translate}}</span>
+			</p>
+		</div>
+
+		<p>
+			<span class="text_bold">{{'FAQ.purchasing_additional_points' | translate}}</span> 
+
+			<span>{{'FAQ.purchasing_additional_points_des1' | translate}}</span>
+			<span> <a style="text-decoration: underline;">{{'FAQ.here' | translate}}</a></span>
+			{{'FAQ.purchasing_additional_points_des2' | translate}}
+		</p>
+		<p>
+			<span class="text_bold">{{'FAQ.charging_points' | translate}}</span> 
+			{{'FAQ.charging_points_des' | translate}}
+		</p>
+		<p style="font-weight: 600;">{{'FAQ.note2' | translate}}</p> -->
+
+
+
+	<!-- <div class="item-section">
+		<h3 class="app_name_heading">Pricing for Learn Together</h3>
+
+		<p><b>Free Tier:</b> 2 classes with up to 4 students each can be created for free. 10 hours of such classes can
+			be
+			delivered for free per month. Unlimited amounts of Online Exams are available for free.</p>
+		<p><b>Small Classes:</b>This consists of up to 8 students. Each 20 hour of such classes cost 100 points. </p>
+		<p><b>Medium Classes: </b>This consists of up to 20 students. Each 10 hour of such classes cost 100 points.</p>
+		<p><b>Large Classes:</b>This consists of up to 100 students. Each 5 hour of such classes cost 100 points.</p>
+	</div>
+
+	<div class="item-section">
+		<h3 class="app_name_heading">Pricing for Team Together</h3>
+
+		<p> <b>Free Tier -:</b> Up to 50 contacts and 20 groups can be added for free.. Location tracking frequency is
+			available up to every 30 seconds. 50 hours of PTT sessions are for free. 50 hours of calls with up to 4, or
+			10
+			hours of calls with up to 16 users are free.</p>
+		<p>Unlimited amounts of chat and alerts are available for free. </p>
+		<p>
+			<b>Paid Tier 1:</b> With any paid subscriptions, unlimited number of contacts or groups can be added. The
+			minimum tier is 100 points/month. Location tracking frequency is available up to every 15 seconds in this
+			tier.
+			Up to 100 hour of PTT sessions and 10 hours of calls with up to 16 users is included.
+		</p>
+
+		<p>
+			<b>Paid Tier 2:</b> For additional hours points can be added 100 points/month at a time. This will cover
+			additional 100 hours of PTT sessions, or 50hr of 4 or less person calls, or 10 hr 16 or less person calls.
+		</p>
+
+		<p>
+			<b>Larger Teams or Private Enterprise Hosting:</b> Please contact us for pricing. Please also contact us if
+			you
+			require location update frequency at less than 15 seconds.
+		</p>
+	</div>
+
+	<div class="item-section">
+		<h3 class="app_name_heading">Pricing for Medi Connect</h3>
+		<p>
+			<b>Individual Telemedicine provider:</b> 50 hours of Telemedicine video-calls are available for free. After
+			that, every 50 hours cost 100 points.
+		</p>
+		<p>
+			<b>Clinic or Hospital:</b> Please contact us for pricing.
+		</p>
+
+		<p>
+			<b>Amontritho Otithi:</b> Apni jodi amontrito otithi hishebey Jogajog meeting-ey jogdan koren, tobey ei
+			service
+			bina-mulley bebohar kortey paren
+			Meeting Ayojok - binamullo stor: Apni jodi nijer bektigoto account thekey meeting ayojon koren 50 ghonta
+			porjonto apni binamulley arekjoner shathey jogajog meeting kortey parben. Ekjon arekjoner shathey ponchash
+			ghonta meeting korley 100 Jogajog point bay hobey. Aro beshi joner meeting holey aro point bay hobey. Otoab
+			ei
+			100 binamulley boraddo point aro druto bay hobey.
+
+		</p>
+	</div> -->

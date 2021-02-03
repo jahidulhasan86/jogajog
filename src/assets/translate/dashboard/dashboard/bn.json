@@ -1,0 +1,17 @@
+{
+	"DASHBOARD": {
+		"welcome": "স্বাগতম",
+		"home": "হোম",
+		"meeting_schedules": "মিটিং ক্যালেন্ডার",
+		"contacts": "বন্ধু তালিকা",
+		"company_members": "কোম্পানি সদস্য",
+		"language_selector": "English",
+		"about_us": "যোগাযোগ সম্পর্কে",
+		"meeting_schedules_tooltip": " মিটিং ক্যালেন্ডার ফিচার আপনার অ্যাকাউন্টে শীঘ্রই চালু হবে |",
+		"contacts__tooltip": "বন্ধু তালিকা ফিচার আপনার অ্যাকাউন্টে শীঘ্রই চালু হবে |",
+		"contacts_list" : "কন্টাক্ট লিস্ট",
+		"RecordingList" : "মিটিং রেকর্ডিং",
+		"click_to_join": "যোগদান করার জন্য ক্লিক করুন",
+		"settings": "সেটিংস"
+	}
+}

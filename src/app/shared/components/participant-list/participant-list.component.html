@@ -1,0 +1,79 @@
+<!-- Participant List
+<div *ngFor="let item of participantsNames">
+	{{item.nickname}}
+	{{item.connectionId}}
+</div>
+ -->
+
+ <div class="participantsPart">
+	<div>
+		<button class="sideNabCloseBtn" mat-icon-button>
+			<!-- <mat-icon class="iconSize"  color="warn" matTooltip="Close" (click)="closeSideNav()">highlight_off</mat-icon> -->
+			<img (click)="closeSideNav()" src="../../../../assets/images/callscreen/Close_icon.png" matTooltip="{{'Meeting_schedules.close' | translate}}" style="    width: 25px;" alt="avatar">
+		</button>
+	</div>
+	<div class="ListHeader">   {{'RoomController.participants' | translate}}({{participantsNames.length + 1}})</div>
+	<div class="ListSearch">
+		<div class="row">
+			<div class="col-xl-2 col-md-2 col-sm-2 col-2" >
+				<mat-icon class="listSearchIcon">search</mat-icon>
+			</div>
+			<div class="col-xl-10 col-md-10 col-sm-10 col-10" style="    padding: 0;">
+				<input class="listSearchInput" type="search" placeholder="{{'Meeting_schedules.search_here' | translate}}" [(ngModel)]="userFilter.nickname">
+			</div>
+		</div>
+	</div>
+	<div class="listPart">
+		<div class="row" *ngFor="let item of localUsers">
+			<div class="col-xl-2 col-md-2 col-sm-2 col-2 avatarIcon">
+				<img src="../../../../assets/images/callscreen/Default_Profile_orange.png" alt="avatar">
+				<!-- <div class="shortProfileImage color-9">{{item.shortname}}</div> -->
+			</div>
+			<div class="col-xl-10 col-md-10 col-sm-10 col-10 userName">
+			<span *ngIf="globalValue.currentBuild == 'en'">
+				<span >{{item.nickname}} {{this.meetingInfo_current.owner.host_name === item.nickname ? '(Host, me)' : '(me)'}}</span>
+			</span>
+			<span *ngIf="globalValue.currentBuild == 'bn'">
+				<span  *ngIf="bnEnLanguageCheck =='en'">{{item.nickname}} {{this.meetingInfo_current.owner.host_name === item.nickname ? '(Host, me)' : '(me)'}}</span>
+				<span  *ngIf="bnEnLanguageCheck =='bn'">{{item.nickname}} {{this.meetingInfo_current.owner.host_name === item.nickname ? '(আয়োজক, আমি)' : '(আমি)'}}</span>
+			</span>
+				
+			</div>
+			<!-- <div class="col-xl-3 col-md-3 col-sm-3 col-3 action"> -->
+				<!-- <button id="" mat-icon-button>
+					<mat-icon class="iconSize" *ngIf="item.is_audio" style="color:#f49a22;" matTooltip="Mute" (click)="this.meetingInfo_current.owner.host_name === this.authUser.user_name ? userMuteUnmuteClick('mute',item.connection): null">mic</mat-icon>
+					<mat-icon class="iconSize" *ngIf="!item.is_audio" color="warn" matTooltip="Unmute">mic_off</mat-icon>
+				</button> -->
+				<!-- <button id="navBlockButton" mat-icon-button>
+					<mat-icon class="iconSize"  style="color:#f49a22;"  matTooltip="Mute">block</mat-icon>
+				</button> -->
+			<!-- </div> -->
+		</div>
+		<div class="row" *ngFor="let item of participantsNames | filterBy: userFilter">
+			<div class="col-xl-2 col-md-2 col-sm-2 col-2 avatarIcon">
+				<img src="../../../../assets/images/callscreen/Default_Profile_orange.png" alt="avatar">
+				<!-- <div class="shortProfileImage color-{{item.randomNumber}}">{{item.shortname}}</div> -->
+				<!-- video Icon -->
+				<!-- <mat-icon class="iconSize videoIcon"  *ngIf="item.is_video"   matTooltip="Video On">videocam</mat-icon>
+				<mat-icon class="iconSize videoIcon"  *ngIf="!item.is_video"    matTooltip="Video Off">videocam_off</mat-icon> -->
+			</div>
+			<div class="col-xl-7 col-md-7 col-sm-7 col-7 userName">
+				<div>{{item.nickname}} {{this.meetingInfo_current.owner.host_name === item.nickname ? '(Host)' : null}}</div>
+				<mat-icon class="iconSize " style="color:#f49a22;" *ngIf="item.is_video"   matTooltip="Video On">videocam</mat-icon>
+				<mat-icon class="iconSize "  color="warn" *ngIf="!item.is_video"   matTooltip="Video Off">videocam_off</mat-icon>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-3 col-3 action" style="text-align:right;">
+				<button id="" mat-icon-button>
+					<mat-icon class="iconSize" *ngIf="item.is_audio" style="color:#f49a22;" matTooltip="Mute"
+						(click)="this.meetingInfo_current.owner.host_name === this.authUser.user_name ? userMuteUnmuteClick('mute',item.connectionId): null">
+						mic</mat-icon>
+					<mat-icon class="iconSize" *ngIf="!item.is_audio" color="warn" matTooltip="Unmute">mic_off</mat-icon>
+				</button>
+				<!-- <button id="" mat-icon-button>
+					<mat-icon class="iconSize"  *ngIf="item.is_video" style="color:#f49a22;"  matTooltip="Video On">videocam</mat-icon>
+					<mat-icon class="iconSize"  *ngIf="!item.is_video" color="warn"   matTooltip="Video Off">videocam_off</mat-icon>
+				</button> -->
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,175 @@
+<!-- footer start -->
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="footer_top">
+            <div class="row">
+                <div class="col-xl-3 col-md-4 col-sm-12">
+                    <div class="footer_widget">
+                        <div class="footer_logo">
+                            <a href="#">
+                                <img src="{{globalValue.app_logo}}" alt="">
+                                <p>{{'Footer.one_stop_comm' | translate}} {{(globalValue.currentBuild == 'bn' && currentLang != 'bn') ? '-' : ''}}<br>
+                                    <span *ngIf="globalValue.currentBuild == 'bn'">{{'Footer.text4' | translate}}</span>
+                                </p>
+                                
+                            </a>
+                        </div>
+
+                        <div class="footer_address" *ngIf="globalValue.currentBuild == 'bn'">
+                            <p>
+                                {{'Footer.text' | translate}}<br />
+                                {{'Footer.text1' | translate}}<br />
+                                {{'Footer.text2' | translate}}<br />
+                                {{'Footer.text3' | translate}}
+                            </p>
+                        </div>
+
+                        <div class="footer_address" *ngIf="globalValue.currentBuild == 'en'">
+                            <p>
+                                12408446009<br />
+                                info@jagajag.com<br />
+                                40 W Gude Drive Suite - 220 Rockville<br />
+                                MD 20850, USA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-4 col-sm-12">
+                    <div class="footer_widget">
+                        <div class="footer_title">
+                            {{'Footer.solutions' | translate}}
+                            <span></span>
+                        </div>
+                        <ul>
+                            <!-- <li *ngFor="let proj_name of 'Footer.project_name' | translate let i = index">
+                                <a [routerLink]="['/our-solutions']" routerLinkActive="router-link-active"
+                                    (click)="goToProduct(i)">{{proj_name}}</a>
+                            </li> -->
+                            <li  *ngIf="globalValue.currentBuild === 'en'">
+                                <a href="#" class="footer_solutions" routerLinkActive="router-link-active"
+                                  >{{'Footer.our_solution1_en' | translate}}</a>
+                            </li>
+                            <li  *ngIf="globalValue.currentBuild === 'bn'">
+                                <a href="#" class="footer_solutions" routerLinkActive="router-link-active"
+                                  >{{'Footer.our_solution1_bn' | translate}}</a>
+                            </li>
+                            <li>
+                                <a  [routerLink]="['/learnTogether']" class="footer_solutions" routerLinkActive="router-link-active"
+                                  >{{'Footer.our_solution2' | translate}}</a>
+                            </li>
+                            <li>
+                                <a  [routerLink]="['/teamTogether']" class="footer_solutions" routerLinkActive="router-link-active"
+                                  >{{'Footer.our_solution3' | translate}}</a>
+                            </li>
+                            <li>
+                                <!-- <a [routerLink]="['/our-solutions']" routerLinkActive="router-link-active"
+                                  >{{'Footer.our_solution4' | translate}}</a> -->
+                                  <a (click)="infoSubmit()" style="cursor: pointer;" routerLinkActive="router-link-active"
+                                  >{{'Footer.our_solution4' | translate}}</a>
+                            </li>
+                            <li>
+                                <!-- <a [routerLink]="['/our-solutions']" routerLinkActive="router-link-active"
+                                  >{{'Footer.our_solution5' | translate}}</a> -->
+                                  <a (click)="infoSubmit()" style="cursor: pointer;" routerLinkActive="router-link-active"
+                                  >{{'Footer.our_solution5' | translate}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-sm-12">
+                    <div class="footer_widget">
+                        <div class="footer_title">
+                            {{'Footer.support_service' | translate}}
+                            <span></span>
+                        </div>
+                        <ul>
+                            <li *ngFor="let list of 'Footer.list_item' | translate let i = index">
+                                <a [routerLink]="['/support-services']" (click)="goSupportService(i)">{{list}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-sm-12">
+                    <div class="footer_widget">
+                        <div class="footer_title">
+                            {{'Footer.about_us' | translate}}
+                            <span></span>
+                        </div>
+                        <ul>
+                            <li><a [routerLink]="['/contactus']" (click)='whoWeAre()'>{{'Footer.who_wr' | translate}}</a>
+                            </li>
+                            <li><a [routerLink]="['/contactus']"
+                                    (click)='developmentServices()'>{{'Footer.development_service' | translate}}</a>
+                            </li>
+                            <li><a [routerLink]="['/contactus']"
+                                    (click)='contactUs()'>{{'Footer.contact_us' | translate}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-sm-12">
+                    <!-- <div class="socail_links">
+                        <p>{{'Footer.connect_with' | translate}}</p>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-google-plus-g" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <div class="payment-meth">
+                        <p>{{'Footer.payment_method' | translate}}</p>
+                        <img src="assets/img/icon/Rectangle_38.png" alt="">
+                    </div>
+                    <div class="apps-store">
+                        <p>{{'Footer.download_app' | translate}}</p>
+                        <div class="d-flex">
+                            <a class="mr-10">
+                                <img src="assets/img/icon/app-store-logo.png" alt="" (click)="iosUpcoming()">
+                            </a>
+                            <a href="{{globalValue.android_app_play_store_link}}" target="_blank">
+                                <img src="assets/img/icon/google-play-logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-sm-12 copy_right">
+                    <span *ngIf="globalValue.currentBuild === 'en'">
+                        Copyright &copy; {{fullyear}} {{globalValue.footer_text_display}}, All rights reserved.
+                    </span>
+                    <span *ngIf="globalValue.currentBuild === 'bn'">
+                        {{'Footer.copy_right' | translate}}
+                    </span>
+                </div>
+                <div class="col-xl-6 col-sm-12 text-right">
+                    <a href="#">{{'Footer.terms_conditions' | translate}}</a> <span>|</span> <a
+                        href="#">{{'Footer.site_map' | translate}}</a> <span>|</span> <a [routerLink]="['/support-services']"
+                        (click)="goSupportService(2)">{{'Footer.privacy_policy' | translate}}</a> <span>|</span> <a
+                        href="#">{{'Footer.cookie_policy' | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/ footer end  -->

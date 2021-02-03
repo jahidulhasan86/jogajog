@@ -1,0 +1,36 @@
+{
+	"RoomController":{
+		  "meeting_info": "মিটিং এর বিবরণ", 
+		  "audio_mute": "আপনার অডিও বন্ধ করুন",
+		  "audio_unmute": " আপনার অডিও চালু  করুন",
+		  "cam_mute": "আপনার ক্যামেরা বন্ধ করুন",
+		  "cam_unmute": "আপনার ক্যামেরা চালু  করুন",
+		  "screen_share": "স্ক্রিন শেয়ার",
+		  "screen_share_stop": "শেয়ার বন্ধ করুন",
+		  "full_screen": "ফুল স্ক্রিন",
+		  "speak_layout_enable": "স্পিকার লেআউট চালু করুন",
+		  "speak_layout_disable": "স্পিকার লেআউট বন্ধ করুন",
+		  "leave_session": "সেশন ত্যাগ করুন",
+		  "participants": "অংশগ্রহণকারী",
+		  "chat": "চ্যাট",
+		  "updateConferenceTypeRequestText": "সর্বোচ্চ সংখ্যক অতিথি ইতিমধ্যেই মিটিং এ যোগদান করেছে। আরো অতিথিদের সুযোগ দেয়ার জন্য ভিডিও বোতাম(পিটিভি) মোড এ সুইচ করতে চান?",
+		  "request_floor": "ফ্লোর রিকোয়েস্ট করুন (৬০ সেকেন্ডের জন্য)",
+		  "release_floor": "ফ্লোর ছেড়ে দিন",
+		  "block_floor":"ফ্লোর পাওয়া যায়নি",
+		  "yes": "হ্যাঁ",
+		  "no": "না" ,
+		  "increaseTimer":"অতিরিক্ত ৩০ সেকেন্ড যোগ করুন",
+		  "ptv_on_toggle": "সাধারণ মোডে স্যুইচ করুন",
+		  "ptv_off_toggle" : "পিটিভি মোডে স্যুইচ করুন",
+		  "recording-start-state" : "রেকর্ডিং শুরু হচ্ছে",
+		  "recording-started-state" : "রেকর্ডিং শুরু হয়েছে",
+		  "recordingStopBtn" : "রেকর্ডিং বন্ধ করুন",
+		  "recording-start-opponent-state" : "কল রেকর্ডিং করছে",
+		  "recordingStartBtn": "রেকর্ডিং শুরু করুন",
+		  "recording-failed-state": "রেকর্ডিং শুরু করতে ব্যর্থ। অনুগ্রহপূর্বক আবার চেষ্টা করুন",
+		  "ptv_mode": "পুশ টু ভিডিও মোড",
+		  "reminder": "রিমাইন্ডার",
+		  "click_to_popout": "ক্লিক টু পপ আউট"
+
+	}
+}

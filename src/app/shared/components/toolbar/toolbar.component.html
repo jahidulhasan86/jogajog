@@ -1,0 +1,75 @@
+<mat-toolbar id="header" role="heading" [class.headerLight]="lightTheme" class="toolbar_header" fxLayout
+	fxLayoutAlign="center" fxLayoutGap="10px">
+	<div fxFlex="10%">
+		<!-- <app-toolbar-logo [lightTheme]="lightTheme" [sessionId]="mySessionId" [compact]="compact" [logoUrl]="logoUrl">
+		</app-toolbar-logo> -->
+		<div id="navSessionInfo">
+			<a>
+				<img id="header_img" alt="Logo" [src]="globalValue.app_logo" />
+			</a>
+		</div>
+	</div>
+	<div fxFlex="70%" fxFlexOrder="2">
+		<div align="left" class="header70" *ngIf="mySessionId" fxLayout fxLayoutAlign="center" fxLayoutGap="10px"
+			[ngClass]="{'titleContent': true, 'titleContentLight': lightTheme, 'titleContentDark': !lightTheme}">
+			<div id="session-title" matTooltip="{{meetingName}}" fxFlex="15%" fxFlexOrder="1" align="left">
+				{{ meetingName }}
+			</div> 
+			<div id="recording-start-state" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;;">
+				{{'RoomController.recording-start-state' | translate}}
+			</div>
+			<div id="recording-started-state" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;">
+				{{'RoomController.recording-started-state' | translate}}
+			</div>
+			<div id="recording-start-opponent-state" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;">
+				{{'RoomController.recording-start-opponent-state' | translate}}
+			</div>
+			<div id="recording-failed-state" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;color: red;">
+				{{'RoomController.recording-failed-state' | translate}}
+			</div>
+			<div *ngIf="isUpdateConferenceTypeRequest" id='ptvNotification' fxFlex="85%" fxFlexOrder="2" align="end"
+				style="font-size: 14px; color: gold;">
+				{{'RoomController.updateConferenceTypeRequestText' | translate}}
+				<span class="ptvAllowButton" (click)='UpdateConferenceTypeRequest("accept")'
+					matTooltip="{{'RoomController.yes' | translate}}">{{'RoomController.yes' | translate}}</span>
+				<span class="ptvDeclineButton" (click)='UpdateConferenceTypeRequest("denied")'
+					matTooltip="{{'RoomController.no' | translate}}">{{'RoomController.no' | translate}}</span>
+			</div>
+		</div>
+	</div>
+	<div fxFlex="20%" style="max-width: 13%;" fxFlexOrder="3" align="end">
+		<!-- This is PTV mode Switch part. If need please open below code -->
+		<span *ngIf="isCallInitiator">
+			<span style="font-size: small;">{{'RoomController.ptv_mode' | translate}}</span>
+			<button mat-icon-button>
+				<mat-icon *ngIf="isCallModePtv" class="iconSize" style="color:#f49a22;"
+					matTooltip="{{'RoomController.ptv_on_toggle' | translate}}"
+					(click)='UpdateConferenceTypeRequest("accept", "normal")'>
+					toggle_on
+				</mat-icon>
+				<mat-icon *ngIf="!isCallModePtv" class="iconSize" style="color:#bdbdbd;"
+					matTooltip="{{'RoomController.ptv_off_toggle' | translate}}"
+					(click)='UpdateConferenceTypeRequest("accept")'>
+					toggle_off
+				</mat-icon>
+			</button>
+		</span>
+
+		<span class="material-icons" (click)="reminderDialog()" style="position: relative; top: 9px; color: #ffb443; cursor: pointer;" matTooltip="{{'RoomController.reminder' | translate}}">
+			insert_invitation
+		</span>
+
+		<button mat-icon-button (click)="showMeetingInfo()">
+			<mat-icon class="iconSize" style="color:#f49a22;"
+				matTooltip="{{'RoomController.meeting_info' | translate}}">info
+			</mat-icon>
+		</button>
+
+		<button *ngIf="!isPopedout" mat-icon-button (click)="doPopOut()">
+			<!-- <img matTooltip="Click to Popout" src="../../../../assets/images/call-popout.png" height="19" width="19"> -->
+			<img matTooltip="{{'RoomController.click_to_popout' | translate}}" src="../../../../assets/images/call-view/Windows Split Seperate Browser Icon - Orange.png" height="19" width="19">
+		</button>
+		
+	</div>
+</mat-toolbar>
+<div id="sound"></div>

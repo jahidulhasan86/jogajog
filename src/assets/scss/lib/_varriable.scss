@@ -1,0 +1,60 @@
+// fonts
+$font-primary:  Roboto, "Helvetica Neue", sans-serif;
+$font-secondary: 'Poppins', "Helvetica Neue", sans-serif;
+
+// fonts-size
+$fs-12: 12px;
+$fs-14: 14px;
+$fs-16: 16px;
+$fs-18: 18px;
+$fs-20: 20px;
+$fs-22: 22px;
+$fs-24: 24px;
+$fs-26: 26px;
+$fs-28: 28px;
+$fs-30: 30px;
+$fs-34: 34px;
+$fs-36: 36px;
+
+// background Color
+$bg_white:#ffffff;
+$bg_black:#000000;
+$bg_yellow:#f4de00;
+$bg_orange:#F49A22;
+$bg_gray:#323031;
+$bg_gray_dark: #515c6f;
+$bg_gray_light:#f2f2f2;
+
+// Font Color
+$font_1: #515c6f;
+$font_2: #F49A22;
+$font_3: #F5C71C;
+$font_4: #A88E27;
+$font_5: #333333;
+$font_6: #6B6B6B;
+$font_7: #ffffff;
+$font_8: #000000;
+
+// Hover Color
+$btn_hover: #F4AD20;
+$btn_hover1: #F5C71C;
+$btn_hover2: #ffffff;
+$btn_hover3: #333333;
+
+// Border Color
+$border_color: #F49A22;
+$border_color1: #F5C71C;
+$border_color2: #A88E27;
+$border_color3: #EDEDED;
+$border_color4: #515c6f;
+
+// Responsive
+$medium_device : 'only screen and (min-width: 992px) and (max-width: 1200px)';
+$tab_device:'only screen and (min-width: 768px) and (max-width: 991px)';
+$large_mobile: 'only screen and (min-width: 576px) and (max-width: 767px)';
+$tab:'(max-width: 991px)';
+$small_mobile:'(max-width: 576px)';
+$xs_mobile:'(max-width: 420px)';
+$sm_mobile:'only screen and (min-width: 421px) and (max-width: 575px)';
+$big_screen:'only screen and (min-width: 1200px) and (max-width: 1440px)';
+$extra_big_screen: 'only screen and (min-width: 1200px) and (max-width: 3640px)';

@@ -1,0 +1,106 @@
+<ngx-spinner color="#f49823" type="ball-clip-rotate-pulse" size="medium" [fullScreen]="true">
+	<p style="color: white;">{{'Discussion.please_wait' | translate}}</p>
+</ngx-spinner>
+<p>
+	<mat-toolbar style="height: 34px !important;">
+		<span class="gap">
+			<button mat-button *ngShow="false">Recent</button>
+		</span>
+		<span>
+			<button mat-button *ngShow="false">Popular</button>
+		</span>
+		<span>
+			<button mat-button [matMenuTriggerFor]="menu" *ngShow="false">By category</button>
+			<mat-menu #menu="matMenu">
+				<button mat-menu-item>Item 1</button>
+				<button mat-menu-item>Item 2</button>
+			</mat-menu>
+		</span>
+		<span class="filler"></span>
+		<span style="margin-bottom: 14px;margin-right: 4px;">
+			<button *ngIf="!showDetails" (click)="createNewThread()" mat-button class="toolbar-button"
+				style="color: red;padding: 3px;padding-left: 8px;padding-right: 8px;">
+				<mat-icon>add</mat-icon>
+				<span style="color: red;">{{'Discussion.new_thread' | translate}}</span>
+			</button>
+
+		</span>
+	</mat-toolbar>
+</p>
+
+
+<ng-container *ngIf="!showDetails">
+	<div style="margin-top: 10px;" *ngIf="discussions.length===0">{{'Discussion.nothing_here_yet' | translate}}</div>
+	<div class="example-card" *ngFor="let discussion of discussions ; index as i"
+		(click)="navigateDetails(discussion,i)" style="width: auto; min-height: 75px;cursor: pointer; background: #f2f6fc;
+		box-shadow: 0 3px 6px 0 rgba(0,0,0,.05);margin-bottom: 20px; margin: 0 4% 3% 4%;">
+		<div style="width: 100%; text-align: left; font-family: Poppins; padding: 1% 2%;">
+			<div class="row">
+				<div class="col-sm-1"><img height="35" width="35" *ngIf="!discussion.creator_profile_pic"
+					src="../../../../assets/images/Default Profile.png">
+				<img height="35" width="35" *ngIf="discussion.creator_profile_pic" src="{{discussion.creator_profile_pic}}"></div>
+				<div class="col-sm-11">
+				<div class="d-flex  justify-content-between">
+				<div style="color: #3a82ff;  font-size: 14px;
+				font-weight: 600;">{{discussion.subject}}</div>
+				<div style="font-weight: 500; font-family: Poppins;color: black;font-size: 12px;">{{'Discussion.thread_by' | translate}} : {{discussion.creator}}</div>
+				<div >
+					<span style="float: right;" *ngIf="discussion.creator == currentUser.user_name">
+						<span (click)="editDiscussion(discussion) ; $event.stopPropagation()"
+							matTooltip="{{'Discussion.edit' | translate}}"
+							style="cursor: pointer;;margin-left: 17px;vertical-align: super;"><img height="20" width="20"
+								src="../../../assets/images/edit_delete/Edit Icon.png" #edit_delete></span>
+						<span (click)="deleteDiscussion(discussion) ; $event.stopPropagation()"
+							matTooltip="{{'RoomBox.delete' | translate}}"
+							style="cursor: pointer;;margin-left: 17px;vertical-align: super;"><img height="20" width="20"
+								src="../../../assets/images/edit_delete/Delete Icon.png" #delete></span>
+					</span>
+				</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div  *ngIf="discussion.last_comment" style="font-size: 12px;word-break: break-all;
+				white-space: normal;font-weight: bold;">{{discussion.last_comment.message_body}}</div>
+				<div  *ngIf="!discussion.last_comment" style="font-size: 12px;word-break: break-all;
+				white-space: normal;font-weight: bold;">{{'Discussion.no_reply' | translate}}</div>
+				<div style="font-size: 11px;" *ngIf="discussion.last_comment">{{'Discussion.last_activity' | translate}}: {{discussion.last_comment.created | date: 'MMM d, y,
+					h:mm:ss a'}}</div>
+					</div>
+				</div>
+				
+				</div>
+			</div>
+			
+			<!-- <mat-card-title style="color: #3a82ff;  font-size: 14px;
+		  font-weight: 600;">
+
+				<span>{{discussion.subject}} </span> &nbsp; &nbsp;&nbsp; &nbsp; <span
+					style="font-weight: 500; font-family: Poppins;color: black;">
+					{{'Discussion.thread_by' | translate}} : {{discussion.creator}}
+				</span>
+
+				<span style="float: right;" *ngIf="discussion.creator == currentUser.user_name">
+					<span (click)="editDiscussion(discussion) ; $event.stopPropagation()"
+						matTooltip="{{'Discussion.edit' | translate}}"
+						style="cursor: pointer;;margin-left: 17px;vertical-align: super;"><img height="20" width="20"
+							src="../../../assets/images/edit_delete/Edit Icon.png" #edit_delete></span>
+					<span (click)="deleteDiscussion(discussion) ; $event.stopPropagation()"
+						matTooltip="{{'RoomBox.delete' | translate}}"
+						style="cursor: pointer;;margin-left: 17px;vertical-align: super;"><img height="20" width="20"
+							src="../../../assets/images/edit_delete/Delete Icon.png" #delete></span>
+				</span>
+			</mat-card-title>
+			<mat-card-subtitle>
+				<div style="font-size: 12px;word-break: break-all;
+				white-space: normal;">{{discussion.last_comment?.message_body}}</div>
+				<div style="font-size: 12px;">Last activity: {{discussion.last_comment?.created | date: 'MMM d, y,
+					h:mm:ss a'}}</div>
+			</mat-card-subtitle> -->
+		</div>
+	</div>
+
+</ng-container>
+
+
+<app-discussion-details *ngIf="showDetails" [id]="id" (dataSend)="dataReceived($event)"></app-discussion-details>
+<template #dynamicLoadComponent></template>

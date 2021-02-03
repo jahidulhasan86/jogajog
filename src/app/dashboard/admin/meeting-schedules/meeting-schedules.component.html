@@ -1,0 +1,198 @@
+<ngx-spinner color = "#f49823" type = "ball-clip-rotate-pulse" size="medium" [fullScreen] = "false"   ><p style="color: white;">Loading Schedule(s)..</p></ngx-spinner>
+<div class="row text-center" style="width: 100%;margin-top: 10px;">
+    <div class="col-md-4">
+      <div class="btn-group">
+        <div id="calPrevious"
+          class="btn btn-primary"
+          mwlCalendarPreviousView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+        {{'Meeting_schedules.previous' | translate }}
+        </div>
+        <div id="calToday"
+          class="btn btn-outline-secondary"
+          mwlCalendarToday
+          [(viewDate)]="viewDate"
+        >
+        {{'Meeting_schedules.today' | translate }}
+        </div>
+        <div id="calNext"
+          class="btn btn-primary"
+          mwlCalendarNextView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+        {{'Meeting_schedules.next' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+    <div class="col-md-4">
+      <div class="btn-group">
+        <div id="calViewMonth"
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Month)"
+          [class.active]="view === CalendarView.Month"
+        >
+        {{'Meeting_schedules.month' | translate }}
+        </div>
+        <div id="calViewWeek"
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Week)"
+          [class.active]="view === CalendarView.Week"
+        >
+        {{'Meeting_schedules.week' | translate }}
+        </div>
+        <div id="calViewDay"
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Day)"
+          [class.active]="view === CalendarView.Day"
+        >
+        {{'Meeting_schedules.day' | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <ng-template #customCellTemplate let-day="day" let-locale="locale">
+    <div class="cal-cell-top">
+      <span class="cal-day-badge" *ngIf="day.badgeTotal > 0" title="Total Meeting Count"
+        >{{ day.badgeTotal }}</span
+      >
+      <span class="cal-day-number"
+        >{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span
+      >
+    </div>
+    <small *ngIf="day.badgeTotal > 0" style="margin: 5px;"
+      >
+      {{ day.events[0].title}} <br>
+       {{ day.events[0].start | date:'hh:mm a' }} to {{ day.events[0].end | date:'hh:mm a' }}</small
+    >
+  </ng-template>
+
+  <div [ngSwitch]="view" style="width: 95%;margin: 0 auto;border: 3px solid darkgray;padding: 10px;">
+    <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+      [cellTemplate]="customCellTemplate"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+  </div>
+  <ng-template #modalContent let-close="close">
+    <!-- <div class="modal-header">
+      <h5 class="modal-title">Event action occurred</h5>
+      <button type="button" class="close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+    <!-- <div class="modal-body">
+      <div>
+        Action:
+        <pre>{{ modalData?.action }}</pre>
+      </div>
+      <div>
+        Event:
+        <pre>{{ modalData?.event | json }}</pre>
+      </div>
+    </div> -->
+    <div class="meetingInfo" style='width: 100%;  color: #515c6f; '>
+		<div>
+			<div class="" style=" background: white;padding: 6%;position: relative;padding-top: 2px;">
+        <div class="header">
+          <!-- Meeting Info -->
+          {{'RoomController.meeting_info' | translate}}
+        </div>
+        <div *ngIf="!modalData.event.meeting_code || !modalData.event.meeting_password" class="infoData"><span>{{'MEETING_INFO.meeting_name' | translate}}</span> {{modalData.event.title}}</div>
+				<div class="infoData">
+					<span>
+            <!-- Host:  -->
+            {{'MEETING_INFO.host' | translate}}
+          </span> {{modalData.event.host}}</div>
+				<div class="infoData">
+					<span> {{'Meeting_schedules.time_span' | translate }}</span>
+					{{modalData.event.time_span }}
+				</div>
+				<!-- <div class="infoData"><span>End time</span>
+					{{modalData.event.end}}
+				</div> -->
+				<div class="infoData"><span> {{'Meeting_schedules.duration' | translate }}</span> {{modalData.event.meeting_duration}} {{'Meeting_schedules.hour' | translate }}
+				</div>
+
+				<div *ngIf="modalData.event.meeting_code || modalData.event.meeting_password" class="nameAndPassInfo" style="margin-top: 26px;">
+					<div id="nameAndPassElm" class="infoData" style="padding: 9px;">
+                        <!-- <div class="copyClipboardIcon" matTooltip="Copy" data-clipboard-action="copy"
+						data-clipboard-target="#nameAndPassElm">
+						<mat-icon>content_copy</mat-icon>
+					</div> -->
+						<div><span>{{'MEETING_INFO.meeting_name' | translate}}</span> {{modalData.event.title}}</div>
+						<div *ngIf="modalData.event.meeting_code"><span>{{'MEETING_INFO.meeting_code' | translate}}</span> {{modalData.event.meeting_code}}</div>
+						<div *ngIf="modalData.event.meeting_password"><span>{{'MEETING_INFO.meeting_password' | translate}}</span>
+							{{modalData.event.meeting_password}}
+						</div>
+					</div>
+        </div>
+        
+        <div *ngIf="modalData.event.meetingInfo && modalData.event.meetingInfo.tags==='room_meeting'" style="margin-top: 26px;text-align: center;">
+          <span class="btn btn-primary" (click)="joinRoomBoxMeeting(modalData.event.meetingInfo);close()">{{'Meeting_schedules.join_meeting' | translate }}</span>
+      </div>
+
+				<div *ngIf="modalData.event.meeting_url" class="urlInfo" style="margin-top: 26px;">
+					<div class="infoData" style="padding: 9px;">
+                        <!-- <div class="copyClipboardIcon" matTooltip="Copy" data-clipboard-action="copy"
+						data-clipboard-target="#nameAndPassElm">
+						<mat-icon>content_copy</mat-icon>
+					</div> -->
+						<div>
+							<span>{{'MEETING_INFO.meeting_url' | translate}}</span>
+							<div id='meetingUrl' style="text-overflow: ellipsis;word-break: break-all;
+							font-size: medium;"><a target="_blank" matTooltip="{{'MEETING_INFO.click_to_join' | translate}}" href="{{modalData.event.meeting_url}}">{{modalData.event.meeting_url}}</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="close()">
+        {{'Meeting_schedules.ok' | translate }}
+      </button>
+    </div>
+  </ng-template>
+  
+  <style>
+        .cal-header{
+    background-image: linear-gradient(to bottom, #f5cf1f, #f49823) !important;
+    color: white !important;
+    font-weight: 400 !important;
+  }
+  </style>

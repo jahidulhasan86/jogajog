@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700&display=swap');
+
+@import 'lib/varriable';
+@import 'lib/mixins';
+@import 'responsive';
+
+
+@import 'theme_default';
+
+// Icon
+@import 'icon';
+
+// header
+@import 'header';
+
+// Yellow Service
+@import 'yellow_area';
+
+// Banner
+@import 'banner_area';
+
+// Communication Area
+@import 'communication';
+
+//Service Area
+@import 'service';
+
+// contact
+@import 'register';
+
+//Footer Area
+@import 'footer';
+
+//All Modal Popup
+@import 'all_modal';
+
+//All Custom Scss
+@import 'custom';
+
+//All Inner Pages
+@import 'pages';
+
+//User Counter Area
+@import 'user_counter';

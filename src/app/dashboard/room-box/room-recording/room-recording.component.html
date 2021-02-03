@@ -1,0 +1,67 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <h3 style="text-align: center;">{{'Recording.recording_list' | translate}}</h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <div class="row">
+                        </div>                       
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table id="rptTable" class="table table-hover">
+                            <thead class="text-warning">
+                                <tr>
+                                    <!-- <th>{{'Recording.name' | translate}}</th> -->
+                                    <th>{{'Recording.initiator' | translate}}</th>
+                                    <th>{{'Recording.start_time' | translate}}</th>
+                                    <th>{{'Recording.end_time' | translate}}</th>
+                                    <th>{{'Recording.status' | translate}}</th>
+                                    <th>Action</th>
+                                  </tr>
+                        
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let rec of recordingList">
+                                    <!-- <td>{{rec.name}}</td> -->
+                                    <td>{{rec.created_by}}</td>
+                                    <td>{{rec.start_time | date: 'short'}}</td>
+                                    <td>{{rec.end_time | date: 'short'}}</td>
+									<td>{{rec.status}}</td>
+									<td style="cursor: pointer;" matTooltip="{{'Recording.play_recording' | translate}}"
+									class="participants_details">
+										<a [href]=rec.url target="_blank">{{'Recording.play' | translate}}</a>
+									</td>
+                                    <!-- <td style="cursor: pointer;" (click)="showParticipantDetails(alog.participants)" title="Click to view details."
+                                        class="participants_details">{{alog.participants.length}}</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .participants_details {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+        text-align: center;
+    }
+    ::placeholder {
+  color: white !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: white !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: white !important;
+}
+</style>

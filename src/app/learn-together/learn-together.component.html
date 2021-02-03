@@ -1,0 +1,47 @@
+<!-- New Register -->
+
+<div class="modal-header">
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-xl-2 col-md-3">
+			<img src="{{content.logo}}" class="lt-logo" alt="">
+		</div>
+		<div class="col-xl-9 col-md-8 pl-40 lt-header">
+			<h1 class="mt-20">{{content.heading}}</h1>
+			<h2>{{content.heading_text}}</h2>
+		</div>
+		<div class="cpl-xl-1">
+			<button type="button" class="close" aria-label="Close" (click)="closeDialog()" matTooltip="Cancel"
+			matTooltipPosition="below">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		</div>
+	</div>
+</div>
+</div>
+<div class="modal-body">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-12 col-sm-12 mb-20">
+				<!-- <video width="100%" controls autoplay loop>
+					<source src="../../assets/sound/Robin - 21723.mp4" type="video/mp4">
+				</video> -->
+				<img style="border: 1px solid #ece3e3;" src="{{content.image}}" class="img-fluid" alt="">
+				<h2 class="text-center lt-text mt-20">{{content.text}}</h2>
+				<div class="hr-1"></div>
+				<div class="mt-20 text-center">
+					<a><img src="assets/images/PlaystoreBtn.png" class="img-fluid mr-20" alt=""(click)="goApps('not_available')"></a>
+					<a><img src="assets/images/GoogleChromeBtn.png" class="img-fluid" alt="" (click)="content.web == 'learnTogether' ?  goApps('learnTogether') : goApps('teamTogether')"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div class="modal-footer">
+    <button type="button" class="btn btn-info"  (click)="register()" matTooltip="Register"
+    matTooltipPosition="below">Register</button>
+    <a href="javascript:void(0)" (click)="loginDialog()" matTooltip="Login Here"
+    matTooltipPosition="below">Login Here</a>
+  </div> -->
+
+<!-- /New Register -->

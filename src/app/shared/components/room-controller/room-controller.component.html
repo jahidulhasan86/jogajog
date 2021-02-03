@@ -1,0 +1,156 @@
+<mat-toolbar id="room-controller" role="heading" [class.headerLight]="lightTheme" class="" fxLayout
+	fxLayoutAlign="center" fxLayoutGap="10px">
+	<!-- <div fxFlex="20%" fxFlexOrder="1"> -->
+	<!-- <div class="participantsButtonContainer"> -->
+	<!-- <button mat-icon-button (click)="showMeetingInfo()">
+				<mat-icon class="iconSize"  style="color:#f49a22;"  matTooltip="Meeting Info">info</mat-icon>
+			</button> -->
+	<!-- </div> -->
+	<!-- Participant name list -->
+	<!-- <div fxFlex="calc(100% - 40px)" fxFlexOrder="2">
+			<span class="participantNames">{{ participantsNames | tooltipList }}</span>
+		</div> -->
+	<!-- </div> -->
+	<div fxFlex="90%" fxFlexOrder="2">
+		<div align="center" class="buttonsContainer">
+			<!-- Info button -->
+			<!-- style="position: absolute;left: 0;right: 0;" -->
+			<span style="position: absolute;left: 0;">
+				<!-- {{isCallModePtv}} {{floorState_Custom}} -->
+				<span *ngIf="countDownValue" id="countdown_timer">
+					{{countDownValue}}
+					<!-- <button  mat-icon-button (click)="increaseTimerClick()">
+						<mat-icon class="iconSize" matTooltip="{{'RoomController.increaseTimer' | translate}}">add</mat-icon>
+					</button> -->
+					<span (click)="increaseTimerClick()" style="cursor: pointer;" matTooltip="{{'RoomController.increaseTimer' | translate}}">
+						<img class="addClockImg" src="../../../../assets/images/callscreen/clockIcon.png" alt="clock">
+						<span class="addTimeText">Add Time</span>
+					</span>
+				</span>
+			</span>
+
+			<!-- Microphone button -->
+		
+				<button class="call_view_icons" id="navMicrophoneButton" mat-icon-button
+					(click)="!isCallModePtv || (isCallModePtv && floorState_Custom === 'REQUESTING') ? toggleMicrophone() : null"
+					[disabled]="isConnectionLost" *ngIf="hasAudioDevices && (ovSettings | hasAudio)">
+
+					<!-- <mat-icon class="iconSize" *ngIf="isWebcamAudioEnabled" style="color:#f49a22;"
+						matTooltip="{{'RoomController.audio_mute' | translate}}">mic</mat-icon>
+					<mat-icon class="iconSize" *ngIf="!isWebcamAudioEnabled" color="warn"
+						matTooltip="{{'RoomController.audio_unmute' | translate}}">mic_off</mat-icon> -->
+						<span *ngIf="isWebcamAudioEnabled" matTooltip="{{'RoomController.audio_mute' | translate}}"><img height="33" width="33" src="../../../../assets/images/call-view/Mask Group 7.png" alt=""></span>
+						<span *ngIf="!isWebcamAudioEnabled" matTooltip="{{'RoomController.audio_unmute' | translate}}"><img height="33" width="33" src="../../../../assets/images/call-view/Group 19776.png" alt=""></span>
+				</button>
+
+			<!-- Camera button -->
+		
+				<button class="call_view_icons" id="navCameraButton" mat-icon-button
+					(click)="!isCallModePtv || (isCallModePtv && floorState_Custom === 'REQUESTING')  ? toggleCamera() : null"
+					[disabled]="isConnectionLost" *ngIf="!this.ovSettings || (hasVideoDevices && (this.ovSettings | hasVideo))">
+					<!-- <mat-icon class="iconSize" *ngIf="isWebcamVideoEnabled" style="color:#f49a22;"
+						matTooltip="{{'RoomController.cam_mute' | translate}}">videocam</mat-icon>
+					<mat-icon class="iconSize" *ngIf="!isWebcamVideoEnabled" color="warn"
+						matTooltip="{{'RoomController.cam_unmute' | translate}}">videocam_off</mat-icon> -->
+					<span *ngIf="isWebcamVideoEnabled" matTooltip="{{'RoomController.cam_mute' | translate}}"><img height="33" width="33" src="../../../../assets/images/call-view/Mask Group 8.png" alt=""></span>
+					<span *ngIf="!isWebcamVideoEnabled" matTooltip="{{'RoomController.cam_unmute' | translate}}"><img height="33" width="33" src="../../../../assets/images/call-view/Group 19778.png" alt=""></span>
+				</button>
+		
+			<!-- Screenshare button -->
+		
+				<button class="call_view_icons"  id="navScreenButton" mat-icon-button
+					(click)="!isCallModePtv || (isCallModePtv && floorState_Custom === 'REQUESTING')  ? toggleScreenShare() : null"
+					[disabled]="isConnectionLost" *ngIf="ovSettings | hasScreenSharing">
+					<!-- <mat-icon class="iconSize" *ngIf="!isScreenEnabled" matTooltip="{{'RoomController.screen_share' | translate}}"
+						color="warn">stop_screen_share</mat-icon>
+					<mat-icon class="iconSize" *ngIf="isScreenEnabled" style="color:#f49a22;"
+						matTooltip="{{'RoomController.screen_share_stop' | translate}}">screen_share</mat-icon> -->
+					<span *ngIf="!isScreenEnabled" matTooltip="{{'RoomController.screen_share' | translate}}"><img height="33" width="33" src="../../../../assets/images/call-view/Mask Group 101.png" alt="screen_share_stop"></span>
+					<span *ngIf="isScreenEnabled" matTooltip="{{'RoomController.screen_share_stop' | translate}}"><img height="33" width="33" src="../../../../assets/images/call-view/Mask Group 10.png" alt="screen_share_start"></span>
+				</button>
+		
+
+			<!-- PTV Action Button -->
+		
+			<button  *ngIf="isCallModePtv" mat-icon-button class="ptv_btn_part">
+				<!-- <mat-icon *ngIf="floorState_Custom === 'RELEASE'" (click)="toggleAudioVideoForPtv('REQUESTING')"
+					class="iconSize" style="color:#f49a22;" matTooltip="Floor Free - You can take it.">done</mat-icon> -->
+				<!-- <mat-icon *ngIf="floorState_Custom === 'REQUESTING'" (click)="toggleAudioVideoForPtv('RELEASE')"
+					class="iconSize" style="color:#f49a22;" matTooltip="Floor Catch - You are on the floor.">done_all</mat-icon> -->
+				<!-- <mat-icon *ngIf="floorState_Custom === 'GRANTED'" class="iconSize" color="warn"
+					matTooltip="Floor Block/Full - You cannot get this floor at this moment.">block</mat-icon> -->
+				<img class="ptvBtnImg" src="../../../../assets/images/callscreen/ptv_btn_free.png"
+					*ngIf="floorState_Custom === 'RELEASE'" (click)="toggleAudioVideoForPtv('REQUESTING')"
+					matTooltip="{{'RoomController.request_floor' | translate}}" alt="ptv">
+				<img class="ptvBtnImg" src="../../../../assets/images/callscreen/ptv_btn_enable.png"
+					*ngIf="floorState_Custom === 'REQUESTING'" (click)="toggleAudioVideoForPtv('RELEASE')"
+					matTooltip="{{'RoomController.release_floor' | translate}}" alt="ptv">
+				<img class="ptvBtnImg" src="../../../../assets/images/callscreen/ptv_btn_busy.png" (click)="toggleAudioVideoForPtv('BLOCK')"
+					*ngIf="floorState_Custom === 'GRANTED'" matTooltip="{{'RoomController.block_floor' | translate}}" alt="ptv">
+					
+			</button>
+		 
+			<!-- Fullscreen button -->
+	
+			<button [ngStyle]="isCallModePtv? {'margin-left': '4%'} : {'margin-right': '0'}"  mat-icon-button (click)="toggleFullscreen()" [disabled]="isConnectionLost"
+				*ngIf="ovSettings | hasFullscreen">
+				<mat-icon class="iconSize" matTooltip="{{'RoomController.full_screen' | translate}}">{{ fullscreenIcon }}
+				</mat-icon>
+		   </button>
+	
+
+			<!-- Automatic / grid layout button -->
+			
+				<button style="margin-left: 4%"  mat-icon-button
+					(click)="!isCallModePtv || (isCallModePtv && floorState_Custom === 'REQUESTING')  ? toggleSpeakerLayout() : null"
+					[disabled]="isConnectionLost" *ngIf="ovSettings | hasLayoutSpeaking">
+					<!-- <mat-icon class="iconSize" matTooltip="{{'RoomController.speak_layout_enable' | translate}}" color="warn"
+						*ngIf="!isAutoLayout">voice_over_off</mat-icon>
+					<mat-icon class="iconSize" matTooltip="{{'RoomController.speak_layout_disable' | translate}}"
+						style="color:#f49a22;" *ngIf="isAutoLayout">record_voice_over</mat-icon> -->
+						<span matTooltip="{{'RoomController.speak_layout_enable' | translate}}" *ngIf="!isAutoLayout"><img height="33" width="33" src="../../../../assets/images/call-view/User Display Icon - Default.png" alt="enable-speaker-layout"></span>
+				        <span matTooltip="{{'RoomController.speak_layout_disable' | translate}}" *ngIf="isAutoLayout"><img height="33" width="33" src="../../../../assets/images/call-view/User Display Icon - Selected.png" alt="disable-speaker-layout"></span>
+					</button>
+					
+             <!-- Recordiing button -->
+					<button style="margin-left: 4%" mat-icon-button id='startrecording' class="" (click)='startRecording()' *ngIf="enableRecording" [disabled]="isDisabled">
+						<!-- <mat-icon matTooltip="{{'RoomController.recordingStartBtn' | translate}}">fiber_manual_record</mat-icon> -->
+						<span matTooltip="{{'RoomController.recordingStartBtn' | translate}}"><img height="33" width="33" src="../../../../assets/images/call-view/Mask Group 131.png" alt="recording-start-icon"></span>
+					</button>
+					<button mat-icon-button id='stoprecording' class="" (click)='stopRecording()' style="display: none; margin-left: 4% ">
+						<!-- <mat-icon matTooltip="{{'RoomController.recordingStopBtn' | translate}}">stop</mat-icon> -->
+						<span matTooltip="{{'RoomController.recordingStopBtn' | translate}}"><img height="33" width="33" src="../../../../assets/images/call-view/Mask Group 13.png" alt="recording-start-icon"></span>
+					</button>
+			
+
+			<!-- Leave seassion button -->
+			<button style="margin-left: 4%"  mat-icon-button (click)="leaveSession()" id="navLeaveButton" *ngIf="ovSettings | hasExit">
+				<!-- <mat-icon class="iconSize" color="warn" matTooltip="{{'RoomController.leave_session' | translate}}">call_end
+				</mat-icon> -->
+				<span ><img height="33" width="33" src="../../../../assets/images/call-view/logout icon.png" alt="logout-icon"></span>
+			</button>
+		</div>
+	</div>
+	<div fxFlex="10%" fxFlexOrder="3" align="end">
+		<!-- <button mat-icon-button (click)="toggleChat()" [disabled]="isConnectionLost" *ngIf="ovSettings | hasChat">
+			<mat-icon matBadge="{{ newMessagesNum }}" [matBadgeHidden]="newMessagesNum === 0" matBadgePosition="above before"
+				title="Chat" matBadgeColor="accent">chat</mat-icon>
+		</button> -->
+		<button mat-icon-button (click)="toggleChat()" [disabled]="isConnectionLost" *ngIf="ovSettings | hasChat">
+			<mat-icon matBadge="{{ newMessagesNum }}" [matBadgeHidden]="newMessagesNum === 0" matBadgePosition="above before"
+				matTooltip="{{'RoomController.chat' | translate}}" matBadgeColor="accent">chat</mat-icon>
+		</button>
+		<button mat-icon-button class="" (click)='loadParticipents()'>
+			<mat-icon matTooltip="{{'RoomController.participants' | translate}}" matBadge="{{ participantsNames?.length+1 }}"
+				matBadgeSize="small" matBadgePosition="above after" matBadgeColor="accent">groups</mat-icon>
+		</button>
+		 <!-- <button mat-icon-button id='startrecording' class="" (click)='startRecording()' *ngIf="enableRecording" [disabled]="isDisabled"> -->
+			<!-- <mat-icon matTooltip="{{'RoomController.recordingStartBtn' | translate}}">fiber_manual_record</mat-icon> -->
+			<!-- <img src="../../../../assets/images/startRecording.png" width="24px" height="24px" matTooltip="{{'RoomController.recordingStartBtn' | translate}}"/> 			
+		</button> -->
+		<!-- <button mat-icon-button id='stoprecording' class="" (click)='stopRecording()' style="color: red; display: none;"> -->
+			<!-- <mat-icon matTooltip="{{'RoomController.recordingStopBtn' | translate}}">stop</mat-icon> -->
+			<!-- <img src="../../../../assets/images/stopRecording.png"  width="24px" height="24px" matTooltip="{{'RoomController.recordingStopBtn' | translate}}" />  -->
+		<!-- </button> -->
+	</div>
+</mat-toolbar>

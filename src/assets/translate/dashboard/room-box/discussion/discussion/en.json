@@ -1,0 +1,24 @@
+{
+	"Discussion":{
+		"new_thread":"New Thread",
+		"please_wait":"Please Wait..",
+		"nothing_here_yet": "Nothing Here Yet.",
+		"thread_by":"Thread by",
+		"edit":"Edit",
+		"edit_discussion": "Edit Discussion",
+		"subject":"Subject",
+		"message":"Message Body",
+		"company_info":"Company Member's Information",
+		"add_member":"Add Member",
+		"member_list":"Member List",
+		"sl_no": "SL NO.",
+		"user_name":"USER NAME",
+		"email": "EMAIL",
+		"contact":"CONTACT",
+		"no_reply":"No reply yet now",
+		"last_activity": "Last activity"
+
+
+
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"Reset_Forget": {
+		"reset_pass_by_email":"Reset Password By Email",
+		"pass_recovery": "Password Recovery",
+		 "email": "email",
+		 "submit": "Submit",
+		 "reset_pass": "Reset Password",
+		 "jogajog": "JOGAJOG",
+		 "new_pass": "New Password:",
+		 "pass_length": "Must be at least 5 characters!",
+		 "confirm_pass": "Confirm Password:",
+		 "is_req_pass": "Password is Required!",
+		 "not_match_pass": "Password do not match"
+
+	}
+
+}

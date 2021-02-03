@@ -1,0 +1,19 @@
+{
+	"RoomDetails":{
+		"please_wait": "অনুগ্রহপূর্বক অপেক্ষা করুন",
+		"hosted_by": "আয়োজক: ",
+		"all_members": "সব সদস্য",
+		"update": "আপডেট",
+		"remove": "বর্জন ",
+		"chat": "রুম চ্যাট",
+		"resources": "বিবিধ ফাইল",
+		"discussion": "আলোচনা",
+		"meeting_recording": "মিটিং রেকর্ডিং", 
+		"schedules": "সময়সূচী",
+		"active_now": "এখন চলছে",
+		"back_room": "রুমে ফিরে যান",
+		"update_room": "রুমের নাম পরিবর্তন করুন",
+		"notifications": "নোটিফিকেশন্স"
+
+	}
+}

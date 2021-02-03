@@ -1,0 +1,20 @@
+{
+	"RoomDetails":{
+		"please_wait": "Please Wait..",
+		"hosted_by": "Hosted By: ",
+		"all_members": "All Members",
+		"update": "Update",
+		"remove": "Remove ",
+		"chat": "Room Chat",
+		"resources": "Resources",
+		"discussion": "Discussions",
+		"meeting_recording": "Meeting Recording",
+		"schedules": "Schedules",
+		"active_now": "Active Now",
+		"back_room": "Back to Room",
+		"update_room": "Update Room Name",
+		"notifications": "Notifications"
+
+
+	}
+}

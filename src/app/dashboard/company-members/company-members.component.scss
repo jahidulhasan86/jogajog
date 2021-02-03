@@ -1,0 +1,56 @@
+table {
+	width: 100%;
+}
+
+.componentName{
+	color: #454954;
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.loader{
+	position: absolute;
+	text-align: center;
+	right: 50%;
+	top: 50%;
+}
+
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+	stroke: #F49D23
+}
+
+.theamButton {
+	border: none;
+	padding: 8px 10px;
+	border-radius: 4px;
+	color: white;
+	font-size: 15px;
+	font-weight: 500;
+	width: 40%;
+	// top: -5px;
+	position: relative;
+	background: linear-gradient(to right, #F4AD20 0%, #F5C71C 100%);
+	float: right;
+}
+
+tr:nth-child(even) {
+	background-color: #F1F3F9;
+}
+
+.headerText{
+	font-size: 16px;
+	font-weight: 500;
+	color: #F49A22;
+	padding: 0px 0px 10px 10px;
+}
+
+.table_item_heading{
+	font-weight: bold;
+	font-size: 14px;
+	color: #635b5b;
+}
+
+.table-class-name{
+	font-weight: bold;
+	color: #635b5b;
+}

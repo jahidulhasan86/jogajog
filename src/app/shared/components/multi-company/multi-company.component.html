@@ -1,0 +1,35 @@
+<div class="continer-fluid">
+	<div class="modal-header no-flex">
+		<div class="d-flex">
+			<div class="sub-header-l offset-left-80">
+				<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+				<h1
+					[ngStyle]="globalValue.app_logo == '../../../../assets/images/jagajag_logo_with_bangla_text.png' ? {'margin-left': '5%'} : {'margin-left': '0'}">
+					{{'InviteMeeting.onestop_comm' | translate}}</h1>
+			</div>
+			<button type="button" class="close" aria-label="Close" (click)="closeDialog()"
+				matTooltip="{{'InviteMeeting.cancel' | translate}}" matTooltipPosition="below">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+	<div style="text-align: center; padding: 3% 0 5% 0;">
+		<div style="text-align: center;">
+			<h2>{{'Multicompany.current_company' | translate}} <strong>{{company_name}}</strong></h2>
+		</div>
+		<div style="padding: 3% 0 5% 0;">
+			<mat-form-field style="width: 50%;">
+				<mat-label style="color:black">{{'Multicompany.select_company' | translate}}</mat-label>
+				<mat-select [(ngModel)]="selectedValue">
+					<mat-option style="color: black" *ngFor="let company of companies" [value]="company.company_id">
+						{{company.company_name}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<div>
+			<button type="button" class="btn btn-outline-secondary" matTooltip="{{'Multicompany.switch_company' | translate}}"
+				matTooltipPosition="below" (click)="switchCompany()">{{'Multicompany.go_to_company' | translate}}</button>
+		</div>
+	</div>
+</div>

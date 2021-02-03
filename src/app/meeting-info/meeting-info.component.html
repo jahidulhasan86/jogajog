@@ -1,0 +1,64 @@
+<body style="background-color: #f1f3f9;">
+	<div class="modal-header no-flex">
+		<div class="d-flex">
+			<div class="sub-header-l offset-left-80">
+				<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+				<h1>{{'HostMeeting.onestop_comm' | translate}}</h1>
+			</div>
+			<button type="button" class="close" aria-label="Close" (click)="closeDialog()" matTooltip="{{'HostMeeting.cancel' | translate}}"
+				matTooltipPosition="below">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+	<div class="meetingInfo" style='width: 100%;  color: #515c6f; '>
+		<div>
+			<div class="" style=" background: white;padding: 6%;position: relative;">
+				<div class="header">{{'MEETING_INFO.meeting_heading' | translate}}</div>
+				<div class="infoData">
+					<span>{{'MEETING_INFO.host' | translate}}</span> {{meetingInfo.owner.host_name}}</div>
+				<div class="infoData">
+					<span>{{'MEETING_INFO.start_time' | translate}}</span>
+					{{meetingInfo.timing.start_time | date: 'EEEE, MMMM d, y, h:mm:ss a' }}
+				</div>
+				<div class="infoData">
+					<span>{{'MEETING_INFO.meeting_name' | translate}}</span> {{meetingInfo.meeting_name}}
+				</div>
+				<div *ngIf="meetingInfo.tag!=='room-box'" class="infoData"><span>{{'MEETING_INFO.end_time' | translate}}</span>
+					{{meetingInfo.timing.end_time | date: 'EEEE, MMMM d, y, h:mm:ss a'}}
+				</div>
+				<div *ngIf="meetingInfo.tag!=='room-box'" class="infoData"><span>{{'MEETING_INFO.duration' | translate}}</span> {{meetingInfo.timing.total_duration}} hour
+				</div>
+
+				<div *ngIf="!meetingInfo.tag" class="nameAndPassInfo" style="margin-top: 26px;">
+					<div class="copyClipboardIcon" matTooltip="{{'MEETING_INFO.copy' | translate}}" data-clipboard-action="copy"
+						data-clipboard-target="#nameAndPassElm">
+						<mat-icon>content_copy</mat-icon>
+					</div>
+					<div id="nameAndPassElm" class="infoData">
+						<div><span>{{'MEETING_INFO.meeting_name' | translate}}</span> {{meetingInfo.meeting_name}}</div>
+						<div><span>{{'MEETING_INFO.meeting_code' | translate}}</span> {{meetingInfo.meeting_code}}</div>
+						<div *ngIf="meetingInfo.meeting_password"><span>{{'MEETING_INFO.meeting_password' | translate}}</span>
+							{{meetingInfo.meeting_password}}
+						</div>
+					</div>
+				</div>
+
+				<div *ngIf="!meetingInfo.tag" class="urlInfo" style="margin-top: 26px;">
+					<div class="copyClipboardIcon" matTooltip="{{'MEETING_INFO.copy' | translate}}" data-clipboard-action="copy"
+						data-clipboard-target="#meetingUrl">
+						<mat-icon>content_copy</mat-icon>
+					</div>
+					<div class="infoData">
+						<div>
+							<span>{{'MEETING_INFO.meeting_url' | translate}}</span>
+							<div id='meetingUrl' style="    text-overflow: ellipsis;
+							word-break: break-all;
+							font-size: medium;">{{meetingInfo.meeting_url}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

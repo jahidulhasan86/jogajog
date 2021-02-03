@@ -1,0 +1,38 @@
+<div class="container-fluid">
+	
+<div class="row">
+	<div class="col-xl-8 col-md-8 col-sm-12 ">
+		<h2 style="padding: 0;">   {{ 'Contacts.contacts_list' | translate}} </h2>
+	</div>
+	<div class="col-xl-4 col-md-4 col-sm-12 ">
+		<button mat-icon-button (click)="openDialog()" style="float: right;"><mat-icon>group_add</mat-icon>
+		</button>
+	</div>	
+	
+  </div>
+  <ngx-spinner  color = "#f49823" type = "ball-clip-rotate-pulse" size="medium" [fullScreen] = "true"   ><p style="color: white;">{{'RoomDetails.please_wait' | translate}}</p></ngx-spinner>
+
+ <div class="row">
+	<div class="no_contacts_text col-sm-12" *ngIf="contactNumbers.length == 0">
+		{{ 'Contacts.no_contacts' | translate}}
+	  </div>
+	
+	<div class="col-sm-12" *ngIf="contactNumbers.length > 0">
+		<mat-list  class="your_div">
+			<mat-list-item  matSort  *ngFor="let contact of dataSource.connect() | async | sort:'name'">
+				<img matListAvatar src="../../../assets/images/Default Profile.png" alt="Photo of a Person">
+				
+				<h3 matLine mat-sort-header="name" matColumnDef="name" style="font-weight: 900;" > {{contact.name}} </h3>
+				<p matLine style="width: 50%;">
+					<span class="demo-2"> {{contact.email}} </span>
+		 
+					<span style="float: right; color: darkgoldenrod;"> {{contact.mobile_number}} </span>
+				</p>
+						
+				
+			</mat-list-item>
+		</mat-list>
+	<!-- <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+	</div>
+ </div>
+</div>

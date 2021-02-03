@@ -1,0 +1,33 @@
+<div class="modal-header no-flex">
+	<div class="d-flex">
+	  <div class="sub-header-l offset-left-80">
+		<!-- <img src="assets/img/Jagajag logo.png" class="offset-left-24" alt=""><br/>   -->
+		<img src="{{globalValue.app_logo}}" class="offset-left-24" alt=""><br />
+		<h1 [ngStyle]="globalValue.app_logo == '../../../../assets/images/jagajag_logo_with_bangla_text.png' ? {'margin-left': '5%'} : {'margin-left': '0'}">{{'LOGIN.title_text' | translate}}</h1>
+	  </div>
+	  <button type="button" class="close" aria-label="Close" (click)="closeDialog('crossBtn')" matTooltip="{{'LOGIN.cancel' | translate}}"
+	  matTooltipPosition="below">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+  </div>
+  <div id='radBtn' style="display: flex;" [ngClass]="{'disableDiv': isRequiredRegistration}" >
+	<div style="width: 50%;padding: 3% 4% 1% 7%;text-align: right;">
+		<input [checked]="isRegularLogin == false"  id="guest_login" type="radio" value="guest_login" name="logintype" (change)='setLoginType($event)'>
+		<label for="guest_login">&nbsp;{{'LOGIN.join_as_guest' | translate}} </label>
+	</div>
+	<div style="width: 50%;padding: 3% 5% 1% 1%;">
+		<input [checked]="isRegularLogin == true" id="regular_login" type="radio" value="regular_login" name="logintype"  (change)='setLoginType($event)'>
+		<label for="regular_login">&nbsp;{{'LOGIN.join_as_register_user' | translate}}</label>
+	</div>
+  </div>
+
+  <div *ngIf='isRegularLogin'>
+	<h4 style="text-align: center;font-weight: 500;margin: 0;">{{'LOGIN.join_as_register_user_info' | translate}}</h4>
+	<app-login></app-login>
+  </div>
+  <div *ngIf='!isRegularLogin'>
+	<h4 style="text-align: center;font-weight: 500;margin: 0;">{{'LOGIN.join_as_guest_info' | translate}}</h4>
+	<app-guest-login></app-guest-login>
+  </div>
+  

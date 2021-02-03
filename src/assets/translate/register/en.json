@@ -1,0 +1,13 @@
+{
+	"SIGNUP": {
+		"logo_text": "Jagajag",
+		"title_text": "One Stop Communications",
+		"signup_text": "Register Your New Account",
+		"email_placeholder": "Enter your email",
+		"userid_placeholder": "Enter your user name",
+		"password_placeholder": "Enter your password",
+		"register_btn": "Register",
+		"login_btn": "Login Here",
+		"cancel": "Cancel"
+	}
+}

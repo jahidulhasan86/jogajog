@@ -1,0 +1,19 @@
+{
+	"MENU": {
+		"solutions": "Solutions",
+		"plans_pricing": "Plans & Pricing",
+		"resources": "Resources",
+		"contact": "Contact Us",
+		"register_btn": "Register",
+		"login_btn": "Login",
+		"join_meeting": "Join a meeting",
+		"host_meeting": " host ",
+		"search_placeholder": "Search here...",
+		"search_btn" : "Search",
+		"dashboard": "Dashboard",
+		"logout": "Logout",
+		"faq": "FAQ",
+		"user_manual": "User Guide",
+		"why_jogajog": "Why Jogajog?"
+	}
+}

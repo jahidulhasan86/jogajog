@@ -1,0 +1,218 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+<div class="main-content">
+	<div class="container-fluid">
+		<h3>Summary</h3>
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="card card-stats">
+					<div class="card-header card-header-warning card-header-icon">
+						<div class="card-icon">
+							<i class="material-icons">equalizer</i>
+						</div>
+						<p class="card-category">Used / Total</p>
+						<!-- <img *ngIf='serverInstances===""' src="../../../../../assets/images/dashboard/admin/loader.gif"> -->
+						<h3 class="card-title">{{usedServers}}/{{totalServers}}
+							<!-- <small>Percent</small> -->
+						</h3>
+					</div>
+					<div class="card-footer">
+						<div class="stats">
+							<!-- <i class="material-icons text-danger">equalizer</i> -->
+							<b>Server Instances</b>
+							<!-- <a href="javascript:void(0)">CPU Usage (Percentage)</a> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="card card-stats">
+					<div class="card-header card-header-success card-header-icon">
+						<div class="card-icon">
+							<i class="material-icons">equalizer</i>
+						</div>
+						<p class="card-category">Total</p>
+						<!-- <img *ngIf='runningSessoins===""' src="../../../../../assets/images/dashboard/admin/loader.gif"> -->
+						<h3 class="card-title">{{runningSessoins}}</h3>
+					</div>
+					<div class="card-footer">
+						<div class="stats">
+							<!-- <i class="material-icons">date_range</i> CPU Usage (Percentage) -->
+							<b>Running Sessions (Count)</b>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="card card-stats">
+					<div class="card-header card-header-danger card-header-icon">
+						<div class="card-icon">
+							<i class="material-icons">equalizer</i>
+						</div>
+						<p class="card-category">Total</p>
+						<!-- <img *ngIf='totalErrors===""' src="../../../../../assets/images/dashboard/admin/loader.gif"> -->
+						<h3 class="card-title">{{totalErrors}}</h3>
+					</div>
+					<div class="card-footer">
+						<div class="stats">
+							<!-- <i class="material-icons">local_offer</i> Server Instances -->
+							<b>Errors (Count)</b>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				
+				<div class="card card-chart" style="margin-top: 0px;padding: 5px;">
+					<div class="card-body" style="text-align: center;">
+						<h4 class="card-title">Server Usage</h4>
+						<!-- <p class="card-category">
+							<span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p> -->
+					</div>
+						<div style="height: 180px;">
+							<div>
+							  <div style="display: block">
+								<canvas baseChart style="height: 170px;"
+								  [datasets]="barChartData"
+								  [labels]="barChartLabels"
+								  [options]="barChartOptions"
+								  [colors]="barChartColors"
+								  [plugins]="barChartPlugins"
+								  [legend]="barChartLegend"
+								  [chartType]="barChartType">
+								</canvas>
+							  <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button> -->
+							</div>
+						  </div>
+					</div>
+					<!-- <div class="card-footer">
+						<div class="stats">
+							<i class="material-icons">access_time</i> updated 4 minutes ago
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<ngx-spinner color="#f49823" type="ball-clip-rotate-pulse" size="medium" [fullScreen]="false">
+		<p style="color: white;">Please Wait..</p>
+	</ngx-spinner>
+	<div class="container-fluid">
+		<h3 style="text-align: center;">Details Report</h3>
+		<div class="row" style="">
+			<!-- <div class="col-lg-6 col-md-12">
+					<div class="card-body" style="padding: 0px;
+					margin-left: 15px;">
+						<h6 style="text-transform: none;">Select Day(s)</h6>
+						<button id="initCall" (click)="fetchActivityReport($event.target,'2')" class="btn btn-default mat-raised-button mat-button-base">2 Days
+						</button>
+						<button (click)="fetchActivityReport($event.target,'3')" class="btn btn-primary mat-raised-button mat-button-base">3 Days
+						</button>
+						<button (click)="fetchActivityReport($event.target,'7')" class="btn btn-primary mat-raised-button mat-button-base">7 Days
+						</button>
+						</div>
+				</div> -->
+			<!-- <div class="col-lg-12 col-md-12" style="float: right;">
+					<div class="card-body" style="padding: 0px;float: right;margin-right: 13px;">
+						<h6 style="text-transform: none;">Export report</h6>
+						<button (click)="exportAs('xlsx')" title="Export report as Excel" class="btn btn-info mat-raised-button mat-button-base">EXCEL
+						</button>&nbsp;&nbsp;
+						<button (click)="exportAs('csv')" title="Export report as Csv" class="btn btn-info mat-raised-button mat-button-base">CSV
+						</button>
+						</div>
+				</div> -->
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="card">
+					<div class="card-header card-header-warning">
+						<div class="row">
+							<div class="col-lg-6 col-md-12">
+								<h4 class="card-title">Details</h4>
+								<!-- <p class="card-category">Showing Data For Last {{daySelected}} days</p> -->
+							</div>
+							<div class="col-lg-6 col-md-12">
+								<input [(ngModel)]="meetingFilter.descriptions"
+									style="width: 321px;float: right;outline: white;color: white;padding: 10px;border-color:white; border: none !important;box-shadow: none !important;
+									background-image: linear-gradient(to top, #fafafa 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);"
+									placeholder="Search by meeting name.." class="form-control">
+							</div>
+						</div>
+
+					</div>
+					<div class="card-body table-responsive">
+						<table id="rptTable" class="table table-hover">
+							<thead class="text-warning">
+								<tr>
+									<th>Meeting Name</th>
+									<th>Status</th>
+									<th>Start Time</th>
+									<th>End Time</th>
+									<th>Error(s)</th>
+									<th>Participant(s)</th>
+								</tr>
+							</thead>
+							<tbody id="detailsLog">
+								<tr *ngFor="let alog of activityLogs | filterBy: meetingFilter">
+									<td>{{alog.descriptions}}</td>
+									<td>{{alog.status | lowercase}}</td>
+									<td>{{alog.created_at | date: 'MMMM d, y, h:mm:ss a'}}</td>
+									<td>{{alog.ended_at ? (alog.ended_at | date: 'MMMM d, y, h:mm:ss a') : 'N/A'}}</td>
+									<td matTooltip="Click to view error details." style="cursor: pointer;" (click)="showErrorDetails(alog.events)" class="error_details"
+										>{{alog.events.length}}</td>
+									<td style="cursor: pointer;" matTooltip="Click to view participants details." (click)="showParticipantDetails(alog.participants)"
+									 class="participants_details">
+										{{alog.participants.length}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+	.card-icon {
+		border-radius: 50% !important;
+		padding: 8px !important;
+	}
+
+	.card [class*=card-header-] .ct-chart .ct-label {
+		color: rgba(255, 255, 255, 0.7);
+	}
+
+	.participants_details {
+		cursor: pointer;
+		color: blue;
+		text-decoration: underline;
+		text-align: center;
+	}
+
+	.error_details {
+		cursor: pointer;
+		color: red;
+		text-decoration: underline;
+		text-align: center;
+	}
+
+	::placeholder {
+		color: white !important;
+		opacity: 1;
+		/* Firefox */
+	}
+
+	:-ms-input-placeholder {
+		/* Internet Explorer 10-11 */
+		color: white !important;
+	}
+
+	::-ms-input-placeholder {
+		/* Microsoft Edge */
+		color: white !important;
+	}
+</style>

@@ -1,0 +1,182 @@
+<div class="myMeetingArea">
+	<div class="container">
+		<div class="section_title">
+			<h1 style="height: 22px;">{{'DASHBOARD_HOME.my_meetings' | translate}}
+				<mat-icon style=" cursor: pointer;" matTooltip="{{'DASHBOARD_HOME.refresh' | translate}}"
+					(click)="getUpcommingMeetingList()">refresh</mat-icon>
+			</h1>
+			<span></span>
+		</div>
+		<owl-carousel style="width: 100%;" [options]="serviceOptions" [items]="totalMeetingList"
+			[carouselClasses]="['owl-carousel', 'owl-theme', 'sliding']">
+
+			<div *ngIf="totalMeetingList.length == 0" class="item" style=" margin-top:20px;">
+				<div class="single_service">
+					<div class="service_icon">
+						<!-- <img src="assets/img/icon/Video_Conference_Icon.png" class="img-fluid center-block" alt=""> -->
+						<!-- <img src="../../../assets/images/dashboard/pexels-photo-416320_2.png"
+							class="Rectangle-2127"> -->
+						<div class="service_header" [style.backgroundImage]="'url('+ invitedBackground +')'">
+							<!-- <div class="meetingTag">Upcomming Meeting</div> -->
+							<div class="meetingTime">{{'DASHBOARD_HOME.no_meeting_scheduled' | translate}}</div>
+							<!-- <div class="meetingDate">{{meeting.timing.start_time}}</div> -->
+						</div>
+					</div>
+					<div class="service_info d-flex">
+						<!-- <div class="info">
+								<div>{{meeting.owner.host_name}}:</div>
+								<div style="font-weight: 600;">
+									{{meeting.meeting_name}}
+								</div>
+							</div>
+							<div class="action">
+								<div>Details</div>
+							</div> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="item" style=" margin-top:20px;" *ngFor="let meeting of totalMeetingList">
+				<div class="single_service">
+					<div class="service_icon">
+						<!-- <img src="assets/img/icon/Video_Conference_Icon.png" class="img-fluid center-block" alt=""> -->
+						<!-- <img src="../../../assets/images/dashboard/pexels-photo-416320_2.png"
+							class="Rectangle-2127"> -->
+						<div class="service_header"
+							[ngClass]="accountService.currentUser.id!=meeting.owner.host_id?'invited':'hosted'">
+							<div class="meetingInfoIcon">
+								<mat-icon style="    margin: 0px 5px; cursor: pointer;"
+									matTooltip="{{'DASHBOARD_HOME.meeting_invitaion' | translate}}"
+									(click)="inviteMeetingDialog(meeting)">group_add</mat-icon>
+								<mat-icon style="    margin: 0px 5px; cursor: pointer;"
+									matTooltip="{{'DASHBOARD_HOME.meeting_info' | translate}}"
+									(click)="showMeetingInfo(meeting)">info
+								</mat-icon>
+							</div>
+							<div class="meetingTag">{{'DASHBOARD_HOME.upcoming_meeting' | translate}}</div>
+							<div class="meetingTime">{{meeting.timing.start_time | date: 'h:mm a'}}</div>
+							<div class="meetingDate">{{meeting.timing.start_time | date: 'EEEE, MMMM d, y'}}</div>
+						</div>
+					</div>
+					<div class="service_info d-flex">
+						<div class="info">
+							<div *ngIf="accountService.currentUser.id!=meeting.owner.host_id"
+								style="display: inline-block;vertical-align: top;width: 13%;">
+								<img height="38" width="38" src="{{invitedByBackground}}">
+							</div>
+							<div *ngIf="accountService.currentUser.id===meeting.owner.host_id"
+								style="display: inline-block;vertical-align: top;width: 13%;">
+								<img height="38" width="38" src="{{hostedByBackground}}">
+							</div>
+							<div style="display:inline-block;margin-left: 8px;
+							line-height: 1;
+							margin-top: 10px;width: 67%;">
+								<div>{{meeting.owner.host_name}} :</div>
+								<div title="{{meeting.meeting_name}}" class="meetingName" style="color: #8ea1b4;">
+									{{meeting.meeting_name}}</div>
+							</div>
+							<!-- <div>{{meeting.owner.host_name}} :</div>
+							<div class="meetingName" title="{{meeting.meeting_name}}">
+								{{meeting.meeting_name}}
+							</div> -->
+						</div>
+						<div class="action" matTooltip="{{'DASHBOARD_HOME.join' | translate}}">
+							<div (click)="joinMeeting(meeting)">{{'DASHBOARD_HOME.join' | translate}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</owl-carousel>
+	</div>
+</div>
+
+<div class="actionArea">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-3 col-md-3 col-sm-6">
+				<div class="main_box" (click)="joinMeeting()"
+					matTooltip="{{'DASHBOARD_HOME.join_a_meeting_1' | translate}} {{'DASHBOARD_HOME.join_a_meeting_2' | translate}}">
+					<div class="moneyIcon">
+						<mat-icon>lock_open</mat-icon>
+					</div>
+					<div class="icon">
+						<img src="../../../assets/images/dashboard/Join a Meeting Icon.png" alt="join icon">
+					</div>
+					<div class="text">
+						<b>{{'DASHBOARD_HOME.join_a_meeting_1' | translate}}</b>
+						<br />{{'DASHBOARD_HOME.join_a_meeting_2' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-6">
+				<div class="main_box" (click)="hostMeetingDialog()"
+					matTooltip="{{'DASHBOARD_HOME.host_meeting_1' | translate}} {{'DASHBOARD_HOME.host_meeting_2' | translate}}">
+					<div class="moneyIcon">
+						<mat-icon>lock_open</mat-icon>
+					</div>
+					<div class="icon">
+						<img src="../../../assets/images/dashboard/HostaMeeting.png" alt="join icon">
+					</div>
+					<div class="text">
+						<b>{{'DASHBOARD_HOME.host_meeting_1' | translate}}</b>
+						<br />{{'DASHBOARD_HOME.host_meeting_2' | translate}}
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-6">
+				<div class="main_box"
+				(click)="permanentRooms(true)">
+				<div class="moneyIcon">
+					<mat-icon 
+						matTooltip="{{'DASHBOARD_HOME.permanent_rooms_1' | translate}} {{'DASHBOARD_HOME.permanent_rooms_2' | translate}}">lock_open</mat-icon>
+				</div>
+				<div class="icon">
+					<img src="../../../assets/images/dashboard/Permanent Meeting Icon@2x.png" alt="join icon">
+				</div>
+				<div class="text">
+					<b>{{'DASHBOARD_HOME.permanent_rooms_2' | translate}}</b>
+					<br />&nbsp;
+				</div>
+			</div>
+				<!-- <div class="main_box"
+					(click)="companies.length >= 1 && isSharedRoomShow ? permanentRooms(true) : permanentRooms(false)">
+					<div class="moneyIcon">
+						<mat-icon *ngIf="companies.length >= 1 && !isSharedRoomShow"
+							matTooltip="{{'DASHBOARD_HOME.premium_feature' | translate}}">lock</mat-icon>
+						<mat-icon *ngIf="companies.length >= 1 && isSharedRoomShow"
+							matTooltip="{{'DASHBOARD_HOME.premium_feature' | translate}}">lock_open</mat-icon>
+					</div>
+					<div class="icon">
+						<img src="../../../assets/images/dashboard/Permanent Meeting Icon@2x.png" alt="join icon">
+					</div>
+					<div class="text">
+						<b>{{'DASHBOARD_HOME.permanent_rooms_1' | translate}}</b>
+						<br />{{'DASHBOARD_HOME.permanent_rooms_2' | translate}}
+					</div>
+				</div> -->
+			</div>
+			<div class="col-xl-3 col-md-3 col-sm-6">
+				<div class="main_box" (click)="companies.length > 1 ? mulitCompanyDialog() : companyAccounts()"
+					[matTooltip]="companies.length == 1 ? globalValue.currentBuild === 'en' ? 'Company meetings functionality allows you secure and private meeting services for company employees. Please contact us to enable this feature.' : (globalValue.currentBuild === 'bn' && bnEnLanguageCheck == 'bn') ? 'আপনি এখনো কোন কোম্পানির অন্তুরভুক্ত নন | কোম্পানি আর সহকর্মী নিবন্ধন করতে আমাদের সাথে যোগাযোগ করুন |' : 'Company meetings functionality allows you secure and private meeting services for company employees. Please contact us to enable this feature.' : '' ">
+					<div class="moneyIcon">
+						<mat-icon *ngIf="companies.length == 1"
+							matTooltip="{{'DASHBOARD_HOME.premium_feature' | translate}}">lock
+						</mat-icon>
+						<mat-icon *ngIf="companies.length > 1"
+							matTooltip="{{'DASHBOARD_HOME.premium_feature' | translate}}">
+							lock_open</mat-icon>
+					</div>
+					<div class="icon">
+						<img src="../../../assets/images/dashboard/CompanyAccounts.png" alt="join icon">
+					</div>
+					<div class="text" style="white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;" matTooltip="{{company_information.company_name}}">
+						<b>{{'DASHBOARD_HOME.company_accounts_1' | translate}} :</b>
+						<br />{{company_information.company_name}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
