@@ -26,7 +26,7 @@
 				<h4 class="modal-title mb-20" style="text-align: center;font-weight: 500;">
 					</h4>
 				<!-- Modal body -->
-				<div class="modal-body" #bodyCard>
+				<div class="modal-body" #bodyCard [hidden]="isWaitForHost">
 
 					<div class="row align-items-center">
 						<div class="col-sm-6 col-md-6 col-lg-6 leftSection">
@@ -283,6 +283,30 @@
 
 				</div>
 
+				<div *ngIf="isWaitForHost">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<div style="text-align: center;">
+						  <h3 style="font-weight: bold;">
+							{{'RoomConfig.waiting_for_host_heading' | translate}}
+						  </h3>
+						</div>
+					  </div>
+
+					  <div style="padding-left: 18%;">
+						<div class="col-sm-12 col-md-12 col-lg-12">
+								<span style="font-weight: bold;">{{'RoomConfig.meeting_name' | translate}} : </span>{{currentMeetingInfo.meeting_name}}
+					  	</div>
+
+					  <div class="col-sm-12 col-md-12 col-lg-12">
+							<span style="font-weight: bold;">{{'RoomConfig.meeting_time' | translate}} : </span>{{currentMeetingInfo.timing.start_time | date: 'MMM d, y, h:mm:ss a'}}
+								to {{currentMeetingInfo.timing.end_time | date: 'MMM d, y, h:mm:ss a'}}
+					  </div>
+
+					  <div class="col-sm-12 col-md-12 col-lg-12">
+							<span style="font-weight: bold;">{{'RoomConfig.meeting_host' | translate}} : </span>{{currentMeetingInfo.owner.host_name}}
+					  </div>
+					  </div>
+				</div>
 				<!-- Modal footer -->
 				<!-- <div class="modal-footer" style="justify-content: center">
 					<button mat-flat-button color="accent" (click)="joinSession()" form="nicknameForm"

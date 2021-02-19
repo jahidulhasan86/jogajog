@@ -233,7 +233,7 @@ roomJoinRequestPopup(payload) {
 	console.log('room join request',payload)
 	Swal.fire({
 		title: 'Request to join this room',
-		text: `${payload.user_name} wants to joint  ${payload.conference_name}. Do you accept him/her?`,
+		text: `${payload.user_name} wants to join  ${payload.conference_name}. Do you accept him/her?`,
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#F4AD20',

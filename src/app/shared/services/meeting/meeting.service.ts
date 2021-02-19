@@ -410,4 +410,14 @@ export class MeetingService {
 		})
 		return newModel
 	}
+
+	isMeetingAutoRecord(){
+		if (localStorage.hasOwnProperty('meetingInfo_current')) {
+			if (JSON.parse(localStorage.getItem('meetingInfo_current')).auto_recording) {
+				return true
+			} else {
+				return false
+			}
+		}
+	}
 }

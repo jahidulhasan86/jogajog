@@ -45,7 +45,8 @@ export class RoomBoxService {
     this.currentUser = JSON.parse(localStorage.getItem('sessionUser'));
   }
 
-  _addConference(conferenceName: any, tags: any, userList?: string[], deviceList?: string[], region?: any, conferenceType?: any, conferenceMode?: boolean, isAllowContributor?: boolean, isPinned?: boolean, geofenceList?, setting?: any,autoRecording?:any) {
+  _addConference(conferenceName: any, tags: any, userList?: string[], deviceList?: string[], region?: any, conferenceType?: any, conferenceMode?: boolean, isAllowContributor?: boolean, isPinned?: boolean, geofenceList?, setting?: any,autoRecording?:any, hosts?) {
+    console.log(hosts)
     this.currentUser = JSON.parse(localStorage.getItem('sessionUser'));
     var currentUserInfo;
     console.log('<======== Add Conference Service Called========>')
@@ -66,6 +67,7 @@ export class RoomBoxService {
       delete x.profile_pic;
       // delete x.email;
       delete x.isChecked;
+      delete x.host
     })
     currentUserInfo = {
       user_id: this.currentUser.id,
@@ -88,7 +90,8 @@ export class RoomBoxService {
       'geofences': geofenceList ? geofenceList : null,
       'tags': tags,
       'settings': setting,
-      'auto_recording': autoRecording
+      'auto_recording': autoRecording,
+      'hosts': hosts
     }
 
 

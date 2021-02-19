@@ -15,6 +15,10 @@
 		"video_device_not_found": "Oops! Camera device not found",
 		"video_off": "Video OFF",
 		"speaker_off":"Speaker OFF",
-		"screen_share_off": "Screen Share OFF"
+		"screen_share_off": "Screen Share OFF",
+		"waiting_for_host_heading": "Waiting for the host to start the meeting",
+		"meeting_name": "Meeting name",
+		"meeting_time": "Meeting time",
+		"meeting_host": "Meeting host"
 	}
 }

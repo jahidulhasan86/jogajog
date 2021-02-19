@@ -243,10 +243,11 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 	public doPopOut() {
 		const callViewUrl = window.location.href;
 		const meetingInfo: any = JSON.parse(localStorage.getItem('meetingInfo_current'));
-		this.leaveSession();
+		// this.leaveSession();
 		const params = `scrollbars=yes,resizable=no,status=no,location=no,toolbar=no,menubar=no,
                       	width=1200,height=680;addressbar=no,left=70,screenX=50`;
-		const isWindow = window.open(callViewUrl, '_blank', params);
+		// const isWindow = window.open(callViewUrl, '_blank', params);
+		const isWindow = window.open(window.location.origin + '/#/dashboard', '_blank', params);
 		localStorage.setItem('popout', JSON.stringify(isWindow));
 		if (!isWindow || isWindow.closed || typeof isWindow.closed === 'undefined') {
 			Swal.fire('Please Allow Popout!', '', 'info');

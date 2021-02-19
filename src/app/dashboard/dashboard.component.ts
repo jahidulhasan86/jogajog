@@ -370,6 +370,9 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 				}
 			});
 		} else if (type == 'room_invitation') {
+			if(payload.action == 'accept_room_invitation'){
+				return
+			}
 			Swal.fire({
 				title: 'Room invitation',
 				text: `${payload.inviter_user_name} invited to you from ${payload.conference_name} room. Do you accept it?`,

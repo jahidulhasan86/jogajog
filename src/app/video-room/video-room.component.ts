@@ -136,6 +136,7 @@ export class VideoRoomComponent implements OnInit, OnDestroy {
 	chair_id: any;
 	recordingConfig = new RecordingConfigModel();
 	recodingList = []
+	isWaitForHost: boolean = false
 	constructor(
 		private networkSrv: NetworkService,
 		private router: Router,
@@ -1139,7 +1140,8 @@ export class VideoRoomComponent implements OnInit, OnDestroy {
 							!!localStorage.getItem('selected_lang') && localStorage.getItem('selected_lang') === 'bn'
 								? result.message.bn
 								: result.message.en;
-						Swal.fire('Warning', message, 'warning');
+						// Swal.fire('Warning', message, 'warning');
+						this.waitForHost(message)
 						this.isProgress = false;
 					}
 				},
@@ -1351,7 +1353,6 @@ export class VideoRoomComponent implements OnInit, OnDestroy {
 			}
 		}
 
-
 		this.oVSessionService.disconnect();
 
 		this._leaveSession.emit();
@@ -1360,9 +1361,7 @@ export class VideoRoomComponent implements OnInit, OnDestroy {
 			clearTimeout(this.countDownTimerObj)
 			this.bfcpFloorService.countDownValue$.next('')
 		}
-		if (localStorage.getItem("recordingOwner") === this.authUser.user_name) {
-			await this.stopRecordingBeforeLeave(selectedMeetingInfo);
-		}
+
 		if (window.opener) {
 			setTimeout(x => {
 				window.close();
@@ -1370,81 +1369,7 @@ export class VideoRoomComponent implements OnInit, OnDestroy {
 			return false;
 		}
 
-		// this.sendgroupmessageInlineCallLog(this.getCurrentMeetingInfo(), "Call ended#Call ended")
-
-		if (selectedMeetingInfo.tag === 'room-box' || selectedMeetingInfo.tag === 'room-box-meeting') {
-			if (selectedMeetingInfo.tag === 'room-box-meeting') {
-				if (selectedMeetingInfo.redirectTo === 'global_schedule') {
-					this.router.navigate(['/dashboard/schedule']);
-				} else if (selectedMeetingInfo.redirectTo === 'box_schedule') {
-					this.router.navigate(['dashboard/room-box/details/' + selectedMeetingInfo.meeting_id]);
-				}
-
-				this.xmppChatService.selectedGroup = selectedMeetingInfo;
-				this.roomBoxServices.isRoomScheduleSelected$.next(true);
-			} else {
-				this.router.navigate(['dashboard/room-box/details/' + selectedMeetingInfo.id]).then((x) => {
-					if (!meeting_url) {
-						if (localStorage.hasOwnProperty('in_call')) { // normal meeting leave remove local stroage item (Jahid)
-							localStorage.removeItem('in_call')
-						}
-					} else {
-						this.router.navigate(['/meeting/room-box/0/0']).then((x) => { //redirect room meeting then connect by btn click (Jahid)
-							setTimeout(() => {
-								const joinBtn = document.getElementById('joinBtn')
-								if (!!joinBtn) {
-									joinBtn.click()
-								}
-							}, 5000);
-						})
-					}
-				});
-			}
-		} else {
-			//Previous code for regular meeting
-			if (this.accountService.currentUser && this.accountService.currentUser.role_name === 'UnRegisteredGuest') {
-				return this.guest_signout();
-			}
-			if (callFrom === 'roomConfig') {
-				this.router.navigate(['/dashboard/home']);
-			} else {
-				this.router
-					.navigate(['/dashboard/home'])
-					.then((x) => {
-						if (!!x) {
-							if (!meeting_url) {
-								if (localStorage.hasOwnProperty("meeting_password")) { // normal meeting leave remove local stroage item (Jahid)
-									localStorage.removeItem('meeting_password')
-								}
-								if (localStorage.hasOwnProperty('in_call')) {
-									localStorage.removeItem('in_call')
-								}
-								window.location.reload();
-							} else {
-								this.router.navigate([meeting_url.split('#')[1]]).then((x) => { //redirect meeting then connect by btn click (Jahid)
-									setTimeout(() => {
-										const joinBtn = document.getElementById('joinBtn')
-										if (!!joinBtn) {
-											joinBtn.click()
-										}
-									}, 7000);
-								}).catch((err) => {
-									console.log(err)
-								})
-							}
-						}
-					})
-					.catch((err) => {
-						console.log(err);
-					});
-			}
-		}
-		// if (window.opener) {
-		// 	setTimeout(() => {
-		// 		window.close();
-		// 	}, 6000);
-		// }
-
+		this.redirectAfterLeave(callFrom, meeting_url, selectedMeetingInfo)
 	}
 
 	guest_signout() {
@@ -1734,7 +1659,8 @@ export class VideoRoomComponent implements OnInit, OnDestroy {
 	private subscribeToConnectionCreated() {
 		this.session.on('connectionCreated', (event: ConnectionEvent) => {
 			this.log.d('connectionCreated', event);
-			// event.preventDefault();		
+			// event.preventDefault();
+			this.autoRecording()		
 		});
 	}
 	// Emit publisher to webcomponent
@@ -2354,5 +2280,115 @@ export class VideoRoomComponent implements OnInit, OnDestroy {
 		}, (error) => {
 			console.log(error)
 		})
+	}
+
+	isMeetingAutoRecord(){
+		return this.meetingService.isMeetingAutoRecord()
+	}
+
+	isCallInitiator(){
+		return this.meetingService.isCallInitiator()
+	}
+
+	waitForHost(message){
+		if(message == 'Please provide password.' || message == 'দয়া করে পাসওয়ার্ড দিন।')
+			Swal.fire('Warning', message, 'warning');
+			else this.isWaitForHost = true
+	}
+
+	autoRecording(){
+		if(this.isMeetingAutoRecord()){
+			if(this.isCallInitiator()){
+					const startRecordingID = document.getElementById('startrecording')
+					if(!!startRecordingID){
+						startRecordingID.click()
+					}
+			}
+		}
+	}
+
+	joinAfterReconnectByAutoBtnClick(meeting_url?){
+		var time: number = 0
+		if(typeof meeting_url === 'string'){
+			time = 7000
+		}else {
+			time = 5000
+		}
+		setTimeout(() => {
+			const joinBtn = document.getElementById('joinBtn')
+			if (!!joinBtn) {
+				joinBtn.click()
+			}
+		}, time);
+	}
+
+	removeUtilItemFromStorage(){
+		if (localStorage.hasOwnProperty('in_call')) {
+			localStorage.removeItem('in_call')
+		}
+
+		if (localStorage.hasOwnProperty("meeting_password")) { 
+			localStorage.removeItem('meeting_password')
+		}
+	}
+
+	redirectAfterLeave(callFrom, meeting_url, selectedMeetingInfo){
+		if (selectedMeetingInfo.tag === 'room-box' || selectedMeetingInfo.tag === 'room-box-meeting') {
+			if (selectedMeetingInfo.tag === 'room-box-meeting') {
+				if (selectedMeetingInfo.redirectTo === 'global_schedule') {
+					this.router.navigate(['/dashboard/schedule']);
+				} else if (selectedMeetingInfo.redirectTo === 'box_schedule') {
+					this.router.navigate(['dashboard/room-box/details/' + selectedMeetingInfo.meeting_id]).then((x) => {
+						if (!meeting_url) {
+							this.removeUtilItemFromStorage() // normal meeting leave remove local stroage item (Jahid)
+						} else {
+							this.router.navigate(['/meeting/room-box/0/0']).then((x) => { //redirect room meeting then connect by btn click (Jahid)
+								this.joinAfterReconnectByAutoBtnClick(meeting_url)
+							})
+						}
+					})
+				}
+
+				this.xmppChatService.selectedGroup = selectedMeetingInfo;
+				this.roomBoxServices.isRoomScheduleSelected$.next(true);
+			} else {
+				this.router.navigate(['dashboard/room-box/details/' + selectedMeetingInfo.id]).then((x) => {
+					if (!meeting_url) {
+						 this.removeUtilItemFromStorage() // normal meeting leave remove local stroage item (Jahid)
+					} else {
+						this.router.navigate(['/meeting/room-box/0/0']).then((x) => { //redirect room meeting then connect by btn click (Jahid)
+							this.joinAfterReconnectByAutoBtnClick(meeting_url)
+						})
+					}
+				});
+			}
+		} else {
+			if (this.accountService.currentUser && this.accountService.currentUser.role_name === 'UnRegisteredGuest') {
+				return this.guest_signout();
+			}
+			if (callFrom === 'roomConfig') {
+				this.router.navigate(['/dashboard/home']);
+			} else {
+				this.router
+					.navigate(['/dashboard/home'])
+					.then((x) => {
+						if (!!x) {
+							if (!meeting_url) {
+								this.removeUtilItemFromStorage() // normal meeting leave remove local stroage item (Jahid)
+								window.location.reload();
+							} else {
+								this.router.navigate([meeting_url.split('#')[1]]).then((x) => { //redirect meeting then connect by btn click (Jahid)
+									this.joinAfterReconnectByAutoBtnClick(meeting_url)
+								}).catch((err) => {
+									console.log(err)
+								})
+							}
+						}
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			}
+		}
 	}
 }

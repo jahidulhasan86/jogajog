@@ -224,9 +224,6 @@
 	border-radius: 30px;
   }
   
-  .chat-container li .chat-avatar {
-	// margin-right: 20px;
-  }
   
   .chat-container li.chat-right {
 	justify-content: flex-end;
@@ -372,7 +369,7 @@
   }
   .chat-container li.chat-right .chat-text{
 	background-image: linear-gradient(to top, #F49D23, #F5CD1F);
-	color: #FFFFFF;
+	color: #1e272c
   }
   
   /* .container
@@ -441,13 +438,7 @@
   .btnAction{
 	cursor: pointer;
   }
-  mat-sidenav,
-  mat-sidenav.md-locked-open,
-  mat-sidenav.md-closed.md-locked-open-add-active {
-	  /* min-width: 200px !important;
-	  width: 85vw !important;
-	  max-width: 300px !important; */
-  }
+
   .putspacemore{
 	margin-right: 10%;
 	padding: 2px
@@ -539,9 +530,7 @@
 	height: 40px;
 	width : 97%;
   }
-  input[type="text"], textarea, .userinput {
-	/* background-color : #d6dfe6; */
-  }
+
   .mat-fab.mat-primary{
 	background-color:#12ad98
   }
@@ -567,9 +556,7 @@
 	min-width: 56px !important
   }
   /* //////////////////R&D */
-  .mat-sidenav {
-	/* top: 64px !important */
-  }
+
   
   .mat-nav-list .mat-list-item {
 	cursor: pointer;

@@ -78,7 +78,7 @@ export class CreateRoomComponent implements OnInit {
 			$('#show_hide, .pemail').click(function () {
 				$('#toggle_participants_list').toggle('fast', function () {
 					if ($('#toggle_participants_list:visible').length === 0) {
-						$('.btn-container').css('margin-top', '2%');
+						// $('.btn-container').css('margin-top', '2%');
 						// $('#hr-margin').css('margin-top', '-2%');
 						self.participantModel.map(function (x, i) {
 							if (i > 1) {
@@ -90,7 +90,7 @@ export class CreateRoomComponent implements OnInit {
 						})
 					} else {
 						let pList = document.getElementById('toggle_participants_list');
-						$('.btn-container').css('margin-top', pList.clientHeight +8+ 'px');
+						// $('.btn-container').css('margin-top', pList.clientHeight + 'px');
 						// $('#hr-margin').css('margin-top', '1%');
 						$('#count').hide();
 						self.showPreview = false;
@@ -225,7 +225,7 @@ export class CreateRoomComponent implements OnInit {
 		}
 		$('#dashboardSideBar').css('z-index', '0');
 		this.spinner.show();
-		this.roomBoxService._addConference(roomBoxName, tags, participants, [], null, roomType, false, false, false, null, settings,this.auto_recording).subscribe(
+		this.roomBoxService._addConference(roomBoxName, tags, participants, [], null, roomType, false, false, false, null, settings,this.auto_recording, this.getHosts()).subscribe(
 			(result: any) => {
 				this.spinner.hide();
 				$('#dashboardSideBar').css('z-index', '1000');
@@ -372,6 +372,18 @@ export class CreateRoomComponent implements OnInit {
 		}, err => {
 			console.log(err)
 		})
+	}
+
+	getHosts(){
+		const hosts = []
+		this.participantModel.some((participant: any) => {
+			if(!!participant && participant.host){
+				hosts.push(participant.user_id)
+			}
+		})
+
+		console.log(hosts)
+		return hosts
 	}
 }
 

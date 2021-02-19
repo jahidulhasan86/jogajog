@@ -23,7 +23,7 @@
 				<div class="row mb-10">
 					<div class="col-xl-6 col-md-6 col-sm-12 nopadd">
 						<div class="form-check">
-							<label class="check">{{'LOGIN.checkbox_text' | translate}}
+							<label style="padding-right: 0;" class="check">{{'LOGIN.checkbox_text' | translate}}
 								<input type="checkbox" name="Keep_me_logged" [checked]="isRememberChecked"
 									(change)="onChange($event.target.checked)" (keyup)="eventKeyPress($event)">
 								<span class="checkmark"></span>

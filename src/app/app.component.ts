@@ -71,17 +71,12 @@ export class AppComponent implements OnInit {
 				this.network_drop_time = 0;
 				this.network_drop_time = Math.round(new Date().getTime() / 1000); // output comes in second
 				console.log('networkStatusAngularService', status, this.network_drop_time);
-
+				this.removeUtilCallItemFromStorage()
 			}
 		});
 
-		if (localStorage.hasOwnProperty("meeting_password")) {
-			localStorage.removeItem('meeting_password')
-		}
-		
-		if(localStorage.hasOwnProperty('in_call')){
-			localStorage.removeItem('in_call')
-		}
+		this.removeUtilCallItemFromStorage(true)
+
 	}
 	leaveMeetingRestApi() {
 		let lastInCall: any = JSON.parse(localStorage.getItem('last_in_call'));
@@ -122,4 +117,37 @@ export class AppComponent implements OnInit {
 
 		this.accountService.setLanguage(this.browserLang);
 	}
+
+	removeUtilCallItemFromStorage(isRefresh?){
+
+		if(isRefresh){
+			if (localStorage.hasOwnProperty("meeting_password")) {
+				localStorage.removeItem('meeting_password')
+			}
+			
+			if(localStorage.hasOwnProperty('in_call')){
+				localStorage.removeItem('in_call')
+			}
+		}
+
+		if (localStorage.hasOwnProperty("recordingOwner")){
+			localStorage.removeItem('recordingOwner')
+		}
+	
+		if (localStorage.hasOwnProperty("gotRecordingResponse")){
+			localStorage.removeItem('gotRecordingResponse')
+		}
+	
+		if (localStorage.hasOwnProperty("isRecordingStarted")){
+			localStorage.removeItem('isRecordingStarted')
+		}
+	
+		if (localStorage.hasOwnProperty("recordingid")){
+			localStorage.removeItem('recordingid')
+		}
+	
+		if (localStorage.hasOwnProperty("rowId")){
+			localStorage.removeItem('rowId')
+		}
+	  }
 }

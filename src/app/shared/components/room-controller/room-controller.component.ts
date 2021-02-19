@@ -101,6 +101,7 @@ export class RoomControllerComponent implements OnInit, OnDestroy {
 	elemStart: any;
 	elemStop: any;
 	isDisabled: boolean;
+	isLeaveWhileRecordingRunning: boolean = false;
 
 	@Input()
 	set participants(participants: UserModel[]) {
@@ -213,7 +214,7 @@ export class RoomControllerComponent implements OnInit, OnDestroy {
 				!!localStorage.getItem('selected_lang') && localStorage.getItem('selected_lang') === 'bn' ? 'না' : 'No, Thanks'
 		}).then((result) => {
 			if (result.value) {
-				this.leaveSessionButtonClicked.emit();
+				this.leave()
 			}
 		});
 	}
@@ -468,6 +469,15 @@ export class RoomControllerComponent implements OnInit, OnDestroy {
 												{
 													console.log("Updated Successfully")
 													this.record.emit(res.result)
+													if(this.isLeaveWhileRecordingRunning){
+														this.leaveSessionButtonClicked.emit();
+													}
+													
+												}
+											}, (error) => {
+												console.log(error)
+												if(this.isLeaveWhileRecordingRunning){
+													this.leaveSessionButtonClicked.emit();
 												}
 											})
 										})
@@ -551,5 +561,17 @@ export class RoomControllerComponent implements OnInit, OnDestroy {
 		// 	return null;
 		// }
 		
+	}
+
+	leave(){
+		if (localStorage.hasOwnProperty('recordingOwner') && localStorage.getItem("recordingOwner") === this.authUser.user_name) {
+			const stoprecording = document.getElementById('stoprecording')
+			if(!!stoprecording){
+				this.isLeaveWhileRecordingRunning = true
+				stoprecording.click()
+			}
+		}else if (!localStorage.hasOwnProperty('recordingOwner') || localStorage.getItem('recordingOwner') === ''){
+			this.leaveSessionButtonClicked.emit();
+		}
 	}
 }

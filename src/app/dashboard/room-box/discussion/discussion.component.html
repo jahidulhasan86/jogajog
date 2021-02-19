@@ -64,7 +64,7 @@
 				<div  *ngIf="!discussion.last_comment" style="font-size: 12px;word-break: break-all;
 				white-space: normal;font-weight: bold;">{{'Discussion.no_reply' | translate}}</div>
 				<div style="font-size: 11px;" *ngIf="discussion.last_comment">{{'Discussion.last_activity' | translate}}: {{discussion.last_comment.created | date: 'MMM d, y,
-					h:mm:ss a'}}</div>
+					h:mm:ss a'}};&nbsp;{{discussion.last_comment.creator}}</div>
 					</div>
 				</div>
 				

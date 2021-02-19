@@ -100,7 +100,7 @@ export class ResourceRoomBoxComponent implements OnInit, OnDestroy {
              
               Swal.fire({
                 icon: 'success',
-                title: (!!localStorage.getItem('selected_lang') && localStorage.getItem('selected_lang') === 'bn') ? "সফলভাবে ফাইল  মুছে ফেলা হয়েছে" : 'File deleted successfully',
+                title: (!!localStorage.getItem('selected_lang') && localStorage.getItem('selected_lang') === 'bn') ?  file.resource_type == 'url'? "সফলভাবে লিঙ্ক মুছে ফেলা হয়েছে":"সফলভাবে ফাইল  মুছে ফেলা হয়েছে" : file.resource_type == 'url' ?'Link deleted successfully':'File deleted successfully',
                 timer: 3000
               })
              } else {

@@ -57,6 +57,8 @@ export const GlobalValue = {
 
 	vxmlServiceUrl: is_Local_Build === 'true' ? 'http://52.221.3.83/api/v1' : 'https://dialengine.sensor.buzz/api/v1',
 
+	googleMapApiKey: is_Local_Build === 'true' ? 'AIzaSyCdRjEKrzYALbcgy8UqardJa0n54Lml3XU' : 'AIzaSyB1L9PaICXQEQxz63Z6e2ECmWuHGpZCRmA',
+
 	broadcastMessage_BaseUrl: is_Local_Build === 'true' ? 'http://192.168.102.233:3529/api/v1' : '' + serverUrl + 'broadcaster/api/v1',
 
 	airlineFlightList_Url:

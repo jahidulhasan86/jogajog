@@ -12,16 +12,16 @@
 	<div fxFlex="70%" fxFlexOrder="2">
 		<div align="left" class="header70" *ngIf="mySessionId" fxLayout fxLayoutAlign="center" fxLayoutGap="10px"
 			[ngClass]="{'titleContent': true, 'titleContentLight': lightTheme, 'titleContentDark': !lightTheme}">
-			<div id="session-title" matTooltip="{{meetingName}}" fxFlex="15%" fxFlexOrder="1" align="left">
+			<div id="session-title" matTooltip="{{meetingName}}" fxFlex="20%" fxFlexOrder="1" align="left">
 				{{ meetingName }}
 			</div> 
 			<div id="recording-start-state" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;;">
 				{{'RoomController.recording-start-state' | translate}}
 			</div>
 			<div id="recording-started-state" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;">
-				{{'RoomController.recording-started-state' | translate}}
+				<span class="blinking">{{'RoomController.recording-started-state' | translate}}</span>
 			</div>
-			<div id="recording-start-opponent-state" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;">
+			<div id="recording-start-opponent-state" class="blinking" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;">
 				{{'RoomController.recording-start-opponent-state' | translate}}
 			</div>
 			<div id="recording-failed-state" fxFlex="15%" fxFlexOrder="1" align="left" style="display: none;font-size: 15px;color: red;">

@@ -15,6 +15,10 @@
 		"video_device_not_found": "ক্যামেরা ডিভাইস পাওয়া যাই নাই ",
 		"video_off": "ভিডিও বন্ধ",
 		"speaker_off":"স্পিকার বন্ধ",
-		"screen_share_off": "স্ক্রিন শেয়ার বন্ধ"
+		"screen_share_off": "স্ক্রিন শেয়ার বন্ধ",
+		"waiting_for_host_heading": "হোস্টের মিটিং শুরু করার জন্য অপেক্ষা করা হচ্ছে",
+		"meeting_name": "মিটিং এর নাম",
+		"meeting_time": "মিটিং এর সময়",
+		"meeting_host": "মিটিং আয়োজক"
 	}
 }

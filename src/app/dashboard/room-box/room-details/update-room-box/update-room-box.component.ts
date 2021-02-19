@@ -25,22 +25,19 @@ export class UpdateRoomBoxComponent implements OnInit {
     private dialogRef: MatDialogRef<UpdateRoomBoxComponent>,
     private accountService: AccountService,
     private contactService: ContactService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.roomBoxName = this.data.selectedRoom.conference_name;
     this.participantData = this.data.selectedRoom.users;
-    console.log('pd',this.participantData)
     this.data.delUser = [];
     this.data.checkedUser = [];
-    if (this.data.target === 'participants'){
-      // this._getCompanyUsers();
+    if (this.data.target === 'participants') {
       if (!this.multiCompanyService.defaultCompany()) {
         this._getCompanyUsers()
+      } else {
+        this.getContacts()
       }
-      //  else {
-      //   this.getContacts()
-      // }
     }
     this.globalValue = GlobalValue;
     this.accountService.getLanguage().subscribe((result) => {
@@ -50,38 +47,26 @@ export class UpdateRoomBoxComponent implements OnInit {
 
   getContacts() {
     this.spinner.show()
-		const currentUser = JSON.parse(localStorage.getItem('sessionUser'));
-		this.contactService.getContacts().subscribe((result) => {
-			if (result) {
+    const currentUser = JSON.parse(localStorage.getItem('sessionUser'));
+    this.contactService.getContacts().subscribe((result) => {
+      if (result) {
         this.userData = [];
-				this.spinner.hide();
-				$('#dashboardSideBar').css('z-index', '1000');
-				console.log(result)
-				result.forEach(contact => {
-					if (contact.email !== currentUser.email) {
-            // delete contact.isChecked;
-						this.userData.push(contact)
-          }
-         
-        });
-        console.log(this.userData)
-        this.userData.filter(cUser => {
-           cUser.user_id = cUser.user_id ? cUser.user_id: cUser.id
-           cUser.user_name = cUser.user_name ? cUser.user_name: cUser.name
-          this.data.selectedRoom.users.map(y => {
-            if (cUser.user_id === y.user_id ) {
-              this.data.checkedUser.push(y);
-              cUser.isChecked = true;
-            }
-          });
-        })
-        console.log('userD',this.userData,'sRU',this.data.selectedRoom.users)
-			}
-		}, err => {
-			this.spinner.hide();
-			console.log(err)
-		});
-	}
+        this.spinner.hide();
+        $('#dashboardSideBar').css('z-index', '1000');
+        this.updateUserModelGenerator(result)
+      }
+    }, err => {
+      this.spinner.hide();
+      console.log(err)
+    });
+  }
+
+  updateUserModelGenerator(contacts) {
+    const roomUser = this.operation(this.participantData, contacts, true)
+    const notRoomUser = this.operation(contacts, this.participantData)
+    this.data.checkedUser = roomUser
+    this.userData = [...roomUser, ...notRoomUser]
+  }
 
   _getCompanyUsers() {
     $('#dashboardSideBar').css('z-index', '0');
@@ -157,14 +142,14 @@ export class UpdateRoomBoxComponent implements OnInit {
         if (index === -1) {
           // delete data.isChecked;
           this.participantData.push(data);
-          self.data.checkedUser.map (function(x) {
+          self.data.checkedUser.map(function (x) {
             if (x.email === data.email) {
               self.data.delUser.splice(self.data.delUser.findIndex(function (i) {
                 return i === x.email;
               }), 1);
             }
           });
-         
+
         }
       }
       else {
@@ -176,9 +161,9 @@ export class UpdateRoomBoxComponent implements OnInit {
       const target = this.participantData.findIndex(dex => {
         return dex.user_id === data.user_id;
       });
-    this.participantData.splice(target, 1);
+      this.participantData.splice(target, 1);
 
-      this.data.checkedUser.map (function(x) {
+      this.data.checkedUser.map(function (x) {
         if (x.email === data.email) {
           self.data.delUser.push(data);
         }
@@ -186,14 +171,15 @@ export class UpdateRoomBoxComponent implements OnInit {
     }
 
     console.log(this.participantData)
-    console.log('deleteUserList....',this.data.delUser)
-    console.log('deleteUserLength:' +this.data.delUser.length)
+    console.log('deleteUserList....', this.data.delUser)
+    console.log('deleteUserLength:' + this.data.delUser.length)
 
   }
 
-  _updateRoomBox() {
+  async _updateRoomBox() {
     let isNameUpdate = false;
     let isParticipantUpdate = false;
+    let inviteByContacts = []
     if (this.data.target === 'name') {
       if (this.data.selectedRoom.conference_name !== this.roomBoxName) {
         $('#dashboardSideBar').css('z-index', '0');
@@ -227,7 +213,7 @@ export class UpdateRoomBoxComponent implements OnInit {
         });
       } else {
         isNameUpdate = false;
-        
+
         Swal.fire({
           // icon: 'info',
           title: (!!localStorage.getItem('selected_lang') && localStorage.getItem('selected_lang') === 'bn') ? 'কোন পরিবর্তন পাওয়া যায় নি' : 'No Changes Found!',
@@ -240,9 +226,17 @@ export class UpdateRoomBoxComponent implements OnInit {
         this.participantData.filter(x => delete x.isChecked);
         $('#dashboardSideBar').css('z-index', '0');
         this.spinner.show();
-        this.roomBoxService._addUsersToExistingConference(this.data.selectedRoom.id, this.participantData).subscribe((x: any) => {
-          if (x.status === 'ok') {
-            console.log('added done',x)
+        if (this.data.delUser.length == 0) {
+          if (this.multiCompanyService.defaultCompany()) {
+            inviteByContacts = this.invteRoomByContactModelGenerator()
+            if (inviteByContacts.length > 0) {
+              const inviteByContactResponse = await this.inviteRoomByContact({ conference_name: this.data.selectedRoom.conference_name, id: this.data.selectedRoom.conferance_id }, inviteByContacts)
+              console.log('invite by contact response', inviteByContactResponse)
+            }
+          }
+          const addUserToExistingConResponse: any = await this.addUserToExistingConference()
+          console.log('add user to existing conference response', addUserToExistingConResponse)
+          if (addUserToExistingConResponse.status == 'ok') {
             $('#dashboardSideBar').css('z-index', '1000');
             this.spinner.hide();
             isParticipantUpdate = true;
@@ -264,9 +258,42 @@ export class UpdateRoomBoxComponent implements OnInit {
               showConfirmButton: false
             });
           }
-        });
-          this._deleteRoomBoxParticipant();
-        
+        } else {
+          if (this.multiCompanyService.defaultCompany()) {
+            inviteByContacts = this.invteRoomByContactModelGenerator()
+            if (inviteByContacts.length > 0) {
+             const inviteByContactResponse = await this.inviteRoomByContact({ conference_name: this.data.selectedRoom.conference_name, id: this.data.selectedRoom.conferance_id }, inviteByContacts)
+             console.log('invite by contact response', inviteByContactResponse)
+            }
+          }
+          const deleteUserResponse = await this._deleteRoomBoxParticipant()
+          console.log('delete user response', deleteUserResponse)
+          this.data.selectedRoom.conference_name = this.roomBoxName;
+          const addUserToExistingConResponse: any = await this.addUserToExistingConference()
+          console.log('add user to existing conference response', addUserToExistingConResponse)
+          if (addUserToExistingConResponse.status == 'ok') {
+            $('#dashboardSideBar').css('z-index', '1000');
+            this.spinner.hide();
+            isParticipantUpdate = true;
+            this.dialogRef.close();
+            Swal.fire({
+              icon: 'success',
+              title: (!!localStorage.getItem('selected_lang') && localStorage.getItem('selected_lang') === 'bn') ? 'রুমের অংশগ্রহণকারী সফলভাবে আপডেট করা হয়েছে' : 'Room Participant(s) Updated Successfully.',
+              timer: 3000,
+              showConfirmButton: false
+            });
+          } else {
+            $('#dashboardSideBar').css('z-index', '1000');
+            this.spinner.hide();
+            isParticipantUpdate = false;
+            Swal.fire({
+              icon: 'error',
+              title: (!!localStorage.getItem('selected_lang') && localStorage.getItem('selected_lang') === 'bn') ? 'কিছু ভুল হয়েছে!' : 'Something Went Wrong!',
+              timer: 3000,
+              showConfirmButton: false
+            });
+          }
+        }
       } else {
         Swal.fire({
           // icon: 'info',
@@ -279,35 +306,63 @@ export class UpdateRoomBoxComponent implements OnInit {
     }
   }
 
-  _deleteRoomBoxParticipant() {
-      if (this.data.delUser.length > 0) {
-        $('#dashboardSideBar').css('z-index', '0');
-        this.spinner.show();
-        this.roomBoxService._deleteUsersFromExistingConference(this.data.selectedRoom.id, this.data.delUser).subscribe((x: any) => {
-          if (x.result) {
-            $('#dashboardSideBar').css('z-index', '1000');
-            this.spinner.hide();
-            this.data.selectedRoom.conference_name = this.roomBoxName;
-            console.log('total user removed: ' + this.data.delUser.length);
-          } else {
-            $('#dashboardSideBar').css('z-index', '1000');
-            this.spinner.hide();
-            Swal.fire({
-              icon: 'error',
-              title: (!!localStorage.getItem('selected_lang') && localStorage.getItem('selected_lang') === 'bn') ? 'কিছু ভুল হয়েছে!' : 'Something Went Wrong!',
-              timer: 3000,
-              showConfirmButton: false
-            });
-          }
+  async _deleteRoomBoxParticipant() {
+    try {
+      return await this.roomBoxService._deleteUsersFromExistingConference(this.data.selectedRoom.id, this.data.delUser).toPromise()
+    } catch (error) {
+      return error
+    }
+  }
 
-        });
-      } else {
-        // Swal.fire({
-        //   // icon: 'info',
-        //   title: 'No Changes Found!',
-        //   timer: 3000,
-        //   showConfirmButton: false
-        // });
+  async addUserToExistingConference() {
+    try {
+      return await this.roomBoxService._addUsersToExistingConference(this.data.selectedRoom.id, this.participantData).toPromise()
+    } catch (error) {
+      return error
+    }
+  }
+
+  async inviteRoomByContact(conferenceInfo, participantModel) {
+    try {
+      return this.roomBoxService.inviteRoom(conferenceInfo, participantModel).toPromise()
+    } catch (error) {
+      return error
+    }
+  }
+
+  invteRoomByContactModelGenerator() {
+    let contacts = []
+    for (var i = 0; i < this.participantData.length; i++) {
+      if (this.participantData[i].id !== undefined) {
+        contacts.push(this.participantData[i])
+        this.participantData.splice(i, 1);
+        i--;
       }
+    }
+    console.log(contacts, this.participantData)
+    return contacts
+  }
+
+  operation(list1, list2, isUnion?) {
+    var result = [];
+
+    for (var i = 0; i < list1.length; i++) {
+      var item1 = list1[i],
+        found = false;
+      for (var j = 0; j < list2.length && !found; j++) {
+        found = item1.email === list2[j].email;
+      }
+      if (found === !!isUnion) { // isUnion is coerced to boolean
+        if (isUnion === undefined) {
+          Object.assign(item1, { isChecked: false, room_user: false })
+        } else {
+          Object.assign(item1, { isChecked: true, room_user: true })
+        }
+        result.push(item1);
+      }
+    }
+    return result;
   }
 }
+
+

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, HostListener, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, HostListener, OnDestroy, ViewChild, ElementRef, SimpleChanges } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserModel } from '../../models/user-model';
 import { NicknameMatcher } from '../../forms-matchers/nickname';
@@ -45,6 +45,8 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 	// Webcomponent event
 	@Output() publisherCreated = new EventEmitter<any>();
 
+	@Input() isWaitForHost: boolean
+
 	mySessionId: string;
 
 	cameras: IDevice[];
@@ -81,6 +83,8 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 	hideMeetindId: boolean;
 	meeting_password: any;
 	isPopedOut: boolean;
+	isWaitForHostInterval: NodeJS.Timeout;
+	currentMeetingInfo: any;
 	constructor(
 		private route: ActivatedRoute,
 		private utilsSrv: UtilsService,
@@ -133,6 +137,16 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 		// publisher.on('streamAudioVolumeChange', (event: any) => {
 		//   this.volumeValue = Math.round(Math.abs(event.value.newValue));
 		// });
+		this.removeUtilCallItemFromStorage()
+	}
+
+	ngOnChanges(changes: SimpleChanges) {
+		if(this.isWaitForHost){
+			if(this.isWaitForHostInterval){
+				clearTimeout(this.isWaitForHostInterval)
+			}
+			this.autoRoomJoinAfterHostJoined()
+		}
 	}
 
 	ngOnDestroy() {
@@ -451,6 +465,7 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 					}
 
 					localStorage.setItem('meetingInfo_current', JSON.stringify(result.result));
+					this.currentMeetingInfo = result.result
 					this.meetingService.getMeetingInfo$.next(result.result);
 					this.roomNameFormControl.setValue(result.result.meeting_code); // to show only view
 					// this.mySessionId = result.result.id; // original session Id.
@@ -669,4 +684,38 @@ export class RoomConfigComponent implements OnInit, OnDestroy {
 			this.log.e(e.message);
 		});
 	}
+
+	autoRoomJoinAfterHostJoined(){
+		const self = this
+		this.isWaitForHostInterval = setInterval(function(){ 
+			self.joinSession()
+		}, 10000);
+	}
+
+	removeUtilCallItemFromStorage(){
+		if (localStorage.hasOwnProperty("in_call")){
+			localStorage.removeItem('in_call')
+		}
+	
+		if (localStorage.hasOwnProperty("recordingOwner")){
+			localStorage.removeItem('recordingOwner')
+		}
+	
+		if (localStorage.hasOwnProperty("gotRecordingResponse")){
+			localStorage.removeItem('gotRecordingResponse')
+		}
+	
+		if (localStorage.hasOwnProperty("isRecordingStarted")){
+			localStorage.removeItem('isRecordingStarted')
+		}
+	
+		if (localStorage.hasOwnProperty("recordingid")){
+			localStorage.removeItem('recordingid')
+		}
+	
+		if (localStorage.hasOwnProperty("rowId")){
+			localStorage.removeItem('rowId')
+		}
+		
+	  }
 }

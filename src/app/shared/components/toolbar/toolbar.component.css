@@ -11,7 +11,6 @@
   z-index: 2;
 }
 
-.header70 {}
 
 .header70 #session-title {
   text-align: left;
@@ -76,7 +75,7 @@
   /* max-width: 100px; */
   margin: 5px 0px;
   padding: 0px 15px;
-  font-size: 20px;
+  font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -117,9 +116,36 @@
 .tooltipList {
   white-space: pre;
 }
+#recording-started-state {
+  color: #f44336;
+}
+#recording-start-opponent-state {
+  color: #f44336;
+}
 
 @media (max-width: 600px) {
   #navSessionInfo {
     display: none;
   }
+}
+
+.blinking{
+  animation:blinkingText 2.2s infinite;
+}
+.blinking_opponent{
+  animation:blinkingOpponentText 2.2s infinite;
+}
+@keyframes blinkingText{
+  0%{     color:#f44336;    }
+  49%{    color:#f44336; }
+  60%{    color: transparent; }
+  99%{    color:transparent;  }
+  100%{   color: #f44336;    }
+}
+@keyframes blinkingOpponentText{
+  0%{     color:#f44336;    }
+  49%{    color:#f44336; }
+  60%{    color: transparent; }
+  99%{    color:transparent;  }
+  100%{   color: #f44336;    }
 }

@@ -1513,8 +1513,8 @@ label {
 }
 
 .cdk-global-overlay-wrapper .cdk-overlay-pane {
-  width: 49% !important;
-  max-width: 49vw !important;
+  width: 54% !important;
+  max-width: 60vw !important;
   margin: 1rem;
   z-index: 1000;
 }
