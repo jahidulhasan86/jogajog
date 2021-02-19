@@ -219,7 +219,7 @@ export class RoomBoxService {
   }//
 
 
-  _addUsersToExistingConference(conferenceId: any, userList?: any[]) {
+  _addUsersToExistingConference(conferenceId: any, userList?: any[], company_id?: string) {
     this.currentUser = JSON.parse(localStorage.getItem('sessionUser'));
     console.log('<======== Add Users To Existing Conference Service Called========>')
  
@@ -241,6 +241,11 @@ export class RoomBoxService {
       'id': conferenceId,
       'users': userList
     }
+
+    if(!!company_id){
+      Object.assign(req, {company_id: company_id})
+    }
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

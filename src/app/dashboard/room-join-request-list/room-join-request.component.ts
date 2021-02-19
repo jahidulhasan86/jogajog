@@ -124,7 +124,7 @@ export class RoomJoinRequestComponent implements OnInit {
       // contact: authUser.contact ? authUser.contact : ''
     }
     userList.push(currentUserInfo)
-    this.roomBoxService._addUsersToExistingConference(roomInvitation.data.conference_id, userList).subscribe((result) => {
+    this.roomBoxService._addUsersToExistingConference(roomInvitation.data.conference_id, userList, roomInvitation.data.company_id).subscribe((result) => {
       if (result) {
         console.log(result)
       }
